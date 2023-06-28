@@ -6,7 +6,7 @@ const error = () => {
     <div>
       <h1>Error is occured</h1>
     </div>
-  );
+  )
 }
 
 export default error

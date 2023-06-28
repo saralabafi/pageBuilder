@@ -1,5 +1,6 @@
-"use client";
-import React from "react";
+'use client'
+import React from 'react'
+import { ISelectComponent } from './Select.types'
 
 export const Select = (props: ISelectComponent) => {
   const {
@@ -9,16 +10,16 @@ export const Select = (props: ISelectComponent) => {
     value,
     onChange,
     placeholder,
-    direction = "flex",
-    backgroundColor = "bg-gray-50",
-    borderColor = "border-gray-300",
-    textColor = "text-gray-900",
-  } = props;
+    direction = 'flex',
+    backgroundColor = 'bg-gray-50',
+    borderColor = 'border-gray-300',
+    textColor = 'text-gray-900'
+  } = props
   return (
     <div className={` ${direction} `}>
       <label
         className={`flex mb-2 text-sm font-medium ${textColor} dark:text-white w-auto ${
-          direction === "flex" ? "items-center mx-3" : "my-3"
+          direction === 'flex' ? 'items-center mx-3' : 'my-3'
         }`}
       >
         {label}
@@ -39,10 +40,10 @@ export const Select = (props: ISelectComponent) => {
             <option key={index} value={option.id}>
               {option.title}
             </option>
-          );
+          )
         })}
       </select>
     </div>
-  );
-};
+  )
+}
  

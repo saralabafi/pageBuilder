@@ -1,9 +1,30 @@
 {
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
   "rules": {
-    "react/jsx-uses-react": "error",
-    "react/jsx-no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": ["error"],
-    "react/react-in-jsx-scope": 0,
-    "spaced-comment": ["error", "always", { "markers": ["/"] }]
+    "ordered-imports": 0,
+    "align": 0,
+    "brace-style": 0,
+    "curly": 0,
+    "import-name": 0,
+    "object-shorthand-properties-first": 0,
+    "jsx-boolean-value": 0,
+    "jsx-no-lambda": 0,
+    "max-line-length": [0, "80"],
+    "no-duplicate-imports": 2,
+    "no-empty-pattern": 0,
+    "no-shadowed-variable": 0,
+    "no-unused-expression": 0,
+    "no-unused": 0,
+    "quotemark": [0, "single"],
+    "semicolon": [0, "never"],
+    "ter-arrow-parens": 0,
+    "ter-indent": 0,
+    "trailing-comma": 0,
+    "variable-name": 0,
+    "@typescript-eslint/no-explicit-any": 0
   }
 }
