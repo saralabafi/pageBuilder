@@ -13,7 +13,7 @@ export const Select = (props: ISelectComponent) => {
     direction = 'flex',
     backgroundColor = 'bg-gray-50',
     borderColor = 'border-gray-300',
-    textColor = 'text-gray-900'
+    textColor = 'text-gray-900',
   } = props
   return (
     <div className={` ${direction} `}>
@@ -46,4 +46,3 @@ export const Select = (props: ISelectComponent) => {
     </div>
   )
 }
- 

@@ -3,10 +3,10 @@ import Providers from '../../Redux/Providers'
 
 export default async function RootLayout({
   children,
-  params
+  params,
 }: {
-  children: React.ReactNode;
-  params: any;
+  children: React.ReactNode
+  params: any
 }) {
   return (
     <html lang={params?.locale}>

@@ -9,6 +9,7 @@
     "align": 0,
     "brace-style": 0,
     "curly": 0,
+    "no-console": 1,
     "import-name": 0,
     "object-shorthand-properties-first": 0,
     "jsx-boolean-value": 0,
