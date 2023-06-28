@@ -8,10 +8,10 @@ export default function TestView() {
   return (
     <div className="flex-col -full">
       <div className="flex justify-end items-end">
-        <Link className="mx-4 cursor-pointer" hrefLang="en" href="">
+        <Link className="mx-4 cursor-pointer" href="/en/testView" locale="en">
           English
         </Link>
-        <Link className="mx-4 cursor-pointer" hrefLang="fa" href=''>
+        <Link className="mx-4 cursor-pointer" href="/fa/testView" locale="fa">
           فارسی
         </Link>
       </div>
@@ -23,8 +23,7 @@ export default function TestView() {
             }}
             className={`${
               !authStatus ? 'bg-red-500' : 'bg-green-500'
-            } rounded-sm p-1 mx-4`}
-          >
+            } rounded-sm p-1 mx-4`}>
             Action
           </button>
           {String(authStatus)}
