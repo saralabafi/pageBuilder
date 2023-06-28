@@ -12,7 +12,7 @@ const useTestView = () => {
   )
   const authStatus = useSelector((state: RootState) => state.counter.isAuth)
   const dispatch = useDispatch()
-  return {t,data,status,authStatus,dispatch}
+  return { t, data, status, authStatus, dispatch }
 }
 
 export default useTestView
