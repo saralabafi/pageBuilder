@@ -9,7 +9,6 @@ export default async function RootLayout({
   children: React.ReactNode
   params: any
 }) {
-  console.log(params)
   return (
     <html lang={params?.locale}>
       <body>
