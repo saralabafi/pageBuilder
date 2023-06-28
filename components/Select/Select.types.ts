@@ -12,8 +12,3 @@ export interface ISelectComponent {
   value: string
   onChange: (obj: any) => void
 }
-
-export type Flex_Direction = {
-  row: 'flex'
-  column: 'flex-col'
-}
