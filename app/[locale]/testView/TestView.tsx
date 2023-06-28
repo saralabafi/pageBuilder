@@ -11,7 +11,7 @@ export default function TestView() {
         <Link className="mx-4 cursor-pointer" hrefLang="en" href="">
           English
         </Link>
-        <Link className="mx-4 cursor-pointer" hrefLang="fa" href={''}>
+        <Link className="mx-4 cursor-pointer" hrefLang="fa" href=''>
           فارسی
         </Link>
       </div>
