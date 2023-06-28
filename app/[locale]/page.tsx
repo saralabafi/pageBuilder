@@ -8,8 +8,8 @@ import { RootState } from '../../Redux/Store'
 import { authentication } from '../../Redux/Auth/Auth'
 
 export default function Home() {
-        const t = useTranslations('Index')
-   const { data, status } = useQuery(
+  const t = useTranslations('Index')
+  const { data, status } = useQuery(
     [{ url: '4cf356a7-29d2-4100-82bf-b0b38306843c' }],
     services.GetData
   )
