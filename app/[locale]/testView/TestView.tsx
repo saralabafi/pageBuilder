@@ -23,7 +23,8 @@ export default function TestView() {
             }}
             className={`${
               !authStatus ? 'bg-red-500' : 'bg-green-500'
-            } rounded-sm p-1 mx-4`}>
+            } rounded-sm p-1 mx-4`}
+          >
             Action
           </button>
           {String(authStatus)}
