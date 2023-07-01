@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
-import { ISelectComponent } from './Select.types'
+import { ISelectProps } from './Select.types'
 
-export const Select = (props: ISelectComponent) => {
+export const Select = (props: ISelectProps) => {
   const {
     id,
     sx,

@@ -2,7 +2,7 @@ import { Properties } from 'csstype'
 import { ReactNode } from 'react'
 import { gapType } from 'types/gap.type'
 
-export interface IGrid {
+export interface IGridProps {
   columns?: gridColumnsTypes
   row?: gridRowTypes
   gap?: gapType

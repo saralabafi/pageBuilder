@@ -4,7 +4,7 @@ import { paddingType } from 'types/padding.type'
 import { radiusType } from 'types/radius.type'
 import { widthType } from 'types/width.type'
 
-export interface ITextArea {
+export interface ITextAreaProps {
   resize?: 'resize-none' | 'resize' | 'resize-y' | 'resize-x' | 'resize-both'
   width?: widthType
   height?: heightType

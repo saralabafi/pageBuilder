@@ -5,7 +5,7 @@ import { marginType } from 'types/margin.type'
 import { paddingType } from 'types/padding.type'
 import { widthType } from 'types/width.type'
 
-export interface IFlexComponent {
+export interface IFlexProps {
   direction?: 'flex-row' | 'flex-col' | 'flex-row-reverse' | 'flex-col-reverse'
   justify?:
     | 'justify-normal'

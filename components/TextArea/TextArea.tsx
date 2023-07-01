@@ -1,6 +1,6 @@
-import { ITextArea } from './TextArea.type'
+import { ITextAreaProps } from './TextArea.type'
 
-export const TextArea = (props: ITextArea) => {
+export const TextArea = (props: ITextAreaProps) => {
   const {
     rows,
     value,

@@ -1,6 +1,6 @@
 import { Properties } from "csstype"
 
-export interface ISelectComponent {
+export interface ISelectProps {
   id?: string
   size?: string
   selectedIcon?: string

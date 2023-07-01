@@ -1,7 +1,7 @@
 import React from 'react'
-import { IFlexComponent } from './Flex.types'
+import { IFlexProps } from './Flex.types'
 
-export const Flex = (props: IFlexComponent) => {
+export const Flex = (props: IFlexProps) => {
   const {
     direction = 'flex-row',
     justify = 'justify-center',
