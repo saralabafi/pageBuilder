@@ -1,18 +1,20 @@
-import { ITextArea } from './TextArea.Type'
+import { ITextArea } from './TextArea.type'
 
 export const TextArea = (props: ITextArea) => {
   const {
+    rows,
     value,
     width,
-    color,
     height,
-    resize,
-    radius,
-    disabled=false,
+    margin,
     onChange,
     placeholder,
     backgroundColor,
-    rows,
+    padding = 'p-1',
+    disabled = false,
+    resize = 'resize',
+    radius = 'rounded-md',
+    color = 'text-gray-900',
   } = props
   return (
     <textarea
@@ -21,7 +23,8 @@ export const TextArea = (props: ITextArea) => {
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className={`${resize} ${radius} ${backgroundColor} ${color} ${width} ${height}`}
+      className={`${resize} ${radius} ${backgroundColor || ''} ${color} 
+      ${width || ''} ${height || ''} ${padding} ${margin || ''}`}
     />
   )
 }

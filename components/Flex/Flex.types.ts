@@ -1,3 +1,4 @@
+import { Properties } from 'csstype'
 import { gapType } from 'types/gap.type'
 import { heightType } from 'types/height.type'
 import { marginType } from 'types/margin.type'
@@ -30,4 +31,5 @@ export interface IFlexComponent {
   margin?: marginType
   children: React.ReactNode
   customCSS?: string
+  sx?: Properties<string | number, string & {}>
 }

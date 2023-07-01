@@ -1,4 +1,6 @@
 import { heightType } from 'types/height.type'
+import { marginType } from 'types/margin.type'
+import { paddingType } from 'types/padding.type'
 import { radiusType } from 'types/radius.type'
 import { widthType } from 'types/width.type'
 
@@ -14,4 +16,6 @@ export interface ITextArea {
   rows?: number
   disabled?: boolean
   radius?: radiusType
+  padding?: paddingType
+  margin?: marginType
 }

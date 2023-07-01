@@ -1,3 +1,4 @@
+import { Properties } from 'csstype'
 import { ReactNode } from 'react'
 import { gapType } from 'types/gap.type'
 
@@ -8,6 +9,7 @@ export interface IGrid {
   flow?: flowType
   children: ReactNode
   customCSS?: string
+  sx?: Properties<string | number, string & {}>
 }
 
 type flowType =
