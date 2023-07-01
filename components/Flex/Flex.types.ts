@@ -29,4 +29,5 @@ export interface IFlexComponent {
   padding?: paddingType
   margin?: marginType
   children: React.ReactNode
+  customCSS?: string
 }

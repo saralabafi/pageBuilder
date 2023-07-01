@@ -13,20 +13,22 @@ export const Flex = ({
   padding,
   margin,
   children,
+  customCSS,
 }: IFlexComponent) => {
   return (
     <div
       className={`flex   
-    ${direction}
-    ${justify}
-    ${align}
-    ${wrap}
-    ${gap}
-    ${width}
-    ${height}
-    ${padding}
-    ${margin}
-    ${backgroundColor}`}>
+      ${customCSS}
+      ${direction}
+      ${justify}
+      ${align}
+      ${wrap}
+      ${gap}
+      ${width}
+      ${height}
+      ${padding}
+      ${margin}
+      ${backgroundColor}`}>
       {children}
     </div>
   )
