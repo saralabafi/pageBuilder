@@ -21,9 +21,8 @@ export default function TestView() {
             onClick={() => {
               dispatch(authentication())
             }}
-            className={`${
-              !authStatus ? 'bg-red-500' : 'bg-green-500'
-            } rounded-sm p-1 mx-4`}
+            className={`${!authStatus ? 'bg-red-500' : 'bg-green-500'
+              } rounded-sm p-1 mx-4`}
           >
             Action
           </button>
