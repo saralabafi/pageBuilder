@@ -1,10 +1,11 @@
+import { Properties } from 'csstype'
 import { gapType } from 'types/gap.type'
 import { heightType } from 'types/height.type'
 import { marginType } from 'types/margin.type'
 import { paddingType } from 'types/padding.type'
 import { widthType } from 'types/width.type'
 
-export interface IFlexComponent {
+export interface IFlexProps {
   direction?: 'flex-row' | 'flex-col' | 'flex-row-reverse' | 'flex-col-reverse'
   justify?:
     | 'justify-normal'
@@ -29,4 +30,6 @@ export interface IFlexComponent {
   padding?: paddingType
   margin?: marginType
   children: React.ReactNode
+  customCSS?: string
+  sx?: Properties<string | number, string & {}>
 }

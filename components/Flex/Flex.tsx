@@ -1,32 +1,37 @@
 import React from 'react'
-import { IFlexComponent } from './Flex.types'
+import { IFlexProps } from './Flex.types'
 
-export const Flex = ({
-  direction,
-  justify,
-  align,
-  wrap,
-  gap,
-  width,
-  height,
-  backgroundColor,
-  padding,
-  margin,
-  children,
-}: IFlexComponent) => {
+export const Flex = (props: IFlexProps) => {
+  const {
+    direction = 'flex-row',
+    justify = 'justify-center',
+    align = 'items-center',
+    wrap = 'flex-nowrap',
+    gap,
+    width,
+    height,
+    backgroundColor,
+    padding,
+    margin,
+    children,
+    customCSS,
+    sx,
+  } = props
   return (
     <div
+      style={sx}
       className={`flex   
-    ${direction}
-    ${justify}
-    ${align}
-    ${wrap}
-    ${gap}
-    ${width}
-    ${height}
-    ${padding}
-    ${margin}
-    ${backgroundColor}`}>
+      ${customCSS || ''}
+      ${direction}
+      ${justify}
+      ${align}
+      ${wrap}
+      ${gap || ''}
+      ${width || ''}
+      ${height || ''}
+      ${padding || ''}
+      ${margin || ''}
+      ${backgroundColor || ''}`}>
       {children}
     </div>
   )
