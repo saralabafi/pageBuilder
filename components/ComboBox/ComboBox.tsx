@@ -1,11 +1,17 @@
 'use client'
 import { TbArrowsSort } from "react-icons/tb"
 import useComboBox from './ComboBox.biz';
-const ComboBox: React.FC = () => {
+import { ComboBoxProp } from './ComboBox.types';
+import { useEffect } from "react";
+const ComboBox: React.FC<ComboBoxProp> = (props) => {
+    const { options, placeHolder } = props
     // hook handel select item and show modal
-    const { inputRef, dropdownRef, openListHandler, isOpen, setIsOpen, searchTerm,
-        selectedOption, selectOptionHandler,
+    const { inputRef, dropdownRef, openListHandler, isOpen, searchTerm,
+        selectedOption, selectOptionHandler, setSearchTerm,
         serchOptionsHandler, onblurHandler } = useComboBox()
+    useEffect(() => {
+        setSearchTerm(options)
+    }, [])
     return (
         <div className="relative w-[300px]  m-2" ref={dropdownRef} onMouseDown={(event) => event.preventDefault()}>
             <input
@@ -13,7 +19,7 @@ const ComboBox: React.FC = () => {
                 type="text"
                 onChange={(event) => serchOptionsHandler(event)}
                 onBlur={onblurHandler}
-                placeholder="Select an option"
+                placeholder={placeHolder}
                 className=" border rounded p-1 text-black w-full  focus:outline outline-indigo-700 outline-2 "
                 onMouseDown={(event) => event.stopPropagation()}
             />

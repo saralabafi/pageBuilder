@@ -6,7 +6,7 @@ function useComboBox() {
   const dropdownRef = useRef<HTMLDivElement>(null)
   const [selectedOption, setSelectedOption] = useState<Option | null>(null)
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [searchTerm, setSearchTerm] = useState<Option[] | null>(options)
+  const [searchTerm, setSearchTerm] = useState<Option[] | null>()
   const openListHandler = () => {
     inputRef.current?.focus()
     setIsOpen(!isOpen)

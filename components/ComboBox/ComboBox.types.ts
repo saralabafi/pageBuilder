@@ -6,7 +6,7 @@ export interface Option {
 export interface ComboBoxProp {
   options: Option[]
   disabled?: boolean
-  defaultValue: string
+  defaultValue?: string
   size: 'small' | 'medium'
   readonly?: boolean
   open?: boolean
@@ -16,4 +16,5 @@ export interface ComboBoxProp {
   id: string
   sx?: Properties<string | number, string & {}>
   activeBorder?: string
+  placeHolder: string
 }
