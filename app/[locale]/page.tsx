@@ -24,7 +24,14 @@ export default function Home() {
         </div>
         <div className='mt-3'>
           <span>Switch</span>
-          {/* <Switch  /> */}
+          <div className='mt-2'>
+            <Switch
+              checked={false}
+              checkedColor='success'
+              label='switch'
+              disabled={false}
+            />
+          </div>
         </div>
       </div>
     </div>
