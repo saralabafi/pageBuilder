@@ -8,15 +8,16 @@ export const Grid = (props: IGridProps) => {
     children,
     gap,
     flow,
-    customCSS,
+    width,
     sx,
+    customCSS,
   } = props
   return (
     <div
       style={sx}
-      className={`grid ${columns} ${row} ${gap || ''} ${flow || ''} ${
-        customCSS || ''
-      }`}>
+      className={`grid ${columns} ${row} ${gap || ''} ${flow || ''}
+      ${width || ''}
+      ${customCSS || ''}`}>
       {children}
     </div>
   )
