@@ -4,32 +4,51 @@ import useComboBox from './ComboBox.biz';
 import { ComboBoxProp } from './ComboBox.types';
 import { useEffect } from "react";
 const ComboBox: React.FC<ComboBoxProp> = (props) => {
-    const { options, placeHolder } = props
+    const { options, placeHolder, type, id, size,
+        outlineInp, defaultValue, disabled, inputValue,
+        notfound, open, openOnFocus, readonly, sx } = props
     // hook handel select item and show modal
     const { inputRef, dropdownRef, openListHandler, isOpen, searchTerm,
         selectedOption, selectOptionHandler, setSearchTerm,
         serchOptionsHandler, onblurHandler } = useComboBox()
+    // set data
     useEffect(() => {
         setSearchTerm(options)
     }, [])
+
+    let h_container = size === "small" ? "h-8" : "h-12"
+    let position_icon = size === "small" ? "top-2" : "top-4"
+    let position_modal = size === "small" ? "top-10" : "top-[50px]"
+    const outlineColors = {
+        indigo: "outline-indigo-700",
+        red: "outline-red-700",
+        blue: "outline-blue-700",
+        green: "outline-green-700",
+        Pink: 'outline-pink-700'
+    }
+    let outline_input: string = outlineColors[outlineInp ?? "Pink"]
+
     return (
-        <div className="relative w-[300px]  m-2" ref={dropdownRef} onMouseDown={(event) => event.preventDefault()}>
-            <input
-                ref={inputRef}
-                type="text"
-                onChange={(event) => serchOptionsHandler(event)}
-                onBlur={onblurHandler}
-                placeholder={placeHolder}
-                className=" border rounded p-1 text-black w-full  focus:outline outline-indigo-700 outline-2 "
-                onMouseDown={(event) => event.stopPropagation()}
-            />
-            <TbArrowsSort onClick={() => openListHandler()}
-                size={18} className='text-gray-500 hover:text-gray-600 transition-all  absolute top-2 right-3 cursor-pointer'
-            />
+        <div className={`relative w-[300px]  m-2  ${h_container}`} ref={dropdownRef} onMouseDown={(event) => event.preventDefault()}>
+            <div className="w-full h-full flex relative items-center justify-between">
+                <input
+                    id={id}
+                    ref={inputRef}
+                    type={type}
+                    onChange={(event) => serchOptionsHandler(event)}
+                    onBlur={onblurHandler}
+                    placeholder={placeHolder}
+                    className={` border rounded text-black w-full pl-2 top  focus:outline ${outline_input} outline-2 h-full`}
+                    onMouseDown={(event) => event.stopPropagation()}
+                />
+                <TbArrowsSort onClick={() => openListHandler()}
+                    size={18} className={`text-gray-500 hover:text-gray-600 transition-all  absolute  ${position_icon} right-3 cursor-pointer`}
+                />
+            </div>
             {isOpen && (
-                <div className="absolute z-10 top-10 left-0 right-0 bg-white border rounded shadow">
+                <div className={`absolute z-10 ${position_modal} left-0 right-0 bg-white border rounded shadow`}>
                     {searchTerm?.length === 0 && (
-                        <div className="p-2">No options found</div>
+                        <div className="p-2">{notfound}</div>
                     )}
                     {searchTerm?.map((option) => (
                         <div

@@ -14,7 +14,13 @@ export default function Home() {
       <div className='text-center w-full flex justify-center items-center flex-col mt-5'>
         <div className='mt-3'>
           <span>ComboBox</span>
-          <ComboBox placeHolder='Select city' id='select color' options={options} size='small' />
+          <ComboBox type='text'
+            notfound='No options found'
+            placeHolder='Select city'
+            id='select color'
+            options={options}
+            size='small'
+            outlineInp="Pink" />
         </div>
         <div className='mt-3'>
           <span>Switch</span>

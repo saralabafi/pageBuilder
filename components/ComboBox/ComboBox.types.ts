@@ -11,10 +11,11 @@ export interface ComboBoxProp {
   readonly?: boolean
   open?: boolean
   openOnFocus?: boolean
-  notfindtext?: string
+  notfound?: string
   inputValue?: string
   id: string
   sx?: Properties<string | number, string & {}>
-  activeBorder?: string
+  outlineInp?: 'indigo' | 'red' | 'blue' | 'green' | 'Pink'
   placeHolder: string
+  type: 'text' | 'number' | 'email'
 }
