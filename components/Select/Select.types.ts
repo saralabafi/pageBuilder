@@ -1,4 +1,6 @@
-export interface ISelectComponent {
+import { Properties } from "csstype"
+
+export interface ISelectProps {
   id?: string
   size?: string
   selectedIcon?: string
@@ -11,9 +13,6 @@ export interface ISelectComponent {
   direction?: 'flex' | 'flex-col'
   value: string
   onChange: (obj: any) => void
-}
-
-export type Flex_Direction = {
-  row: 'flex'
-  column: 'flex-col'
+  customCSS: string
+  sx?: Properties<string | number, string & {}>
 }

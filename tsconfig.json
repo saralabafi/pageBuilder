@@ -21,7 +21,10 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "components/*": ["./components/*"]
+      "components/*": ["./components/*"],
+      "services/*": ["./services/*"],
+      "redux/*": ["./Redux/*"],
+      "types/*": ["./utils/types/*"],
     }
   },
   "include": [
