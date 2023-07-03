@@ -1,66 +1,11 @@
 'use client'
-import React, { useState, useRef, useEffect } from 'react';
 import { TbArrowsSort } from "react-icons/tb"
-import { options, Option } from "./Box.types"
-
+import useComboBox from './ComboBox.biz';
 const ComboBox: React.FC = () => {
-    const inputRef = useRef<HTMLInputElement>(null)
-    const dropdownRef = useRef<HTMLDivElement>(null)
-    const [selectedOption, setSelectedOption] = useState<Option | null>(null);
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [searchTerm, setSearchTerm] = useState<Option[] | null>(options);
-
-    const openListHandler = () => {
-        inputRef.current?.focus()
-        setIsOpen(!isOpen)
-    }
-
-    useEffect(() => {
-        if (isOpen) {
-            inputRef.current?.focus()
-            document.addEventListener("mousedown", handleClickOutside);
-        } else {
-            document.removeEventListener("mousedown", handleClickOutside);
-        }
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [isOpen]);
-
-    const handleClickOutside = (event: MouseEvent) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-            setIsOpen(false);
-        }
-    };
-
-    const selectOptionHandler = (option: Option) => {
-        setSelectedOption(option)
-        setIsOpen(false)
-        if (inputRef.current) {
-            inputRef.current.value = option.content;
-        }
-    }
-
-    const serchOptionsHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const inputValue = event.target.value
-        let filterOptions = options.filter((option) => option.content.toLocaleLowerCase().includes(inputValue))
-        setSearchTerm(filterOptions)
-        if (filterOptions.length > 0) {
-            setIsOpen(true)
-        }
-    };
-
-    const onblurHandler = () => {
-        if (inputRef.current) {
-            const inputValue = inputRef.current.value.trim()
-            if (inputValue.length === 0) {
-                if (inputRef.current) {
-                    inputRef.current.value = selectedOption?.content ?? ""
-                }
-            }
-        }
-    }
-
+    // hook handel select item and show modal
+    const { inputRef, dropdownRef, openListHandler, isOpen, setIsOpen, searchTerm,
+        selectedOption, selectOptionHandler,
+        serchOptionsHandler, onblurHandler } = useComboBox()
     return (
         <div className="relative w-[300px]  m-2" ref={dropdownRef} onMouseDown={(event) => event.preventDefault()}>
             <input
