@@ -16,9 +16,9 @@ const ComboBox: React.FC<ComboBoxProp> = (props) => {
         setSearchTerm(options)
     }, [])
 
-    let h_container = size === "small" ? "h-8" : "h-12"
-    let position_icon = size === "small" ? "top-2" : "top-4"
-    let position_modal = size === "small" ? "top-10" : "top-[50px]"
+    const h_container = size === "small" ? "h-8" : "h-12"
+    const position_icon = size === "small" ? "top-2" : "top-4"
+    const position_modal = size === "small" ? "top-10" : "top-[50px]"
     const outlineColors = {
         indigo: "outline-indigo-700",
         red: "outline-red-700",
@@ -26,7 +26,7 @@ const ComboBox: React.FC<ComboBoxProp> = (props) => {
         green: "outline-green-700",
         Pink: 'outline-pink-700'
     }
-    let outline_input: string = outlineColors[outlineInp ?? "Pink"]
+    const outline_input: string = outlineColors[outlineInp ?? "Pink"]
 
     return (
         <div className={`relative w-[300px]  m-2  ${h_container}`} ref={dropdownRef} onMouseDown={(event) => event.preventDefault()}>
