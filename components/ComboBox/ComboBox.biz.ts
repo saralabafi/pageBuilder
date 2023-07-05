@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Option } from './ComboBox.types'
-import { options } from './ComboBox.constants'
-function useComboBox() {
+function useComboBox(options: Option[]) {
   const inputRef = useRef<HTMLInputElement>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const [selectedOption, setSelectedOption] = useState<Option | null>(null)

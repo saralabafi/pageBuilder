@@ -4,10 +4,9 @@ export interface Option {
   id: string
 }
 export interface ComboBoxProp {
-  options: Option[]
   disabled?: boolean
   defaultValue?: string
-  size: 'small' | 'medium'
+  size?: 'small' | 'medium'
   readonly?: boolean
   open?: boolean
   openOnFocus?: boolean
@@ -18,4 +17,5 @@ export interface ComboBoxProp {
   outlineInp?: 'indigo' | 'red' | 'blue' | 'green' | 'Pink'
   placeHolder: string
   type: 'text' | 'number' | 'email'
+  options: Option[]
 }
