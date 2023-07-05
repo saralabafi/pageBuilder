@@ -34,8 +34,7 @@ const Design = () => {
   const [parent, setParent] = useState<UniqueIdentifier[]>([])
 
   const handleDragEnd = (e: DragEndEvent) => {
-    const newItem = e.active.data.current?.props?.item?.title
-    if (e.over?.id !== 'cart-droppable' || !newItem) return
+    if (e.over?.id !== 'cart-droppable' ) return
     if (e.active) {
       const id: UniqueIdentifier = e.active.id
       const duplicateList = [...parent]
