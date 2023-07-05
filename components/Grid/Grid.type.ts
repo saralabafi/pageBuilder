@@ -9,7 +9,7 @@ export interface IGridProps {
   gap?: gapType
   flow?: flowType
   width?: widthType
-  children: ReactNode
+  children?: ReactNode
   customCSS?: string
   sx?: Properties<string | number, string & {}>
 }
