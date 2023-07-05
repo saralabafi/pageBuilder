@@ -10,7 +10,6 @@ function useComboBox(options: Option[]) {
     inputRef.current?.focus()
     setIsOpen(!isOpen)
   }
-  //  close modal blur and keep selected item event click out side parent combobox
   useEffect(() => {
     if (isOpen) {
       inputRef.current?.focus()

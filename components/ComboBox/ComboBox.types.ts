@@ -14,7 +14,7 @@ export interface ComboBoxProp {
   inputValue?: string
   id: string
   sx?: Properties<string | number, string & {}>
-  outlineInp?: 'indigo' | 'red' | 'blue' | 'green' | 'Pink'
+  outlineInp: 'indigo' | 'red' | 'blue' | 'green' | 'Pink'
   placeHolder: string
   type: 'text' | 'number' | 'email'
   options: Option[]

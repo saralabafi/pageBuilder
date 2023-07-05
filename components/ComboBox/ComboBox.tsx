@@ -7,11 +7,9 @@ const ComboBox: React.FC<ComboBoxProp> = (props) => {
     const { options, placeHolder, type, id, size,
         outlineInp, defaultValue, disabled,
         notfound, readonly, sx } = props
-    // hook handel select item and show modal
     const { inputRef, dropdownRef, openListHandler, isOpen, searchTerm,
         selectedOption, selectOptionHandler, setSearchTerm,
         serchOptionsHandler, onblurHandler } = useComboBox(options)
-    // set data
     useEffect(() => {
         setSearchTerm(options)
     }, [])
@@ -26,10 +24,10 @@ const ComboBox: React.FC<ComboBoxProp> = (props) => {
         green: "outline-green-700",
         Pink: 'outline-pink-700'
     }
-    const outline_input: string = outlineColors[outlineInp ?? "Pink"]
+    const outline_input: string = outlineColors[outlineInp]
 
     return (
-        <div style={sx} className={`relative w-[300px]  m-2  ${h_container}`} ref={dropdownRef} onMouseDown={(event) => event.preventDefault()}>
+        <div className={`relative w-[300px]  m-2  ${h_container}`} ref={dropdownRef} onMouseDown={(event) => event.preventDefault()}>
             <div className="w-full h-full flex relative items-center justify-between">
                 <input
                     readOnly={readonly ?? false}
