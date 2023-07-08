@@ -3,11 +3,11 @@ export interface TabItem {
   title: string
   id: string
   icon?: IconType
-  content: string
+  content: JSX.Element 
 }
 
 export interface TabProps {
-  addIcon: boolean
+  visableIcon: boolean
   tabList: TabItem[]
   activeTabId: TabItem['id']
 }
