@@ -41,7 +41,7 @@ const Table = (props: ITableProps) => {
   };
 
   const getRequestParams = (searchTitle: any, page: number, pageSize: any) => {
-    let params: any = {};
+    const params: any = {};
 
     if (searchTitle) {
       params["title"] = searchTitle;
@@ -112,7 +112,7 @@ const Table = (props: ITableProps) => {
       .then((response: any) => {
         props.history.push("/tutorials");
 
-        let newTutorials = [...tutorialsRef.current];
+        const newTutorials = [...tutorialsRef.current];
         newTutorials.splice(rowIndex, 1);
 
         setTutorials(newTutorials as any);
