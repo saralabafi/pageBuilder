@@ -1,141 +1,135 @@
-import * as React from "react";
-import { useState, useRef, useMemo, useEffect } from "react";
-// import TutorialDataService from "./services/TutorialService";
-import { useTable } from "react-table";
-import Pagination from "@material-ui/lab/Pagination";
+import * as React from 'react'
+import { useState, useRef, useMemo, useEffect } from 'react'
+// import DataService from "./services/TutorialService";
+import { useTable } from 'react-table'
+import Pagination from '@material-ui/lab/Pagination'
 
 interface ITableProps {
-  history: any;
-  TutorialDataService: any;
-  pageSizes: any;
-  columns: any;
-  costumeClassName: any;
-  // source: any;
-  // sourceref: any;
-  // searchTitle: any;
-  // page: any;
-  // count: any;
-  // pageSize: any;
+  history: any
+  DataService: any
+  pageSizes: any
+  columns: any
+  costumeClassName: any
 }
 const Table = (props: ITableProps) => {
-  const [tutorials, setTutorials] = useState([]);
-  const [searchTitle, setSearchTitle] = useState("");
-  const tutorialsRef: any = useRef();
+  const [tutorials, setTutorials] = useState([])
+  const [searchTitle, setSearchTitle] = useState('')
+  const tutorialsRef: any = useRef()
 
-  const [page, setPage] = useState(1);
-  const [count, setCount] = useState(0);
-  const [pageSize, setPageSize] = useState(3);
+  const [page, setPage] = useState(1)
+  const [count, setCount] = useState(0)
+  const [pageSize, setPageSize] = useState(3)
 
   // const pageSizes = [3, 6, 9];
 
-  tutorialsRef.current = tutorials;
+  tutorialsRef.current = tutorials
   type SearchType = {
     target: {
-      value: any;
-    };
-  };
+      value: any
+    }
+  }
 
   const onChangeSearchTitle = (e: SearchType): void => {
-    const searchTitle = e.target.value;
-    setSearchTitle(searchTitle);
-  };
+    const searchTitle = e.target.value
+    setSearchTitle(searchTitle)
+  }
 
   const getRequestParams = (searchTitle: any, page: number, pageSize: any) => {
-    const params: any = {};
+    const params: any = {}
 
     if (searchTitle) {
-      params["title"] = searchTitle;
+      params['title'] = searchTitle
     }
 
     if (page) {
-      params["page"] = page - 1;
+      params['page'] = page - 1
     }
 
     if (pageSize) {
-      params["size"] = pageSize;
+      params['size'] = pageSize
     }
 
-    return params;
-  };
+    return params
+  }
 
   const retrieveTutorials = () => {
-    const params = getRequestParams(searchTitle, page, pageSize);
+    const params = getRequestParams(searchTitle, page, pageSize)
 
-    props.TutorialDataService.getAll(params)
+    props.DataService.getAll(params)
       .then((response: { data: { tutorials: any; totalPages: any } }) => {
-        const { tutorials, totalPages } = response.data;
+        const { tutorials, totalPages } = response.data
 
-        setTutorials(tutorials);
-        setCount(totalPages);
+        setTutorials(tutorials)
+        setCount(totalPages)
 
-        console.log(response.data);
+        console.log(response.data)
       })
       .catch((e: any) => {
-        console.log(e);
-      });
-  };
+        console.log(e)
+      })
+  }
 
-  useEffect(retrieveTutorials, [page, pageSize]);
+  useEffect(retrieveTutorials, [page, pageSize])
 
   const refreshList = () => {
-    retrieveTutorials();
-  };
+    retrieveTutorials()
+  }
 
   const removeAllTutorials = () => {
-    type NewType = any;
+    type NewType = any
 
-    props.TutorialDataService.removeAll()
+    props.DataService.removeAll()
       .then((response: { data: any }) => {
-        console.log(response.data);
-        refreshList();
+        console.log(response.data)
+        refreshList()
       })
       .catch((e: NewType) => {
-        console.log(e);
-      });
-  };
+        console.log(e)
+      })
+  }
 
   const findByTitle = () => {
-    setPage(1);
-    retrieveTutorials();
-  };
+    setPage(1)
+    retrieveTutorials()
+  }
 
   const openTutorial = (rowIndex: string | number) => {
-    const id = tutorialsRef.current[rowIndex].id;
+    const id = tutorialsRef.current[rowIndex].id
 
-    props.history.push("/tutorials/" + id);
-  };
+    props.history.push('/tutorials/' + id)
+  }
 
   const deleteTutorial = (rowIndex: number) => {
-    const id = tutorialsRef.current[rowIndex].id;
+    const id = tutorialsRef.current[rowIndex].id
 
-    props.TutorialDataService.remove(id)
+    props.DataService.remove(id)
       .then((response: any) => {
-        props.history.push("/tutorials");
+        props.history.push('/tutorials')
 
-        const newTutorials = [...tutorialsRef.current];
-        newTutorials.splice(rowIndex, 1);
+        const newTutorials = [...tutorialsRef.current]
+        newTutorials.splice(rowIndex, 1)
 
-        setTutorials(newTutorials as any);
+        setTutorials(newTutorials as any)
       })
       .catch((e: any) => {
-        console.log(e);
-      });
-  };
+        console.log(e)
+      })
+  }
 
   const handlePageChange = (event: any, value: any) => {
-    setPage(value);
-  };
+    setPage(value)
+  }
 
   const handlePageSizeChange = (event: { target: { value: any } }) => {
-    setPageSize(event.target.value);
-    setPage(1);
-  };
+    setPageSize(event.target.value)
+    setPage(1)
+  }
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({
       columns: props.columns,
       data: tutorials,
-    });
+    })
 
   return (
     <>
@@ -155,8 +149,7 @@ const Table = (props: ITableProps) => {
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                 type="button"
-                onClick={findByTitle}
-              >
+                onClick={findByTitle}>
                 Search
               </button>
             </div>
@@ -166,8 +159,7 @@ const Table = (props: ITableProps) => {
           <div className="relative overflow-x-auto">
             <table
               className="border-collapse border border-slate-400 w-full"
-              {...getTableProps()}
-            >
+              {...getTableProps()}>
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 {headerGroups.map((headerGroup) => (
                   <tr {...headerGroup.getHeaderGroupProps()}>
@@ -175,9 +167,8 @@ const Table = (props: ITableProps) => {
                       <th
                         scope="col"
                         className="border border-slate-300"
-                        {...column.getHeaderProps()}
-                      >
-                        {column.render("Header")}
+                        {...column.getHeaderProps()}>
+                        {column.render('Header')}
                       </th>
                     ))}
                   </tr>
@@ -185,21 +176,20 @@ const Table = (props: ITableProps) => {
               </thead>
               <tbody {...getTableBodyProps()}>
                 {rows.map((row, i) => {
-                  prepareRow(row);
+                  prepareRow(row)
                   return (
                     <tr
                       className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                      {...row.getRowProps()}
-                    >
+                      {...row.getRowProps()}>
                       {row.cells.map((cell) => {
                         return (
                           <td className="px-6 py-4" {...cell.getCellProps()}>
-                            {cell.render("Cell")}
+                            {cell.render('Cell')}
                           </td>
-                        );
+                        )
                       })}
                     </tr>
-                  );
+                  )
                 })}
               </tbody>
             </table>
@@ -208,7 +198,7 @@ const Table = (props: ITableProps) => {
           <div className="">
             <div className="grid grid-flow-row-dense grid-cols-2 grid-rows-1">
               <div className="">
-                {"Items per Page: "}{" "}
+                {'Items per Page: '}{' '}
                 <select onChange={handlePageSizeChange} value={pageSize}>
                   {props.pageSizes.map(
                     (
@@ -231,7 +221,7 @@ const Table = (props: ITableProps) => {
                 </select>
               </div>
               <div className="">
-                {" "}
+                {' '}
                 <Pagination
                   className="my-3"
                   count={count}
@@ -249,11 +239,10 @@ const Table = (props: ITableProps) => {
         <div>
           <div className="grid grid-cols-6 gap-4">
             <div>
-              {" "}
+              {' '}
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                onClick={removeAllTutorials}
-              >
+                onClick={removeAllTutorials}>
                 Remove All
               </button>
             </div>
@@ -261,7 +250,7 @@ const Table = (props: ITableProps) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Table;
+export default Table
