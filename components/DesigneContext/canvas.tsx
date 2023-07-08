@@ -1,11 +1,9 @@
 import { useDroppable } from '@dnd-kit/core'
 import { CSS } from '@dnd-kit/utilities'
 import { useSortable } from '@dnd-kit/sortable'
-
 import { renderers } from './fields'
 
 function getRenderer(type: string) {
-  console.log(type)
 
   if (type === 'spacer') {
     return () => {

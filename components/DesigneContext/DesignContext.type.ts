@@ -1,0 +1,3 @@
+interface IDesignContextProps {
+  list: any
+}
