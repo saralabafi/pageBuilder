@@ -127,7 +127,7 @@ const DesignContext = (props: IDesignContextProps) => {
       return;
     }
 
-    let nextField = currentDragFieldRef.current;
+    const nextField = currentDragFieldRef.current;
 
     if (nextField) {
       const overData = getData(over);

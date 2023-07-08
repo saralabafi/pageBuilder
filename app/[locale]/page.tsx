@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import DesigneContext from 'components/DesigneContext/DesignContext'
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
         <Link className="mx-4 cursor-pointer" href="/testView">
           For view test Page
         </Link>
+        <DesigneContext />
       </div>
     </div>
   )

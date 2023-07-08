@@ -21,9 +21,12 @@ export const fields = [
     title: "Text Area"
   }
 ];
+interface ElementMap {
+  [key: string]: () => Element;
+}
 
 // These define how we render the field
-export const renderers = {
+export const renderers: ElementMap = {
   input: () => <input type="text" placeholder="This is a text input" />,
   // textarea: () => <textarea rows="5" />,
   textarea: () => <input type="textarea" 

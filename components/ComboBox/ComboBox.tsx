@@ -43,7 +43,7 @@ const ComboBox: React.FC = () => {
 
     const serchOptionsHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = event.target.value
-        let filterOptions = options.filter((option) => option.content.toLocaleLowerCase().includes(inputValue))
+        const filterOptions = options.filter((option) => option.content.toLocaleLowerCase().includes(inputValue))
         setSearchTerm(filterOptions)
         if (filterOptions.length > 0) {
             setIsOpen(true)
