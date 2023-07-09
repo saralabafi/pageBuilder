@@ -1,10 +1,9 @@
-import { arrayMove } from '@dnd-kit/sortable';
-import { useRef, useState } from 'react';
-import { useImmer } from 'use-immer';
+import { arrayMove } from '@dnd-kit/sortable'
+import { useRef, useState } from 'react'
+import { useImmer } from 'use-immer'
 
 export const useDesignContext = (props: IDesignContextProps) => {
   const [sidebarFieldsRegenKey, setSidebarFieldsRegenKey] = useState(Date.now())
-
   const spacerInsertedRef = useRef<boolean>()
   const currentDragFieldRef = useRef<any>()
   const [activeSidebarField, setActiveSidebarField] = useState<any>()

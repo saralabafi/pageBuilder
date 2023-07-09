@@ -1,11 +1,11 @@
-import { DndContext, DragOverlay } from '@dnd-kit/core';
-import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
-import { useRef, useState } from 'react';
+import { DndContext, DragOverlay } from '@dnd-kit/core'
+import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
+import { useRef, useState } from 'react'
 
-import Announcements from './announcements';
-import Canvas, { Field } from './canvas';
-import { useDesignContext } from './DesignContext.biz';
-import Sidebar, { SidebarField } from './sidebar';
+import Announcements from '../announcements'
+import Canvas, { Field } from '../canvas'
+import { useDesignContext } from '../biz/DesignContext.biz'
+import Sidebar, { SidebarField } from '../Sidebar/Sidebar'
 
 const DesignContext = (props: IDesignContextProps) => {
   const {
@@ -30,7 +30,7 @@ const DesignContext = (props: IDesignContextProps) => {
         <SortableContext
           strategy={verticalListSortingStrategy}
           items={fields.map((f: any) => f.id)}>
-          <Canvas fields={fields} />
+          <Canvas renderers={props.renderers} fields={fields} />
         </SortableContext>
         <DragOverlay dropAnimation={false as any}>
           {activeSidebarField ? (

@@ -1,23 +1,24 @@
 import { useDroppable } from '@dnd-kit/core'
 import { CSS } from '@dnd-kit/utilities'
 import { useSortable } from '@dnd-kit/sortable'
-import { renderers } from './fields'
+// import { renderers } from './fields'
 
-function getRenderer(type: string) {
-
+function getRenderer(type: string, renderers: any) {
+  console.log(renderers)
   if (type === 'spacer') {
     return () => {
       return <div className="spacer">spacer</div>
     }
   }
-   return renderers[type] || (() => <div>No renderer found for {type}</div>);
+  return renderers[type] || (() => <div>No renderer found for {type}</div>)
 }
 
 export function Field(props: any) {
-  const { field, overlay, ...rest } = props
+  console.log(props)
+  const { field, overlay, renderers, ...rest } = props
   const { type } = field
 
-  const Component: any = getRenderer(type)
+  const Component: any = getRenderer(type, renderers)
 
   let className = 'canvas-field'
   if (overlay) {
@@ -31,8 +32,9 @@ export function Field(props: any) {
   )
 }
 
-function SortableField(props: { id: any; index: any; field: any }) {
-  const { id, index, field } = props
+function SortableField(props: any) {
+  console.log(props)
+  const { id, index, field, renderers } = props
 
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({
@@ -51,13 +53,13 @@ function SortableField(props: { id: any; index: any; field: any }) {
 
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      <Field field={field} />
+      <Field renderers={renderers} field={field} />
     </div>
   )
 }
 
 export default function Canvas(props: any) {
-  const { fields } = props
+  const { fields, renderers } = props
 
   const { attributes, listeners, setNodeRef, transform, transition }: any =
     useDroppable({
@@ -82,7 +84,16 @@ export default function Canvas(props: any) {
       {...listeners}>
       <div className="canvas-fields">
         {fields?.map(function (f: any, i: any) {
-          return <SortableField key={f.id} id={f.id} field={f} index={i} />
+          return (
+            <SortableField
+              props={props.renderers}
+              key={f.id}
+              id={f.id}
+              field={f}
+              index={i}
+              renderers={renderers}
+            />
+          )
         })}
       </div>
     </div>
