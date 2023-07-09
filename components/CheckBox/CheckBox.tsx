@@ -30,7 +30,7 @@ const Checkbox = (CheckboxProps: ICheckboxProps) => {
       text-sm rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500 block 
       w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
       dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 
-      ${direction} ${backgroundColor}`}>
+      ${direction}`}>
         <label htmlFor={label}>{label}</label>
         <input
           className={`${direction}`}
