@@ -1,28 +1,25 @@
 import * as React from 'react'
 import { useState, useRef, useMemo, useEffect } from 'react'
-// import DataService from "./services/TutorialService";
 import { useTable } from 'react-table'
 import Pagination from '@material-ui/lab/Pagination'
 
 interface ITableProps {
   history: any
   DataService: any
-  pageSizes: any
+  pageSizes: []
   columns: any
-  costumeClassName: any
+  costumeClassName: string
 }
 const Table = (props: ITableProps) => {
-  const [tutorials, setTutorials] = useState([])
+  const [dataeis, setDataeis] = useState([])
   const [searchTitle, setSearchTitle] = useState('')
-  const tutorialsRef: any = useRef()
+  const dataeisRef: any = useRef('')
 
   const [page, setPage] = useState(1)
   const [count, setCount] = useState(0)
   const [pageSize, setPageSize] = useState(3)
 
-  // const pageSizes = [3, 6, 9];
-
-  tutorialsRef.current = tutorials
+  dataeisRef.current = dataeis
   type SearchType = {
     target: {
       value: any
@@ -59,7 +56,7 @@ const Table = (props: ITableProps) => {
       .then((response: { data: { tutorials: any; totalPages: any } }) => {
         const { tutorials, totalPages } = response.data
 
-        setTutorials(tutorials)
+        setDataeis(tutorials)
         setCount(totalPages)
 
         console.log(response.data)
@@ -94,22 +91,22 @@ const Table = (props: ITableProps) => {
   }
 
   const openTutorial = (rowIndex: string | number) => {
-    const id = tutorialsRef.current[rowIndex].id
+    const id = dataeisRef.current[rowIndex].id
 
     props.history.push('/tutorials/' + id)
   }
 
   const deleteTutorial = (rowIndex: number) => {
-    const id = tutorialsRef.current[rowIndex].id
+    const id = dataeisRef.current[rowIndex].id
 
     props.DataService.remove(id)
       .then((response: any) => {
         props.history.push('/tutorials')
 
-        const newTutorials = [...tutorialsRef.current]
+        const newTutorials = [...dataeisRef.current]
         newTutorials.splice(rowIndex, 1)
 
-        setTutorials(newTutorials as any)
+        setDataeis(newTutorials as any)
       })
       .catch((e: any) => {
         console.log(e)
@@ -128,7 +125,7 @@ const Table = (props: ITableProps) => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({
       columns: props.columns,
-      data: tutorials,
+      data: dataeis,
     })
 
   return (
@@ -161,36 +158,53 @@ const Table = (props: ITableProps) => {
               className="border-collapse border border-slate-400 w-full"
               {...getTableProps()}>
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                {headerGroups.map((headerGroup) => (
-                  <tr {...headerGroup.getHeaderGroupProps()}>
-                    {headerGroup.headers.map((column) => (
-                      <th
-                        scope="col"
-                        className="border border-slate-300"
-                        {...column.getHeaderProps()}>
-                        {column.render('Header')}
-                      </th>
-                    ))}
-                  </tr>
-                ))}
-              </thead>
-              <tbody {...getTableBodyProps()}>
-                {rows.map((row, i) => {
-                  prepareRow(row)
-                  return (
-                    <tr
-                      className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                      {...row.getRowProps()}>
-                      {row.cells.map((cell) => {
-                        return (
-                          <td className="px-6 py-4" {...cell.getCellProps()}>
-                            {cell.render('Cell')}
-                          </td>
-                        )
-                      })}
+                {headerGroups.map(
+                  (headerGroup: {
+                    getHeaderGroupProps: () => React.JSX.IntrinsicAttributes &
+                      React.ClassAttributes<HTMLTableRowElement> &
+                      React.HTMLAttributes<HTMLTableRowElement>
+                    headers: any[]
+                  }) => (
+                    <tr {...headerGroup.getHeaderGroupProps()}>
+                      {headerGroup.headers.map((column) => (
+                        <th
+                          scope="col"
+                          className="border border-slate-300"
+                          {...column.getHeaderProps()}>
+                          {column.render('Header')}
+                        </th>
+                      ))}
                     </tr>
                   )
-                })}
+                )}
+              </thead>
+              <tbody {...getTableBodyProps()}>
+                {rows.map(
+                  (
+                    row: {
+                      getRowProps: () => React.JSX.IntrinsicAttributes &
+                        React.ClassAttributes<HTMLTableRowElement> &
+                        React.HTMLAttributes<HTMLTableRowElement>
+                      cells: any[]
+                    },
+                    i: any
+                  ) => {
+                    prepareRow(row)
+                    return (
+                      <tr
+                        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                        {...row.getRowProps()}>
+                        {row.cells.map((cell) => {
+                          return (
+                            <td className="px-6 py-4" {...cell.getCellProps()}>
+                              {cell.render('Cell')}
+                            </td>
+                          )
+                        })}
+                      </tr>
+                    )
+                  }
+                )}
               </tbody>
             </table>
           </div>
