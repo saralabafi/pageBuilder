@@ -6,13 +6,15 @@ import { IModalProps } from './Modal.type'
 const index = (props: IModalProps) => {
   const { width = 'w-1/2', visible, onClose, children, title } = props
 
-  const modal: Element = document.querySelector('#modal-content')!
-
-  const handleclick = (e: any) => {
-    if (!modal.contains(e?.target)) {
-      onClose()
+  const handleclick = (e?: any) => {
+    const modal: Element = document.querySelector('#modal-content')!
+    if (modal) {
+      if (!modal.contains(e?.target)) {
+        onClose()
+      }
     }
   }
+
   return (
     <>
       {visible && (
