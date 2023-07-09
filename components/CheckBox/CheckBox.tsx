@@ -40,7 +40,7 @@ const Checkbox = (CheckboxProps: ICheckboxProps) => {
           readOnly={isReadonly}
           id={label}
           name={label}
-          onChange={(e) => onChange(e.target.checked)}
+          onChange={(e) => e.target.value}
         />
       </div>
     </>
