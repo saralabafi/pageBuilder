@@ -6,11 +6,11 @@ export interface ICheckboxProps {
   isReadonly: boolean
   label?: string | undefined
   id: string | undefined
-  className?: string | undefined
+  className: string | undefined
   name: string | undefined
   direction?: 'flex' | 'flex-col'
-  backgroundColor: string | null
-  borderColor: string | null
-  textColor: string | null
+  backgroundColor: string | undefined
+  borderColor: string | undefined
+  textColor: string | undefined
   onChange: (obj: ChangeEvent<HTMLInputElement>) => void
 }

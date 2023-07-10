@@ -1,12 +1,6 @@
 import React from 'react'
 import { ICheckboxProps } from './CheckBox.type'
 
-const styles = {
-  checkbox: {
-    marginBottom: 16,
-  },
-}
-
 const Checkbox = (CheckboxProps: ICheckboxProps) => {
   const {
     label = '',
@@ -26,7 +20,7 @@ const Checkbox = (CheckboxProps: ICheckboxProps) => {
   return (
     <>
       <div
-        className={`${backgroundColor} border ${borderColor} ${textColor} 
+        className={`${backgroundColor} border-2 ${borderColor} ${textColor} 
       text-sm rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500 block 
       w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
       dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 
