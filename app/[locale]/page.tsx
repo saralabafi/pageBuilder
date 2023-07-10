@@ -8,10 +8,7 @@ export default function Home() {
           For view test Page
         </Link>
       </div>
-      <div className='text-center w-full flex justify-center items-center flex-col mt-5'>
 
-
-      </div>
     </div>
   )
 }
