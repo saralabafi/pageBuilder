@@ -1,37 +1,40 @@
 import { IBadgeProps } from "./Badge.type";
+import Link from "next/link"
 
 
 const Badge = (props: IBadgeProps) => {
     const {
         badgeTitle,
         link,
-        bgColor = 'blue',
-        txtColor = 'blue',
-        txtSize = 'xs'
+        backgroundColor = 'bg-blue-100',
+        txtColor = 'text-red-800',
+        txtSize = 'text-xs',
+        customCSS,
+        sx
     } = props ;
-
-    const tagElm = link ? 'a' : 'span'; 
 
     return (
         link ?
-        <a 
+        <Link 
         href={link} 
-        className={`bg-${bgColor}-100 
-        text-${txtColor}-800 
-        text-${txtSize} 
-        hover:bg-blue-200 font-medium mr-2 px-2.5 py-0.5 rounded 
-        dark:bg-${bgColor}-900 
-        dark:text-${txtColor}-300`}>
-            {badgeTitle}</a> : 
+        className={`${backgroundColor} 
+        ${txtColor} 
+        ${txtSize}
+        ${customCSS ?? ''}
+        hover:bg-blue-200 font-medium mr-2 px-2.5 py-0.5 rounded`}
+        style={sx}
+        >
+            {badgeTitle}</Link> : 
         <span 
-        className={`bg-${bgColor}-100 
-        text-${txtColor}-800 
-        text-${txtSize} 
+        className={`${backgroundColor} 
+        ${txtColor} 
+        ${txtSize}
+        ${customCSS ?? ''}
         hover:bg-blue-200 
         font-medium 
-        mr-2 px-2.5 py-0.5 rounded 
-        dark:bg-${bgColor}-900 
-        dark:text-${txtColor}-300`}>
+        mr-2 px-2.5 py-0.5 rounded`}
+        style={sx}
+        >
             {badgeTitle}</span>
     )
 }
