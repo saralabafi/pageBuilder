@@ -1,16 +1,21 @@
 import { arrayMove } from '@dnd-kit/sortable'
 import { useRef, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { AddItem } from 'redux/Design/Design'
 import { useImmer } from 'use-immer'
 
 export const useDesignContext = (props: IDesignContextProps) => {
   const [sidebarFieldsRegenKey, setSidebarFieldsRegenKey] = useState(Date.now())
-  const spacerInsertedRef = useRef<boolean>()
+
+  const dispatch = useDispatch()
   const currentDragFieldRef = useRef<any>()
-  const [activeSidebarField, setActiveSidebarField] = useState<any>()
+  const spacerInsertedRef = useRef<boolean>()
   const [activeField, setActiveField] = useState<any>()
+  const [activeSidebarField, setActiveSidebarField] = useState<any>()
   const [data, updateData] = useImmer({
     fields: [],
   })
+
   const cleanUp = () => {
     setActiveSidebarField(null)
     setActiveField(null)
@@ -34,7 +39,6 @@ export const useDesignContext = (props: IDesignContextProps) => {
       }
       return
     }
-
     const { field, index } = activeData
 
     setActiveField(field)
@@ -107,6 +111,8 @@ export const useDesignContext = (props: IDesignContextProps) => {
     if (nextField) {
       const overData = getData(over)
 
+      dispatch(AddItem(nextField.type))
+
       updateData((draft: any) => {
         const spacerIndex = draft.fields.findIndex(
           (f: any) => f.type === 'spacer'
@@ -120,6 +126,7 @@ export const useDesignContext = (props: IDesignContextProps) => {
     setSidebarFieldsRegenKey(Date.now())
     cleanUp()
   }
+
   function getData(prop: any) {
     return prop?.data?.current ?? {}
   }
@@ -131,6 +138,7 @@ export const useDesignContext = (props: IDesignContextProps) => {
       title: 'spacer',
     }
   }
+
   const { fields } = data
 
   return {

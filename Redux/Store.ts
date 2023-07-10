@@ -1,9 +1,12 @@
 'use client'
 import { configureStore } from '@reduxjs/toolkit'
 import managementAuth from './Auth/Auth'
+import managementDesign from './Design/Design'
+
 export const store = configureStore({
   reducer: {
     counter: managementAuth,
+    design: managementDesign,
   },
 })
 

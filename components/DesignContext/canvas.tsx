@@ -1,39 +1,39 @@
 import { useDroppable } from '@dnd-kit/core'
 import { CSS } from '@dnd-kit/utilities'
 import { useSortable } from '@dnd-kit/sortable'
-// import { renderers } from './fields'
+import { useSelector } from 'react-redux'
+import { RootState } from 'redux/Store'
 
-function getRenderer(type: string, renderers: any) {
-  console.log(renderers)
-  if (type === 'spacer') {
+function getRenderer(item: any, renderers: any) {
+  if (item.type === 'spacer') {
     return () => {
       return <div className="spacer">spacer</div>
     }
   }
-  return renderers[type] || (() => <div>No renderer found for {type}</div>)
+
+  return () =>
+    renderers[item.type]('send styles as props') ||
+    (() => <div>No renderer found for {item.type}</div>)
 }
 
 export function Field(props: any) {
-  console.log(props)
   const { field, overlay, renderers, ...rest } = props
-  const { type } = field
 
-  const Component: any = getRenderer(type, renderers)
+  const Component: any = getRenderer(field, renderers)
 
   let className = 'canvas-field'
   if (overlay) {
     className += ' overlay'
   }
-
+  
   return (
     <div className={className}>
-      <Component {...rest} />
+      <Component {...rest}  />
     </div>
   )
 }
 
 function SortableField(props: any) {
-  console.log(props)
   const { id, index, field, renderers } = props
 
   const { attributes, listeners, setNodeRef, transform, transition } =
@@ -60,7 +60,7 @@ function SortableField(props: any) {
 
 export default function Canvas(props: any) {
   const { fields, renderers } = props
-
+  const { designList } = useSelector((state: RootState) => state.design)
   const { attributes, listeners, setNodeRef, transform, transition }: any =
     useDroppable({
       id: 'canvas_droppable',
@@ -83,7 +83,7 @@ export default function Canvas(props: any) {
       {...attributes}
       {...listeners}>
       <div className="canvas-fields">
-        {fields?.map(function (f: any, i: any) {
+        {designList?.map(function (f: any, i: any) {
           return (
             <SortableField
               props={props.renderers}

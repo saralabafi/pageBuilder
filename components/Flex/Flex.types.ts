@@ -29,7 +29,7 @@ export interface IFlexProps {
   backgroundColor?: string
   padding?: paddingType
   margin?: marginType
-  children: React.ReactNode
+  children?: React.ReactNode
   customCSS?: string
   sx?: Properties<string | number, string & {}>
 }
