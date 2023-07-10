@@ -1,132 +1,26 @@
 import * as React from 'react'
-import { useState, useRef, useMemo, useEffect } from 'react'
-import { useTable } from 'react-table'
 import Pagination from '@material-ui/lab/Pagination'
+import { ITableProps } from './Table.type'
+import { useTableComponent } from './Table.biz'
 
-interface ITableProps {
-  history: any
-  DataService: any
-  pageSizes: []
-  columns: any
-  costumeClassName: string
-}
 const Table = (props: ITableProps) => {
-  const [dataeis, setDataeis] = useState([])
-  const [searchTitle, setSearchTitle] = useState('')
-  const dataeisRef: any = useRef('')
-
-  const [page, setPage] = useState(1)
-  const [count, setCount] = useState(0)
-  const [pageSize, setPageSize] = useState(3)
-
-  dataeisRef.current = dataeis
-  type SearchType = {
-    target: {
-      value: any
-    }
-  }
-
-  const onChangeSearchTitle = (e: SearchType): void => {
-    const searchTitle = e.target.value
-    setSearchTitle(searchTitle)
-  }
-
-  const getRequestParams = (searchTitle: any, page: number, pageSize: any) => {
-    const params: any = {}
-
-    if (searchTitle) {
-      params['title'] = searchTitle
-    }
-
-    if (page) {
-      params['page'] = page - 1
-    }
-
-    if (pageSize) {
-      params['size'] = pageSize
-    }
-
-    return params
-  }
-
-  const retrieveTutorials = () => {
-    const params = getRequestParams(searchTitle, page, pageSize)
-
-    props.DataService.getAll(params)
-      .then((response: { data: { tutorials: any; totalPages: any } }) => {
-        const { tutorials, totalPages } = response.data
-
-        setDataeis(tutorials)
-        setCount(totalPages)
-
-        console.log(response.data)
-      })
-      .catch((e: any) => {
-        console.log(e)
-      })
-  }
-
-  useEffect(retrieveTutorials, [page, pageSize])
-
-  const refreshList = () => {
-    retrieveTutorials()
-  }
-
-  const removeAllTutorials = () => {
-    type NewType = any
-
-    props.DataService.removeAll()
-      .then((response: { data: any }) => {
-        console.log(response.data)
-        refreshList()
-      })
-      .catch((e: NewType) => {
-        console.log(e)
-      })
-  }
-
-  const findByTitle = () => {
-    setPage(1)
-    retrieveTutorials()
-  }
-
-  const openTutorial = (rowIndex: string | number) => {
-    const id = dataeisRef.current[rowIndex].id
-
-    props.history.push('/tutorials/' + id)
-  }
-
-  const deleteTutorial = (rowIndex: number) => {
-    const id = dataeisRef.current[rowIndex].id
-
-    props.DataService.remove(id)
-      .then((response: any) => {
-        props.history.push('/tutorials')
-
-        const newTutorials = [...dataeisRef.current]
-        newTutorials.splice(rowIndex, 1)
-
-        setDataeis(newTutorials as any)
-      })
-      .catch((e: any) => {
-        console.log(e)
-      })
-  }
-
-  const handlePageChange = (event: any, value: any) => {
-    setPage(value)
-  }
-
-  const handlePageSizeChange = (event: { target: { value: any } }) => {
-    setPageSize(event.target.value)
-    setPage(1)
-  }
-
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({
-      columns: props.columns,
-      data: dataeis,
-    })
+  const {
+    onChangeSearchTitle,
+    removeAllData,
+    findByTitle,
+    handlePageChange,
+    handlePageSizeChange,
+    searchTitle,
+    page,
+    count,
+    pageSize,
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+    tableiteminpage,
+  } = useTableComponent(props)
 
   return (
     <>
@@ -180,16 +74,13 @@ const Table = (props: ITableProps) => {
               </thead>
               <tbody {...getTableBodyProps()}>
                 {rows.map(
-                  (
-                    row: {
-                      getRowProps: () => React.JSX.IntrinsicAttributes &
-                        React.ClassAttributes<HTMLTableRowElement> &
-                        React.HTMLAttributes<HTMLTableRowElement>
-                      cells: any[]
-                    },
-                    i: any
-                  ) => {
-                    prepareRow(row)
+                  (row: {
+                    getRowProps: () => React.JSX.IntrinsicAttributes &
+                      React.ClassAttributes<HTMLTableRowElement> &
+                      React.HTMLAttributes<HTMLTableRowElement>
+                    cells: any[]
+                  }) => {
+                    prepareRow(row as any)
                     return (
                       <tr
                         className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
@@ -212,7 +103,7 @@ const Table = (props: ITableProps) => {
           <div className="">
             <div className="grid grid-flow-row-dense grid-cols-2 grid-rows-1">
               <div className="">
-                {'Items per Page: '}{' '}
+                {tableiteminpage('itemperpage') + ':'}
                 <select onChange={handlePageSizeChange} value={pageSize}>
                   {props.pageSizes.map(
                     (
@@ -235,7 +126,6 @@ const Table = (props: ITableProps) => {
                 </select>
               </div>
               <div className="">
-                {' '}
                 <Pagination
                   className="my-3"
                   count={count}
@@ -253,10 +143,9 @@ const Table = (props: ITableProps) => {
         <div>
           <div className="grid grid-cols-6 gap-4">
             <div>
-              {' '}
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                onClick={removeAllTutorials}>
+                onClick={removeAllData}>
                 Remove All
               </button>
             </div>

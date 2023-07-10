@@ -1,6 +1,7 @@
 import http from './http-common'
 
-const getAll = (params: any) => {
+const getAll = (params: any | undefined) => {
+  debugger
   return http.get('/tutorials', { params })
 }
 
