@@ -1,8 +1,5 @@
 'use client'
-import ComboBox from 'components/ComboBox/ComboBox'
-import Switch from 'components/Switch/Switch'
 import Link from 'next/link'
-import { options } from 'components/ComboBox/ComboBox.constants'
 export default function Home() {
   return (
     <div className="flex-col w-full h-screen bg-white text-black">
@@ -11,29 +8,7 @@ export default function Home() {
           For view test Page
         </Link>
       </div>
-      <div className='text-center w-full flex justify-center items-center flex-col mt-5'>
-        <div className='mt-3'>
-          <span>ComboBox</span>
-          <ComboBox type='text'
-            notfound='No options found'
-            placeHolder='Select city'
-            id='select color'
-            options={options}
-            size='small'
-            outlineInp="Pink" />
-        </div>
-        <div className='mt-3'>
-          <span>Switch</span>
-          <div className='mt-2'>
-            <Switch
-              checked={false}
-              checkedColor='success'
-              label='switch'
-              disabled={false}
-            />
-          </div>
-        </div>
-      </div>
+
     </div>
   )
 }
