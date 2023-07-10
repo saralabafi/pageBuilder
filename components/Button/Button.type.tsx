@@ -6,7 +6,7 @@ import { radiusType } from 'types/radius.type'
 export interface IButtonProps {
   loading?: boolean
   exteraStyle?: string
-  placeholder: string
+  children?: React.ReactNode
   disabled?: boolean
   onClick: () => void
   size?: 'btn-lg' | 'btn-sm' | 'btn-xs'

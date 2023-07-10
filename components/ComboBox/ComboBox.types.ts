@@ -1,13 +1,9 @@
 import { Properties } from 'csstype'
-export interface Option {
-  content: string
-  id: string
-}
+import { Option } from '../../utils/types/options'
 export interface ComboBoxProp {
-  options: Option[]
   disabled?: boolean
   defaultValue?: string
-  size: 'small' | 'medium'
+  size?: 'small' | 'medium'
   readonly?: boolean
   open?: boolean
   openOnFocus?: boolean
@@ -15,7 +11,9 @@ export interface ComboBoxProp {
   inputValue?: string
   id: string
   sx?: Properties<string | number, string & {}>
-  outlineInp?: 'indigo' | 'red' | 'blue' | 'green' | 'Pink'
+  outlineInp: 'indigo' | 'red' | 'blue' | 'green' | 'Pink'
   placeHolder: string
   type: 'text' | 'number' | 'email'
+  options: Option[]
+  customCSS?: string
 }
