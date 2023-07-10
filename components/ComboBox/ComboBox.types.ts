@@ -1,8 +1,5 @@
 import { Properties } from 'csstype'
-export interface Option {
-  content: string
-  id: string
-}
+import { Option } from '../../utils/types/options'
 export interface ComboBoxProp {
   disabled?: boolean
   defaultValue?: string
@@ -18,4 +15,5 @@ export interface ComboBoxProp {
   placeHolder: string
   type: 'text' | 'number' | 'email'
   options: Option[]
+  customCSS?: string
 }

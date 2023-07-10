@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Option } from './ComboBox.types'
+import { Option } from '../../utils/types/options'
 function useComboBox(options: Option[]) {
   const inputRef = useRef<HTMLInputElement>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
