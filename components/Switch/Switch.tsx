@@ -3,7 +3,7 @@ import { switchProps } from "./Switch.types"
 
 
 const Sample: React.FC<switchProps> = React.forwardRef((
-    { label, checked, disabled, onChangeEv, edge, id, required, size, value, sx, checkedColor }, ref) => {
+    { label, checked, disabled, onChangeEv, edge, id, required, size, value, sx, checkedColor, customCSS }, ref) => {
     const position_EL = edge === "start" ? "ml-0" : "ml-3"
     const sizeElement = size === "small" ? "after:h-4 after:w-4  h-3 w-8" : "after:h-5 after:w-5  h-3.5 w-10"
     const switchColorChecked = {
@@ -22,6 +22,7 @@ const Sample: React.FC<switchProps> = React.forwardRef((
                 <input
                     className={`mr-2 
                 ${position_EL}
+                ${customCSS || ''}
                 mt-[0.3rem]  appearance-none 
                 rounded-[0.4375rem] bg-neutral-200 
                 before:pointer-events-none

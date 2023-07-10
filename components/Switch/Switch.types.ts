@@ -11,5 +11,6 @@ export interface switchProps {
   required?: boolean
   size?: 'small' | 'medium'
   value?: any
+  customCSS: string
   sx?: Properties<string | number, string & {}>
 }
