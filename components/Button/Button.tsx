@@ -4,7 +4,7 @@ const Button = (props: IButtonProps) => {
   const {
     loading,
     exteraStyle,
-    placeholder,
+    children,
     disabled,
     onClick,
     size,
@@ -25,7 +25,7 @@ const Button = (props: IButtonProps) => {
       `}
       onClick={onClick}
       disabled={disabled}>
-      {placeholder}
+      {children}
     </button>
   )
 }

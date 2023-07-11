@@ -23,6 +23,7 @@ const Sample: React.FC<switchProps> = React.forwardRef((
                     className={`mr-2 
                 ${position_EL}
                 ${customCSS || ''}
+
                 mt-[0.3rem]  appearance-none 
                 rounded-[0.4375rem] bg-neutral-200 
                 before:pointer-events-none

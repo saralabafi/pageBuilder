@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Option } from './ComboBox.types'
-import { options } from './ComboBox.constants'
-function useComboBox() {
+import { Option } from '../../utils/types/options'
+function useComboBox(options: Option[]) {
   const inputRef = useRef<HTMLInputElement>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const [selectedOption, setSelectedOption] = useState<Option | null>(null)
@@ -11,7 +10,6 @@ function useComboBox() {
     inputRef.current?.focus()
     setIsOpen(!isOpen)
   }
-  //  close modal blur and keep selected item event click out side parent combobox
   useEffect(() => {
     if (isOpen) {
       inputRef.current?.focus()
