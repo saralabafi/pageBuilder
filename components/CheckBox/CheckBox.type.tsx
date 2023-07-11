@@ -2,15 +2,15 @@ import { ChangeEvent } from 'react'
 
 export interface ICheckboxProps {
   isChecked: boolean
-  isDisabled: boolean
-  isReadonly: boolean
-  label?: string | undefined
-  id: string | undefined
-  className: string | undefined
-  name: string | undefined
+  isDisabled?: boolean
+  isReadonly?: boolean
+  label?: string
+  id?: string
+  className?: string 
+  name?: string
   direction?: 'flex' | 'flex-col'
-  backgroundColor: string | undefined
-  borderColor: string | undefined
-  textColor: string | undefined
+  backgroundColor?: string
+  borderColor?: string
+  textColor?: string
   onChange: (obj: ChangeEvent<HTMLInputElement>) => void
 }
