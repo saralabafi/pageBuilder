@@ -1,7 +1,7 @@
 'use client'
 import DesignContext from 'components/DesignContext/DesignContext/DesignContext'
 import { fields } from 'components/DesignContext/filed.const'
-import { renderers } from 'components/DesignContext/renders.const'
+import { renders } from 'components/DesignContext/renders.const'
 import Link from 'next/link'
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
       <Link className="mx-4 cursor-pointer" href="/testView">
         For view test Page
       </Link>
-      <DesignContext list={fields} renderers={renderers} />
+      <DesignContext list={fields} renders={renders} />
     </div>
   )
 }

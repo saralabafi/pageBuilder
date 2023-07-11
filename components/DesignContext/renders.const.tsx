@@ -4,8 +4,8 @@ import { Grid } from 'components/Grid/Grid'
 import { Select } from 'components/Select/Select'
 import { TextArea } from 'components/TextArea/TextArea'
 
-export const renderers: any = {
-  row: (props: any) => {
+export const renders: any = {
+  row: () => {
     // console.log(you can access to styles)
     return (
       <Flex
