@@ -1,5 +1,4 @@
 interface IDesignContextProps {
   list: any
-  
-  renderers: any
+  renders: any
 }

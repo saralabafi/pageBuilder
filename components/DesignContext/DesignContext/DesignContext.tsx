@@ -1,15 +1,17 @@
 import { DndContext, DragOverlay } from '@dnd-kit/core'
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { Flex } from 'components/Flex/Flex'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { AddStyles } from 'redux/Design/Design'
 import Sidebar, { SidebarField } from '../Sidebar/Sidebar'
 import Announcements from '../announcements'
 import { useDesignContext } from '../biz/DesignContext.biz'
 import Canvas, { Field } from '../canvas'
+import { RootState } from 'redux/Store'
 
 const DesignContext = (props: IDesignContextProps) => {
   const dispatch = useDispatch()
+  const { designList } = useSelector((state: RootState) => state.design)
   const {
     handleDragStart,
     handleDragOver,
@@ -17,6 +19,7 @@ const DesignContext = (props: IDesignContextProps) => {
     sidebarFieldsRegenKey,
     activeSidebarField,
     activeField,
+    updateData,
     fields,
   } = useDesignContext(props)
 
@@ -31,8 +34,8 @@ const DesignContext = (props: IDesignContextProps) => {
         <Sidebar fieldsRegKey={sidebarFieldsRegenKey} list={props.list} />
         <SortableContext
           strategy={verticalListSortingStrategy}
-          items={fields.map((f: any) => f.id)}>
-          <Canvas renderers={props.renderers} fields={fields} />
+          items={fields?.map((f: any) => f.id)}>
+          <Canvas renders={props.renders} fields={fields} />
         </SortableContext>
         <DragOverlay dropAnimation={false as any}>
           {activeSidebarField ? (
@@ -48,7 +51,12 @@ const DesignContext = (props: IDesignContextProps) => {
           <select
             name="select your column"
             className="w-full"
-            onChange={(e) => dispatch(AddStyles({ width: e.target.value }))}>
+            onChange={(e: any) => {
+              updateData((draft: any) => {
+                console.log(draft.fields)
+              })
+            }}>
+            {/* onChange={(e) => dispatch(AddStyles({ width: e.target.value }))}> */}
             {Array(12)
               .fill('')
               .map((i, _index) => {

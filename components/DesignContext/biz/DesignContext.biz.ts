@@ -61,6 +61,8 @@ export const useDesignContext = (props: IDesignContextProps) => {
         })
 
         updateData((draft: any) => {
+          console.log(draft);
+          
           if (!draft.fields.length) {
             draft.fields.push(spacer)
           } else {
@@ -110,7 +112,6 @@ export const useDesignContext = (props: IDesignContextProps) => {
 
     if (nextField) {
       const overData = getData(over)
-
       dispatch(AddItem(nextField.type))
 
       updateData((draft: any) => {
@@ -143,6 +144,7 @@ export const useDesignContext = (props: IDesignContextProps) => {
 
   return {
     fields,
+    updateData,
     handleDragStart,
     handleDragOver,
     handleDragEnd,
