@@ -1,26 +1,20 @@
 import Button from 'components/Button/Button'
-import { Flex } from 'components/Flex/Flex'
 import { Grid } from 'components/Grid/Grid'
 import { Select } from 'components/Select/Select'
 import { TextArea } from 'components/TextArea/TextArea'
 
 export const renders: any = {
   row: () => {
-    // console.log(you can access to styles)
     return (
-      <Flex
-        customCSS="border-2 border-gray-500 p-5 rounded-md"
-        justify="justify-around">
-        <Grid
-          row="grid-rows-1"
-          columns="grid-cols-3"
-          customCSS="w-full"
-          gap="gap-4">
-          <div className="w-auto h-10 border-2 border-gray-300 " />
-          <div className="w-auto h-10 border-2 border-gray-300 " />
-          <div className="w-auto h-10 border-2 border-gray-300 " />
-        </Grid>
-      </Flex>
+      <Grid
+        row="grid-rows-1"
+        columns="grid-cols-3"
+        customCSS="w-full "
+        gap="gap-4">
+        <div className="w-auto h-10 border-2 border-gray-300 " />
+        <div className="w-auto h-10 border-2 border-gray-300 " />
+        <div className="w-auto h-10 border-2 border-gray-300 " />
+      </Grid>
     )
   },
   grid: () => <Grid />,

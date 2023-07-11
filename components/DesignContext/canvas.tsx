@@ -1,8 +1,6 @@
 import { useDroppable } from '@dnd-kit/core'
-import { CSS } from '@dnd-kit/utilities'
 import { useSortable } from '@dnd-kit/sortable'
-import { useSelector } from 'react-redux'
-import { RootState } from 'redux/Store'
+import { CSS } from '@dnd-kit/utilities'
 
 function getRenderer(item: any, renders: any) {
   if (item.type === 'spacer') {
@@ -51,7 +49,7 @@ function SortableField(props: any) {
   }
 
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
+    <div ref={setNodeRef} style={style} {...attributes} {...listeners} >
       <Field renders={renders} field={field} />
     </div>
   )
@@ -59,7 +57,6 @@ function SortableField(props: any) {
 
 export default function Canvas(props: any) {
   const { fields, renders } = props
-  const { designList } = useSelector((state: RootState) => state.design)
   const { attributes, listeners, setNodeRef, transform, transition }: any =
     useDroppable({
       id: 'canvas_droppable',

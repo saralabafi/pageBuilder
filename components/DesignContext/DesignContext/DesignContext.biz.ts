@@ -1,19 +1,19 @@
 import { arrayMove } from '@dnd-kit/sortable'
 import { useRef, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { AddItem } from 'redux/Design/Design'
 import { useImmer } from 'use-immer'
 
 export const useDesignContext = (props: IDesignContextProps) => {
   const [sidebarFieldsRegenKey, setSidebarFieldsRegenKey] = useState(Date.now())
 
-  const dispatch = useDispatch()
   const currentDragFieldRef = useRef<any>()
   const spacerInsertedRef = useRef<boolean>()
+
   const [activeField, setActiveField] = useState<any>()
   const [activeSidebarField, setActiveSidebarField] = useState<any>()
+
   const [data, updateData] = useImmer({
     fields: [],
+    active: 0,
   })
 
   const cleanUp = () => {
@@ -26,7 +26,6 @@ export const useDesignContext = (props: IDesignContextProps) => {
   const handleDragStart = (e: any) => {
     const { active } = e
     const activeData = getData(active)
-
     if (activeData.fromSidebar) {
       const { field } = activeData
       const { type } = field
@@ -34,8 +33,9 @@ export const useDesignContext = (props: IDesignContextProps) => {
       currentDragFieldRef.current = {
         id: active.id,
         type,
-        name: `${type}${fields.length + 1}`,
+        name: `${type}${fields?.length + 1}`,
         parent: null,
+        style: '',
       }
       return
     }
@@ -43,6 +43,7 @@ export const useDesignContext = (props: IDesignContextProps) => {
 
     setActiveField(field)
     currentDragFieldRef.current = field
+
     updateData((draft: any) => {
       draft.fields.splice(index, 1, createSpacer({ id: active.id }))
     })
@@ -60,9 +61,9 @@ export const useDesignContext = (props: IDesignContextProps) => {
           id: active.id + '-spacer',
         })
 
+        //add item for non first loads -- by this func you can have more than from one item
+
         updateData((draft: any) => {
-          console.log(draft);
-          
           if (!draft.fields.length) {
             draft.fields.push(spacer)
           } else {
@@ -74,6 +75,7 @@ export const useDesignContext = (props: IDesignContextProps) => {
           spacerInsertedRef.current = true
         })
       } else if (!over) {
+        // support sortable
         updateData((draft: any) => {
           draft.fields = draft.fields.filter((f: any) => f.type !== 'spacer')
         })
@@ -83,14 +85,11 @@ export const useDesignContext = (props: IDesignContextProps) => {
           const spacerIndex = draft.fields.findIndex(
             (f: any) => f.id === active.id + '-spacer'
           )
-
           const nextIndex =
             overData.index > -1 ? overData.index : draft.fields.length - 1
-
           if (nextIndex === spacerIndex) {
             return
           }
-
           draft.fields = arrayMove(draft.fields, spacerIndex, overData.index)
         })
       }
@@ -99,9 +98,9 @@ export const useDesignContext = (props: IDesignContextProps) => {
 
   const handleDragEnd = (e: any) => {
     const { over } = e
-
     if (!over) {
       cleanUp()
+      //
       updateData((draft: any) => {
         draft.fields = draft.fields.filter((f: any) => f.type !== 'spacer')
       })
@@ -112,8 +111,9 @@ export const useDesignContext = (props: IDesignContextProps) => {
 
     if (nextField) {
       const overData = getData(over)
-      dispatch(AddItem(nextField.type))
+      // dispatch(AddItem(nextField.type))
 
+      //for add from side bar
       updateData((draft: any) => {
         const spacerIndex = draft.fields.findIndex(
           (f: any) => f.type === 'spacer'
@@ -144,7 +144,6 @@ export const useDesignContext = (props: IDesignContextProps) => {
 
   return {
     fields,
-    updateData,
     handleDragStart,
     handleDragOver,
     handleDragEnd,
