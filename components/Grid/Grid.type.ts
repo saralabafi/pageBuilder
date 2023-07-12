@@ -20,7 +20,7 @@ type flowType =
   | 'grid-flow-row-auto'
   | 'grid-flow-col-auto'
 
-type gridColumnsTypes =
+export type gridColumnsTypes =
   | 'grid-cols-1'
   | 'grid-cols-2'
   | 'grid-cols-3'

@@ -1,8 +1,7 @@
 import {
   DndContext,
   DragOverlay,
-  MouseSensor,
-  TouchSensor,
+  PointerSensor,
   useSensor,
   useSensors,
 } from '@dnd-kit/core'
@@ -22,9 +21,16 @@ const DesignContext = (props: IDesignContextProps) => {
     activeSidebarField,
     activeField,
     fields,
+    updateData,
   } = useDesignContext(props)
 
-  const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor))
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 5,
+      },
+    })
+  )
 
   return (
     <Flex justify="justify-center" margin="m-4">
@@ -39,7 +45,11 @@ const DesignContext = (props: IDesignContextProps) => {
         <SortableContext
           strategy={verticalListSortingStrategy}
           items={fields?.map((f: any) => f.id)}>
-          <Canvas fields={fields} renders={props.renders} />
+          <Canvas
+            fields={fields}
+            renders={props.renders}
+            updateData={updateData}
+          />
         </SortableContext>
         <DragOverlay dropAnimation={false as any}>
           {activeSidebarField ? (
@@ -52,11 +62,26 @@ const DesignContext = (props: IDesignContextProps) => {
           direction="flex-col"
           customCSS="p-4 border-2 border-gray-500  w-1/6">
           <h1 className="mb-2">column</h1>
-          <select name="select your column" className="w-full">
-            {Array(12)
+          <select
+            name="select your column"
+            className="w-full"
+            onChange={(e) => {
+              updateData((draft: any) => {
+                const itemIndex = draft.fields.findIndex(
+                  (item: any) => item.id === draft.active
+                )
+                if (itemIndex !== -1) {
+                  draft.fields[itemIndex].style = {
+                    ...draft.fields[itemIndex].style,
+                    column: Number(e.target.value),
+                  }
+                }
+              })
+            }}>
+            {Array(11)
               .fill('')
               .map((i, _index) => {
-                return <option>{_index}</option>
+                return <option>{_index++}</option>
               })}
           </select>
         </Flex>

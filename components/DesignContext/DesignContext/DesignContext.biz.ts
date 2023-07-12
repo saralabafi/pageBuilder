@@ -100,7 +100,7 @@ export const useDesignContext = (props: IDesignContextProps) => {
     const { over } = e
     if (!over) {
       cleanUp()
-      //
+
       updateData((draft: any) => {
         draft.fields = draft.fields.filter((f: any) => f.type !== 'spacer')
       })
@@ -111,9 +111,6 @@ export const useDesignContext = (props: IDesignContextProps) => {
 
     if (nextField) {
       const overData = getData(over)
-      // dispatch(AddItem(nextField.type))
-
-      //for add from side bar
       updateData((draft: any) => {
         const spacerIndex = draft.fields.findIndex(
           (f: any) => f.type === 'spacer'
@@ -140,15 +137,17 @@ export const useDesignContext = (props: IDesignContextProps) => {
     }
   }
 
-  const { fields } = data
+  const { fields, active } = data
 
   return {
     fields,
+    active,
     handleDragStart,
     handleDragOver,
     handleDragEnd,
     sidebarFieldsRegenKey,
     activeSidebarField,
     activeField,
+    updateData,
   }
 }

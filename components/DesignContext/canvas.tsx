@@ -10,7 +10,9 @@ function getRenderer(item: any, renders: any) {
   }
 
   return () =>
-    renders?.[item.type]?.() || <div>No renderer found for {item.type}</div>
+    renders?.[item.type]?.(item.style) || (
+      <div>No renderer found for {item.type}</div>
+    )
 }
 
 export function Field(props: any) {
@@ -31,9 +33,9 @@ export function Field(props: any) {
 }
 
 function SortableField(props: any) {
-  const { id, index, field, renders } = props
+  const { id, index, field, renders, updateData } = props
 
-  const { attributes, listeners, setNodeRef, transform, transition } =
+  const { attributes, listeners, transform, transition, setNodeRef } =
     useSortable({
       id,
       data: {
@@ -47,16 +49,26 @@ function SortableField(props: any) {
     transform: CSS.Transform.toString(transform),
     transition,
   }
+  const handleClick = () => {
+    updateData((draft: { active: string }) => {
+      draft.active = props.id
+    })
+  }
 
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners} >
+    <div
+      ref={setNodeRef}
+      onClick={handleClick}
+      style={style}
+      {...attributes}
+      {...listeners}>
       <Field renders={renders} field={field} />
     </div>
   )
 }
 
 export default function Canvas(props: any) {
-  const { fields, renders } = props
+  const { fields, renders, updateData } = props
   const { attributes, listeners, setNodeRef, transform, transition }: any =
     useDroppable({
       id: 'canvas_droppable',
@@ -83,6 +95,7 @@ export default function Canvas(props: any) {
           return (
             <SortableField
               props={props.renders}
+              updateData={updateData}
               key={f.id}
               id={f.id}
               field={f}

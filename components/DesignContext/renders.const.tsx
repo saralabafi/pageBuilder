@@ -1,19 +1,23 @@
 import Button from 'components/Button/Button'
 import { Grid } from 'components/Grid/Grid'
+import { gridColumnsTypes } from 'components/Grid/Grid.type'
 import { Select } from 'components/Select/Select'
 import { TextArea } from 'components/TextArea/TextArea'
+import { calculateColumn } from '../../utils/help/calculate'
 
 export const renders: any = {
-  row: () => {
+  row: (props: any) => {
     return (
       <Grid
         row="grid-rows-1"
-        columns="grid-cols-3"
+        columns={calculateColumn(props?.column) as gridColumnsTypes}
         customCSS="w-full "
         gap="gap-4">
-        <div className="w-auto h-10 border-2 border-gray-300 " />
-        <div className="w-auto h-10 border-2 border-gray-300 " />
-        <div className="w-auto h-10 border-2 border-gray-300 " />
+        {Array(props?.column ?? 3)
+          .fill('')
+          .map((_i) => {
+            return <div className="w-auto h-10 border-2 border-gray-300 " />
+          })}
       </Grid>
     )
   },

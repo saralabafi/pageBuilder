@@ -17,18 +17,19 @@ export const manageDesign = createSlice({
         styles: 'bg-red',
       })
     },
-    AddStyles: (state, { payload }) => {
-      console.log(state)
+    AddStyles: () => {
+      return
     },
-    setSelected: (state, { payload }) => {
-      console.log(state)
+    setSelected: () => {
+      return
     },
     setItems: () => {
-      return 
+      return
     },
   },
 })
 
-export const { AddItem, AddStyles, setSelected, setItems } = manageDesign.actions
+export const { AddItem, AddStyles, setSelected, setItems } =
+  manageDesign.actions
 
 export default manageDesign.reducer
