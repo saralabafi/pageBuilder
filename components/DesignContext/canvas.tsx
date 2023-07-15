@@ -1,4 +1,4 @@
-import { useDroppable } from '@dnd-kit/core'
+import { useDraggable, useDroppable } from '@dnd-kit/core'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 
@@ -16,9 +16,9 @@ function getRenderer(item: any, renders: any) {
 }
 
 export function Field(props: any) {
-  const { field, overlay, renders, ...rest } = props
+  const { field, overlay, renders,color, ...rest } = props
 
-  const Component: any = getRenderer(field, renders)
+  const Component: any = getRenderer(field, renders,color)
 
   let className = 'canvas-field'
   if (overlay) {
