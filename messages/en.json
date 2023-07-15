@@ -1,5 +1,10 @@
 {
   "Index": {
     "home": "Front-End Member ..... :D"
+  },
+  "Component": {
+    "table": {
+      "itemperpage": "Items per Page"
+    }
   }
 }
