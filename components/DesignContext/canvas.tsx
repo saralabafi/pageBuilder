@@ -16,24 +16,23 @@ function getRenderer(item: any, renders: any) {
 }
 
 export function Field(props: any) {
-  const { field, overlay, renders, ...rest } = props
-
+  const { field, overlay, renders, data, ...rest } = props
   const Component: any = getRenderer(field, renders)
-
-  let className = 'canvas-field'
+  let className = `canvas-field ${data?.active === props.id ? 'border border-blue-500' : ''}`
   if (overlay) {
     className += ' overlay'
   }
 
   return (
-    <div className={className}>
+    <div className={`${className} `}>
       <Component {...rest} />
     </div>
   )
 }
 
 function SortableField(props: any) {
-  const { id, index, field, renders, updateData } = props
+
+  const { id, index, field, renders, updateData, data } = props
 
   const { attributes, listeners, transform, transition, setNodeRef } =
     useSortable({
@@ -62,13 +61,13 @@ function SortableField(props: any) {
       style={style}
       {...attributes}
       {...listeners}>
-      <Field renders={renders} field={field} />
+      <Field renders={renders} field={field} data={data} id={props.id} />
     </div>
   )
 }
 
 export default function Canvas(props: any) {
-  const { fields, renders, updateData } = props
+  const { fields, renders, updateData, data } = props
   const { attributes, listeners, setNodeRef, transform, transition }: any =
     useDroppable({
       id: 'canvas_droppable',
@@ -101,6 +100,7 @@ export default function Canvas(props: any) {
               field={f}
               index={i}
               renders={renders}
+              data={data}
             />
           )
         })}
