@@ -149,5 +149,6 @@ export const useDesignContext = (props: IDesignContextProps) => {
     activeSidebarField,
     activeField,
     updateData,
+    data,
   }
 }
