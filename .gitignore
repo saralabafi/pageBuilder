@@ -34,5 +34,7 @@ jspm_packages
 .npm
 
 # Optional REPL history
+
+next-env.d.ts
 .node_repl_history
 .next
