@@ -10,6 +10,7 @@ export const renders: any = {
     return (
       <Grid
         row="grid-rows-1"
+        sx={{backgroundColor:`${props?.sx}`}}
         columns={calculateColumn(props?.column) as gridColumnsTypes}
         customCSS="w-full "
         gap="gap-4">
@@ -50,6 +51,7 @@ export const renders: any = {
   ),
   button: () => (
     <Button
+
       placeholder={'click me'}
       onClick={function (): void {
         throw new Error('Function not implemented.')

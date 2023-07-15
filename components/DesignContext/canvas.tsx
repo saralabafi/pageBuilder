@@ -16,9 +16,9 @@ function getRenderer(item: any, renders: any) {
 }
 
 export function Field(props: any) {
-  const { field, overlay, renders,color, ...rest } = props
+  const { field, overlay, renders, color, ...rest } = props
 
-  const Component: any = getRenderer(field, renders,color)
+  const Component: any = getRenderer(field, renders)
 
   let className = 'canvas-field'
   if (overlay) {
@@ -68,6 +68,7 @@ function SortableField(props: any) {
 }
 
 export default function Canvas(props: any) {
+  debugger
   const { fields, renders, updateData } = props
   const { attributes, listeners, setNodeRef, transform, transition }: any =
     useDroppable({

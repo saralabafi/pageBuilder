@@ -16,27 +16,8 @@ export const useDesignContext = (props: IDesignContextProps) => {
     fields: [],
     active: 0,
   })
-  interface ItemType {
-    id: UniqueIdentifier
-    color: string
-  }
-  // a little utility for producing unique
-  const id_gen = (() => {
-    let id = 0
-    return () => id++
-  })()
-  const [activeItem, setActiveItem] = useState<ItemType | null>(null)
-  const [activeItemOrigin, setActiveItemOrigin] = useState<string | null>(null)
-  const [pickerColor, setPickerColor] = useState('#09C5D0')
-  const [pickerId, setPickerId] = useState<UniqueIdentifier>(id_gen)
-  const [palletteItems, setPalletteItems] = useState<ItemType[]>(() =>
-    ['red', 'green', 'blue'].map((color) => ({ id: id_gen(), color }))
-  )
 
-  const getItem = (id: UniqueIdentifier) => {
-    if (id === pickerId) return { id: pickerId, color: pickerColor }
-    return palletteItems.find((x) => x.id === id)!
-  }
+  const [pickerColor, setPickerColor] = useState('#09C5D0')
 
   const cleanUp = () => {
     setActiveSidebarField(null)
@@ -59,8 +40,6 @@ export const useDesignContext = (props: IDesignContextProps) => {
         parent: null,
         style: '',
       }
-      if (active.id === pickerId) setActiveItemOrigin('current')
-      setActiveItem(getItem(active.id))
       return
     }
     const { field, index } = activeData
@@ -99,19 +78,6 @@ export const useDesignContext = (props: IDesignContextProps) => {
           spacerInsertedRef.current = true
         })
       } else if (!over) {
-        if (activeItemOrigin === null) return
-        const indx = palletteItems.findIndex((x) => x.id === active.id)
-        if (indx === -1) return
-        setPalletteItems(palletteItems.filter((x) => x.id !== active.id))
-        if (activeItemOrigin === 'current') setPickerId(active.id)
-        if (over.id === 'current' && activeItemOrigin !== null) {
-          // we're not dragging over the pallette, so we may need to remove the item from the pallette
-          const active_indx = palletteItems.findIndex((x) => x.id === active.id)
-          if (active_indx === -1) return
-          setPalletteItems(palletteItems.filter((x) => x.id !== active.id))
-
-          return
-        }
         // support sortable
         updateData((draft: any) => {
           draft.fields = draft.fields.filter((f: any) => f.type !== 'spacer')
@@ -130,29 +96,11 @@ export const useDesignContext = (props: IDesignContextProps) => {
           draft.fields = arrayMove(draft.fields, spacerIndex, overData.index)
         })
       }
-
-      const active_indx = palletteItems.findIndex((x) => x.id === active.id)
-      const over_indx = palletteItems.findIndex((x) => x.id === over.id)
-
-      if (active_indx !== -1 && over_indx !== -1) {
-        if (active_indx === over_indx) return
-        setPalletteItems(arrayMove(palletteItems, active_indx, over_indx))
-      } else if (over.id === 'pallette') {
-        if (palletteItems.findIndex((x) => x.id === active.id) === -1) {
-          if (active.id === pickerId) {
-            setPalletteItems([
-              ...palletteItems,
-              { id: pickerId, color: pickerColor },
-            ])
-            setPickerId(id_gen)
-          }
-        }
-      }
     }
   }
 
   const handleDragEnd = (e: any) => {
-    const { over, active } = e
+    const { over } = e
     if (!over) {
       cleanUp()
 
@@ -180,10 +128,7 @@ export const useDesignContext = (props: IDesignContextProps) => {
     cleanUp()
   }
 
-  const handleDragCancel = (e: any) => {
-    setActiveItem(null)
-    setActiveItemOrigin(null)
-  }
+  const handleDragCancel = (e: any) => {}
 
   function getData(prop: any) {
     return prop?.data?.current ?? {}
@@ -211,11 +156,7 @@ export const useDesignContext = (props: IDesignContextProps) => {
     sidebarFieldsRegenKey,
     activeSidebarField,
     activeField,
-    updateData,
-    activeItemOrigin,
     pickerColor,
-    pickerId,
-    palletteItems,
-    activeItem,
+    updateData,
   }
 }

@@ -12,13 +12,10 @@ import Sidebar, { SidebarField } from '../Sidebar/Sidebar'
 import Announcements from '../announcements'
 import Canvas, { Field } from '../canvas'
 import { useDesignContext } from './DesignContext.biz'
-// dnd-kit helpers
-import { DraggableItem } from '../draggable-item'
-import { DropZone } from '../drop-zone'
 
 // externals
 import { ChromePicker } from 'react-color'
-import { ColorSquare } from '../color'
+import { SetStateAction } from 'react'
 
 const DesignContext = (props: IDesignContextProps) => {
   const {
@@ -32,8 +29,6 @@ const DesignContext = (props: IDesignContextProps) => {
     fields,
     activeField,
     pickerColor,
-    activeItem,
-    pickerId,
     updateData,
   } = useDesignContext(props)
 
@@ -45,6 +40,22 @@ const DesignContext = (props: IDesignContextProps) => {
     })
   )
 
+  const ColorChangeHandler = (color: { hex: SetStateAction<string> }) => {
+    debugger
+    setPickerColor(color.hex)
+    updateData((draft: any) => {
+      const itemIndex = draft.fields.findIndex(
+        (item: any) => item.id === draft.active
+      )
+      if (itemIndex !== -1) {
+        draft.fields[itemIndex].style = {
+          ...draft.fields[itemIndex].style,
+          sx: pickerColor,
+        }
+      }
+    })
+  }
+
   return (
     <Flex justify="justify-center" margin="m-4">
       <DndContext
@@ -55,27 +66,15 @@ const DesignContext = (props: IDesignContextProps) => {
         collisionDetection={rectIntersection}
         sensors={sensors}
         autoScroll>
-        <ChromePicker
-          onChange={(color: any) => setPickerColor(color.hex)}
-          color={pickerColor}
-        />
-        {/* <DropZone id="current">
-          <DraggableItem color={pickerColor} id={pickerId} />
-        </DropZone> */}
         <Announcements />
         <Sidebar fieldsRegKey={sidebarFieldsRegenKey} list={props.list} />
         <SortableContext
           strategy={verticalListSortingStrategy}
           items={fields?.map((f: any) => f.id)}>
           <Canvas
-           
-            color={pickerColor}
-            id={pickerId}
             fields={fields}
-           
             renders={props.renders}
             updateData={updateData}
-         
           />
         </SortableContext>
         <DragOverlay dropAnimation={false as any}>
@@ -95,6 +94,7 @@ const DesignContext = (props: IDesignContextProps) => {
             name="select your column"
             className="w-full"
             onChange={(e) => {
+              debugger
               updateData((draft: any) => {
                 const itemIndex = draft.fields.findIndex(
                   (item: any) => item.id === draft.active
@@ -113,6 +113,13 @@ const DesignContext = (props: IDesignContextProps) => {
                 return <option>{_index++}</option>
               })}
           </select>
+          <hr></hr>
+          <h1 className="mb2">BackGround Color</h1>
+          <ChromePicker
+            onChange={(color: any) => setPickerColor(color.hex)}
+            color={pickerColor}
+            onChangeComplete={ColorChangeHandler}
+          />
         </Flex>
       </DndContext>
     </Flex>
