@@ -109,8 +109,8 @@ function pageLayout(props: ITextProps) {
           </Button>
         </Flex>
       </Flex>
-      <aside className={`flex h-screen `}>
-        <ul className="w-[76px] bg-neutral-50 h-screen ">
+      <aside className={`flex h-full `}>
+        <ul className="w-[76px] bg-neutral-50 h-full border-e border-neutral-200">
           {sidebar_items.map((item) => {
             return (
               <li className="flex flex-col items-center w-full border-b border-neutral-200 px-2 py-3 cursor-pointer">
@@ -130,7 +130,7 @@ function pageLayout(props: ITextProps) {
             )
           })}
         </ul>
-        <div className="bg-neutral-100 w-[360px] h-screen">
+        <div className="bg-neutral-100 w-[360px] h-screen border-e border-neutral-200">
           <Flex
             padding="p-3"
             justify="justify-between"
