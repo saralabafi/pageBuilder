@@ -7,14 +7,10 @@ const Checkbox = (CheckboxProps: ICheckboxProps) => {
     isChecked,
     isDisabled,
     isReadonly,
-    id = '',
-    className = '',
-    name = '',
     direction = 'flex-col',
     backgroundColor = 'bg-gray-50',
     borderColor = 'border-gray-300',
     textColor = 'text-gray-900',
-    onChange,
   } = CheckboxProps
 
   return (

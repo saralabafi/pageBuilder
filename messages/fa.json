@@ -5,6 +5,12 @@
   "Component": {
     "table": {
       "itemperpage": "تعدا موارد قابل نمایش"
-    }
+    }},
+  "layout": {
+    "pageBuilder": "صفحه ساز",
+    "sample": "پورتال مرکزی > .... > دسته بندی اخبار داخلی ",
+    "save": "ذخیره",
+    "publish": "انتشار",
+    "preview": "پیش نمایش"
   }
 }
