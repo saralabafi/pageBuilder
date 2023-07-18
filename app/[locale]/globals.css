@@ -2,12 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'YekanBakh';
+  src: url('../../public/fonts/YekanBakh-VF.ttf') format('ttf');
+  src: url('../../public/fonts/YekanBakhFaNum-VF.WOFF') format('woff');
+  src: url('../../public/fonts/YekanBakhFaNum-VF.woff2') format('woff2');
+  font-weight: normal;
+}
+
 body {
+  font-family: 'YekanBakh';
   background: #f7f7f7;
   direction: rtl;
   padding: 0;
   margin: 0;
-  
 }
 
 /* dnd-context */
