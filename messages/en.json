@@ -5,7 +5,8 @@
   "Component": {
     "table": {
       "itemperpage": "Items per Page"
-    }},
+    }
+  },
   "layout": {
     "pageBuilder": "page builder",
     "sample": "central > .... > news category "

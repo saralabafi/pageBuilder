@@ -6,14 +6,13 @@ import { radiusType } from 'types/radius.type'
 export interface IButtonProps {
   border?: string | boolean
   loading?: boolean
-  exteraStyle?: string
+  extraStyle?: string
   children?: React.ReactNode
   textColor?: string
   disabled?: boolean
   customCSS?: string
   margin?: marginType
   radius?: radiusType
-  extraStyle?: string
   padding?: paddingType
   backgroundColor?: string
   onClick?: () => void | undefined

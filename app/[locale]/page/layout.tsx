@@ -3,13 +3,11 @@ import React from 'react'
 import Image from 'next/image'
 import { Flex } from 'components/Flex/Flex'
 import { useTranslations } from 'next-intl'
-import { useText } from 'components/Text/Text.biz'
 import Text from 'components/Text/Text'
 import { ITextProps } from 'components/Text/Text.types'
 import Button from 'components/Button/Button'
 
 function pageLayout(props: ITextProps) {
-  const {} = useText(props)
   const t = useTranslations('layout')
   return (
     <div>
