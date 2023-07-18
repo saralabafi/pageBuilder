@@ -22,7 +22,7 @@ const Button = (props: IButtonProps) => {
     <button
       style={sx}
       //height must be improve and make size
-      className={`btn flex items-end gap-2 
+      className={`btn flex items-center gap-2 text-sm font-normal
       h-[36px] 
       ${extraStyle || ''}
       ${border || ''}

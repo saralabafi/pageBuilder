@@ -11,6 +11,6 @@ export interface ITextProps {
   color?: string
 }
 
-type fontSizeType = 12 | 14 | 16 | 18 | 20 | 24 | 30
+type fontSizeType = 10 | 12 | 14 | 16 | 18 | 20 | 24 | 30 | string
 
 type fontWeightType = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900

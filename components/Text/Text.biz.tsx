@@ -4,7 +4,7 @@ export const useText = (props: ITextProps) => {
   const { fontSize = 14, fontWeight = 400 } = props
 
   const fontSizeRender = () => {
-    const fonts = {
+    const fonts: any = {
       12: 'text-xs',
       14: 'text-sm',
       16: 'text-base',
@@ -13,8 +13,8 @@ export const useText = (props: ITextProps) => {
       24: 'text-2xl',
       30: 'text-3xl',
     }
-
-    return fonts[fontSize]
+    
+    return typeof fontSize === 'number' ? fonts[fontSize!] : fontSize
   }
 
   const fontWeightRender = () => {
