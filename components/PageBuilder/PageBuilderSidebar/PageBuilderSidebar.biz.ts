@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AddSelectedItem } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
 
-export const useLayout = () => {
-  const dispatch = useDispatch()
+export const usePageBuilderSidebar = () => {
   const t = useTranslations('layout')
+  const dispatch = useDispatch()
   const { selectedItem } = useSelector((state: RootState) => state.pageDesign)
 
   const isSelected = selectedItem - 1
@@ -13,10 +13,5 @@ export const useLayout = () => {
   const handleSelectedItem = (index: number) => {
     dispatch(AddSelectedItem(index + 1))
   }
-
-  const handleClose = () => {
-    dispatch(AddSelectedItem(0))
-  }
-
-  return { handleSelectedItem, isSelected, handleClose, t, selectedItem }
+  return { handleSelectedItem, isSelected, t }
 }
