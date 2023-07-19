@@ -21,7 +21,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "images/*": ["./public/images"],
+      "images/*": ["./public/images/*"],
       "components/*": ["./components/*"],
       "services/*": ["./services/*"],
       "redux/*": ["./Redux/*"],

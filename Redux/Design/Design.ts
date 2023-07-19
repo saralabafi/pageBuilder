@@ -2,14 +2,14 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState: any = {
   designList: [],
-  selected: 0,
+  selectedItem: 0,
 }
 
 export const manageDesign = createSlice({
-  name: 'design',
+  name: 'pagDesign',
   initialState,
   reducers: {
-    AddItem: (state,  {payload} ) => {
+    AddItem: (state, { payload }) => {
       return console.log(payload)
       // state.fields.splice(index, 1, payload)
       state.designList.push({
@@ -19,8 +19,8 @@ export const manageDesign = createSlice({
         styles: '',
       })
     },
-    AddStyles: () => {
-      return
+    AddSelectedItem: (state, { payload }) => {
+      return { ...state, selectedItem: payload }
     },
     setSelected: () => {
       return
@@ -31,7 +31,7 @@ export const manageDesign = createSlice({
   },
 })
 
-export const { AddItem, AddStyles, setSelected, setItems } =
+export const { AddItem, AddSelectedItem, setSelected, setItems } =
   manageDesign.actions
 
 export default manageDesign.reducer
