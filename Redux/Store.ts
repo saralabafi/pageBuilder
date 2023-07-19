@@ -7,7 +7,6 @@ export const store = configureStore({
   reducer: {
     counter: managementAuth,
     pageDesign:manageDesign
-    // pageDesign: manageDesign,
   },
 })
 
