@@ -1,25 +1,32 @@
+'use client'
 import { IButtonProps } from './Button.type'
-
 const Button = (props: IButtonProps) => {
   const {
     loading,
-    exteraStyle,
+    extraStyle,
     children,
     disabled,
     onClick,
     size,
     backgroundColor = 'bg-gray-300',
-    padding = 'py-2 px-3',
+    padding = 'p-2',
     margin,
-    radius = 'rounded-md',
+    textColor,
+    radius = 'rounded',
     customCSS,
+    border = 'border border-neutral-200',
     sx,
   } = props
 
   return (
     <button
       style={sx}
-      className={`btn ${exteraStyle || ''} ${radius || ''} ${padding}
+      //height must be improve and make size
+      className={`btn flex items-center gap-2 text-sm font-normal
+      h-[36px] 
+      ${extraStyle || ''}
+      ${border || ''}
+      ${textColor} ${radius} ${padding}
       ${backgroundColor} ${loading ? 'animate-spin' : ''}
       ${size || ''} ${margin || ''} ${customCSS || ''}
       `}

@@ -2,12 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: 'YekanBakh';
+  src: url('../../public/fonts/YekanBakh-VF.ttf') format('ttf');
+  src: url('../../public/fonts/YekanBakhFaNum-VF.WOFF') format('woff');
+  src: url('../../public/fonts/YekanBakhFaNum-VF.woff2') format('woff2');
+  font-weight: normal;
 }
+
 body {
-  color: rgb(var(--foreground-rgb));
-  background: var(--background-end-rgb);
+  font-family: 'YekanBakh';
+  background: #f7f7f7;
+  direction: rtl;
+  padding: 0;
+  margin: 0;
 }

@@ -28,6 +28,9 @@
     "ter-indent": 0,
     "trailing-comma": 0,
     "variable-name": 0,
+    "non-nullish": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "no-non-null-assertion": "off",
     "@typescript-eslint/no-explicit-any": 0
   }
 }

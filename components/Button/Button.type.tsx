@@ -4,16 +4,18 @@ import { paddingType } from 'types/padding.type'
 import { radiusType } from 'types/radius.type'
 
 export interface IButtonProps {
+  border?: string | boolean
   loading?: boolean
-  exteraStyle?: string
+  extraStyle?: string
   children?: React.ReactNode
+  textColor?: string
   disabled?: boolean
-  onClick: () => void
-  size?: 'btn-lg' | 'btn-sm' | 'btn-xs'
-  backgroundColor?: string
-  radius?: radiusType
-  margin?: marginType
-  padding?: paddingType
   customCSS?: string
+  margin?: marginType
+  radius?: radiusType
+  padding?: paddingType
+  backgroundColor?: string
+  onClick?: () => void | undefined
+  size?: 'btn-lg' | 'btn-sm' | 'btn-xs'
   sx?: Properties<string | number, string & {}>
 }

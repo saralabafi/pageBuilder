@@ -6,5 +6,19 @@
     "table": {
       "itemperpage": "Items per Page"
     }
+  },
+  "layout": {
+    "pageBuilder": "page builder",
+    "sample": "central > .... > news category ",
+    "addItem": "add item",
+    "navigation": "navigation",
+    "formats": "formats ",
+    "settings": "settings",
+    "generalBlock": "general block",
+    "HTMLEditor": "HTML editor",
+    "column": "column",
+    "logo": "logo",
+    "navigationMenu": "navigation menu",
+    "button": "button"
   }
 }

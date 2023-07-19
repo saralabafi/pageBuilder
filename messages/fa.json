@@ -6,5 +6,22 @@
     "table": {
       "itemperpage": "تعدا موارد قابل نمایش"
     }
+  },
+  "layout": {
+    "pageBuilder": "صفحه ساز",
+    "sample": "پورتال مرکزی > .... > دسته بندی اخبار داخلی ",
+    "save": "ذخیره",
+    "publish": "انتشار",
+    "preview": "پیش نمایش",
+    "addItem": "افرودن",
+    "navigation": "ناوبری",
+    "settings": "تنظیمات",
+    "generalBlocks": "بلوک‌های عمومی",
+    "formats": "قالب ها",
+    "HTMLEditor": "ویرایشگر HTML",
+    "column": "ستون درونی",
+    "logo": "لوگو سایت",
+    "navigationMenu": "منو ناوبری",
+    "button": "دکمه"
   }
 }

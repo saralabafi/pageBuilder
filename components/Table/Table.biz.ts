@@ -45,7 +45,6 @@ export const useTableComponent = (props: ITableProps) => {
   }
 
   const retrieveData = () => {
-    debugger
     const params = getRequestParams(searchTitle, page, pageSize)
 
     props.DataService.getAll(params)
@@ -80,7 +79,6 @@ export const useTableComponent = (props: ITableProps) => {
   }
 
   const openData = (rowIndex: string | number) => {
-    const id = dataRef.current[rowIndex].id
   }
 
   const deleteData = (rowIndex: number) => {

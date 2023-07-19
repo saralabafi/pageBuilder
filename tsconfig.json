@@ -21,10 +21,11 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
+      "images/*": ["./public/images/*"],
       "components/*": ["./components/*"],
       "services/*": ["./services/*"],
       "redux/*": ["./Redux/*"],
-      "types/*": ["./utils/types/*"],
+      "types/*": ["./utils/types/*"]
     }
   },
   "include": [
