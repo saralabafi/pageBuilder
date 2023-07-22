@@ -19,7 +19,7 @@ function pageLayout(props: ITextProps) {
         <div
           className={`bg-neutral-100 w-[360px] h-screen border-e border-neutral-200 
              transition-transform duration-1000 ease-in-out ${
-               selectedItem ? 'translate-x-0' : 'translate-x-[120%]'
+               selectedItem ? 'translate-x-0' : 'hidden translate-x-[120%]'
              }
             `}>
           <Flex
@@ -52,8 +52,8 @@ function pageLayout(props: ITextProps) {
             })}
           </div>
         </div>
+        {props.children}
       </aside>
-      {props.children}
     </div>
   )
 }
