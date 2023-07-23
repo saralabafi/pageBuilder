@@ -20,7 +20,7 @@ import './styles.css'
 const DndDesigner = () => {
   const initialLayout = initialData.layout
   const initialComponents = initialData.components
-  const [layout, setLayout] = useState(initialLayout)
+  const [layout, setLayout] = useState(initialLayout as any)
   const [components, setComponents] = useState(initialComponents)
 
   const handleDropToTrashBin = useCallback(
@@ -132,7 +132,7 @@ const DndDesigner = () => {
       </div>
       <div className="pageContainer">
         <div className="page">
-          {layout.map((row, index) => {
+          {layout.map((row: any, index: any) => {
             const currentPath = `${index}`
 
             return (

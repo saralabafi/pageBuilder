@@ -10,7 +10,7 @@ export const reorder = (list: any, startIndex: any, endIndex: any) => {
   return result
 }
 
-export const remove = <T>(arr: T[], index: number, newItem: T): T[] => {
+export const remove = <T>(arr: T[], index: number): T[] => {
   if (arr == null) {
     return []
   }
