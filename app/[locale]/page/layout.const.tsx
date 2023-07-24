@@ -35,7 +35,7 @@ export const control_items = [
     title: 'column',
     icon: <Column />,
     component: {
-      type: 'button',
+      type: 'column',
       content: 'Some input',
     },
   },
@@ -55,7 +55,7 @@ export const control_items = [
     title: 'navigationMenu',
     icon: <Menu />,
     component: {
-      type: 'input',
+      type: 'menu',
       content: 'Some input',
     },
   },
@@ -65,16 +65,18 @@ export const control_items = [
     title: 'button',
     icon: <PlusCircle />,
     component: {
-      type: 'input',
+      type: 'button',
       content: 'Some input',
     },
   },
 ]
 
 export const renders: any = {
-  input: <Input />,
-  button: <Button>its a button, Please touch me ..... :) </Button>,
-  start: (
+  input: () => <h1>HTML editor</h1>,
+  menu: () => <h1>Menu</h1>,
+  column: () => <h1>Column</h1>,
+  button: () => <Button>its a button, Please touch me ..... :) </Button>,
+  star: () => (
     <h1>
       <Star />
     </h1>

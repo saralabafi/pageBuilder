@@ -44,7 +44,7 @@ const Component = ({
       ref={ref}
       style={{ ...style, opacity }}
       className="component draggable">
-      <div>{renders?.[component?.type]}</div>
+      <div>{renders?.[component?.type]()}</div>
     </div>
   )
 }
