@@ -1,6 +1,6 @@
 import React from 'react'
 import DropZone from './components/DropZone'
-import Row from './components/Row'
+import Row from './components/Row/Row'
 import TrashDropZone from './components/TrashDropZone/TrashDropZone'
 import { useDndDesigner } from './DndDesigner.biz'
 

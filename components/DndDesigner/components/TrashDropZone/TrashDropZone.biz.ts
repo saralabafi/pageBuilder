@@ -18,7 +18,7 @@ export const useTrashDropZone = ({
     canDrop: (item, monitor) => {
       const designList = data.designList
       const itemPath = item.path
-      const splitItemPath = itemPath.split('-')
+      const splitItemPath = itemPath?.split('-')
       const itemPathRowIndex = splitItemPath[1]
       const itemRowChildrenLength =
         designList[itemPathRowIndex] &&

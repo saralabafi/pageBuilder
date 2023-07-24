@@ -2,7 +2,11 @@ import shortid from 'shortid'
 import { ROW, COLUMN, COMPONENT } from '../constants'
 
 // a little function to help us with reordering the result
-export const reorder = (list: any, startIndex: any, endIndex: any) => {
+export const reorder = <T>(
+  list: T[],
+  startIndex: number,
+  endIndex: number
+): T[] => {
   const result = Array.from(list)
   const [removed] = result.splice(startIndex, 1)
   result.splice(endIndex, 0, removed) // inserting task in new index
@@ -22,26 +26,44 @@ export const remove = <T>(arr: T[], index: number): T[] => {
   ]
 }
 
-export const insert = <T>(arr: T[], index: number, newItem: T): T[] => {
-  if (arr == null) {
-    return []
-  }
+// export const insert = <T extends unknown>(
+//   arr: T[],
+//   index: number,
+//   newItem: T
+// ): T[] => [
+//   // part of the array before the specified index
+//   ...arr?.slice(0, index),
+//   // inserted item
+//   newItem,
+//   // part of the array after the specified index
+//   ...arr?.slice(index),
+// ]
 
-  return [
-    // part of the array before the specified index
-    ...arr.slice(0, index),
-    // the new item
+export const insert = <T>(
+  arr: T[],
+  index: number,
+  newItem: T
+): T[] => {
+  if (arr === null) {
+    return [newItem]
+  }
+  const result = [
+    ...(arr?.slice(0, index) || []),
     newItem,
-    // part of the array after the specified index
-    ...arr.slice(index),
+    ...(arr?.slice(index) || []),
   ]
+  return result
 }
 
-export const reorderChildren = (
-  children: any,
-  splitDropZonePath: any,
-  splitItemPath: any
-) => {
+export const reorderChildren = ({
+  children,
+  splitDropZonePath,
+  splitItemPath,
+}: {
+  children: any[]
+  splitDropZonePath: string[]
+  splitItemPath: string[]
+}): any => {
   if (splitDropZonePath.length === 1) {
     const dropZoneIndex = Number(splitDropZonePath[0])
     const itemIndex = Number(splitItemPath[0])
@@ -49,28 +71,33 @@ export const reorderChildren = (
   }
 
   // const updatedChildren = [...children]
-  const updatedChildren =
-    typeof children === 'object' ? [...(children as any)] : [children]
 
-  const curIndex = Number(splitDropZonePath.slice(0, 1))
+  if (typeof children === 'object' && children !== null) {
+    const updatedChildren =
+      typeof children === 'object' ? [...(children as any)] : [children]
+    const curIndex = Number(splitDropZonePath.slice(0, 1))
 
-  // Update the specific node's children
-  const splitDropZoneChildrenPath = splitDropZonePath.slice(1)
-  const splitItemChildrenPath = splitItemPath.slice(1)
-  const nodeChildren = updatedChildren[curIndex]
-  updatedChildren[curIndex] = {
-    ...nodeChildren,
-    children: reorderChildren(
-      nodeChildren?.children,
-      splitDropZoneChildrenPath,
-      splitItemChildrenPath
-    ),
+    // Update the specific node's children
+    const splitDropZoneChildrenPath = splitDropZonePath.slice(1)
+    const splitItemChildrenPath = splitItemPath.slice(1)
+    const nodeChildren = updatedChildren[curIndex]
+    updatedChildren[curIndex] = {
+      ...nodeChildren,
+      children: reorderChildren({
+        children: nodeChildren.children,
+        splitDropZonePath: splitDropZoneChildrenPath,
+        splitItemPath: splitItemChildrenPath,
+      }),
+    }
+
+    return updatedChildren
   }
-
-  return updatedChildren
 }
 
-export const removeChildFromChildren = (children: any, splitItemPath: any) => {
+export const removeChildFromChildren = (
+  children: any[],
+  splitItemPath: string[]
+): any => {
   if (splitItemPath?.length === 1) {
     const itemIndex = Number(splitItemPath[0])
     return remove(children, itemIndex)
@@ -100,48 +127,44 @@ export const removeChildFromChildren = (children: any, splitItemPath: any) => {
 }
 
 export const addChildToChildren = (
-  children: any,
-  splitDropZonePath: any,
+  children: any[],
+  splitDropZonePath: string[],
   item: any
-) => {
+): any[] => {
   if (splitDropZonePath.length === 1) {
     const dropZoneIndex = Number(splitDropZonePath[0])
     return insert(children, dropZoneIndex, item)
   }
 
   // const updatedChildren = [...children]
+  const updatedChildren =
+    typeof children === 'object' ? [...(children as any)] : [children]
+  const curIndex = Number(splitDropZonePath.slice(0, 1))
 
-  if (typeof children === 'object' && children !== null) {
-    const updatedChildren =
-      typeof children === 'object' ? [...(children as any)] : [children]
-
-    const curIndex = Number(splitDropZonePath.slice(0, 1))
-
-    // Update the specific node's children
-    const splitItemChildrenPath = splitDropZonePath.slice(1)
-    const nodeChildren = updatedChildren[curIndex]
-    updatedChildren[curIndex] = {
-      ...nodeChildren,
-      children: addChildToChildren(
-        nodeChildren.children,
-        splitItemChildrenPath,
-        item
-      ),
-    }
-
-    return updatedChildren
+  // Update the specific node's children
+  const splitItemChildrenPath = splitDropZonePath.slice(1)
+  const nodeChildren = updatedChildren[curIndex]
+  updatedChildren[curIndex] = {
+    ...nodeChildren,
+    children: addChildToChildren(
+      nodeChildren?.children,
+      splitItemChildrenPath,
+      item
+    ),
   }
+
+  return updatedChildren
 }
 
-export const handleMoveWithinParent: (
-  layout: any,
-  splitDropZonePath: any,
-  splitItemPath: any
-) => any = (layout: any, splitDropZonePath: any, splitItemPath: any) => {
-  return reorderChildren(layout, splitDropZonePath, splitItemPath)
+export const handleMoveWithinParent = (
+  layout: any[],
+  splitDropZonePath: string[],
+  splitItemPath: string[]
+): any[] => {
+  return reorderChildren({ children: layout, splitDropZonePath, splitItemPath })
 }
 
-export const handleAddColumDataToRow = (layout: any) => {
+export const handleAddColumDataToRow = (layout: any[]): any[] => {
   const layoutCopy = [...layout]
   const COLUMN_STRUCTURE = {
     type: COLUMN,
@@ -150,7 +173,7 @@ export const handleAddColumDataToRow = (layout: any) => {
   }
 
   return layoutCopy.map((row) => {
-    if (!row.children?.length) {
+    if (!row.children.length) {
       row.children = [COLUMN_STRUCTURE]
     }
     return row
@@ -158,11 +181,11 @@ export const handleAddColumDataToRow = (layout: any) => {
 }
 
 export const handleMoveToDifferentParent = (
-  layout: any,
-  splitDropZonePath: any,
-  splitItemPath: any,
+  layout: any[],
+  splitDropZonePath: string[],
+  splitItemPath: string[],
   item: any
-) => {
+): any[] => {
   let newLayoutStructure
   const COLUMN_STRUCTURE = {
     type: COLUMN,
