@@ -11,7 +11,7 @@ import { SIDEBAR_ITEM } from 'components/DndDesigner/constants'
 import { useDrag } from 'react-dnd'
 
 function pageLayout(props: ITextProps) {
-  const { handleClose, t, selectedItem } = useLayout()
+  const { handleClose, t, activeTab } = useLayout()
 
   return (
     <div>
@@ -21,7 +21,7 @@ function pageLayout(props: ITextProps) {
         <div
           className={`bg-neutral-100 w-[360px] h-screen border-e border-neutral-200 
              transition-transform duration-1000 ease-in-out ${
-               selectedItem ? 'translate-x-0' : 'hidden translate-x-[120%]'
+               activeTab ? 'translate-x-0' : 'hidden translate-x-[120%]'
              }
             `}>
           <Flex

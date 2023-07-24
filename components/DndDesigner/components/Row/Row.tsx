@@ -2,6 +2,8 @@ import React from 'react'
 import Column from '../Column/Column'
 import DropZone from '../DropZone/DropZone'
 import { useRow } from './Row.biz'
+import { useDispatch } from 'react-redux'
+import { selectActiveControl } from 'redux/Design/Design'
 
 const Row = ({
   data,
@@ -14,25 +16,20 @@ const Row = ({
   handleDrop: any
   path: string
 }) => {
-  const { ref, opacity } = useRow({ data, path })
-
-  const renderColumn = (column: any, currentPath: any) => {
-    return (
-      <Column
-        key={column.id}
-        data={column}
-        components={components}
-        handleDrop={handleDrop}
-        path={currentPath}
-      />
-    )
-  }
+  const { ref, opacity, handleClick, activeControl } = useRow({ data, path })
 
   return (
     <div
       ref={ref}
       style={{ opacity }}
-      className="cursor-move bg-white px-2 py-1  border border-red-600 p-0 draggable">
+      onClick={handleClick}
+      className={`cursor-move bg-white px-2 py-1  border p-0 draggable
+      ${
+        data.id === activeControl
+          ? 'border-dashed border-purple-600'
+          : 'border-red-600'
+      }
+      `}>
       {data.type}
       <div className="flex py-5">
         {data?.children?.map((column: any, index: any) => {
@@ -49,8 +46,13 @@ const Row = ({
                 isLast={undefined}
                 path={''}
               />
-
-              {renderColumn(column, currentPath)}
+              <Column
+                key={column.id}
+                data={column}
+                components={components}
+                handleDrop={handleDrop}
+                path={currentPath}
+              />
             </React.Fragment>
           )
         })}
@@ -68,4 +70,5 @@ const Row = ({
     </div>
   )
 }
+
 export default Row

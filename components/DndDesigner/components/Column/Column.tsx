@@ -14,24 +14,23 @@ const Column = ({
   handleDrop: any
   path: any
 }) => {
-  const { opacity, ref } = useColumn({ data, path })
-
-  const renderComponent = (component: any, currentPath: any) => {
-    return (
-      <Component
-        key={component.id}
-        data={component}
-        components={components}
-        path={currentPath}
-      />
-    )
-  }
+  const { opacity, ref, handleClick, activeControl } = useColumn({
+    data,
+    path,
+  })
 
   return (
     <div
+      onClick={handleClick}
       ref={ref}
       style={{ opacity }}
-      className="base draggable p-2 flex-1 border border-blue-600 bg-white cursor-pointer">
+      className={`base draggable p-2 flex-1 border 
+      ${
+        data.id === activeControl
+          ? 'border-dashed border-purple-600'
+          : 'border-red-600'
+      }
+       bg-white cursor-pointer`}>
       {data.type}
       {data.children?.map((component: any, index: any) => {
         const currentPath = `${path}-${index}`
@@ -48,7 +47,12 @@ const Column = ({
               className={undefined}
               path={''}
             />
-            {renderComponent(component, currentPath)}
+            <Component
+              key={component.id}
+              data={component}
+              components={components}
+              path={currentPath}
+            />
           </React.Fragment>
         )
       })}

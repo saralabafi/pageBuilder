@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState: any = {
   designList: [],
-  selectedItem: 0,
+  activeTab: 0,
+  activeControl: 0,
 }
 
 export const manageDesign = createSlice({
@@ -12,8 +13,11 @@ export const manageDesign = createSlice({
     setDesignList: (state, { payload }) => {
       return { ...state, designList: payload }
     },
-    AddSelectedItem: (state, { payload }) => {
-      return { ...state, selectedItem: payload }
+    selectActiveTab: (state, { payload }) => {
+      return { ...state, activeTab: payload }
+    },
+    selectActiveControl: (state, { payload }) => {
+      return { ...state, activeControl: payload }
     },
     setSelected: () => {
       return
@@ -24,7 +28,12 @@ export const manageDesign = createSlice({
   },
 })
 
-export const { setDesignList, AddSelectedItem, setSelected, setItems } =
-  manageDesign.actions
+export const {
+  setDesignList,
+  selectActiveTab,
+  setSelected,
+  setItems,
+  selectActiveControl,
+} = manageDesign.actions
 
 export default manageDesign.reducer

@@ -15,9 +15,11 @@ import { setDesignList } from 'redux/Design/Design'
 
 export const useDndDesigner = () => {
   const dispatch = useDispatch()
-
   const [components, setComponents] = useState<any>({})
-  const { designList } = useSelector((state: RootState) => state.pageDesign)
+  const { designList } = useSelector(
+    (state: RootState) => state.pageDesign
+  )
+
 
   const handleDropToTrashBin = useCallback(
     (dropZone: any, item: any) => {

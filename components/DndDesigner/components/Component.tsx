@@ -2,14 +2,10 @@ import React, { useRef } from 'react'
 import { useDrag } from 'react-dnd'
 import { COMPONENT } from '../constants'
 import { renders } from '../../../app/[locale]/page/layout.const'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectActiveControl } from 'redux/Design/Design'
+import { RootState } from 'redux/Store'
 
-
-const style = {
-  border: '1px dashed black',
-  padding: '0.5rem 1rem',
-  backgroundColor: 'white',
-  cursor: 'move',
-}
 const Component = ({
   data,
   components,
@@ -38,12 +34,23 @@ const Component = ({
   drag(ref)
 
   const component = components[data.id]
+  const { activeControl } = useSelector((state: RootState) => state.pageDesign)
+  const dispatch = useDispatch()
+  const handleClick = (e: React.MouseEvent) => {
+    dispatch(selectActiveControl(data.id))
+    e.stopPropagation()
+  }
 
   return (
     <div
       ref={ref}
-      style={{ ...style, opacity }}
-      className="component draggable">
+      style={{ opacity }}
+      onClick={handleClick}
+      className={` draggable border cursor-move bg-white p-2 ${
+        data.id === activeControl
+          ? 'border-dashed border-purple-700'
+          : 'border-solid border-black '
+      }`}>
       <div>{renders?.[component?.type]()}</div>
     </div>
   )

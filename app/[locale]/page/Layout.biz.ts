@@ -1,22 +1,22 @@
 import { useTranslations } from 'next-intl'
 import { useDispatch, useSelector } from 'react-redux'
-import { AddSelectedItem } from 'redux/Design/Design'
+import { selectActiveTab } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
 
 export const useLayout = () => {
   const dispatch = useDispatch()
   const t = useTranslations('layout')
-  const { selectedItem } = useSelector((state: RootState) => state.pageDesign)
+  const { activeTab } = useSelector((state: RootState) => state.pageDesign)
 
-  const isSelected = selectedItem - 1
+  const isSelected = activeTab - 1
 
   const handleSelectedItem = (index: number) => {
-    dispatch(AddSelectedItem(index + 1))
+    dispatch(selectActiveTab(index + 1))
   }
 
   const handleClose = () => {
-    dispatch(AddSelectedItem(0))
+    dispatch(selectActiveTab(0))
   }
 
-  return { handleSelectedItem, isSelected, handleClose, t, selectedItem }
+  return { handleSelectedItem, isSelected, handleClose, t, activeTab }
 }
