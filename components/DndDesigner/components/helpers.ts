@@ -1,5 +1,5 @@
 import shortid from 'shortid'
-import { ROW, COLUMN, COMPONENT } from './constants'
+import { ROW, COLUMN, COMPONENT } from '../constants'
 
 // a little function to help us with reordering the result
 export const reorder = (list: any, startIndex: any, endIndex: any) => {

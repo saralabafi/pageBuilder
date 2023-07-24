@@ -1,10 +1,8 @@
-import React, { useRef } from 'react'
-import { useDrag } from 'react-dnd'
-import { COLUMN } from './constants'
-import DropZone from './DropZone'
-import Component from './Component'
+import React from 'react'
+import Component from '../Component'
+import DropZone from '../DropZone'
+import { useColumn } from './Column.biz'
 
-const style = {}
 const Column = ({
   data,
   components,
@@ -16,24 +14,7 @@ const Column = ({
   handleDrop: any
   path: any
 }) => {
-  const ref = useRef(null)
-
-  const [{ isDragging }, drag] = useDrag({
-    type: COLUMN,
-    item: () => {
-      return {
-        id: data.id,
-        children: data.children,
-        path,
-      }
-    },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
-  })
-
-  const opacity = isDragging ? 0 : 1
-  drag(ref)
+  const {opacity,ref} = useColumn({data,path})
 
   const renderComponent = (component: any, currentPath: any) => {
     return (
@@ -49,7 +30,7 @@ const Column = ({
   return (
     <div
       ref={ref}
-      style={{ ...style, opacity }}
+      style={{ opacity }}
       className="base draggable p-2 flex-1 border border-blue-600 bg-white cursor-pointer">
       {data.type}
       {data.children?.map((component: any, index: any) => {

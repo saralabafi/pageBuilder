@@ -1,7 +1,8 @@
 import React, { useRef } from 'react'
 import { useDrag } from 'react-dnd'
-import { COMPONENT } from './constants'
-import { renders } from '../../app/[locale]/page/layout.const'
+import { COMPONENT } from '../constants'
+import { renders } from '../../../app/[locale]/page/layout.const'
+
 
 const style = {
   border: '1px dashed black',

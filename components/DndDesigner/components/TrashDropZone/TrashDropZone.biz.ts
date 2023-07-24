@@ -1,23 +1,28 @@
-import React from 'react'
-import classNames from 'classnames'
 import { useDrop } from 'react-dnd'
-import { COMPONENT, ROW, COLUMN } from './constants'
+import { COLUMN, COMPONENT, ROW } from '../../constants'
 
 const ACCEPTS = [ROW, COLUMN, COMPONENT]
 
-const TrashDropZone = ({ data, onDrop }: { data: any; onDrop: any }) => {
+export const useTrashDropZone = ({
+  data,
+  onDrop,
+}: {
+  data: any
+  onDrop: any
+}) => {
   const [{ isOver, canDrop }, drop] = useDrop({
     accept: ACCEPTS,
     drop: (item: any, monitor) => {
       onDrop(data, item)
     },
     canDrop: (item, monitor) => {
-      const layout = data.layout
+      const designList = data.designList
       const itemPath = item.path
       const splitItemPath = itemPath.split('-')
       const itemPathRowIndex = splitItemPath[1]
       const itemRowChildrenLength =
-        layout[itemPathRowIndex] && layout[itemPathRowIndex].children.length
+        designList[itemPathRowIndex] &&
+        designList[itemPathRowIndex].children.length
 
       // prevent removing a col when row has only one col
       if (
@@ -37,12 +42,5 @@ const TrashDropZone = ({ data, onDrop }: { data: any; onDrop: any }) => {
   })
 
   const isActive = isOver && canDrop
-  return (
-    <div
-      className={classNames('trashDropZone', { active: isActive })}
-      ref={drop}>
-      TRASH
-    </div>
-  )
+  return { isActive, drop }
 }
-export default TrashDropZone

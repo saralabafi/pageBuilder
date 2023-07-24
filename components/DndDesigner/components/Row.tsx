@@ -1,8 +1,8 @@
 import React, { useRef } from 'react'
 import { useDrag } from 'react-dnd'
-import { ROW } from './constants'
+import { ROW } from '../constants'
 import DropZone from './DropZone'
-import Column from './Column'
+import Column from './Column/Column'
 
 const style = {}
 const Row = ({
@@ -46,7 +46,7 @@ const Row = ({
       />
     )
   }
- 
+
   return (
     <div
       ref={ref}
