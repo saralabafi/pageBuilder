@@ -27,7 +27,7 @@ const DropZone = ({
       const dropZonePath = data.path
       const splitDropZonePath = dropZonePath.split('-')
       const itemPath = item.path
-      console.log('hesam', itemPath)
+
       // sidebar items can always be dropped anywhere
       if (!itemPath) {
         // if (data.childrenCount >= 3) {
