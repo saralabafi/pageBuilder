@@ -10,7 +10,7 @@ export const reorder = (list: any, startIndex: any, endIndex: any) => {
   return result
 }
 
-export const remove = <T>(arr: T[], index: number, newItem: T): T[] => {
+export const remove = <T>(arr: T[], index: number): T[] => {
   if (arr == null) {
     return []
   }
@@ -133,11 +133,11 @@ export const addChildToChildren = (
   }
 }
 
-export const handleMoveWithinParent = (
+export const handleMoveWithinParent: (
   layout: any,
   splitDropZonePath: any,
   splitItemPath: any
-) => {
+) => any = (layout: any, splitDropZonePath: any, splitItemPath: any) => {
   return reorderChildren(layout, splitDropZonePath, splitItemPath)
 }
 
@@ -220,11 +220,11 @@ export const handleMoveToDifferentParent = (
   return updatedLayout
 }
 
-export const handleMoveSidebarComponentIntoParent = (
+export const handleMoveSidebarComponentIntoParent: (
   layout: any,
   splitDropZonePath: any,
   item: any
-) => {
+) => any = (layout: any, splitDropZonePath: any, item: any) => {
   let newLayoutStructure
   switch (splitDropZonePath.length) {
     case 1: {
@@ -251,6 +251,9 @@ export const handleMoveSidebarComponentIntoParent = (
   return addChildToChildren(layout, splitDropZonePath, newLayoutStructure)
 }
 
-export const handleRemoveItemFromLayout = (layout: any, splitItemPath: any) => {
+export const handleRemoveItemFromLayout: (
+  layout: any,
+  splitItemPath: any
+) => any = (layout: any, splitItemPath: any) => {
   return removeChildFromChildren(layout, splitItemPath)
 }

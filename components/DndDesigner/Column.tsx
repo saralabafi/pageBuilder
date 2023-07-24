@@ -50,9 +50,8 @@ const Column = ({
     <div
       ref={ref}
       style={{ ...style, opacity }}
-      className="base draggable column">
-      {console.log(data.children)}
-      {data.id}
+      className="base draggable p-2 flex-1 border border-blue-600 bg-white cursor-pointer">
+      {data.type}
       {data.children?.map((component: any, index: any) => {
         const currentPath = `${path}-${index}`
 
@@ -60,7 +59,7 @@ const Column = ({
           <React.Fragment key={component.id}>
             <DropZone
               data={{
-                path: currentPath,
+                path: 'currentPath',
                 childrenCount: data.children.length,
               }}
               onDrop={handleDrop}

@@ -83,8 +83,9 @@ const DropZone = ({
   return (
     <div
       className={classNames(
-        'dropZone',
-        { active: isActive, isLast },
+        'flex-0 flex-shrink-0 flex-grow-0 h-10 transition duration-200 ease-in-out',
+        { 'bg-blue-500': isActive && !isLast },
+        { 'bg-gray-500': isActive && isLast },
         className
       )}
       ref={drop}

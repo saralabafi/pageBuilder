@@ -1,19 +1,18 @@
-import React, { useState, useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 
 import DropZone from './DropZone'
-import TrashDropZone from './TrashDropZone'
-import SideBarItem from './SideBarItem'
 import Row from './Row'
-import initialData from './initial-data'
+import TrashDropZone from './TrashDropZone'
 import {
-  handleMoveWithinParent,
-  handleMoveToDifferentParent,
   handleMoveSidebarComponentIntoParent,
+  handleMoveToDifferentParent,
+  handleMoveWithinParent,
   handleRemoveItemFromLayout,
 } from './helpers'
+import initialData from './initial-data'
 
-import { SIDEBAR_ITEMS, SIDEBAR_ITEM, COMPONENT, COLUMN } from './constants'
 import shortid from 'shortid'
+import { COLUMN, SIDEBAR_ITEM } from './constants'
 
 import './styles.css'
 
@@ -21,7 +20,7 @@ const DndDesigner = () => {
   const initialLayout = initialData.layout
   const initialComponents = initialData.components
   const [layout, setLayout] = useState(initialLayout)
-  const [components, setComponents] = useState(initialComponents)
+  const [components, setComponents] = useState<any>(initialComponents as any)
 
   const handleDropToTrashBin = useCallback(
     (dropZone: any, item: any) => {
@@ -33,27 +32,31 @@ const DndDesigner = () => {
 
   const handleDrop = useCallback(
     (dropZone: any, item: any) => {
-      console.log('dropZone', dropZone)
-      console.log('item', item)
-
       const splitDropZonePath = dropZone.path.split('-')
       const pathToDropZone = splitDropZonePath.slice(0, -1).join('-')
 
-      const newItem = { id: item.id, type: item.type, children: item.children }
+      const newItem = {
+        id: item.data.id,
+        type: item.data.type,
+        children: item.data.children,
+      }
+
       if (item.type === COLUMN) {
         newItem.children = item.children
       }
 
       // sidebar into
-      if (item.type === SIDEBAR_ITEM) {
+      if (item.data.type === SIDEBAR_ITEM) {
         // 1. Move sidebar item into page
         const newComponent = {
           id: shortid.generate(),
-          ...item.component,
+          ...item.data.component,
         }
+
         const newItem = {
           id: newComponent.id,
-          type: COMPONENT,
+          type: newComponent.type,
+          // type: COMPONENT,
         }
         setComponents({
           ...components,
@@ -121,20 +124,12 @@ const DndDesigner = () => {
     )
   }
 
-  // dont use index for key when mapping over items
-  // causes this issue - https://github.com/react-dnd/react-dnd/issues/342
   return (
-    <div className="body">
-      <div className="sideBar">
-        {Object.values(SIDEBAR_ITEMS).map((sideBarItem, index) => (
-          <SideBarItem key={sideBarItem.id} data={sideBarItem} />
-        ))}
-      </div>
-      <div className="pageContainer">
-        <div className="page">
-          {layout.map((row, index) => {
+    <div className="w-full">
+      <div className="flex flex-1 flex-col mb-[100px]">
+        <div className="border border-gray-400 m-5 px-5">
+          {layout?.map((row: any, index: any) => {
             const currentPath = `${index}`
-
             return (
               <React.Fragment key={row.id}>
                 <DropZone

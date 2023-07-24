@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { IFlexProps } from './Flex.types'
 
-export const Flex = (props: IFlexProps) => {
+export const Flex = forwardRef<HTMLDivElement, IFlexProps>((props, ref) => {
   const {
     direction = 'flex-row',
     justify = 'justify-center',
@@ -17,8 +17,10 @@ export const Flex = (props: IFlexProps) => {
     customCSS,
     sx,
   } = props
+  
   return (
     <div
+      ref={ref}
       style={sx}
       className={`flex   
       ${customCSS || ''}
@@ -35,4 +37,4 @@ export const Flex = (props: IFlexProps) => {
       {children}
     </div>
   )
-}
+})
