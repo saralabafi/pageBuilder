@@ -1,6 +1,6 @@
 import React from 'react'
 import Component from '../Component'
-import DropZone from '../DropZone'
+import DropZone from '../DropZone/DropZone'
 import { useColumn } from './Column.biz'
 
 const Column = ({
@@ -14,7 +14,7 @@ const Column = ({
   handleDrop: any
   path: any
 }) => {
-  const {opacity,ref} = useColumn({data,path})
+  const { opacity, ref } = useColumn({ data, path })
 
   const renderComponent = (component: any, currentPath: any) => {
     return (

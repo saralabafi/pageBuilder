@@ -1,6 +1,6 @@
 import React from 'react'
 import Column from '../Column/Column'
-import DropZone from '../DropZone'
+import DropZone from '../DropZone/DropZone'
 import { useRow } from './Row.biz'
 
 const Row = ({
@@ -31,7 +31,7 @@ const Row = ({
   return (
     <div
       ref={ref}
-      style={ {opacity} }
+      style={{ opacity }}
       className="cursor-move bg-white px-2 py-1  border border-red-600 p-0 draggable">
       {data.type}
       <div className="flex py-5">
