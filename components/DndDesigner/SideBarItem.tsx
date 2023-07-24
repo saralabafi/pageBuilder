@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDrag } from 'react-dnd'
-export const SIDEBAR_ITEM = 'sidebarItem'
+import { COMPONENT,SIDEBAR_ITEM } from './constants'
 
 const SideBarItem = ({ data }: { data: any }) => {
   // const [{ opacity }, drag] = useDrag({

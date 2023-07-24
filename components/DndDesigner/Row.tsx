@@ -46,13 +46,23 @@ const Row = ({
       />
     )
   }
-
+  const renderRow = (row: any, currentPath: any) => {
+    return (
+      <Row
+        key={row.id}
+        data={row}
+        handleDrop={handleDrop}
+        components={components}
+        path={currentPath}
+      />
+    )
+  }
   return (
     <div ref={ref} style={{ ...style, opacity }} className="base draggable row">
       {console.log(data.children)}
       {data.id}
       <div className="columns">
-        {data.children.map((column: any, index: any) => {
+        {data.children?.map((column: any, index: any) => {
           const currentPath = `${path}-${index}`
 
           return (
@@ -60,21 +70,22 @@ const Row = ({
               <DropZone
                 data={{
                   path: currentPath,
-                  childrenCount: data.children.length,
+                  childrenCount: data.children?.length,
                 }}
                 onDrop={handleDrop}
                 className="horizontalDrag"
                 isLast={undefined}
                 path={''}
               />
-              {renderColumn(column, currentPath)}
+              {/* {renderColumn(column, currentPath)} */}
+              {renderRow(column, currentPath)}
             </React.Fragment>
           )
         })}
         <DropZone
           data={{
-            path: `${path}-${data.children.length}`,
-            childrenCount: data.children.length,
+            path: `${path}-${data.children?.length}`,
+            childrenCount: data.children?.length,
           }}
           onDrop={handleDrop}
           className="horizontalDrag"

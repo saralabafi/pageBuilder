@@ -27,7 +27,7 @@ const DropZone = ({
       const dropZonePath = data.path
       const splitDropZonePath = dropZonePath.split('-')
       const itemPath = item.path
-
+      console.log('hesam', itemPath)
       // sidebar items can always be dropped anywhere
       if (!itemPath) {
         // if (data.childrenCount >= 3) {
@@ -47,15 +47,15 @@ const DropZone = ({
         splitDropZonePath.length === 2 &&
         data.childrenCount >= 3
       ) {
-        return false
+        // return false
       }
 
       // Invalid (Can't drop a parent element (row) into a child (column))
       const parentDropInChild = splitItemPath.length < splitDropZonePath.length
-      if (parentDropInChild) return false
+      // if (parentDropInChild) return false
 
       // Current item can't possible move to it's own location
-      if (itemPath === dropZonePath) return false
+      // if (itemPath === dropZonePath) return false
 
       // Current area
       if (splitItemPath.length === splitDropZonePath.length) {
@@ -67,7 +67,7 @@ const DropZone = ({
 
         if (pathToItem === pathToDropZone) {
           const nextDropZoneIndex = currentItemIndex + 1
-          if (nextDropZoneIndex === currentDropZoneIndex) return false
+          // if (nextDropZoneIndex === currentDropZoneIndex) return false
         }
       }
 
