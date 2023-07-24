@@ -142,7 +142,7 @@ export const addChildToChildren = (
   updatedChildren[curIndex] = {
     ...nodeChildren,
     children: addChildToChildren(
-      nodeChildren.children,
+      nodeChildren?.children,
       splitItemChildrenPath,
       item
     ),

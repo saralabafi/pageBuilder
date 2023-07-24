@@ -59,10 +59,10 @@ const Row = ({
   }
   return (
     <div ref={ref} style={{ ...style, opacity }} className="base draggable row">
-      {console.log(data.children)}
+      {console.log('hesam2', data.children)}
       {data.id}
       <div className="columns">
-        {data.children?.map((column: any, index: any) => {
+        {data?.children?.map((column: any, index: any) => {
           const currentPath = `${path}-${index}`
 
           return (
@@ -77,6 +77,7 @@ const Row = ({
                 isLast={undefined}
                 path={''}
               />
+
               {/* {renderColumn(column, currentPath)} */}
               {renderRow(column, currentPath)}
             </React.Fragment>

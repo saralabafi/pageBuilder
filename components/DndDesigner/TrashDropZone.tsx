@@ -14,7 +14,7 @@ const TrashDropZone = ({ data, onDrop }: { data: any; onDrop: any }) => {
     canDrop: (item, monitor) => {
       const layout = data.layout
       const itemPath = item.path
-      const splitItemPath = itemPath.split('-')
+      const splitItemPath = itemPath?.split('-')
       const itemPathRowIndex = splitItemPath[1]
       const itemRowChildrenLength =
         layout[itemPathRowIndex] && layout[itemPathRowIndex].children.length

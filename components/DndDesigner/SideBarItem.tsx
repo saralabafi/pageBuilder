@@ -1,8 +1,9 @@
 import React from 'react'
 import { useDrag } from 'react-dnd'
-import { COMPONENT,SIDEBAR_ITEM } from './constants'
+import { SIDEBAR_ITEM } from './constants'
 
 const SideBarItem = ({ data }: { data: any }) => {
+  console.log('hesam', data)
   // const [{ opacity }, drag] = useDrag({
   //   item: data,
   //   collect: (monitor) => ({
@@ -13,7 +14,10 @@ const SideBarItem = ({ data }: { data: any }) => {
   const [{ opacity }, drag] = useDrag({
     type: SIDEBAR_ITEM,
     item: () => {
-      return { data: data }
+      return {
+        id: data.id,
+        type: data.type,
+      }
     },
     collect: (monitor: any) => ({
       opacity: monitor.isDragging(),
