@@ -23,12 +23,8 @@ const Row = ({
       ref={ref}
       style={{ opacity }}
       onClick={handleClick}
-      className={`cursor-move bg-white px-2 py-1  border p-0 draggable
-      ${
-        data.id === activeControl
-          ? 'border-dashed border-purple-600'
-          : 'border-red-600'
-      }
+      className={`cursor-move bg-white px-2 py-1  border p-0 draggable hover:border-blue-300
+      ${data.id === activeControl ? ' border-blue-300' : ''}
       `}>
       {data.type}
       <div className="flex py-5">
