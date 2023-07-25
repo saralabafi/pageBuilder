@@ -1,23 +1,9 @@
-import React from 'react'
-import classNames from 'classnames'
 import { useDrop } from 'react-dnd'
-import { COMPONENT, SIDEBAR_ITEM, ROW, COLUMN } from './constants'
+import { COLUMN, COMPONENT, ROW, SIDEBAR_ITEM } from '../../constants'
 
 const ACCEPTS = [SIDEBAR_ITEM, COMPONENT, ROW, COLUMN]
 
-const DropZone = ({
-  data,
-  onDrop,
-  isLast,
-  className,
-  path,
-}: {
-  data: any
-  onDrop: any
-  isLast: any
-  className: any
-  path: string
-}) => {
+export const useDropZone = ({ data, onDrop }: { data: any; onDrop: any }) => {
   const [{ isOver, canDrop }, drop] = useDrop({
     accept: ACCEPTS,
     drop: (item: any, monitor) => {
@@ -80,15 +66,5 @@ const DropZone = ({
   })
 
   const isActive = isOver && canDrop
-  return (
-    <div
-      className={classNames(
-        'dropZone',
-        { active: isActive, isLast },
-        className
-      )}
-      ref={drop}
-    />
-  )
+  return { isActive, drop }
 }
-export default DropZone

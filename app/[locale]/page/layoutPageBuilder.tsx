@@ -7,9 +7,11 @@ import { ITextProps } from 'components/Text/Text.types'
 import Cancel from 'images/assets/cancel.svg'
 import { useLayout } from './Layout.biz'
 import { control_items } from './layout.const'
+import { SIDEBAR_ITEM } from 'components/DndDesigner/constants'
+import { useDrag } from 'react-dnd'
 
 function pageLayout(props: ITextProps) {
-  const { handleClose, t, selectedItem } = useLayout()
+  const { handleClose, t, activeTab } = useLayout()
 
   return (
     <div>
@@ -19,7 +21,7 @@ function pageLayout(props: ITextProps) {
         <div
           className={`bg-neutral-100 w-[360px] h-screen border-e border-neutral-200 
              transition-transform duration-1000 ease-in-out ${
-               selectedItem ? 'translate-x-0' : 'translate-x-[120%]'
+               activeTab ? 'translate-x-0' : 'hidden translate-x-[120%]'
              }
             `}>
           <Flex
@@ -37,14 +39,25 @@ function pageLayout(props: ITextProps) {
               {t('generalBlocks')}
             </Text>
             {control_items.map((control, index) => {
+              const [{ opacity }, drag] = useDrag({
+                type: SIDEBAR_ITEM,
+                item: () => {
+                  return { data: control }
+                },
+                collect: (monitor: any) => ({
+                  opacity: monitor.isDragging(),
+                }),
+              })
               return (
                 <Flex
                   key={index}
                   gap="gap-3"
                   margin="mb-2"
                   justify="justify-start"
+                  ref={drag}
+                  sx={{ opacity }}
                   backgroundColor="bg-neutral-50"
-                  customCSS="border border-neutral-200 rounded py-2 px-3">
+                  customCSS="border border-neutral-200 rounded py-2 px-3 cursor-pointer">
                   {control.icon}
                   <Text color="text-neutral-700">{t(control.title)}</Text>
                 </Flex>
@@ -52,8 +65,8 @@ function pageLayout(props: ITextProps) {
             })}
           </div>
         </div>
+        {props.children}
       </aside>
-      {props.children}
     </div>
   )
 }

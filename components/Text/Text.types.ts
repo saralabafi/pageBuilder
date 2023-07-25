@@ -7,7 +7,7 @@ export interface ITextProps {
   margin?: marginType
   padding?: paddingType
   lineHeight?: ''
-  children?: string
+  children?: React.ReactNode
   color?: string
 }
 

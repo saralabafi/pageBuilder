@@ -13,7 +13,7 @@ export default function Home() {
       </div>
       <div>
         <DndProvider backend={HTML5Backend}>
-          <DndDesigner></DndDesigner>
+          <DndDesigner />
         </DndProvider>
       </div>
     </div>

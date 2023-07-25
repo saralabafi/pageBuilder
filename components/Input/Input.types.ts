@@ -1,7 +1,7 @@
 import { Properties } from "csstype"
 
 export interface IInputProps {
-    id: string
+    id?: string
     autoComplete?:string
     autoFocus?: boolean
     backgroundColor?: string

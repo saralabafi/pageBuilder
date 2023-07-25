@@ -1,8 +1,8 @@
 import shortid from 'shortid'
-import { ROW, COLUMN, COMPONENT } from './constants'
+import { ROW, COLUMN, COMPONENT } from '../constants'
 
 // a little function to help us with reordering the result
-export const reorder = <T extends unknown>(
+export const reorder = <T>(
   list: T[],
   startIndex: number,
   endIndex: number
@@ -14,12 +14,17 @@ export const reorder = <T extends unknown>(
   return result
 }
 
-export const remove = <T extends unknown>(arr: T[], index: number): T[] => [
-  // part of the array before the specified index
-  ...arr?.slice(0, index),
-  // part of the array after the specified index
-  ...arr?.slice(index + 1),
-]
+export const remove = <T>(arr: T[], index: number): T[] => {
+  if (arr == null) {
+    return []
+  }
+  return [
+    // part of the array before the specified index
+    ...arr.slice(0, index),
+    // part of the array after the specified index
+    ...arr.slice(index + 1),
+  ]
+}
 
 // export const insert = <T extends unknown>(
 //   arr: T[],
@@ -34,7 +39,7 @@ export const remove = <T extends unknown>(arr: T[], index: number): T[] => [
 //   ...arr?.slice(index),
 // ]
 
-export const insert = <T extends unknown>(
+export const insert = <T>(
   arr: T[],
   index: number,
   newItem: T
@@ -238,11 +243,11 @@ export const handleMoveToDifferentParent = (
   return updatedLayout
 }
 
-export const handleMoveSidebarComponentIntoParent = (
-  layout: any[],
-  splitDropZonePath: string[],
+export const handleMoveSidebarComponentIntoParent: (
+  layout: any,
+  splitDropZonePath: any,
   item: any
-): any[] => {
+) => any = (layout: any, splitDropZonePath: any, item: any) => {
   let newLayoutStructure
   switch (splitDropZonePath.length) {
     case 1: {
@@ -269,9 +274,9 @@ export const handleMoveSidebarComponentIntoParent = (
   return addChildToChildren(layout, splitDropZonePath, newLayoutStructure)
 }
 
-export const handleRemoveItemFromLayout = (
-  layout: any[],
-  splitItemPath: string[]
-): any[] => {
+export const handleRemoveItemFromLayout: (
+  layout: any,
+  splitItemPath: any
+) => any = (layout: any, splitItemPath: any) => {
   return removeChildFromChildren(layout, splitItemPath)
 }
