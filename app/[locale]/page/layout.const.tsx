@@ -8,7 +8,6 @@ import Setting from 'images/page/setting.svg'
 import PlusCircle from 'images/page/plusCircle.svg'
 import shortid from 'shortid'
 import { SIDEBAR_ITEM } from 'components/DndDesigner/constants'
-import { Input } from 'components/Input/Input'
 import Button from 'components/Button/Button'
 
 export const sidebar_items = [

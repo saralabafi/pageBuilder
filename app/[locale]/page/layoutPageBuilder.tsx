@@ -9,6 +9,7 @@ import { useLayout } from './Layout.biz'
 import { control_items } from './layout.const'
 import { SIDEBAR_ITEM } from 'components/DndDesigner/constants'
 import { useDrag } from 'react-dnd'
+import React from 'react'
 
 function pageLayout(props: ITextProps) {
   const { handleClose, t, activeTab } = useLayout()
@@ -58,7 +59,9 @@ function pageLayout(props: ITextProps) {
                   sx={{ opacity }}
                   backgroundColor="bg-neutral-50"
                   customCSS="border border-neutral-200 rounded py-2 px-3 cursor-pointer">
-                  {control.icon}
+                  {React.cloneElement(control.icon, {
+                    className: 'text-neutral-400',
+                  })}
                   <Text color="text-neutral-700">{t(control.title)}</Text>
                 </Flex>
               )

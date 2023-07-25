@@ -1,12 +1,11 @@
 import React, { useRef } from 'react'
 import { useDrag } from 'react-dnd'
-import { COMPONENT } from '../constants'
-import { renders } from '../../../app/[locale]/page/layout.const'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectActiveControl } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
+import { COMPONENT } from '../../constants'
 
-const Component = ({
+export const useComponent = ({
   data,
   components,
   path,
@@ -41,18 +40,5 @@ const Component = ({
     e.stopPropagation()
   }
 
-  return (
-    <div
-      ref={ref}
-      style={{ opacity }}
-      onClick={handleClick}
-      className={` draggable border cursor-move bg-white p-2 ${
-        data.id === activeControl
-          ? 'border-dashed border-purple-700'
-          : 'border-solid border-black '
-      }`}>
-      <div>{renders?.[component?.type]()}</div>
-    </div>
-  )
+  return { opacity, component, activeControl, handleClick, ref }
 }
-export default Component
