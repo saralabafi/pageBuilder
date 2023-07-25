@@ -3,6 +3,7 @@ import { useDrag } from 'react-dnd'
 import { ROW } from './constants'
 import DropZone from './DropZone'
 import Column from './Column'
+import Component from './Component'
 
 const style = {}
 const Row = ({
@@ -49,7 +50,7 @@ const Row = ({
   const renderRow = (row: any, currentPath: any) => {
     return (
       <Row
-        key={row.id}
+        key={row?.id}
         data={row}
         handleDrop={handleDrop}
         components={components}
@@ -57,10 +58,21 @@ const Row = ({
       />
     )
   }
+
+  const renderComponent = (component: any, currentPath: any) => {
+    return (
+      <Component
+        key={component.id}
+        data={component}
+        components={components}
+        path={currentPath}
+      />
+    )
+  }
   return (
     <div ref={ref} style={{ ...style, opacity }} className="base draggable row">
-      {console.log('hesam2', data.children)}
-      {data.id}
+      {/* {console.log('hesam2', data.children)} */}
+      {data?.id}
       <div className="columns">
         {data?.children?.map((column: any, index: any) => {
           const currentPath = `${path}-${index}`
@@ -70,7 +82,7 @@ const Row = ({
               <DropZone
                 data={{
                   path: currentPath,
-                  childrenCount: data.children?.length,
+                  childrenCount: data?.children?.length,
                 }}
                 onDrop={handleDrop}
                 className="horizontalDrag"
@@ -78,15 +90,31 @@ const Row = ({
                 path={''}
               />
 
-              {/* {renderColumn(column, currentPath)} */}
-              {renderRow(column, currentPath)}
+              {renderColumn(column, currentPath)}
+              {/* {renderRow(column, currentPath)} */}
+
+              {/* {data?.id?.includes('row') ? (
+                <>
+                  {data.map((row: any, index: any) => {
+                    const currentPath = `${index}`
+
+                    return (
+                      <React.Fragment key={row.id}>
+                        {renderRow(row, currentPath)}
+                      </React.Fragment>
+                    )
+                  })}
+                </>
+              ) : (
+                <>{renderColumn(column, currentPath)}</>
+              )} */}
             </React.Fragment>
           )
         })}
         <DropZone
           data={{
-            path: `${path}-${data.children?.length}`,
-            childrenCount: data.children?.length,
+            path: `${path}-${data?.children?.length}`,
+            childrenCount: data?.children?.length,
           }}
           onDrop={handleDrop}
           className="horizontalDrag"
