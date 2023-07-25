@@ -19,6 +19,12 @@
     "column": "column",
     "logo": "logo",
     "navigationMenu": "navigation menu",
-    "button": "button"
+    "button": "button",
+    "add": "Add New Item",
+    "setting": "Setting",
+    "save": "Save",
+    "publish": "Publish",
+    "preview": "Preview",
+    "generalBlocks": "General Blocks"
   }
 }

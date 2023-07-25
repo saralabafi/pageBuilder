@@ -4,6 +4,7 @@ const initialState: any = {
   designList: [],
   activeTab: 0,
   activeControl: 0,
+  activeMenu: 0,
 }
 
 export const manageDesign = createSlice({
@@ -22,8 +23,8 @@ export const manageDesign = createSlice({
     setSelected: () => {
       return
     },
-    setItems: () => {
-      return
+    selectActiveMenu: (state, { payload }) => {
+      return { ...state, activeMenu: payload }
     },
   },
 })
@@ -32,8 +33,9 @@ export const {
   setDesignList,
   selectActiveTab,
   setSelected,
-  setItems,
+
   selectActiveControl,
+  selectActiveMenu,
 } = manageDesign.actions
 
 export default manageDesign.reducer

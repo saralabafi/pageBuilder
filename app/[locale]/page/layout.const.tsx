@@ -11,11 +11,12 @@ import { SIDEBAR_ITEM } from 'components/DndDesigner/constants'
 import Button from 'components/Button/Button'
 
 export const sidebar_items = [
-  { title: 'addItem', icon: <PlusCircle /> },
-  { title: 'navigation', icon: <Folder /> },
-  { title: 'formats', icon: <Formats /> },
-  { title: 'settings', icon: <Setting /> },
+  { title: 'addItem', icon: <PlusCircle />, type: 'sidebar' },
+  { title: 'navigation', icon: <Folder />, type: 'sidebar' },
+  { title: 'formats', icon: <Formats />, type: 'sidebar' },
+  { title: 'settings', icon: <Setting />, type: 'setting' },
 ]
+
 
 export const control_items = [
   {

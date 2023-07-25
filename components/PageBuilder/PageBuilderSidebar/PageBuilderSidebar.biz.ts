@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectActiveTab } from 'redux/Design/Design'
+import { selectActiveMenu, selectActiveTab } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
 
 export const usePageBuilderSidebar = () => {
@@ -10,8 +10,10 @@ export const usePageBuilderSidebar = () => {
 
   const isSelected = activeTab - 1
 
-  const handleSelectedItem = (index: number) => {
+  const handleSelectedItem = (item: any, index: number) => {
     dispatch(selectActiveTab(index + 1))
+    dispatch(selectActiveMenu(item.type))
   }
+
   return { handleSelectedItem, isSelected, t }
 }

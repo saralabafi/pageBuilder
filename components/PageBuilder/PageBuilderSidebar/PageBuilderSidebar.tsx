@@ -11,7 +11,7 @@ export const PageBuilderSidebar = () => {
         return (
           <li
             key={index}
-            onClick={() => handleSelectedItem(index)}
+            onClick={() => handleSelectedItem(item, index)}
             className={`flex flex-col items-center w-full border-b 
                 ${isSelected == index && 'bg-blue-600'}
                  px-2 py-3 cursor-pointer`}>
