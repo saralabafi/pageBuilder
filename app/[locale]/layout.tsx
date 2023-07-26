@@ -10,7 +10,7 @@ export default async function RootLayout({
   params: any
 }) {
   return (
-    <html lang={params?.locale}>
+    <html lang={params?.locale} dir={params?.locale === 'fa' ? 'rtl' : 'ltr'}>
       <body>
         <Providers params={params}>{children}</Providers>
       </body>
