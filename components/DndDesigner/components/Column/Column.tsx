@@ -35,35 +35,28 @@ const Column = ({
 
           return (
             <React.Fragment key={component.id}>
-              <DropZone
-                data={{
-                  path: 'currentPath',
-                  childrenCount: data.children.length,
-                }}
-                onDrop={handleDrop}
-                isLast={undefined}
-                className={undefined}
-                path={''}
-              />
-              <Component
-                key={component.id}
-                data={component}
-                components={components}
-                path={currentPath}
-              />
+              {component ? (
+                <Component
+                  key={component.id}
+                  data={component}
+                  components={components}
+                  path={currentPath}
+                />
+              ) : (
+                <DropZone
+                  data={{
+                    path: 'currentPath',
+                    childrenCount: data.children.length,
+                  }}
+                  onDrop={handleDrop}
+                  isLast={undefined}
+                  className={undefined}
+                  path={''}
+                />
+              )}
             </React.Fragment>
           )
         })}
-        <DropZone
-          data={{
-            path: `${path}-${data.children?.length}`,
-            childrenCount: data.children?.length,
-          }}
-          onDrop={handleDrop}
-          isLast
-          className={undefined}
-          path={''}
-        />
       </div>
     </SelectedWrapper>
   )

@@ -26,16 +26,22 @@ export const manageDesign = createSlice({
     selectActiveMenu: (state, { payload }) => {
       return { ...state, activeMenu: payload }
     },
+    setConfigOnActiveTab: (state, { payload }) => {
+      const index = state.designList.findIndex(
+        (i: any) => i.id === state.activeControl
+      )
+      state.designList[index].style = payload
+    },
   },
 })
 
 export const {
+  setSelected,
   setDesignList,
   selectActiveTab,
-  setSelected,
-
-  selectActiveControl,
   selectActiveMenu,
+  selectActiveControl,
+  setConfigOnActiveTab,
 } = manageDesign.actions
 
 export default manageDesign.reducer

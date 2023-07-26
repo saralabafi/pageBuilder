@@ -7,7 +7,7 @@ import HiddenIcon from 'images/page/hidden.svg'
 export const SelectedWrapper = ({ hidden, children }: any) => {
   if (hidden) return children
   return (
-    <div className="border border-blue-300 justify-center items-center inline-flex relative p-[2px]">
+    <div className="border border-blue-300 justify-center items-center inline-flex relative p-[2px] w-full">
       <div className="h-8 py-2 bg-blue-300 rounded-tr rounded-br justify-center items-center gap-2 flex absolute right-[-16px]">
         <HandleResizeIcon className="text-blue-900" />
       </div>

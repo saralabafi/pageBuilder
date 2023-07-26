@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectActiveMenu, selectActiveTab } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
 import { ControllersMenu } from './components/ControllersMenu'
-import { SettingsMenu } from './components/SettingsMenu'
+import { SettingsMenu } from './components/SettingsMenu/SettingsMenu'
 
 export const usePageBuilderSideMenu = () => {
   const dispatch = useDispatch()
