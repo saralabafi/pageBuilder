@@ -28,35 +28,31 @@ const Column = ({
         style={{ opacity }}
         className={`base draggable flex-1 border border-dashed border-slate-400
       ${data.id === activeControl ? 'border-solid border-blue-300' : ''}
-       bg-white cursor-pointer`}>
-        {data.type}
-        {data.children?.map((component: any, index: any) => {
-          const currentPath = `${path}-${index}`
-
-          return (
-            <React.Fragment key={component.id}>
-              {component ? (
-                <Component
-                  key={component.id}
-                  data={component}
-                  components={components}
-                  path={currentPath}
-                />
-              ) : (
-                <DropZone
-                  data={{
-                    path: 'currentPath',
-                    childrenCount: data.children.length,
-                  }}
-                  onDrop={handleDrop}
-                  isLast={undefined}
-                  className={undefined}
-                  path={''}
-                />
-              )}
-            </React.Fragment>
-          )
-        })}
+       bg-white cursor-pointer h-auto p-1`}>
+        {data?.children ? (
+          data.children?.map((component: any, index: any) => {
+            const currentPath = `${path}-${index}`
+            return (
+              <Component
+                key={component.id}
+                data={component}
+                components={components}
+                path={currentPath}
+              />
+            )
+          })
+        ) : (
+          <DropZone
+            data={{
+              path: 'currentPath',
+              childrenCount: 3,
+            }}
+            onDrop={handleDrop}
+            isLast={undefined}
+            className={undefined}
+            path={''}
+          />
+        )}
       </div>
     </SelectedWrapper>
   )

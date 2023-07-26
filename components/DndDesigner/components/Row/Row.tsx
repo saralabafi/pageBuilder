@@ -3,6 +3,7 @@ import { calculateColumn } from '../../../../utils/help/calculate'
 import Column from '../Column/Column'
 import { SelectedWrapper } from '../SelectedWrapper/SelectedWrapper'
 import { useRow } from './Row.biz'
+import shortid from 'shortid'
 
 const Row = ({
   data,
@@ -23,12 +24,21 @@ const Row = ({
         ref={ref}
         style={{ opacity }}
         onClick={handleClick}
-        className={`cursor-move bg-white p-5 draggable w-full
+        className={`cursor-move draggable w-full
       `}>
-        <div className={`grid py-5 ${calculateColumn(data?.style?.column)}`}>
-          {Array.from({ length: data?.style?.column || 3 })
+        
+        <div className={`grid p-2 ${calculateColumn(data?.style?.column)}`}>
+          {Array(Number(data?.style?.column) || 3)
             .fill(null)
-            .map((_, index) => data?.children?.[index] ?? {})
+            .map((_, index) => {
+              return (
+                data?.children?.[index] ?? {
+                  id: shortid.generate(),
+                  children: undefined,
+                  type: 'empty',
+                }
+              )
+            })
             .map((column: any, index: any) => {
               const currentPath = `${path}-${index}`
               return (

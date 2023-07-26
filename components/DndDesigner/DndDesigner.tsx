@@ -23,7 +23,7 @@ const DndDesigner = () => {
   return (
     <div className="w-full">
       <div className="flex flex-1 flex-col mb-[100px]">
-        <div className="border border-gray-400 m-5 px-5">
+        <div className="border border-gray-400 m-3 px-3">
           {designList?.map((row: any, index: any) => {
             const currentPath = `${index}`
             return (
