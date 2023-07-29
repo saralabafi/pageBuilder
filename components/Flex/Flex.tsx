@@ -4,9 +4,9 @@ import { IFlexProps } from './Flex.types'
 export const Flex = forwardRef<HTMLDivElement, IFlexProps>((props, ref) => {
   const {
     direction = 'flex-row',
-    justify = 'justify-center',
+    justify,
     align = 'items-center',
-    wrap = 'flex-nowrap',
+    wrap,
     gap,
     width,
     height,
@@ -14,6 +14,8 @@ export const Flex = forwardRef<HTMLDivElement, IFlexProps>((props, ref) => {
     padding,
     margin,
     children,
+    borderSize,
+    borderColor,
     customCSS,
     sx,
   } = props
@@ -24,10 +26,12 @@ export const Flex = forwardRef<HTMLDivElement, IFlexProps>((props, ref) => {
       style={sx}
       className={`flex   
       ${customCSS || ''}
+      ${borderSize || ''}
+      ${borderColor || ''}
       ${direction}
-      ${justify}
+      ${justify || ''}
       ${align}
-      ${wrap}
+      ${wrap || ''}
       ${gap || ''}
       ${width || ''}
       ${height || ''}

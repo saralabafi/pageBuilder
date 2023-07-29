@@ -1,13 +1,15 @@
 import { Properties } from 'csstype'
 import { ReactNode } from 'react'
 import { gapType } from 'types/gap.type'
+import { widthType } from 'types/width.type'
 
 export interface IGridProps {
   columns?: gridColumnsTypes
   row?: gridRowTypes
   gap?: gapType
   flow?: flowType
-  children: ReactNode
+  width?: widthType
+  children?: ReactNode
   customCSS?: string
   sx?: Properties<string | number, string & {}>
 }
