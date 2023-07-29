@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setConfigOnActiveTab } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
 
-export const useSettingsMenu = () => {
+export const useGridSettingsMenu = () => {
   const t = useTranslations('layout')
   const columns = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   const dispatch = useDispatch()

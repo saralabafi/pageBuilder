@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectActiveMenu, selectActiveTab } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
 import { ControllersMenu } from './components/ControllersMenu'
-import { SettingsMenu } from './components/SettingsMenu/SettingsMenu'
+import { GridSettingsMenu } from './components/GridSettingsMenu/GridSettingsMenu'
 
 export const usePageBuilderSideMenu = () => {
   const dispatch = useDispatch()
@@ -20,7 +20,7 @@ export const usePageBuilderSideMenu = () => {
   const handleRenderTabMenu = () => {
     const availableMenu: any = {
       sidebar: { title: t('add'), component: <ControllersMenu /> },
-      setting: { title: t('settings'), component: <SettingsMenu /> },
+      grid: { title: t('settings'), component: <GridSettingsMenu /> },
     }
     return availableMenu[activeMenu]
   }

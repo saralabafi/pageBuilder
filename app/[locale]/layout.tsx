@@ -2,17 +2,16 @@
 import './globals.css'
 import Providers from '../../Redux/Providers'
 
-export default async function RootLayout({
-  children,
-  params,
-}: {
+export default async function RootLayout(props: {
   children: React.ReactNode
   params: any
 }) {
   return (
-    <html lang={params?.locale} dir={params?.locale === 'fa' ? 'rtl' : 'ltr'}>
+    <html
+      lang={props?.params?.locale}
+      dir={props?.params?.locale === 'fa' ? 'rtl' : 'ltr'}>
       <body>
-        <Providers params={params}>{children}</Providers>
+        <Providers params={props?.params}>{props?.children}</Providers>
       </body>
     </html>
   )

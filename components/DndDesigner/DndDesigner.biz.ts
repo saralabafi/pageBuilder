@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import {
   handleMoveSidebarComponentIntoParent,
@@ -11,15 +11,19 @@ import shortid from 'shortid'
 import { COLUMN, SIDEBAR_ITEM } from './constants'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from 'redux/Store'
-import { setDesignList } from 'redux/Design/Design'
+import {
+  selectActiveControl,
+  selectActiveMenu,
+  selectActiveTab,
+  setDesignList,
+} from 'redux/Design/Design'
 
 export const useDndDesigner = () => {
   const dispatch = useDispatch()
   const [components, setComponents] = useState<any>({})
-  const { designList } = useSelector(
+  const { designList, activeControl } = useSelector(
     (state: RootState) => state.pageDesign
   )
-
 
   const handleDropToTrashBin = useCallback(
     (dropZone: any, item: any) => {
@@ -42,6 +46,9 @@ export const useDndDesigner = () => {
         children: item.data.children,
       }
 
+      dispatch(selectActiveTab('setting'))
+      dispatch(selectActiveMenu(item.data.component.type))
+
       if (item.type === COLUMN) {
         newItem.children = item.children
       }
@@ -63,12 +70,14 @@ export const useDndDesigner = () => {
           ...components,
           [newComponent.id]: newComponent,
         })
+
         dispatch(
           setDesignList(
             handleMoveSidebarComponentIntoParent(
               designList,
               splitDropZonePath,
-              newItem
+              newItem,
+              dispatch
             )
           )
         )
@@ -123,8 +132,22 @@ export const useDndDesigner = () => {
         )
       )
     },
-    [designList, components]
+    [designList, components, activeControl]
   )
 
-  return { handleDrop, handleDropToTrashBin, designList, components }
+  const handleClick = (e: React.MouseEvent, data: any) => {
+  
+    dispatch(selectActiveControl(data.id))
+    dispatch(selectActiveMenu(data.type))
+    e.stopPropagation()
+  }
+
+  return {
+    handleDrop,
+    handleDropToTrashBin,
+    activeControl,
+    designList,
+    components,
+    handleClick,
+  }
 }

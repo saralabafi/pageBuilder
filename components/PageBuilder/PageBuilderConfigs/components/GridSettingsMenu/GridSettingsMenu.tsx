@@ -5,11 +5,11 @@ import { Select } from 'components/Select/Select'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from 'redux/Store'
 import { setConfigOnActiveTab } from 'redux/Design/Design'
-import { useSettingsMenu } from './SettingsMenu.biz'
+import { useGridSettingsMenu } from './GridSettingsMenu.biz'
 
-export const SettingsMenu = () => {
+export const GridSettingsMenu = () => {
   const { columns, handleOnChangeColumnSize, selectedControl, t } =
-    useSettingsMenu()
+    useGridSettingsMenu()
   return (
     <div className="p-3 gap-3">
       <Text margin="mb-4" fontSize={12} color="text-neutral-700">

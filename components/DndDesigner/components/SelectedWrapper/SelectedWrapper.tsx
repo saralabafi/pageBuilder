@@ -1,8 +1,8 @@
 import React from 'react'
-import HandleResizeIcon from 'images/page/handleResize.svg'
 import TrashIcon from 'images/page/trash.svg'
-import DuplicateIcon from 'images/page/duplicate.svg'
 import HiddenIcon from 'images/page/hidden.svg'
+import DuplicateIcon from 'images/page/duplicate.svg'
+import HandleResizeIcon from 'images/page/handleResize.svg'
 
 export const SelectedWrapper = ({ hidden, children }: any) => {
   if (hidden) return children
