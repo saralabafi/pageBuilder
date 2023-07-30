@@ -1,10 +1,8 @@
-import React from 'react'
-import DropZone from './components/DropZone/DropZone'
-import Row from './components/Row/Row'
-import TrashDropZone from './components/TrashDropZone/TrashDropZone'
-import { useDndDesigner } from './DndDesigner.biz'
 import { renders } from '../../app/[locale]/page/layout.const'
+import { useDndDesigner } from './DndDesigner.biz'
+import DropZone from './components/DropZone/DropZone'
 import { SelectedWrapper } from './components/SelectedWrapper/SelectedWrapper'
+import TrashDropZone from './components/TrashDropZone/TrashDropZone'
 
 const DndDesigner = () => {
   const {
@@ -12,7 +10,7 @@ const DndDesigner = () => {
     handleDropToTrashBin,
     designList,
     activeControl,
-    components,
+
     handleClick,
   } = useDndDesigner()
 
@@ -22,7 +20,7 @@ const DndDesigner = () => {
         <div className="border border-gray-400 m-3 p-1">
           {designList?.map((control: any) => {
             return (
-              <>
+              <div key={control.id}>
                 <DropZone
                   data={{
                     path: '',
@@ -40,7 +38,7 @@ const DndDesigner = () => {
                     {renders[control.type]?.(control?.style)}
                   </div>
                 </SelectedWrapper>
-              </>
+              </div>
             )
           })}
           <DropZone
