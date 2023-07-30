@@ -1,12 +1,12 @@
 import Text from 'components/Text/Text'
 import React from 'react'
-import { control_items } from '../../../../app/[locale]/page/layout.const'
+import { control_items } from '../../../../../app/[locale]/page/layout.const'
 import { SIDEBAR_ITEM } from 'components/DndDesigner/constants'
 import { useDrag } from 'react-dnd'
 import { Flex } from 'components/Flex/Flex'
 import { useTranslations } from 'next-intl'
 
-export const ControllersMenu = () => {
+export const ControlMenu = () => {
   const t = useTranslations('layout')
   return (
     <div className="p-3 gap-3">

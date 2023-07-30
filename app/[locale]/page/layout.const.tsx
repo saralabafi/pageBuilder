@@ -11,7 +11,6 @@ import PlusCircle from 'images/page/plusCircle.svg'
 import HandleResizeIcon from 'images/page/handleResize.svg'
 import { SIDEBAR_ITEM } from 'components/DndDesigner/constants'
 import { calculateColumn } from '../../../utils/help/calculate'
-import { Fragment } from 'react'
 import { Flex } from 'components/Flex/Flex'
 
 export const sidebar_items = [

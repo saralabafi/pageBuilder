@@ -2,8 +2,9 @@ import { useTranslations } from 'next-intl'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectActiveMenu, selectActiveTab } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
-import { ControllersMenu } from './components/ControllersMenu'
 import { GridSettingsMenu } from './components/GridSettingsMenu/GridSettingsMenu'
+import { ControlMenu } from './components/ControlMenu/ControlMenu'
+import { NavigateMenu } from './components/NavigateMenu/NavigateMenu'
 
 export const usePageBuilderSideMenu = () => {
   const dispatch = useDispatch()
@@ -19,8 +20,9 @@ export const usePageBuilderSideMenu = () => {
 
   const handleRenderTabMenu = () => {
     const availableMenu: any = {
-      sidebar: { title: t('add'), component: <ControllersMenu /> },
+      sidebar: { title: t('add'), component: <ControlMenu /> },
       grid: { title: t('settings'), component: <GridSettingsMenu /> },
+      navigation: { title: t('navigation'), component: <NavigateMenu /> },
     }
     return availableMenu[activeMenu]
   }
