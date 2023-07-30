@@ -1,9 +1,9 @@
 import React from 'react'
+import { calculateColumn } from '../../../../utils/help/calculate'
 import Column from '../Column/Column'
-import DropZone from '../DropZone/DropZone'
+import { SelectedWrapper } from '../SelectedWrapper/SelectedWrapper'
 import { useRow } from './Row.biz'
-import { useDispatch } from 'react-redux'
-import { selectActiveControl } from 'redux/Design/Design'
+import shortid from 'shortid'
 
 const Row = ({
   data,
@@ -19,55 +19,43 @@ const Row = ({
   const { ref, opacity, handleClick, activeControl } = useRow({ data, path })
 
   return (
-    <div
-      ref={ref}
-      style={{ opacity }}
-      onClick={handleClick}
-      className={`cursor-move bg-white px-2 py-1  border p-0 draggable
-      ${
-        data.id === activeControl
-          ? 'border-dashed border-purple-600'
-          : 'border-red-600'
-      }
+    <SelectedWrapper hidden={activeControl !== data.id}>
+      <div
+        ref={ref}
+        style={{ opacity }}
+        onClick={handleClick}
+        className={`cursor-move draggable w-full
       `}>
-      {data.type}
-      <div className="flex py-5">
-        {data?.children?.map((column: any, index: any) => {
-          const currentPath = `${path}-${index}`
-          return (
-            <React.Fragment key={column.id}>
-              <DropZone
-                data={{
-                  path: currentPath,
-                  childrenCount: data.children?.length,
-                }}
-                onDrop={handleDrop}
-                className=" w-10 h-auto"
-                isLast={undefined}
-                path={''}
-              />
-              <Column
-                key={column.id}
-                data={column}
-                components={components}
-                handleDrop={handleDrop}
-                path={currentPath}
-              />
-            </React.Fragment>
-          )
-        })}
-        <DropZone
-          data={{
-            path: `${path}-${data.children?.length}`,
-            childrenCount: data.children?.length,
-          }}
-          onDrop={handleDrop}
-          className=" w-10 h-auto"
-          isLast
-          path={''}
-        />
+        
+        <div className={`grid p-2 ${calculateColumn(data?.style?.column)}`}>
+          {Array(Number(data?.style?.column) || 3)
+            .fill(null)
+            .map((_, index) => {
+              return (
+                data?.children?.[index] ?? {
+                  id: shortid.generate(),
+                  children: undefined,
+                  type: 'empty',
+                }
+              )
+            })
+            .map((column: any, index: any) => {
+              const currentPath = `${path}-${index}`
+              return (
+                <React.Fragment key={column.id}>
+                  <Column
+                    key={column.id}
+                    data={column}
+                    components={components}
+                    handleDrop={handleDrop}
+                    path={currentPath}
+                  />
+                </React.Fragment>
+              )
+            })}
+        </div>
       </div>
-    </div>
+    </SelectedWrapper>
   )
 }
 

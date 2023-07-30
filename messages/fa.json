@@ -13,15 +13,19 @@
     "save": "ذخیره",
     "publish": "انتشار",
     "preview": "پیش نمایش",
+    "add": " افزودن آیتم جدید",
+    "setting": "تنظیمات",
     "addItem": "افرودن",
     "navigation": "ناوبری",
     "settings": "تنظیمات",
     "generalBlocks": "بلوک‌های عمومی",
+    "selectColumnSize": "انتخاب تعداد ستون",
     "formats": "قالب ها",
     "HTMLEditor": "ویرایشگر HTML",
     "column": "ستون درونی",
     "logo": "لوگو سایت",
     "navigationMenu": "منو ناوبری",
-    "button": "دکمه"
+    "button": "دکمه",
+    "grid": "گرید"
   }
 }

@@ -9,11 +9,12 @@ interface IProviders {
   children: any
   params: any
 }
-export default async function Providers({ children, params }: IProviders) {
+export default async function Providers(props: IProviders) {
   const queryClient = new QueryClient()
   let messages
   try {
-    messages = (await import(`../messages/${params?.locale}.json`)).default
+    messages = (await import(`../messages/${props?.params?.locale}.json`))
+      .default
   } catch (error) {
     notFound()
   }
@@ -23,10 +24,9 @@ export default async function Providers({ children, params }: IProviders) {
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
           <NextIntlClientProvider
-            locale={params?.locale ? params?.locale : ''}
-            messages={messages}
-          >
-            {children}
+            locale={props?.params?.locale ? props?.params?.locale : ''}
+            messages={messages}>
+            {props?.children}
           </NextIntlClientProvider>
         </QueryClientProvider>
       </Provider>

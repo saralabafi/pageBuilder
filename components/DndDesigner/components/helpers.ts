@@ -1,5 +1,7 @@
 import shortid from 'shortid'
 import { ROW, COLUMN, COMPONENT } from '../constants'
+import { selectActiveControl } from 'redux/Design/Design'
+import { useDispatch } from 'react-redux'
 
 // a little function to help us with reordering the result
 export const reorder = <T>(
@@ -39,11 +41,7 @@ export const remove = <T>(arr: T[], index: number): T[] => {
 //   ...arr?.slice(index),
 // ]
 
-export const insert = <T>(
-  arr: T[],
-  index: number,
-  newItem: T
-): T[] => {
+export const insert = <T>(arr: T[], index: number, newItem: T): T[] => {
   if (arr === null) {
     return [newItem]
   }
@@ -246,30 +244,39 @@ export const handleMoveToDifferentParent = (
 export const handleMoveSidebarComponentIntoParent: (
   layout: any,
   splitDropZonePath: any,
-  item: any
-) => any = (layout: any, splitDropZonePath: any, item: any) => {
-  let newLayoutStructure
-  switch (splitDropZonePath.length) {
-    case 1: {
-      newLayoutStructure = {
-        type: ROW,
-        id: shortid.generate(),
-        children: [{ type: COLUMN, id: shortid.generate(), children: [item] }],
-      }
-      break
-    }
-    case 2: {
-      newLayoutStructure = {
-        type: COLUMN,
-        id: shortid.generate(),
-        children: [item],
-      }
-      break
-    }
-    default: {
-      newLayoutStructure = item
-    }
+  item: any,
+  dispatch: any
+) => any = (layout: any, splitDropZonePath: any, item: any,dispatch:any) => {
+  // eslint-disable-next-line prefer-const
+  let newLayoutStructure = {
+    type: item.type,
+    id: shortid.generate(),
+    children: [{ type: COLUMN, id: shortid.generate(), children: [item] }],
   }
+  
+
+    dispatch(selectActiveControl(newLayoutStructure.id))
+  // switch (splitDropZonePath.length) {
+  //   case 1: {
+  //     newLayoutStructure = {
+  //       type: ROW,
+  //       id: shortid.generate(),
+  //       children: [{ type: COLUMN, id: shortid.generate(), children: [item] }],
+  //     }
+  //     break
+  //   }
+  //   case 2: {
+  //     newLayoutStructure = {
+  //       type: COLUMN,
+  //       id: shortid.generate(),
+  //       children: [item],
+  //     }
+  //     break
+  //   }
+  //   default: {
+  //     newLayoutStructure = item
+  //   }
+  // }
 
   return addChildToChildren(layout, splitDropZonePath, newLayoutStructure)
 }

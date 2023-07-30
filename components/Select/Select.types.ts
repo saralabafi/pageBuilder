@@ -4,15 +4,14 @@ export interface ISelectProps {
   id?: string
   size?: string
   selectedIcon?: string
-  label: string
+  label?: string
   options: any
   backgroundColor?: string
   borderColor?: string
   textColor?: string
   placeholder?: string
-  direction?: 'flex' | 'flex-col'
   value: string
   onChange: (obj: any) => void
-  customCSS: string
+  customCSS?: string
   sx?: Properties<string | number, string & {}>
 }

@@ -3,27 +3,58 @@ import DropZone from './components/DropZone/DropZone'
 import Row from './components/Row/Row'
 import TrashDropZone from './components/TrashDropZone/TrashDropZone'
 import { useDndDesigner } from './DndDesigner.biz'
+import { renders } from '../../app/[locale]/page/layout.const'
+import { SelectedWrapper } from './components/SelectedWrapper/SelectedWrapper'
 
 const DndDesigner = () => {
-  const { handleDrop, handleDropToTrashBin, designList, components } =
-    useDndDesigner()
-
-  const renderRow = (row: any, currentPath: any) => {
-    return (
-      <Row
-        key={row.id}
-        data={row}
-        handleDrop={handleDrop}
-        components={components}
-        path={currentPath}
-      />
-    )
-  }
+  const {
+    handleDrop,
+    handleDropToTrashBin,
+    designList,
+    activeControl,
+    components,
+    handleClick,
+  } = useDndDesigner()
 
   return (
     <div className="w-full">
       <div className="flex flex-1 flex-col mb-[100px]">
-        <div className="border border-gray-400 m-5 px-5">
+        <div className="border border-gray-400 m-3 p-1">
+          {designList?.map((control: any) => {
+            return (
+              <>
+                <DropZone
+                  data={{
+                    path: '',
+                    childrenCount: designList.length,
+                  }}
+                  onDrop={handleDrop}
+                  path=""
+                  isLast={undefined}
+                  className={undefined}
+                />
+                <SelectedWrapper hidden={activeControl !== control.id}>
+                  <div
+                    className="w-full"
+                    onClick={(e) => handleClick(e, control)}>
+                    {renders[control.type]?.(control?.style)}
+                  </div>
+                </SelectedWrapper>
+              </>
+            )
+          })}
+          <DropZone
+            data={{
+              path: '',
+              childrenCount: designList.length,
+            }}
+            onDrop={handleDrop}
+            path=""
+            isLast={undefined}
+            className={undefined}
+          />
+        </div>
+        {/* <div className="border border-gray-400 m-3 px-3">
           {designList?.map((row: any, index: any) => {
             const currentPath = `${index}`
             return (
@@ -38,7 +69,13 @@ const DndDesigner = () => {
                   isLast={undefined}
                   className={undefined}
                 />
-                {renderRow(row, currentPath)}
+                <Row
+                  key={row.id}
+                  data={row}
+                  handleDrop={handleDrop}
+                  components={components}
+                  path={currentPath}
+                />
               </React.Fragment>
             )
           })}
@@ -52,7 +89,7 @@ const DndDesigner = () => {
             className={undefined}
             path={''}
           />
-        </div>
+        </div> */}
 
         <TrashDropZone
           data={{

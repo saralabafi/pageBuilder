@@ -1,4 +1,6 @@
 import { Properties } from 'csstype'
+import { borderColorType } from 'types/borderColor.type copy'
+import { borderWidthType } from 'types/borderWidth.type'
 import { gapType } from 'types/gap.type'
 import { heightType } from 'types/height.type'
 import { marginType } from 'types/margin.type'
@@ -29,7 +31,9 @@ export interface IFlexProps {
   backgroundColor?: string
   padding?: paddingType
   margin?: marginType
-  children: React.ReactNode
+  children?: React.ReactNode
   customCSS?: string
+  borderSize?: borderWidthType
+  borderColor?: borderColorType
   sx?: Properties<string | number, string & {}>
 }
