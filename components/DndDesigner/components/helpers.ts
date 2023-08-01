@@ -2,7 +2,7 @@ import shortid from 'shortid'
 import { ROW, COLUMN, COMPONENT, GRID } from '../constants'
 import { selectActiveControl } from 'redux/Design/Design'
 import { useDispatch } from 'react-redux'
-import { Grid } from 'components/Grid/Grid'
+// import { Grid } from 'components/Grid/Grid'
 
 // a little function to help us with reordering the result
 export const reorder = <T>(
@@ -256,7 +256,6 @@ export const handleMoveSidebarComponentIntoParent: (
   // } else {
   //   newLayoutStructure = item
   // }
-
 
   switch (item.type) {
     case 'grid': {
