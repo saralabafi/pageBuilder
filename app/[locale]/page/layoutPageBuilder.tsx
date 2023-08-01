@@ -1,7 +1,7 @@
 'use client'
 import { PageBuilderHeader } from 'components/PageBuilder/PageBuilderHeader/PageBuilderHeader'
 import { PageBuilderSidebar } from 'components/PageBuilder/PageBuilderSidebar/PageBuilderSidebar'
-import { ITextProps } from 'components/Text/Text.types'
+import { ITextProps } from 'components/CoreComponents/Text/Text.types'
 import { useLayout } from './Layout.biz'
 
 import React from 'react'

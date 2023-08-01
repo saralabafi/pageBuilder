@@ -1,8 +1,6 @@
-import { Select } from 'components/Select/Select';
-import Text from 'components/Text/Text';
-import React from 'react';
-
-import { useGridSettingsMenu } from './GridSettingsMenu.biz';
+import { Select } from 'components/CoreComponents/Select/Select'
+import Text from 'components/CoreComponents/Text/Text'
+import { useGridSettingsMenu } from './GridSettingsMenu.biz'
 
 export const GridSettingsMenu = () => {
   const { columns, handleOnChangeColumnSize, selectedControl, t } =

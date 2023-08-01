@@ -1,5 +1,5 @@
-import { Flex } from 'components/Flex/Flex'
-import Text from 'components/Text/Text'
+import { Flex } from 'components/CoreComponents/Flex/Flex'
+import Text from 'components/CoreComponents/Text/Text'
 import Cancel from 'images/assets/cancel.svg'
 import { usePageBuilderSideMenu } from './PageBuilderSideMenu.biz'
 

@@ -1,4 +1,4 @@
-import Text from 'components/Text/Text'
+import Text from 'components/CoreComponents/Text/Text'
 import React from 'react'
 import { sidebar_items } from '../../../app/[locale]/page/layout.const'
 import { usePageBuilderSidebar } from './PageBuilderSidebar.biz'
