@@ -54,7 +54,7 @@ export const control_items = [
   {
     id: shortid.generate(),
     type: SIDEBAR_ITEM,
-    title: 'logo',
+    title: 'star',
     icon: <Star />,
     component: {
       type: 'star',
