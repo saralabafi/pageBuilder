@@ -4,14 +4,14 @@ import Star from 'images/page/star.svg'
 import Code from 'images/page/code.svg'
 import Column from 'images/page/column.svg'
 import Folder from 'images/page/folder.svg'
-import Button from 'components/Button/Button'
+import Button from 'components/CoreComponents/Button/Button'
 import Formats from 'images/page/formats.svg'
 import Setting from 'images/page/setting.svg'
 import PlusCircle from 'images/page/plusCircle.svg'
 import HandleResizeIcon from 'images/page/handleResize.svg'
 import { SIDEBAR_ITEM } from 'components/DndDesigner/constants'
 import { calculateColumn } from '../../../utils/help/calculate'
-import { Flex } from 'components/Flex/Flex'
+import { Flex } from 'components/CoreComponents/Flex/Flex'
 
 export const sidebar_items = [
   { title: 'addItem', icon: <PlusCircle />, type: 'sidebar' },
