@@ -1,6 +1,6 @@
-import Button from 'components/Button/Button'
-import { Flex } from 'components/Flex/Flex'
-import Text from 'components/Text/Text'
+import Button from 'components/CoreComponents/Button/Button'
+import { Flex } from 'components/CoreComponents/Flex/Flex'
+import Text from 'components/CoreComponents/Text/Text'
 import ApplicationIcon from 'images/page/application.svg'
 import ArrowLeftIcon from 'images/page/arrow_left.svg'
 import PCIcon from 'images/page/pc.svg'
@@ -15,7 +15,7 @@ export const PageBuilderHeader = () => {
   return (
     <Flex
       customCSS="h-[72px] border-b border-neutral-200"
-      width="full"
+      width="w-full"
       padding="px-6"
       align="items-center"
       justify="justify-between">

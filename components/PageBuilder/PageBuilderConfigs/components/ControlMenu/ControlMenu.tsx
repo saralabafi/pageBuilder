@@ -1,9 +1,9 @@
-import Text from 'components/Text/Text'
+import Text from 'components/CoreComponents/Text/Text'
 import React from 'react'
 import { control_items } from '../../../../../app/[locale]/page/layout.const'
 import { SIDEBAR_ITEM } from 'components/DndDesigner/constants'
 import { useDrag } from 'react-dnd'
-import { Flex } from 'components/Flex/Flex'
+import { Flex } from 'components/CoreComponents/Flex/Flex'
 import { useTranslations } from 'next-intl'
 
 export const ControlMenu = () => {
