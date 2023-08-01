@@ -13,5 +13,5 @@ export const calculateColumn = (value: number) => {
     'grid-cols-11',
     'grid-cols-12',
   }
-  return columnSize[value] ?? 'grid-cols-3'
+  return columnSize[value] ?? 'grid-cols-1'
 }

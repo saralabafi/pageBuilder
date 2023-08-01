@@ -1,6 +1,6 @@
 'use client'
-import Button from 'components/Button/Button'
-import { Flex } from 'components/Flex/Flex'
+import Button from 'components/CoreComponents/Button/Button'
+import { Flex } from 'components/CoreComponents/Flex/Flex'
 import { IModalProps } from './Modal.type'
 
 const index = (props: IModalProps) => {

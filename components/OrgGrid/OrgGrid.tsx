@@ -2,7 +2,7 @@
 import { useDndDesigner } from 'components/DndDesigner/DndDesigner.biz'
 import { calculateColumn } from '../../utils/help/calculate'
 import DropZone from 'components/DndDesigner/components/DropZone/DropZone'
-import { Flex } from 'components/Flex/Flex'
+import { Flex } from 'components/CoreComponents/Flex/Flex'
 import HandleResizeIcon from 'images/page/handleResize.svg'
 import { SelectedWrapper } from '../DndDesigner/components/SelectedWrapper/SelectedWrapper'
 import { renders } from '../../app/[locale]/page/layout.const'
@@ -28,6 +28,7 @@ const OrgGrid = (props?: any) => {
         // const currentPath = `${props.pathitem}-${index}`
 
         const currentPath = `${index}`
+        console.log(index, _item)
         return (
           <div key={index}>
             <SelectedWrapper hidden={activeControl == _item.id}>
