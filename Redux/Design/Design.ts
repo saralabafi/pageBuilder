@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import shortid from 'shortid'
 
 const initialState: any = {
   designList: [],
@@ -31,6 +32,13 @@ export const manageDesign = createSlice({
         (i: any) => i.id === state.activeControl
       )
       state.designList[index].style = payload
+      const children = Array(Number(payload.column)).fill({
+        type: 'column',
+        id: shortid.generate(),
+        children: [],
+      })
+
+      state.designList[index].children = children
     },
   },
 })

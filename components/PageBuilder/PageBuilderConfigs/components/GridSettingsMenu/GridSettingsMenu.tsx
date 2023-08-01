@@ -1,11 +1,8 @@
-import React from 'react'
-import Text from 'components/Text/Text'
-import { useTranslations } from 'next-intl'
-import { Select } from 'components/Select/Select'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from 'redux/Store'
-import { setConfigOnActiveTab } from 'redux/Design/Design'
-import { useGridSettingsMenu } from './GridSettingsMenu.biz'
+import { Select } from 'components/Select/Select';
+import Text from 'components/Text/Text';
+import React from 'react';
+
+import { useGridSettingsMenu } from './GridSettingsMenu.biz';
 
 export const GridSettingsMenu = () => {
   const { columns, handleOnChangeColumnSize, selectedControl, t } =

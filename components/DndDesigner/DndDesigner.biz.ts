@@ -39,7 +39,6 @@ export const useDndDesigner = () => {
     (dropZone: any, item: any) => {
       const splitDropZonePath = dropZone.path.split('-')
       const pathToDropZone = splitDropZonePath.slice(0, -1).join('-')
-
       const newItem = {
         id: item.data.id,
         type: item.data.type,
@@ -71,6 +70,9 @@ export const useDndDesigner = () => {
           [newComponent.id]: newComponent,
         })
 
+
+
+
         dispatch(
           setDesignList(
             handleMoveSidebarComponentIntoParent(
@@ -89,6 +91,7 @@ export const useDndDesigner = () => {
       const splitItemPath = item.path?.split('-')
       const pathToItem = splitItemPath?.slice(0, -1).join('-')
 
+      
       // 2. Pure move (no create)
       if (splitItemPath?.length === splitDropZonePath.length) {
         // 2.a. move within parent
@@ -136,7 +139,6 @@ export const useDndDesigner = () => {
   )
 
   const handleClick = (e: React.MouseEvent, data: any) => {
-  
     dispatch(selectActiveControl(data.id))
     dispatch(selectActiveMenu(data.type))
     e.stopPropagation()

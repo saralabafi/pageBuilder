@@ -19,7 +19,7 @@ export const Flex = forwardRef<HTMLDivElement, IFlexProps>((props, ref) => {
     customCSS,
     sx,
   } = props
-  
+
   return (
     <div
       ref={ref}

@@ -1,7 +1,8 @@
 import shortid from 'shortid'
-import { ROW, COLUMN, COMPONENT } from '../constants'
+import { ROW, COLUMN, COMPONENT, GRID } from '../constants'
 import { selectActiveControl } from 'redux/Design/Design'
 import { useDispatch } from 'react-redux'
+import { Grid } from 'components/Grid/Grid'
 
 // a little function to help us with reordering the result
 export const reorder = <T>(
@@ -27,19 +28,6 @@ export const remove = <T>(arr: T[], index: number): T[] => {
     ...arr.slice(index + 1),
   ]
 }
-
-// export const insert = <T extends unknown>(
-//   arr: T[],
-//   index: number,
-//   newItem: T
-// ): T[] => [
-//   // part of the array before the specified index
-//   ...arr?.slice(0, index),
-//   // inserted item
-//   newItem,
-//   // part of the array after the specified index
-//   ...arr?.slice(index),
-// ]
 
 export const insert = <T>(arr: T[], index: number, newItem: T): T[] => {
   if (arr === null) {
@@ -231,7 +219,7 @@ export const handleMoveToDifferentParent = (
 
   let updatedLayout = layout
   updatedLayout = removeChildFromChildren(updatedLayout, splitItemPath)
-  updatedLayout = handleAddColumDataToRow(updatedLayout)
+  // updatedLayout = handleAddColumDataToRow(updatedLayout)
   updatedLayout = addChildToChildren(
     updatedLayout,
     splitDropZonePath,
@@ -246,38 +234,52 @@ export const handleMoveSidebarComponentIntoParent: (
   splitDropZonePath: any,
   item: any,
   dispatch: any
-) => any = (layout: any, splitDropZonePath: any, item: any,dispatch:any) => {
+) => any = (layout: any, splitDropZonePath: any, item: any, dispatch: any) => {
   // eslint-disable-next-line prefer-const
-  let newLayoutStructure = {
-    type: item.type,
-    id: shortid.generate(),
-    children: [{ type: COLUMN, id: shortid.generate(), children: [item] }],
-  }
-  
 
-    dispatch(selectActiveControl(newLayoutStructure.id))
-  // switch (splitDropZonePath.length) {
-  //   case 1: {
+  // let newLayoutStructure = {
+  //   type: item.type,
+  //   id: shortid.generate(),
+  //   children: [{ id: shortid.generate(), children: [item] }],
+  // }
+  let newLayoutStructure
+  // console.log(newLayoutStructure)
+  // item.type
+  // if (splitDropZonePath == 1 && item.type !== 'grid') {
+  //   {
   //     newLayoutStructure = {
-  //       type: ROW,
-  //       id: shortid.generate(),
-  //       children: [{ type: COLUMN, id: shortid.generate(), children: [item] }],
-  //     }
-  //     break
-  //   }
-  //   case 2: {
-  //     newLayoutStructure = {
-  //       type: COLUMN,
+  //       type: GRID,
   //       id: shortid.generate(),
   //       children: [item],
   //     }
-  //     break
   //   }
-  //   default: {
-  //     newLayoutStructure = item
-  //   }
+  // } else {
+  //   newLayoutStructure = item
   // }
 
+
+  switch (item.type) {
+    case 'grid': {
+      newLayoutStructure = {
+        type: 'grid',
+        id: shortid.generate(),
+        children: [{ type: 'column', id: shortid.generate(), children: [] }],
+      }
+      break
+    }
+    // case 2: {
+    //   newLayoutStructure = {
+    //     type: COLUMN,
+    //     id: shortid.generate(),
+    //     children: [item],
+    //   }
+    //   break
+    // }
+    default: {
+      newLayoutStructure = item
+    }
+  }
+  dispatch(selectActiveControl(newLayoutStructure.id))
   return addChildToChildren(layout, splitDropZonePath, newLayoutStructure)
 }
 
