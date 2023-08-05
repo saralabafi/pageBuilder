@@ -16,8 +16,8 @@ const OrgGrid = (props?: any) => {
   const childList = Array(Number(props?.column) || 3).fill('')
 
   const handleClick = (e: React.MouseEvent, id: string) => {
-    dispatch(selectActiveControl(id))
     e.stopPropagation()
+     dispatch(selectActiveControl(id))
   }
 
   return (
@@ -36,7 +36,10 @@ const OrgGrid = (props?: any) => {
               align="items-center"
               customCSS="w-full">
               <div className="border border-dashed border-slate-400 m-1 p-5 w-full">
-                {item.children?.map((i: any) => i.type)}
+                {item.children?.map((i: any) =>
+                  {
+                    return renders[i.type]?.(i, currentPath)}
+                )}
                 <DropZone
                   data={{
                     path: currentPath,

@@ -10,7 +10,6 @@ const DndDesigner = () => {
     handleDropToTrashBin,
     designList,
     activeControl,
-
     handleClick,
   } = useDndDesigner()
 
@@ -37,7 +36,8 @@ const DndDesigner = () => {
                 <SelectedWrapper hidden={activeControl !== control.id}>
                   <div
                     className="w-full"
-                    onClick={(e) => handleClick(e, control)}>
+                    onClick={(e) => handleClick(e, control)}
+                    >
                     {/* {renders(currentPath)[control.type]?.(control?.style)} */}
                     {renders[control.type]?.(control,currentPath)}
                   </div>

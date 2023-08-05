@@ -30,20 +30,42 @@ export const manageDesign = createSlice({
     setConfigOnActiveTab: (state, { payload }) => {
       const index = state.designList.findIndex(
         (i: any) => i.id === state.activeControl
-      )      
-      state.designList[index].style = payload
+      )
 
-      const children = []
+      if (state.designList[index].style) {
+        const diff =
+          Number(payload.column) - state.designList[index].style.column
+        const x = [...state.designList[index].children]
+        if (state.designList[index].style.column < Number(payload.column)) {
+          console.log('thereeeeeeeee')
 
-      for (let i = 1; i <= Number(payload.column); i++) {
-        children.push({
-          type: 'column',
-          id: shortid.generate(),
-          children: [],
-        })
+          for (let i = 1; i <= diff; i++) {
+            x.push({
+              type: 'column',
+              id: shortid.generate(),
+              children: [],
+            })
+          }
+        } else {
+          x.splice(payload.column)
+        }
+        console.log(x)
+        state.designList[index].children = x
+      } else {
+        const children = []
+
+        for (let i = 1; i <= Number(payload.column); i++) {
+          children.push({
+            type: 'column',
+            id: shortid.generate(),
+            children: [],
+          })
+        }
+
+        state.designList[index].children = children
       }
 
-      state.designList[index].children = children
+      state.designList[index].style = payload
     },
   },
 })

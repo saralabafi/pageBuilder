@@ -244,11 +244,9 @@ export const handleMoveSidebarComponentIntoParent: (
   dispatch: any
 ) => any = (layout: any, splitDropZonePath: any, item: any, dispatch: any) => {
   let newLayoutStructure
-  console.log('helper', splitDropZonePath)
 
   switch (splitDropZonePath.length) {
     case 1: {
-      console.log('test1')
       newLayoutStructure = {
         type: 'grid',
         id: shortid.generate(),
@@ -257,18 +255,21 @@ export const handleMoveSidebarComponentIntoParent: (
       break
     }
     case 2: {
-      // const item2 =
-      //   layout?.[splitDropZonePath[0]]?.children?.[splitDropZonePath[1]]
-      // item2.children = {
-      //   type: item.type,
-      //   id: shortid.generate(),
-      // }
-      // newLayoutStructure = item
+      const x =
+        item.type === 'grid'
+          ? {
+              type: 'grid',
+              id: shortid.generate(),
+              children: [
+                { type: 'column', id: shortid.generate(), children: [] },
+              ],
+            }
+          : item
 
       newLayoutStructure = {
         type: COLUMN,
         id: shortid.generate(),
-        children: [item],
+        children: [x],
       }
 
       break
