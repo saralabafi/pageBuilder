@@ -9,6 +9,7 @@ import { widthType } from 'types/width.type'
 
 export interface IFlexProps {
   direction?: 'flex-row' | 'flex-col' | 'flex-row-reverse' | 'flex-col-reverse'
+  onClick?: (e: any) => void
   justify?:
     | 'justify-normal'
     | 'justify-start'

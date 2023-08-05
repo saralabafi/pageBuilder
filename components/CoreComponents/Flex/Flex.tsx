@@ -18,11 +18,13 @@ export const Flex = forwardRef<HTMLDivElement, IFlexProps>((props, ref) => {
     borderColor,
     customCSS,
     sx,
+    onClick
   } = props
 
   return (
     <div
       ref={ref}
+      onClick={onClick}
       style={sx}
       className={`flex   
       ${customCSS || ''}

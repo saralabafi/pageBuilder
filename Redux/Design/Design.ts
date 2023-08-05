@@ -30,13 +30,18 @@ export const manageDesign = createSlice({
     setConfigOnActiveTab: (state, { payload }) => {
       const index = state.designList.findIndex(
         (i: any) => i.id === state.activeControl
-      )
+      )      
       state.designList[index].style = payload
-      const children = Array(Number(payload.column)).fill({
-        type: 'column',
-        id: shortid.generate(),
-        children: [],
-      })
+
+      const children = []
+
+      for (let i = 1; i <= Number(payload.column); i++) {
+        children.push({
+          type: 'column',
+          id: shortid.generate(),
+          children: [],
+        })
+      }
 
       state.designList[index].children = children
     },

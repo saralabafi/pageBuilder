@@ -18,7 +18,6 @@ import { useDndDesigner } from 'components/DndDesigner/DndDesigner.biz'
 import DropZone from 'components/DndDesigner/components/DropZone/DropZone'
 import { SelectedWrapper } from 'components/DndDesigner/components/SelectedWrapper/SelectedWrapper'
 
-
 export const sidebar_items = [
   { title: 'addItem', icon: <PlusCircle />, type: 'sidebar' },
   { title: 'navigation', icon: <Folder />, type: 'navigation' },
@@ -89,10 +88,9 @@ export const control_items = [
   },
 ]
 
-
 export const renders: any = {
   input: () => <h1>HTML editor</h1>,
-  grid: (props: any) => <OrgGrid {...props} />,
+  grid: (props: any, path: any) => <OrgGrid {...props} path={path} />,
   // grid: (props: any) => {
   //   const childList = Array(Number(props?.column) || 3).fill('')
   //   return (

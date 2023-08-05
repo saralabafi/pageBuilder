@@ -122,21 +122,29 @@ export const addChildToChildren = (
     return insert(children, dropZoneIndex, item)
   }
 
-  // const updatedChildren = [...children]
-  const updatedChildren =
-    typeof children === 'object' ? [...(children as any)] : [children]
+  const updatedChildren = [...children]
+  // const updatedChildren =
+  //   typeof children === 'object' ? [...(children as any)] : [children]
+  // children?.[Number(splitDropZonePath[0])]?.children?.[splitDropZonePath[1]].children=item
   const curIndex = Number(splitDropZonePath.slice(0, 1))
 
   // Update the specific node's children
   const splitItemChildrenPath = splitDropZonePath.slice(1)
-  const nodeChildren = updatedChildren[curIndex]
+  const nodeChildren = updatedChildren[curIndex] // which Row
+
   updatedChildren[curIndex] = {
     ...nodeChildren,
-    children: addChildToChildren(
-      nodeChildren?.children,
-      splitItemChildrenPath,
-      item
-    ),
+    children: [
+      ...nodeChildren.children.slice(0, splitDropZonePath[1]), // Copy elements before the target index
+      item, // Insert the new item at the target index
+      ...nodeChildren.children.slice(splitDropZonePath[1] + 1), // Copy elements after the target index
+    ],
+
+    // addChildToChildren(
+    //   nodeChildren?.children,
+    //   splitItemChildrenPath,
+    //   item
+    // )
   }
 
   return updatedChildren
@@ -235,30 +243,12 @@ export const handleMoveSidebarComponentIntoParent: (
   item: any,
   dispatch: any
 ) => any = (layout: any, splitDropZonePath: any, item: any, dispatch: any) => {
-  // eslint-disable-next-line prefer-const
-
-  // let newLayoutStructure = {
-  //   type: item.type,
-  //   id: shortid.generate(),
-  //   children: [{ id: shortid.generate(), children: [item] }],
-  // }
   let newLayoutStructure
-  // console.log(newLayoutStructure)
-  // item.type
-  // if (splitDropZonePath == 1 && item.type !== 'grid') {
-  //   {
-  //     newLayoutStructure = {
-  //       type: GRID,
-  //       id: shortid.generate(),
-  //       children: [item],
-  //     }
-  //   }
-  // } else {
-  //   newLayoutStructure = item
-  // }
+  console.log('helper', splitDropZonePath)
 
-  switch (item.type) {
-    case 'grid': {
+  switch (splitDropZonePath.length) {
+    case 1: {
+      console.log('test1')
       newLayoutStructure = {
         type: 'grid',
         id: shortid.generate(),
@@ -266,14 +256,23 @@ export const handleMoveSidebarComponentIntoParent: (
       }
       break
     }
-    // case 2: {
-    //   newLayoutStructure = {
-    //     type: COLUMN,
-    //     id: shortid.generate(),
-    //     children: [item],
-    //   }
-    //   break
-    // }
+    case 2: {
+      // const item2 =
+      //   layout?.[splitDropZonePath[0]]?.children?.[splitDropZonePath[1]]
+      // item2.children = {
+      //   type: item.type,
+      //   id: shortid.generate(),
+      // }
+      // newLayoutStructure = item
+
+      newLayoutStructure = {
+        type: COLUMN,
+        id: shortid.generate(),
+        children: [item],
+      }
+
+      break
+    }
     default: {
       newLayoutStructure = item
     }
