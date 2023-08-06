@@ -121,7 +121,7 @@ export const addChildToChildren = (
     const dropZoneIndex = Number(splitDropZonePath[0])
     return insert(children, dropZoneIndex, item)
   }
-
+  debugger
   const updatedChildren = [...children]
   // const updatedChildren =
   //   typeof children === 'object' ? [...(children as any)] : [children]
@@ -132,23 +132,63 @@ export const addChildToChildren = (
   const splitItemChildrenPath = splitDropZonePath.slice(1)
   const nodeChildren = updatedChildren[curIndex] // which Row
 
+  // updatedChildren[curIndex] = {
+  //   ...nodeChildren,
+  //   children: [
+  //     ...nodeChildren.children.slice(0, splitDropZonePath[1]), // Copy elements before the target index
+  //     item, // Insert the new item at the target index
+  //     ...nodeChildren.children.slice(splitDropZonePath[1] + 1), // Copy elements after the target index
+  //   ],
+
+  //   // addChildToChildren(
+  //   //   nodeChildren?.children,
+  //   //   splitItemChildrenPath,
+  //   //   item
+  //   // )
+  // }
+
   updatedChildren[curIndex] = {
     ...nodeChildren,
     children: [
-      ...nodeChildren.children.slice(0, splitDropZonePath[1]), // Copy elements before the target index
+      ...nodeChildren.children.slice(0, Number(splitDropZonePath[1])), // Copy elements before the target index
       item, // Insert the new item at the target index
-      ...nodeChildren.children.slice(splitDropZonePath[1] + 1), // Copy elements after the target index
+      ...nodeChildren.children.slice(Number(splitDropZonePath[1]) + 1), // Copy elements after the target index
     ],
-
-    // addChildToChildren(
-    //   nodeChildren?.children,
-    //   splitItemChildrenPath,
-    //   item
-    // )
   }
 
   return updatedChildren
 }
+
+// export const addChildToChildren = (
+//   children: any[],
+//   splitDropZonePath: string[],
+//   item: any
+// ): any[] => {
+//   if (splitDropZonePath.length === 1) {
+//     const dropZoneIndex = Number(splitDropZonePath[0])
+//     return insert(children, dropZoneIndex, item)
+//   }
+
+//   const updatedChildren = [...children]
+//   const curIndex = Number(splitDropZonePath[0])
+
+//   // Update the specific node's children
+//   const splitItemChildrenPath = splitDropZonePath.slice(1)
+//   const nodeChildren = updatedChildren[curIndex]
+
+//   const updatedNodeChildren = addChildToChildren(
+//     nodeChildren?.children || [],
+//     splitItemChildrenPath,
+//     item
+//   )
+
+//   updatedChildren[curIndex] = {
+//     ...nodeChildren,
+//     children: updatedNodeChildren,
+//   }
+
+//   return updatedChildren
+// }
 
 export const handleMoveWithinParent = (
   layout: any[],
