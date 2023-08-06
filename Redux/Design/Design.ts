@@ -28,32 +28,38 @@ export const manageDesign = createSlice({
       return { ...state, activeMenu: payload }
     },
     setConfigOnActiveTab: (state, { payload }) => {
-      const index = state.designList.findIndex(
-        (i: any) => i.id === state.activeControl
-      )
+      const dictionaryObj: any = {}
+      state.designList.map((firstLayerItem: any) => {
+        if (firstLayerItem?.children) {
+          dictionaryObj[firstLayerItem.id] = firstLayerItem
+          firstLayerItem.children.map((column: any) => {
+            column.children.map((secondLayerItem: any) => {
+              dictionaryObj[secondLayerItem.id] = secondLayerItem
+            })
+          })
+        } else {
+          dictionaryObj[firstLayerItem.id] = firstLayerItem
+        }
+      })
 
-      if (state.designList[index].style) {
-        const diff =
-          Number(payload.column) - state.designList[index].style.column
-        const x = [...state.designList[index].children]
-        if (state.designList[index].style.column < Number(payload.column)) {
-          console.log('thereeeeeeeee')
-
+      const selectItem = dictionaryObj[state.activeControl]
+      if (selectItem?.style) {
+        const diff = Number(payload.column) - selectItem.style.column
+        const childrenOfSelectedItem = [...selectItem.children]
+        if (selectItem.style.column < Number(payload.column)) {
           for (let i = 1; i <= diff; i++) {
-            x.push({
+            childrenOfSelectedItem.push({
               type: 'column',
               id: shortid.generate(),
               children: [],
             })
           }
         } else {
-          x.splice(payload.column)
+          childrenOfSelectedItem.splice(payload.column)
         }
-        console.log(x)
-        state.designList[index].children = x
+        selectItem.children = childrenOfSelectedItem
       } else {
         const children = []
-
         for (let i = 1; i <= Number(payload.column); i++) {
           children.push({
             type: 'column',
@@ -62,10 +68,10 @@ export const manageDesign = createSlice({
           })
         }
 
-        state.designList[index].children = children
+        selectItem.children = children
       }
 
-      state.designList[index].style = payload
+      selectItem.style = payload
     },
   },
 })

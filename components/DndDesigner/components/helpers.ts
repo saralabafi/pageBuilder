@@ -278,7 +278,8 @@ export const handleMoveSidebarComponentIntoParent: (
       newLayoutStructure = item
     }
   }
-  dispatch(selectActiveControl(newLayoutStructure.id))
+  newLayoutStructure.type !== 'column' &&
+    dispatch(selectActiveControl(newLayoutStructure.id))
   return addChildToChildren(layout, splitDropZonePath, newLayoutStructure)
 }
 

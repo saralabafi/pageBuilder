@@ -13,11 +13,10 @@ const OrgGrid = (props?: any) => {
   const { handleDrop, designList, activeControl } = useDndDesigner()
   const dispatch = useDispatch()
 
-  const childList = Array(Number(props?.column) || 3).fill('')
 
-  const handleClick = (e: React.MouseEvent, id: string) => {
+  const handleClick = (e: React.MouseEvent, item: any) => {
     e.stopPropagation()
-     dispatch(selectActiveControl(id))
+    dispatch(selectActiveControl(item.id))
   }
 
   return (
@@ -29,35 +28,34 @@ const OrgGrid = (props?: any) => {
         const currentPath = `${props.path}-${index}`
 
         return (
-          <SelectedWrapper hidden={activeControl !== item.id}>
-            <Flex
-              key={index}
-              onClick={(e) => handleClick(e, item.id)}
-              align="items-center"
-              customCSS="w-full">
-              <div className="border border-dashed border-slate-400 m-1 p-5 w-full">
-                {item.children?.map((i: any) =>
-                  {
-                    return renders[i.type]?.(i, currentPath)}
-                )}
-                <DropZone
-                  data={{
-                    path: currentPath,
-                    childrenCount: designList?.children?.length,
-                  }}
-                  onDrop={handleDrop}
-                  path=""
-                  isLast={undefined}
-                  className={undefined}
-                />
+          <Flex key={index} align="items-center" customCSS="w-full">
+            <div className="border border-dashed border-slate-400 m-1 p-5 w-full">
+              {item.children?.map((i: any) => {
+                return (
+                  <SelectedWrapper hidden={activeControl !== i.id} key={i.id}>
+                    <div className="w-full" onClick={(e) => handleClick(e, i)}>
+                      {renders[i.type]?.(i, currentPath)}
+                    </div>
+                  </SelectedWrapper>
+                )
+              })}
+              <DropZone
+                data={{
+                  path: currentPath,
+                  childrenCount: designList?.children?.length,
+                }}
+                onDrop={handleDrop}
+                path=""
+                isLast={undefined}
+                className={undefined}
+              />
+            </div>
+            {/* {index !== item.length - 1 && (
+              <div className="cursor-col-resize p-1 bg-blue-300 rounded">
+                <HandleResizeIcon className="text-blue-900 " />
               </div>
-              {/* {index !== childList.length - 1 && (
-                <div className="cursor-col-resize p-1 bg-blue-300 rounded">
-                  <HandleResizeIcon className="text-blue-900 " />
-                </div>
-              )} */}
-            </Flex>
-          </SelectedWrapper>
+            )} */}
+          </Flex>
         )
       })}
     </div>
