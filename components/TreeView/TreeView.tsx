@@ -7,15 +7,16 @@ import {
 } from 'dnd-kit-sortable-tree'
 import React from 'react'
 import { ArrayType, ITreeView } from './TreeView.type'
+import { useDispatch } from 'react-redux'
+import { selectActiveControl } from 'redux/Design/Design'
 
 export const TreeView = ({
   sortableItems,
   handleChange,
   renderText,
 }: ITreeView) => {
+  const dispatch = useDispatch()
   const calculatePadding = (clone: any, depth: any, indentationWidth: any) => {
-    
-
     const array: ArrayType = {
       0: 'ps-0',
       10: 'ps-[10px]',
@@ -26,6 +27,10 @@ export const TreeView = ({
     }
 
     return array[clone ? indentationWidth : indentationWidth * depth]
+  }
+
+  const handleClick = ({ item }: any) => {
+    dispatch(selectActiveControl(item.id))
   }
 
   return (
@@ -47,7 +52,11 @@ export const TreeView = ({
               props.depth
             )}
             contentClassName={`!border-none `}>
-            <Flex align="items-center" gap="gap-1" padding="p-1">
+            <Flex
+              align="items-center"
+              gap="gap-1"
+              padding="p-1"
+              onClick={() => handleClick(props)}>
               <div className="w-3 h-3 border border-dashed border-neutral-500 " />
               <Text fontWeight={300} fontSize={12} color="text-neutral-500">
                 {renderText(props.item.type)}

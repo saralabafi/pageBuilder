@@ -6,7 +6,7 @@ import { IModalProps } from './Modal.type'
 const index = (props: IModalProps) => {
   const { width = 'w-1/2', visible, onClose, children, title } = props
 
-  const handleclick = (e?: any) => {
+  const handleClick = (e?: any) => {
     const modal: Element = document.querySelector('#modal-content')!
     if (modal) {
       if (!modal.contains(e?.target)) {
@@ -20,7 +20,7 @@ const index = (props: IModalProps) => {
       {visible && (
         <div
           id="modal"
-          onClick={handleclick}
+          onClick={handleClick}
           className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
           <div
             id="modal-content"

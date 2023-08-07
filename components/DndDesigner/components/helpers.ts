@@ -1,7 +1,6 @@
-import shortid from 'shortid'
-import { ROW, COLUMN, COMPONENT, GRID } from '../constants'
 import { selectActiveControl } from 'redux/Design/Design'
-import { useDispatch } from 'react-redux'
+import shortid from 'shortid'
+import { COLUMN, ROW } from '../constants'
 // import { Grid } from 'components/Grid/Grid'
 
 // a little function to help us with reordering the result
@@ -414,7 +413,6 @@ export const addChildToChildren = (
   }
 
   if (splitDropZonePath.length === 3) {
-    debugger
     const curIndex = Number(splitDropZonePath[0])
     const columnIndex = Number(splitDropZonePath[1])
     const nestedColumnIndex = Number(splitDropZonePath[2])
@@ -487,25 +485,30 @@ export const handleMoveToDifferentParent = (
   splitItemPath: string[],
   item: any
 ): any[] => {
+  const newItem = { ...item }
+  newItem.path = splitDropZonePath
+
   let newLayoutStructure
+
   const COLUMN_STRUCTURE = {
     type: COLUMN,
     id: shortid.generate(),
-    children: [item],
+    path: splitDropZonePath,
+    children: [newItem],
   }
 
   const ROW_STRUCTURE = {
     type: ROW,
     id: shortid.generate(),
+    path: splitDropZonePath,
   }
-
   switch (splitDropZonePath.length) {
     case 1: {
       // moving column outside into new row made on the fly
       if (item.type === COLUMN) {
         newLayoutStructure = {
           ...ROW_STRUCTURE,
-          children: [item],
+          children: [newItem],
         }
       } else {
         // moving component outside into new row made on the fly
@@ -518,22 +521,32 @@ export const handleMoveToDifferentParent = (
     }
     case 2: {
       // moving component outside into a row which creates column
-      if (item.type === COMPONENT) {
-        newLayoutStructure = COLUMN_STRUCTURE
-      } else {
-        // moving column into existing row
-        newLayoutStructure = item
-      }
+
+      newLayoutStructure = COLUMN_STRUCTURE
 
       break
     }
     default: {
-      newLayoutStructure = item
+      newLayoutStructure = newItem
     }
   }
 
   let updatedLayout = layout
-  updatedLayout = removeChildFromChildren(updatedLayout, splitItemPath)
+
+  const newLayout = JSON.parse(JSON.stringify(layout))
+
+  if (splitItemPath.length == 2) {
+    newLayout[Number(splitItemPath[0])].children[
+      Number(splitItemPath[1])
+    ].children = []
+  } else {
+    newLayout[Number(splitItemPath[0])].children[
+      Number(splitItemPath[1])
+    ].children = []
+  }
+
+  updatedLayout = newLayout
+  // updatedLayout = removeChildFromChildren(updatedLayout, splitItemPath)
   // updatedLayout = handleAddColumDataToRow(updatedLayout)
   updatedLayout = addChildToChildren(
     updatedLayout,
@@ -651,6 +664,7 @@ const createNewLayoutStructure = (splitDropZonePath: any[], item: any): any => {
       }
 
     case 3:
+      
       const gridItem = item.type === 'grid' ? generateGrid() : item
       const columnItem3 = generateColumn()
       columnItem3.children.push(gridItem)

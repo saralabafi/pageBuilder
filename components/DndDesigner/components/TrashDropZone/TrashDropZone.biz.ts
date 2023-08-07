@@ -12,10 +12,10 @@ export const useTrashDropZone = ({
 }) => {
   const [{ isOver, canDrop }, drop] = useDrop({
     accept: ACCEPTS,
-    drop: (item: any, monitor) => {
+    drop: (item: any) => {
       onDrop(data, item)
     },
-    canDrop: (item, monitor) => {
+    canDrop: (item) => {
       const designList = data.designList
       const itemPath = item.path
       const splitItemPath = itemPath?.split('-')

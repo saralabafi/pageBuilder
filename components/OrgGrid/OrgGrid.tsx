@@ -1,13 +1,11 @@
 import { Flex } from 'components/CoreComponents/Flex/Flex'
 import DropZone from 'components/DndDesigner/components/DropZone/DropZone'
-import { useDndDesigner } from 'components/DndDesigner/DndDesigner.biz'
-import HandleResizeIcon from 'images/page/handleResize.svg'
-
-import { calculateColumn } from '../../utils/help/calculate'
-import { SelectedWrapper } from '../DndDesigner/components/SelectedWrapper/SelectedWrapper'
-import { selectActiveControl } from 'redux/Design/Design'
 import { useDispatch } from 'react-redux'
-import { renders } from '../../app/[locale]/page/layout.const'
+import { DragComponent } from './DragComponent'
+import { selectActiveControl } from 'redux/Design/Design'
+import { calculateColumn } from '../../utils/help/calculate'
+import { useDndDesigner } from 'components/DndDesigner/DndDesigner.biz'
+import { SelectedWrapper } from '../DndDesigner/components/SelectedWrapper/SelectedWrapper'
 
 const OrgGrid = (props?: any) => {
   const { handleDrop, designList, activeControl } = useDndDesigner()
@@ -30,12 +28,16 @@ const OrgGrid = (props?: any) => {
         return (
           <Flex key={index} align="items-center" customCSS="w-full">
             <div className="border border-dashed border-slate-400 m-1 p-5 w-full">
-              {item.children?.map((i: any) => {
+              {item.children?.map((component: any) => {
                 return (
-                  <SelectedWrapper hidden={activeControl !== i.id} key={i.id}>
-                    <div className="w-full" onClick={(e) => handleClick(e, i)}>
-                      {renders[i.type]?.(i, currentPath)}
-                    </div>
+                  <SelectedWrapper
+                    hidden={activeControl !== component.id}
+                    key={component.id}>
+                    <DragComponent
+                      handleClick={handleClick}
+                      component={component}
+                      currentPath={currentPath}
+                    />
                   </SelectedWrapper>
                 )
               })}

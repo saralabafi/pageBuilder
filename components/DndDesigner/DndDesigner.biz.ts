@@ -1,22 +1,21 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 
 import {
   handleMoveSidebarComponentIntoParent,
   handleMoveToDifferentParent,
-  handleMoveWithinParent,
   handleRemoveItemFromLayout,
 } from './components/helpers'
 
-import shortid from 'shortid'
-import { COLUMN, SIDEBAR_ITEM } from './constants'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from 'redux/Store'
 import {
   selectActiveControl,
   selectActiveMenu,
   selectActiveTab,
   setDesignList,
 } from 'redux/Design/Design'
+import { RootState } from 'redux/Store'
+import shortid from 'shortid'
+import { COLUMN, SIDEBAR_ITEM } from './constants'
 
 export const useDndDesigner = () => {
   const dispatch = useDispatch()
@@ -42,16 +41,17 @@ export const useDndDesigner = () => {
       const newItem = {
         id: item.data.id,
         type: item.data.type,
+        path: pathToDropZone,
         children: item.data.children,
       }
 
       dispatch(selectActiveTab('setting'))
-      dispatch(selectActiveMenu(item.data.component.type))
+      item.data.component &&
+        dispatch(selectActiveMenu(item.data.component.type))
 
       if (item.type === COLUMN) {
         newItem.children = item.children
       }
-
       // sidebar into
       if (item.data.type === SIDEBAR_ITEM) {
         // 1. Move sidebar item into page
@@ -63,6 +63,7 @@ export const useDndDesigner = () => {
         const newItem = {
           id: newComponent.id,
           type: newComponent.type,
+          path: splitDropZonePath,
           // type: COMPONENT,
         }
         setComponents({
@@ -85,24 +86,25 @@ export const useDndDesigner = () => {
       }
 
       // move down here since sidebar items dont have path
-      const splitItemPath = item.path?.split('-')
-      const pathToItem = splitItemPath?.slice(0, -1).join('-')
+      // const splitItemPath = item.data.path?.split('-')
+      // const pathToItem = item.data.path?.slice(0, -1).join('-')
 
       // 2. Pure move (no create)
-      if (splitItemPath?.length === splitDropZonePath.length) {
+      if (item.data.path?.length === splitDropZonePath.length) {
         // 2.a. move within parent
-        if (pathToItem === pathToDropZone) {
-          dispatch(
-            setDesignList(
-              handleMoveWithinParent(
-                designList,
-                splitDropZonePath,
-                splitItemPath
-              )
-            )
-          )
-          return
-        }
+        // if (pathToItem === pathToDropZone) {
+        //   console.log(1.5);
+        //   dispatch(
+        //     setDesignList(
+        //       handleMoveWithinParent(
+        //         designList,
+        //         splitDropZonePath,
+        //         item.data.path
+        //       )
+        //     )
+        //   )
+        //   return
+        // }
 
         // 2.b. OR move different parent
         // TODO FIX columns. item includes children
@@ -111,7 +113,7 @@ export const useDndDesigner = () => {
             handleMoveToDifferentParent(
               designList,
               splitDropZonePath,
-              splitItemPath,
+              item.data.path,
               newItem
             )
           )
@@ -125,7 +127,7 @@ export const useDndDesigner = () => {
           handleMoveToDifferentParent(
             designList,
             splitDropZonePath,
-            splitItemPath,
+            item.data.path,
             newItem
           )
         )
@@ -136,7 +138,7 @@ export const useDndDesigner = () => {
 
   const handleClick = (e: React.MouseEvent, data: any) => {
     e.stopPropagation()
-    
+
     dispatch(selectActiveControl(data.id))
     dispatch(selectActiveMenu(data.type))
   }

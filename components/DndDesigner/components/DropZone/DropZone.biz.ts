@@ -6,10 +6,10 @@ const ACCEPTS = [SIDEBAR_ITEM, COMPONENT, ROW, COLUMN]
 export const useDropZone = ({ data, onDrop }: { data: any; onDrop: any }) => {
   const [{ isOver, canDrop }, drop] = useDrop({
     accept: ACCEPTS,
-    drop: (item: any, monitor) => {
+    drop: (item: any) => {
       onDrop(data, item)
     },
-    canDrop: (item, monitor) => {
+    canDrop: (item) => {
       const dropZonePath = data.path
       const splitDropZonePath = dropZonePath.split('-')
       const itemPath = item.path
@@ -37,7 +37,7 @@ export const useDropZone = ({ data, onDrop }: { data: any; onDrop: any }) => {
       }
 
       // Invalid (Can't drop a parent element (row) into a child (column))
-      const parentDropInChild = splitItemPath.length < splitDropZonePath.length
+      // const parentDropInChild = splitItemPath.length < splitDropZonePath.length
       // if (parentDropInChild) return false
 
       // Current item can't possible move to it's own location
@@ -46,13 +46,13 @@ export const useDropZone = ({ data, onDrop }: { data: any; onDrop: any }) => {
       // Current area
       if (splitItemPath.length === splitDropZonePath.length) {
         const pathToItem = splitItemPath.slice(0, -1).join('-')
-        const currentItemIndex = Number(splitItemPath.slice(-1)[0])
+        // const currentItemIndex = Number(splitItemPath.slice(-1)[0])
 
         const pathToDropZone = splitDropZonePath.slice(0, -1).join('-')
-        const currentDropZoneIndex = Number(splitDropZonePath.slice(-1)[0])
+        // const currentDropZoneIndex = Number(splitDropZonePath.slice(-1)[0])
 
         if (pathToItem === pathToDropZone) {
-          const nextDropZoneIndex = currentItemIndex + 1
+          // const nextDropZoneIndex = currentItemIndex + 1
           // if (nextDropZoneIndex === currentDropZoneIndex) return false
         }
       }

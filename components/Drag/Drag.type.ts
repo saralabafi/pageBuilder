@@ -1,9 +1,9 @@
-interface IDroppable {
+export interface IDroppable {
   items?: string[]
   children: React.ReactNode
 }
 
-interface IDraggable {
+export interface IDraggable {
   id: number
   children: any
 }
