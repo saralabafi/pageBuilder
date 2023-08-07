@@ -35,6 +35,11 @@ export const manageDesign = createSlice({
           firstLayerItem.children.map((column: any) => {
             column.children.map((secondLayerItem: any) => {
               dictionaryObj[secondLayerItem.id] = secondLayerItem
+              secondLayerItem.children?.map((columnSecond: any) => {
+                columnSecond.children.map((thirdLayerItem: any) => {
+                  dictionaryObj[thirdLayerItem.id] = thirdLayerItem
+                })
+              })
             })
           })
         } else {
@@ -67,7 +72,7 @@ export const manageDesign = createSlice({
             children: [],
           })
         }
-
+        // debugger
         selectItem.children = children
       }
 

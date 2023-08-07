@@ -111,36 +111,349 @@ export const removeChildFromChildren = (
     return updatedChildren
   }
 }
+// 1
+// export const addChildToChildren = (
+//   children: any[],
+//   splitDropZonePath: string[],
+//   item: any
+// ): any[] => {
+//   debugger
+//   if (splitDropZonePath.length === 1) {
+//     const dropZoneIndex = Number(splitDropZonePath[0])
+//     return insert(children, dropZoneIndex, item)
+//   }
+
+//   if (splitDropZonePath.length === 3) {
+//     debugger
+//     const updatedChildren = [...children]
+//     const curIndex = Number(splitDropZonePath.slice(1, 2))
+//     // Update the specific node's children
+//     const splitItemChildrenPath = splitDropZonePath.slice(2)
+//     const nodeChildren = updatedChildren[curIndex] // which Row
+
+//     updatedChildren[curIndex] = {
+//       ...nodeChildren,
+//       children: [
+//         ...nodeChildren.children.slice(0, Number(splitDropZonePath[1])), // Copy elements before the target index
+//         item, // Insert the new item at the target index
+//         ...nodeChildren.children.slice(Number(splitDropZonePath[1]) + 2), // Copy elements after the target index
+//       ],
+//     }
+//     return updatedChildren
+//   } else {
+//     const updatedChildren = [...children]
+//     const curIndex = Number(splitDropZonePath.slice(0, 1))
+//     // Update the specific node's children
+//     const splitItemChildrenPath = splitDropZonePath.slice(1)
+//     const nodeChildren = updatedChildren[curIndex] // which Row
+
+//     updatedChildren[curIndex] = {
+//       ...nodeChildren,
+//       children: [
+//         ...nodeChildren.children.slice(0, Number(splitDropZonePath[1])), // Copy elements before the target index
+//         item, // Insert the new item at the target index
+//         ...nodeChildren.children.slice(Number(splitDropZonePath[1]) + 1), // Copy elements after the target index
+//       ],
+//     }
+//     return updatedChildren
+//   }
+
+//   //   // addChildToChildren(
+//   //   //   nodeChildren?.children,
+//   //   //   splitItemChildrenPath,
+//   //   //   item
+//   //   // )
+// }
+
+// ok ok ok ok
+// export const addChildToChildren = (
+//   children: any[],
+//   splitDropZonePath: any[],
+//   item: any
+// ): any[] => {
+//   if (splitDropZonePath.length === 1) {
+//     const dropZoneIndex = Number(splitDropZonePath[0])
+//     return insert(children, dropZoneIndex, item)
+//   }
+
+//   const updatedChildren = [...children]
+
+//   if (splitDropZonePath.length === 2 || splitDropZonePath.length === 2) {
+//     const curIndex = Number(splitDropZonePath[0])
+//     const columnIndex = Number(splitDropZonePath[1])
+
+//     const columnItem = { ...updatedChildren[curIndex] }
+//     const columnChildren = [...columnItem.children]
+
+//     if (columnChildren[columnIndex].type === 'grid') {
+//       const gridItem = { ...columnChildren[columnIndex] }
+//       gridItem.children = [...gridItem.children, item]
+//       columnChildren[columnIndex] = gridItem
+//     } else {
+//       columnChildren[columnIndex] = item
+//     }
+
+//     columnItem.children = columnChildren
+//     updatedChildren[curIndex] = columnItem
+//   }
+
+//   return updatedChildren
+// }
+// last today ok
+// export const addChildToChildren = (
+//   children: any[],
+//   splitDropZonePath: any[],
+//   item: any
+// ): any[] => {
+//   const updatedChildren = [...children]
+
+//   const updateGridItem = (gridItem: any, index: number): any => {
+//     const updatedGridItem = { ...gridItem }
+//     const gridChildren = [...updatedGridItem.children]
+
+//     if (gridChildren[index].type === 'grid') {
+//       const updatedNestedGrid = updateGridItem(gridChildren[index], 0)
+//       if (updatedNestedGrid.children.length < 3) {
+//         updatedNestedGrid.children = [...updatedNestedGrid.children, item]
+//         gridChildren[index] = updatedNestedGrid
+//       }
+//     } else {
+//       gridChildren[index] = item
+//     }
+
+//     updatedGridItem.children = gridChildren
+//     return updatedGridItem
+//   }
+
+//   if (splitDropZonePath.length === 1) {
+//     const dropZoneIndex = Number(splitDropZonePath[0])
+//     return insert(updatedChildren, dropZoneIndex, item)
+//   }
+
+//   if (splitDropZonePath.length === 2) {
+//     const curIndex = Number(splitDropZonePath[0])
+//     const columnIndex = Number(splitDropZonePath[1])
+
+//     const columnItem = { ...updatedChildren[curIndex] }
+//     const columnChildren = [...columnItem.children]
+
+//     if (columnChildren[columnIndex].type === 'grid') {
+//       const updatedGridItem = updateGridItem(columnChildren[columnIndex], 0)
+//       columnChildren[columnIndex] = updatedGridItem
+//     } else {
+//       columnChildren[columnIndex] = item
+//     }
+
+//     columnItem.children = columnChildren
+//     updatedChildren[curIndex] = columnItem
+//   }
+
+//   if (splitDropZonePath.length === 3) {
+//     const curIndex = Number(splitDropZonePath[0])
+//     const columnIndex = Number(splitDropZonePath[1])
+//     const gridIndex = Number(splitDropZonePath[2])
+
+//     const columnItem = { ...updatedChildren[curIndex] }
+//     const columnChildren = [...columnItem.children]
+
+//     const gridItem = { ...columnChildren[columnIndex] }
+//     const gridChildren = [...gridItem.children]
+
+//     if (
+//       gridChildren[gridIndex] &&
+//       gridChildren[gridIndex].type === 'grid' &&
+//       Array.isArray(gridChildren[gridIndex].children) &&
+//       gridChildren[gridIndex].children.length < 3
+//     ) {
+//       const updatedGridItem = updateGridItem(gridChildren[gridIndex], 0)
+//       gridChildren[gridIndex] = updatedGridItem
+//     }
+
+//     gridItem.children = gridChildren
+//     columnChildren[columnIndex] = gridItem
+
+//     columnItem.children = columnChildren
+//     updatedChildren[curIndex] = columnItem
+//   }
+
+//   return updatedChildren
+// }
+
+// export const addChildToChildren = (
+//   children: any[],
+//   splitDropZonePath: any[],
+//   item: any
+// ): any[] => {
+//   const updatedChildren = [...children]
+
+//   const updateGridItem = (gridItem: any, index: number): any => {
+//     const updatedGridItem = { ...gridItem }
+//     const gridChildren = [...updatedGridItem.children]
+
+//     if (gridChildren[index].type === 'grid') {
+//       const updatedNestedGrid = updateGridItem(gridChildren[index], 0)
+//       if (updatedNestedGrid.children.length < 3) {
+//         updatedNestedGrid.children = [...updatedNestedGrid.children, item]
+//         gridChildren[index] = updatedNestedGrid
+//       }
+//     } else {
+//       gridChildren[index] = item
+//     }
+
+//     updatedGridItem.children = gridChildren
+//     return updatedGridItem
+//   }
+
+//   if (splitDropZonePath.length === 1) {
+//     const dropZoneIndex = Number(splitDropZonePath[0])
+//     return insert(updatedChildren, dropZoneIndex, item)
+//   }
+
+//   if (splitDropZonePath.length === 2) {
+//     const curIndex = Number(splitDropZonePath[0])
+//     const columnIndex = Number(splitDropZonePath[1])
+
+//     const columnItem = { ...updatedChildren[curIndex] }
+//     const columnChildren = [...columnItem.children]
+
+//     if (columnChildren[columnIndex].type === 'grid') {
+//       const updatedGridItem = updateGridItem(columnChildren[columnIndex], 0)
+//       columnChildren[columnIndex] = updatedGridItem
+//     } else {
+//       columnChildren[columnIndex] = item
+//     }
+
+//     columnItem.children = columnChildren
+//     updatedChildren[curIndex] = columnItem
+//   }
+
+//   if (splitDropZonePath.length === 3) {
+//     debugger
+//     const curIndex = Number(splitDropZonePath[0])
+//     const columnIndex = Number(splitDropZonePath[1])
+//     const nestedColumnIndex = Number(splitDropZonePath[2])
+
+//     const columnItem = { ...updatedChildren[curIndex] }
+//     const columnChildren = [...columnItem.children]
+
+//     if (
+//       columnChildren[0].children[columnIndex]?.type === 'grid' &&
+//       columnChildren[0].children[columnIndex]?.children.length === 1 &&
+//       columnChildren[columnIndex]?.children[0]?.type === 'grid'
+//     ) {
+//       const nestedGridItem = { ...columnChildren[columnIndex].children[0] }
+//       const nestedGridChildren = [...nestedGridItem.children]
+
+//       if (nestedGridChildren[nestedColumnIndex]?.type === 'grid') {
+//         const updatedNestedGridItem = updateGridItem(
+//           nestedGridChildren[nestedColumnIndex],
+//           0
+//         )
+//         nestedGridChildren[nestedColumnIndex] = updatedNestedGridItem
+//       } else {
+//         nestedGridChildren[nestedColumnIndex] = item
+//       }
+
+//       nestedGridItem.children = nestedGridChildren
+//       columnChildren[columnIndex].children[0] = nestedGridItem
+//     }
+
+//     columnItem.children = columnChildren
+//     updatedChildren[curIndex] = columnItem
+//   }
+
+//   return updatedChildren
+// }
 
 export const addChildToChildren = (
   children: any[],
-  splitDropZonePath: string[],
+  splitDropZonePath: any[],
   item: any
 ): any[] => {
+  const updatedChildren = [...children]
+
+  const updateGridItem = (gridItem: any, index: number): any => {
+    const updatedGridItem = { ...gridItem }
+    const gridChildren = [...updatedGridItem.children]
+
+    if (gridChildren[index].type === 'grid') {
+      const updatedNestedGrid = updateGridItem(gridChildren[index], 0)
+      if (updatedNestedGrid.children.length < 3) {
+        updatedNestedGrid.children = [...updatedNestedGrid.children, item]
+        gridChildren[index] = updatedNestedGrid
+      }
+    } else {
+      gridChildren[index] = item
+    }
+
+    updatedGridItem.children = gridChildren
+    return updatedGridItem
+  }
+
   if (splitDropZonePath.length === 1) {
     const dropZoneIndex = Number(splitDropZonePath[0])
-    return insert(children, dropZoneIndex, item)
+    return insert(updatedChildren, dropZoneIndex, item)
   }
 
-  const updatedChildren = [...children]
-  const curIndex = Number(splitDropZonePath.slice(0, 1))
-  // Update the specific node's children
-  const splitItemChildrenPath = splitDropZonePath.slice(1)
-  const nodeChildren = updatedChildren[curIndex] // which Row
+  if (splitDropZonePath.length === 2) {
+    const curIndex = Number(splitDropZonePath[0])
+    const columnIndex = Number(splitDropZonePath[1])
 
-  updatedChildren[curIndex] = {
-    ...nodeChildren,
-    children: [
-      ...nodeChildren.children.slice(0, Number(splitDropZonePath[1])), // Copy elements before the target index
-      item, // Insert the new item at the target index
-      ...nodeChildren.children.slice(Number(splitDropZonePath[1]) + 1), // Copy elements after the target index
-    ],
+    const columnItem = { ...updatedChildren[curIndex] }
+    const columnChildren = [...columnItem.children]
+
+    if (columnChildren[columnIndex].type === 'grid') {
+      const updatedGridItem = updateGridItem(columnChildren[columnIndex], 0)
+      columnChildren[columnIndex] = updatedGridItem
+    } else {
+      columnChildren[columnIndex] = item
+    }
+
+    columnItem.children = columnChildren
+    updatedChildren[curIndex] = columnItem
   }
-  //   // addChildToChildren(
-  //   //   nodeChildren?.children,
-  //   //   splitItemChildrenPath,
-  //   //   item
-  //   // )
+
+  if (splitDropZonePath.length === 3) {
+    debugger
+    const curIndex = Number(splitDropZonePath[0])
+    const columnIndex = Number(splitDropZonePath[1])
+    const nestedColumnIndex = Number(splitDropZonePath[2])
+
+    const columnItem = { ...updatedChildren[curIndex] }
+    const columnChildren = [...columnItem.children]
+
+    if (
+      columnChildren[columnIndex].children[0]?.type === 'grid' &&
+      // columnChildren[columnIndex]?.children[0]?.children.length === 1 &&
+      columnChildren[columnIndex]?.children[0]?.type === 'grid'
+    ) {
+      const nestedGridItem = { ...columnChildren[columnIndex].children[0] }
+      const nestedGridChildren = [...nestedGridItem.children]
+
+      if (nestedGridChildren[nestedColumnIndex]?.type === 'grid') {
+        const updatedNestedGridItem = updateGridItem(
+          nestedGridChildren[nestedColumnIndex],
+          0
+        )
+        nestedGridChildren[nestedColumnIndex] = updatedNestedGridItem
+      } else {
+        nestedGridChildren[nestedColumnIndex] = item.children[0]
+      }
+
+      const updatedNestedGridItem = {
+        ...nestedGridItem,
+        children: nestedGridChildren,
+      }
+      columnChildren[columnIndex] = {
+        ...columnChildren[columnIndex],
+        children: [updatedNestedGridItem],
+      }
+    }
+
+    columnItem.children = columnChildren
+    updatedChildren[curIndex] = columnItem
+  }
+
   return updatedChildren
 }
 
@@ -231,50 +544,135 @@ export const handleMoveToDifferentParent = (
   return updatedLayout
 }
 
-export const handleMoveSidebarComponentIntoParent: (
+// export const handleMoveSidebarComponentIntoParent: (
+//   layout: any,
+//   splitDropZonePath: any,
+//   item: any,
+//   dispatch: any
+// ) => any = (layout: any, splitDropZonePath: any, item: any, dispatch: any) => {
+//   let newLayoutStructure
+//   debugger
+//   switch (splitDropZonePath.length) {
+//     case 1: {
+//       newLayoutStructure = {
+//         type: 'grid',
+//         id: shortid.generate(),
+//         children: [{ type: 'column', id: shortid.generate(), children: [] }],
+//       }
+//       break
+//     }
+//     case 2: {
+//       const x =
+//         item.type === 'grid'
+//           ? {
+//               type: 'grid',
+//               id: shortid.generate(),
+//               children: [
+//                 { type: 'column', id: shortid.generate(), children: [] },
+//               ],
+//             }
+//           : item
+
+//       newLayoutStructure = {
+//         type: COLUMN,
+//         id: shortid.generate(),
+//         children: [x],
+//       }
+
+//       break
+//     }
+//     case 3: {
+//       const x =
+//         item.type === 'grid'
+//           ? {
+//               type: 'grid',
+//               id: shortid.generate(),
+//               children: [
+//                 { type: 'column', id: shortid.generate(), children: [] },
+//               ],
+//             }
+//           : item
+
+//       newLayoutStructure = {
+//         type: ' ',
+//         id: shortid.generate(),
+//         children: [x],
+//       }
+
+//       break
+//     }
+//     default: {
+//       newLayoutStructure = item
+//     }
+//   }
+//   newLayoutStructure.type !== 'column' &&
+//     dispatch(selectActiveControl(newLayoutStructure.id))
+//   return addChildToChildren(layout, splitDropZonePath, newLayoutStructure)
+// }
+
+export const handleMoveSidebarComponentIntoParent = (
   layout: any,
   splitDropZonePath: any,
   item: any,
   dispatch: any
-) => any = (layout: any, splitDropZonePath: any, item: any, dispatch: any) => {
-  let newLayoutStructure
+): any => {
+  const newLayoutStructure = createNewLayoutStructure(splitDropZonePath, item)
+
+  // if (newLayoutStructure.type !== 'column') {
+  dispatch(selectActiveControl(newLayoutStructure.id))
+  // }
+
+  return addChildToChildren(layout, splitDropZonePath, newLayoutStructure)
+}
+// last ok
+const createNewLayoutStructure = (splitDropZonePath: any[], item: any): any => {
+  const generateColumn = () => ({
+    type: 'column',
+    id: shortid.generate(),
+    children: [] as any[],
+  })
+
+  const generateGrid = () => ({
+    type: 'grid',
+    id: shortid.generate(),
+    children: [generateColumn()],
+  })
 
   switch (splitDropZonePath.length) {
-    case 1: {
-      newLayoutStructure = {
-        type: 'grid',
-        id: shortid.generate(),
-        children: [{ type: 'column', id: shortid.generate(), children: [] }],
-      }
-      break
-    }
-    case 2: {
-      const x =
-        item.type === 'grid'
-          ? {
-              type: 'grid',
-              id: shortid.generate(),
-              children: [
-                { type: 'column', id: shortid.generate(), children: [] },
-              ],
-            }
-          : item
+    case 1:
+      return generateGrid()
 
-      newLayoutStructure = {
-        type: COLUMN,
+    case 2:
+      const columnItem2 = item.type === 'grid' ? generateGrid() : item
+      return {
+        type: 'column',
         id: shortid.generate(),
-        children: [x],
+        children: [columnItem2],
       }
 
-      break
-    }
-    default: {
-      newLayoutStructure = item
-    }
+    case 3:
+      const gridItem = item.type === 'grid' ? generateGrid() : item
+      const columnItem3 = generateColumn()
+      columnItem3.children.push(gridItem)
+      return {
+        type: 'column',
+        id: shortid.generate(),
+        children: [columnItem3],
+      }
+
+    case 4:
+      const gridItem2 = item.type === 'grid' ? generateGrid() : item
+      const columnItem4 = generateColumn()
+      columnItem4.children.push(gridItem2)
+      return {
+        type: 'column',
+        id: shortid.generate(),
+        children: [columnItem4],
+      }
+
+    default:
+      return item
   }
-  newLayoutStructure.type !== 'column' &&
-    dispatch(selectActiveControl(newLayoutStructure.id))
-  return addChildToChildren(layout, splitDropZonePath, newLayoutStructure)
 }
 
 export const handleRemoveItemFromLayout: (
