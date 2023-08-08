@@ -38,25 +38,29 @@ export const useDndDesigner = () => {
     (dropZone: any, item: any) => {
       const splitDropZonePath = dropZone.path.split('-')
       const pathToDropZone = splitDropZonePath.slice(0, -1).join('-')
+      
       const newItem = {
         id: item.data.id,
         type: item.data.type,
-        path: pathToDropZone,
+        path: splitDropZonePath,
         children: item.data.children,
+        childCount: dropZone.childrenCount,
       }
 
       dispatch(selectActiveTab('setting'))
       item.data.component &&
         dispatch(selectActiveMenu(item.data.component.type))
 
-      if (item.type === COLUMN) {
-        newItem.children = item.children
-      }
+      // if (item.type === COLUMN) {
+      //   newItem.children = item.children
+      // }
       // sidebar into
       if (item.data.type === SIDEBAR_ITEM) {
         // 1. Move sidebar item into page
         const newComponent = {
           id: shortid.generate(),
+          path: splitDropZonePath,
+          childCount: dropZone.childrenCount,
           ...item.data.component,
         }
 
@@ -64,6 +68,7 @@ export const useDndDesigner = () => {
           id: newComponent.id,
           type: newComponent.type,
           path: splitDropZonePath,
+          childCount: dropZone.childrenCount,
           // type: COMPONENT,
         }
         setComponents({
@@ -93,7 +98,6 @@ export const useDndDesigner = () => {
       if (item.data.path?.length === splitDropZonePath.length) {
         // 2.a. move within parent
         // if (pathToItem === pathToDropZone) {
-        //   console.log(1.5);
         //   dispatch(
         //     setDesignList(
         //       handleMoveWithinParent(

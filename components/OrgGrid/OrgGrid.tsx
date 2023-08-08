@@ -24,7 +24,6 @@ const OrgGrid = (props?: any) => {
            border-2 border-gray w-full p-2`}>
       {props?.children?.map((item: any, index: any) => {
         const currentPath = `${props.path}-${index}`
-
         return (
           <Flex key={index} align="items-center" customCSS="w-full">
             <div className="border border-dashed border-slate-400 m-1 p-5 w-full">
@@ -44,7 +43,7 @@ const OrgGrid = (props?: any) => {
               <DropZone
                 data={{
                   path: currentPath,
-                  childrenCount: designList?.children?.length,
+                  childrenCount: item.children.length,
                 }}
                 onDrop={handleDrop}
                 path=""

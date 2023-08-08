@@ -18,12 +18,15 @@ export const TreeView = ({
   const dispatch = useDispatch()
   const calculatePadding = (clone: any, depth: any, indentationWidth: any) => {
     const array: ArrayType = {
-      0: 'ps-0',
-      10: 'ps-[10px]',
-      20: 'ps-[20px]',
-      30: 'ps-[30px]',
-      40: 'ps-[50px]',
-      50: 'ps-[60px]',
+      0: 'ps-0 !pe-0',
+      10: 'ps-[10px] !pe-0',
+      20: 'ps-[20px] !pe-0',
+      30: 'ps-[30px] !pe-0',
+      40: 'ps-[50px] !pe-0',
+      50: 'ps-[60px] !pe-0',
+      60: 'ps-[70px] !pe-0',
+      70: 'ps-[80px] !pe-0',
+      80: 'ps-[100px] !pe-0',
     }
 
     return array[clone ? indentationWidth : indentationWidth * depth]

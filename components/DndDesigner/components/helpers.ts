@@ -1,6 +1,7 @@
 import { selectActiveControl } from 'redux/Design/Design'
 import shortid from 'shortid'
 import { COLUMN, ROW } from '../constants'
+import { CalculateChild } from './CalculateChild'
 // import { Grid } from 'components/Grid/Grid'
 
 // a little function to help us with reordering the result
@@ -388,9 +389,12 @@ export const addChildToChildren = (
     updatedGridItem.children = gridChildren
     return updatedGridItem
   }
-
+    console.log('====================================')
+    console.log(item)
+    console.log('====================================')
   if (splitDropZonePath.length === 1) {
     const dropZoneIndex = Number(splitDropZonePath[0])
+
     return insert(updatedChildren, dropZoneIndex, item)
   }
 
@@ -420,11 +424,7 @@ export const addChildToChildren = (
     const columnItem = { ...updatedChildren[curIndex] }
     const columnChildren = [...columnItem.children]
 
-    if (
-      columnChildren[columnIndex].children[0]?.type === 'grid' &&
-      // columnChildren[columnIndex]?.children[0]?.children.length === 1 &&
-      columnChildren[columnIndex]?.children[0]?.type === 'grid'
-    ) {
+    if (columnChildren[columnIndex].children[0]?.type === 'grid') {
       const nestedGridItem = { ...columnChildren[columnIndex].children[0] }
       const nestedGridChildren = [...nestedGridItem.children]
 
@@ -629,27 +629,40 @@ export const handleMoveSidebarComponentIntoParent = (
   item: any,
   dispatch: any
 ): any => {
-  const newLayoutStructure = createNewLayoutStructure(splitDropZonePath, item)
+  const newLayoutStructure = createNewLayoutStructure(
+    splitDropZonePath,
+    item,
+    layout
+  )
 
-  // if (newLayoutStructure.type !== 'column') {
-  dispatch(selectActiveControl(newLayoutStructure.id))
-  // }
+  if (newLayoutStructure.type !== 'column') {
+    dispatch(selectActiveControl(newLayoutStructure.id))
+  }
 
   return addChildToChildren(layout, splitDropZonePath, newLayoutStructure)
 }
 // last ok
-const createNewLayoutStructure = (splitDropZonePath: any[], item: any): any => {
+const createNewLayoutStructure = (
+  splitDropZonePath: any[],
+  item: any,
+  layout: any
+): any => {
   const generateColumn = () => ({
     type: 'column',
     id: shortid.generate(),
+    path: splitDropZonePath,
     children: [] as any[],
   })
 
   const generateGrid = () => ({
     type: 'grid',
     id: shortid.generate(),
+    path: splitDropZonePath,
     children: [generateColumn()],
   })
+
+  const children =
+    layout.length && CalculateChild({ layout, splitDropZonePath })
 
   switch (splitDropZonePath.length) {
     case 1:
@@ -657,32 +670,34 @@ const createNewLayoutStructure = (splitDropZonePath: any[], item: any): any => {
 
     case 2:
       const columnItem2 = item.type === 'grid' ? generateGrid() : item
+
       return {
         type: 'column',
         id: shortid.generate(),
-        children: [columnItem2],
+        children: [...children, columnItem2],
       }
 
     case 3:
-      
-      const gridItem = item.type === 'grid' ? generateGrid() : item
+      if (item.type === 'grid') return alert('you can not use grid')
+
       const columnItem3 = generateColumn()
-      columnItem3.children.push(gridItem)
+      columnItem3.children = [...children, item]
       return {
         type: 'column',
         id: shortid.generate(),
         children: [columnItem3],
       }
 
-    case 4:
-      const gridItem2 = item.type === 'grid' ? generateGrid() : item
-      const columnItem4 = generateColumn()
-      columnItem4.children.push(gridItem2)
-      return {
-        type: 'column',
-        id: shortid.generate(),
-        children: [columnItem4],
-      }
+    // case 4:
+    //   if (item.type === 'grid') return alert('you can not use grid')
+    //   // const gridItem2 = item
+    //   const columnItem4 = generateColumn()
+    //   columnItem4.children = [item]
+    //   return {
+    //     type: 'column',
+    //     id: shortid.generate(),
+    //     children: [columnItem4],
+    //   }
 
     default:
       return item

@@ -1,5 +1,4 @@
 import { useTranslations } from 'next-intl'
-import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectActiveMenu, selectActiveTab } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
