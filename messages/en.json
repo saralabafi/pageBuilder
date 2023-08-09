@@ -20,5 +20,18 @@
     "logo": "logo",
     "navigationMenu": "navigation menu",
     "button": "button"
+  },
+  "Dashboard": {
+    "Menu": {
+      "CMS": "CMS",
+      "dashboard": "Dashboard",
+      "sites": "Sites",
+      "users": "Users",
+      "setting": "Setting",
+      "content_management_system": "content management system"
+    },
+    "Header": {
+      "Search": "search in dashboard"
+    }
   }
 }

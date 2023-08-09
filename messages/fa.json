@@ -23,5 +23,18 @@
     "logo": "لوگو سایت",
     "navigationMenu": "منو ناوبری",
     "button": "دکمه"
+  },
+  "Dashboard": {
+    "Menu": {
+      "CMS": "CMS",
+      "dashboard": "داشبورد ",
+      "sites": "سایت ها",
+      "users": "کاربران",
+      "setting": "تنظیمات",
+      "content_management_system": "سیستم مدیریت محتوا"
+    },
+    "Header": {
+      "Search": "جستجو در داشبورد"
+    }
   }
 }
