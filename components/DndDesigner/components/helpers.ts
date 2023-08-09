@@ -389,9 +389,7 @@ export const addChildToChildren = (
     updatedGridItem.children = gridChildren
     return updatedGridItem
   }
-    console.log('====================================')
-    console.log(item)
-    console.log('====================================')
+
   if (splitDropZonePath.length === 1) {
     const dropZoneIndex = Number(splitDropZonePath[0])
 
@@ -623,7 +621,7 @@ export const handleMoveToDifferentParent = (
 //   return addChildToChildren(layout, splitDropZonePath, newLayoutStructure)
 // }
 
-export const handleMoveSidebarComponentIntoParent = (
+export const  handleMoveSidebarComponentIntoParent = (
   layout: any,
   splitDropZonePath: any,
   item: any,
@@ -659,10 +657,10 @@ const createNewLayoutStructure = (
     id: shortid.generate(),
     path: splitDropZonePath,
     children: [generateColumn()],
+    parentId: 0,
   })
 
-  const children =
-    layout.length && CalculateChild({ layout, splitDropZonePath })
+  const children = layout.length && CalculateChild(layout, splitDropZonePath)
 
   switch (splitDropZonePath.length) {
     case 1:

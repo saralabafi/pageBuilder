@@ -6,11 +6,13 @@ import { selectActiveControl } from 'redux/Design/Design'
 import { calculateColumn } from '../../utils/help/calculate'
 import { useDndDesigner } from 'components/DndDesigner/DndDesigner.biz'
 import { SelectedWrapper } from '../DndDesigner/components/SelectedWrapper/SelectedWrapper'
+import { useRenderList } from 'components/DndDesigner/components/RenderList'
 
 const OrgGrid = (props?: any) => {
   const { handleDrop, designList, activeControl } = useDndDesigner()
   const dispatch = useDispatch()
-
+  const {} = useRenderList()
+  console.log('designList', designList)
 
   const handleClick = (e: React.MouseEvent, item: any) => {
     e.stopPropagation()
@@ -30,6 +32,7 @@ const OrgGrid = (props?: any) => {
               {item.children?.map((component: any) => {
                 return (
                   <SelectedWrapper
+                    component={component}
                     hidden={activeControl !== component.id}
                     key={component.id}>
                     <DragComponent
@@ -42,8 +45,9 @@ const OrgGrid = (props?: any) => {
               })}
               <DropZone
                 data={{
+                  parentId: item.id,
                   path: currentPath,
-                  childrenCount: item.children.length,
+                  childrenCount: item?.children?.length,
                 }}
                 onDrop={handleDrop}
                 path=""

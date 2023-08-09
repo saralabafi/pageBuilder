@@ -1,4 +1,4 @@
-export const CalculateChild = ({ layout, splitDropZonePath }: any) => {
+export const CalculateChild = (layout: any, splitDropZonePath: any) => {
   let prevChild
   switch (splitDropZonePath.length) {
     case 2:
@@ -10,14 +10,6 @@ export const CalculateChild = ({ layout, splitDropZonePath }: any) => {
         layout[splitDropZonePath[0]].children[splitDropZonePath[1]].children[0]
           .children[splitDropZonePath[2]].children
       break
-    // case 4:
-    //   prevChild =
-    //     layout[splitDropZonePath[0]].children[splitDropZonePath[1]].children[0]
-    //       .children[splitDropZonePath[2]].children[0].children[
-    //       splitDropZonePath[3]
-    //     ].children
-
-    //   break
 
     default:
       break

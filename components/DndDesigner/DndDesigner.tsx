@@ -23,15 +23,18 @@ const DndDesigner = () => {
               <div key={control.id}>
                 <DropZone
                   data={{
+                    parentId: control.id,
                     path: currentPath,
-                    childrenCount: control.children.length,
+                    childrenCount: control?.children?.length,
                   }}
                   onDrop={handleDrop}
                   path={currentPath}
                   isLast={undefined}
                   className={undefined}
                 />
-                <SelectedWrapper hidden={activeControl !== control.id}>
+                <SelectedWrapper
+                  hidden={activeControl !== control.id}
+                  component={control}>
                   <div
                     className="w-full"
                     onClick={(e) => handleClick(e, control)}>
@@ -43,6 +46,7 @@ const DndDesigner = () => {
           })}
           <DropZone
             data={{
+              parentId: 0,
               path: `${designList.length}`,
               childrenCount: designList.length,
             }}

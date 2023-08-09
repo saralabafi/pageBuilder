@@ -39,10 +39,12 @@ export const useDndDesigner = () => {
       const splitDropZonePath = dropZone.path.split('-')
       const pathToDropZone = splitDropZonePath.slice(0, -1).join('-')
       
+
       const newItem = {
         id: item.data.id,
         type: item.data.type,
         path: splitDropZonePath,
+        parentId: dropZone.parentId,
         children: item.data.children,
         childCount: dropZone.childrenCount,
       }
@@ -61,6 +63,7 @@ export const useDndDesigner = () => {
           id: shortid.generate(),
           path: splitDropZonePath,
           childCount: dropZone.childrenCount,
+          parentId:dropZone.parentId,
           ...item.data.component,
         }
 
@@ -68,6 +71,7 @@ export const useDndDesigner = () => {
           id: newComponent.id,
           type: newComponent.type,
           path: splitDropZonePath,
+          parentId: dropZone.parentId,
           childCount: dropZone.childrenCount,
           // type: COMPONENT,
         }

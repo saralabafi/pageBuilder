@@ -39,7 +39,7 @@ export const PageBuilderHeader = () => {
         <TabletIcon />
         <PhoneIcon />
         <Flex
-          customCSS="border-r border-neutral-400"
+          customCSS="border-s border-neutral-400"
           gap="gap-1"
           padding="ps-2">
           <Text fontSize={14} fontWeight={400} color="text-slate-500 ">
