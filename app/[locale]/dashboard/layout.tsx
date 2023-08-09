@@ -10,7 +10,7 @@ function dashboardLayout() {
         <DashSidebarFirstCol />
       </aside>
       {/* Dashboard Header */}
-      <div>
+      <div className="relative w-full">
         <DashHeader />
       </div>
     </div>

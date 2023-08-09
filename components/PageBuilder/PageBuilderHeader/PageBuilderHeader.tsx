@@ -23,7 +23,7 @@ export const PageBuilderHeader = () => {
         <ApplicationIcon />
         <div className="ms-4">
           <Text fontWeight={600} fontSize={16} color="text-neutral-700">
-            {t('pageBuilder')}
+            {t('page_builder')}
           </Text>
           <Text
             fontWeight={400}

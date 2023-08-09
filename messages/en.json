@@ -8,17 +8,17 @@
     }
   },
   "layout": {
-    "pageBuilder": "page builder",
+    "page_builder": "page builder",
     "sample": "central > .... > news category ",
-    "addItem": "add item",
+    "add_Item": "add item",
     "navigation": "navigation",
     "formats": "formats ",
     "settings": "settings",
-    "generalBlock": "general block",
+    "general_block": "general block",
     "HTMLEditor": "HTML editor",
     "column": "column",
     "logo": "logo",
-    "navigationMenu": "navigation menu",
+    "navigation_menu": "navigation menu",
     "button": "button"
   },
   "Dashboard": {
@@ -31,7 +31,7 @@
       "content_management_system": "content management system"
     },
     "Header": {
-      "Search": "search in dashboard"
+      "search": "search in dashboard"
     }
   }
 }
