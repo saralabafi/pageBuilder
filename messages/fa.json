@@ -35,6 +35,16 @@
     },
     "Header": {
       "search": "جستجو در داشبورد"
+    },
+    "Main": {
+      "new_page": "صفحه جدید",
+      "design_new_webpage": "طراحی صفحه وب جدید",
+      "new_madule": "ماژول جدید",
+      "design_new_module": "طراحی ماژول جدید",
+      "new_footer": "فوتر جدید",
+      "design_new_footer": "طراحی فوتر جدید",
+      "new_header": "هدر جدید",
+      "design_new_header": "طراحی هدر جدید"
     }
   }
 }

@@ -32,6 +32,16 @@
     },
     "Header": {
       "search": "search in dashboard"
+    },
+    "Main": {
+      "new_page": "New Page",
+      "design_new_webpage": "Design New Webpage",
+      "new_madule": "New Module",
+      "design_new_module": "Design New Module",
+      "new_footer": "New Footer",
+      "design_new_footer": "Design New Footer",
+      "new_header": "New Header",
+      "design_new_header": "Design New Header"
     }
   }
 }

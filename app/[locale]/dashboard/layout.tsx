@@ -1,6 +1,7 @@
 'use client'
 import { DashSidebarFirstCol } from 'components/Dashboard/DashSidebarFirstCol/DashSidebarFirstCol'
 import { DashHeader } from 'components/Dashboard/DashHeader/DashHeader'
+import { DashMain } from 'components/Dashboard/DashMain/DashMain'
 
 function dashboardLayout() {
   return (
@@ -12,6 +13,10 @@ function dashboardLayout() {
       {/* Dashboard Header */}
       <div className="relative w-full">
         <DashHeader />
+      </div>
+      {/* Dashboard Main */}
+      <div>
+        <DashMain />
       </div>
     </div>
   )
