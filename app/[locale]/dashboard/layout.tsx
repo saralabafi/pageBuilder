@@ -11,13 +11,16 @@ function dashboardLayout() {
         <DashSidebarFirstCol />
       </aside>
       {/* Dashboard Header */}
-      <div className="relative w-full">
-        <DashHeader />
+      <div className='flex flex-col w-full'>
+        <div className="relative">
+          <DashHeader />
+        </div>
+        {/* Dashboard Main */}
+        <div>
+          <DashMain />
+        </div>
       </div>
-      {/* Dashboard Main */}
-      <div>
-        <DashMain />
-      </div>
+      
     </div>
   )
 }

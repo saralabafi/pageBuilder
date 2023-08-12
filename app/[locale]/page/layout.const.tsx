@@ -8,7 +8,7 @@ import Setting from 'images/page/setting.svg'
 import PlusCircle from 'images/page/plusCircle.svg'
 
 export const sidebar_items = [
-  { title: 'add_Item', icon: <PlusCircle /> },
+  { title: 'add_item', icon: <PlusCircle /> },
   { title: 'navigation', icon: <Folder /> },
   { title: 'formats', icon: <Formats /> },
   { title: 'settings', icon: <Setting /> },
