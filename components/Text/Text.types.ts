@@ -2,6 +2,7 @@ import { marginType } from 'types/margin.type'
 import { paddingType } from 'types/padding.type'
 
 export interface ITextProps {
+  customCss?: string
   fontSize?: fontSizeType
   fontWeight?: fontWeightType
   margin?: marginType

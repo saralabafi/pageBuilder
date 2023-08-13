@@ -7,6 +7,7 @@ function Text(props: ITextProps) {
   return (
     <p
       className={`
+      ${props.customCss || ''}
       ${props.color} 
       ${fontSizeRender()} ${fontWeightRender()} 
       ${props.padding ?? ''} ${props.margin ?? ''}`}>
