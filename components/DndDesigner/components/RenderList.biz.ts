@@ -4,14 +4,15 @@ import shortid from 'shortid'
 const RenderList = ({ designList, dispatch }: any) => {
   const Dictionary: any = renderDictionary(designList)
 
-  const addControl = (control: any) => {
-    Dictionary[control.id] = control
-    if (control.type == 'grid') {
+  const addControl = (component: any) => {
+    console.log('add')
+    Dictionary[component.id] = component
+    if (component.type == 'grid') {
       const obj: any = {
         id: shortid.generate(),
         type: 'column',
         children: [],
-        parentId: control.id,
+        parentId: component.id,
       }
 
       Dictionary[obj.id] = obj
@@ -82,7 +83,18 @@ const RenderList = ({ designList, dispatch }: any) => {
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
 
-  return { addControl, editControl, deleteItemInDesign }
+  const moveControl = (component: any, newParentId: string) => {
+    const { data } = component
+    // Delete old place
+    delete Dictionary[data.id]
+
+    // Move to new place
+    Dictionary[data.id] = { ...data, parentId: newParentId }
+
+    dispatch(setDesignList(convertObjectToArray(Dictionary)))
+  }
+
+  return { addControl, moveControl, editControl, deleteItemInDesign }
 }
 
 const createColumn = (item: any) => {

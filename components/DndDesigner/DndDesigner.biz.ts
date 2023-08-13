@@ -1,11 +1,5 @@
-import { useCallback, useState } from 'react'
-
-import {
-  handleMoveSidebarComponentIntoParent,
-  handleMoveToDifferentParent,
-  handleRemoveItemFromLayout,
-} from './components/helpers'
-
+import { useCallback } from 'react'
+import { handleRemoveItemFromLayout } from './components/helpers'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   selectActiveControl,
@@ -13,14 +7,12 @@ import {
   selectActiveTab,
   setDesignList,
 } from 'redux/Design/Design'
-import { RootState } from 'redux/Store'
 import shortid from 'shortid'
-import { SIDEBAR_ITEM } from './constants'
+import { RootState } from 'redux/Store'
 import RenderList from './components/RenderList.biz'
 
 export const useDndDesigner = () => {
   const dispatch = useDispatch()
-  const [components, setComponents] = useState<any>({})
   const { designList, activeControl } = useSelector(
     (state: RootState) => state.pageDesign
   )
@@ -38,17 +30,8 @@ export const useDndDesigner = () => {
   const handleDrop = useCallback(
     (dropZone: any, item: any) => {
       const splitDropZonePath = dropZone.path.split('-')
-      const pathToDropZone = splitDropZonePath.slice(0, -1).join('-')
-      
+      const { addControl, moveControl } = RenderList({ designList, dispatch })
 
-      const newItem = {
-        id: item.data.id,
-        type: item.data.type,
-        path: splitDropZonePath,
-        parentId: dropZone.parentId,
-        children: item.data.children,
-        childCount: dropZone.childrenCount,
-      }
       const newComponent = {
         id: shortid.generate(),
         path: splitDropZonePath,
@@ -58,12 +41,14 @@ export const useDndDesigner = () => {
       }
 
       dispatch(selectActiveTab('setting'))
-      item.data.component &&
-        dispatch(selectActiveMenu(item.data.component.type))
-      const { addControl } = RenderList({ designList, dispatch})
-      return addControl(newComponent)
+      dispatch(selectActiveMenu(newComponent.type))
+      dispatch(selectActiveControl(newComponent.id))
+
+      item.data.type === 'sidebarItem'
+        ? addControl(newComponent)
+        : moveControl(item, dropZone.parentId)
     },
-    [designList, components, activeControl]
+    [designList, activeControl]
   )
 
   const handleClick = (e: React.MouseEvent, data: any) => {
@@ -78,7 +63,6 @@ export const useDndDesigner = () => {
     handleDropToTrashBin,
     activeControl,
     designList,
-    components,
     handleClick,
   }
 }
