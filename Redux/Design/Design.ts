@@ -72,7 +72,6 @@ export const manageDesign = createSlice({
             children: [],
           })
         }
-        // debugger
         selectItem.children = children
       }
 

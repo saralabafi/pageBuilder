@@ -6,13 +6,10 @@ import { selectActiveControl } from 'redux/Design/Design'
 import { calculateColumn } from '../../utils/help/calculate'
 import { useDndDesigner } from 'components/DndDesigner/DndDesigner.biz'
 import { SelectedWrapper } from '../DndDesigner/components/SelectedWrapper/SelectedWrapper'
-import { useRenderList } from 'components/DndDesigner/components/RenderList'
 
 const OrgGrid = (props?: any) => {
-  const { handleDrop, designList, activeControl } = useDndDesigner()
+  const { handleDrop, activeControl } = useDndDesigner()
   const dispatch = useDispatch()
-  const {} = useRenderList()
-  console.log('designList', designList)
 
   const handleClick = (e: React.MouseEvent, item: any) => {
     e.stopPropagation()
@@ -55,11 +52,6 @@ const OrgGrid = (props?: any) => {
                 className={undefined}
               />
             </div>
-            {/* {index !== item.length - 1 && (
-              <div className="cursor-col-resize p-1 bg-blue-300 rounded">
-                <HandleResizeIcon className="text-blue-900 " />
-              </div>
-            )} */}
           </Flex>
         )
       })}

@@ -15,7 +15,8 @@ import {
 } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
 import shortid from 'shortid'
-import { COLUMN, SIDEBAR_ITEM } from './constants'
+import { SIDEBAR_ITEM } from './constants'
+import RenderList from './components/RenderList.biz'
 
 export const useDndDesigner = () => {
   const dispatch = useDispatch()
@@ -48,98 +49,19 @@ export const useDndDesigner = () => {
         children: item.data.children,
         childCount: dropZone.childrenCount,
       }
+      const newComponent = {
+        id: shortid.generate(),
+        path: splitDropZonePath,
+        childCount: dropZone.childrenCount,
+        parentId: dropZone.parentId,
+        ...item.data.component,
+      }
 
       dispatch(selectActiveTab('setting'))
       item.data.component &&
         dispatch(selectActiveMenu(item.data.component.type))
-
-      // if (item.type === COLUMN) {
-      //   newItem.children = item.children
-      // }
-      // sidebar into
-      if (item.data.type === SIDEBAR_ITEM) {
-        // 1. Move sidebar item into page
-        const newComponent = {
-          id: shortid.generate(),
-          path: splitDropZonePath,
-          childCount: dropZone.childrenCount,
-          parentId:dropZone.parentId,
-          ...item.data.component,
-        }
-
-        const newItem = {
-          id: newComponent.id,
-          type: newComponent.type,
-          path: splitDropZonePath,
-          parentId: dropZone.parentId,
-          childCount: dropZone.childrenCount,
-          // type: COMPONENT,
-        }
-        setComponents({
-          ...components,
-          [newComponent.id]: newComponent,
-        })
-
-        dispatch(
-          setDesignList(
-            handleMoveSidebarComponentIntoParent(
-              designList,
-              splitDropZonePath,
-              newItem,
-              dispatch
-            )
-          )
-        )
-
-        return
-      }
-
-      // move down here since sidebar items dont have path
-      // const splitItemPath = item.data.path?.split('-')
-      // const pathToItem = item.data.path?.slice(0, -1).join('-')
-
-      // 2. Pure move (no create)
-      if (item.data.path?.length === splitDropZonePath.length) {
-        // 2.a. move within parent
-        // if (pathToItem === pathToDropZone) {
-        //   dispatch(
-        //     setDesignList(
-        //       handleMoveWithinParent(
-        //         designList,
-        //         splitDropZonePath,
-        //         item.data.path
-        //       )
-        //     )
-        //   )
-        //   return
-        // }
-
-        // 2.b. OR move different parent
-        // TODO FIX columns. item includes children
-        dispatch(
-          setDesignList(
-            handleMoveToDifferentParent(
-              designList,
-              splitDropZonePath,
-              item.data.path,
-              newItem
-            )
-          )
-        )
-        return
-      }
-
-      // 3. Move + Create
-      dispatch(
-        setDesignList(
-          handleMoveToDifferentParent(
-            designList,
-            splitDropZonePath,
-            item.data.path,
-            newItem
-          )
-        )
-      )
+      const { addControl } = RenderList({ designList, dispatch})
+      return addControl(newComponent)
     },
     [designList, components, activeControl]
   )

@@ -1,18 +1,11 @@
 import { renders } from '../../app/[locale]/page/layout.const'
 import DropZone from './components/DropZone/DropZone'
 import { SelectedWrapper } from './components/SelectedWrapper/SelectedWrapper'
-import TrashDropZone from './components/TrashDropZone/TrashDropZone'
 import { useDndDesigner } from './DndDesigner.biz'
 
 const DndDesigner = () => {
-  const {
-    handleDrop,
-    handleDropToTrashBin,
-    designList,
-    activeControl,
-    handleClick,
-  } = useDndDesigner()
-
+  const { handleDrop, designList, activeControl, handleClick } =
+    useDndDesigner()
   return (
     <div className="w-full">
       <div className="flex flex-1 flex-col mb-[100px]">
