@@ -108,26 +108,20 @@ const createColumn = (item: any) => {
 }
 
 const renderDictionary = (designList: any) => {
-  const DictionaryItems: any = {}
-  designList?.map((firstLayerItem: any) => {
-    if (firstLayerItem?.children) {
-      DictionaryItems[firstLayerItem.id] = createColumn(firstLayerItem)
-      firstLayerItem.children.map((column: any) => {
-        DictionaryItems[column.id] = createColumn(column)
-        column.children.map((secondLayerItem: any) => {
-          DictionaryItems[secondLayerItem.id] = createColumn(secondLayerItem)
-          secondLayerItem.children?.map((columnSecond: any) => {
-            DictionaryItems[columnSecond.id] = createColumn(columnSecond)
-            columnSecond.children.map((thirdLayerItem: any) => {
-              DictionaryItems[thirdLayerItem.id] = createColumn(thirdLayerItem)
-            })
-          })
-        })
-      })
-    } else {
-      DictionaryItems[firstLayerItem.id] = firstLayerItem
-    }
-  })
+  const DictionaryItems:any = {}
+
+  const createDictionaryItems = (items: any) => {
+    items.forEach((item: any) => {
+      DictionaryItems[item.id] = createColumn(item)
+
+      if (item.children) {
+        createDictionaryItems(item.children)
+      }
+    })
+  }
+
+  createDictionaryItems(designList)
+
   return DictionaryItems
 }
 
