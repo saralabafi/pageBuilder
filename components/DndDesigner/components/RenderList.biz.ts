@@ -5,7 +5,6 @@ const RenderList = ({ designList, dispatch }: any) => {
   const Dictionary: any = renderDictionary(designList)
 
   const addControl = (component: any) => {
-    console.log('add')
     Dictionary[component.id] = component
     if (component.type == 'grid') {
       const obj: any = {
