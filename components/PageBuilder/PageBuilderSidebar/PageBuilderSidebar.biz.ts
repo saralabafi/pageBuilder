@@ -1,3 +1,4 @@
+import { Control } from 'components/DndDesigner/DndDesigner.type'
 import { useTranslations } from 'next-intl'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectActiveMenu, selectActiveTab } from 'redux/Design/Design'
@@ -10,7 +11,7 @@ export const usePageBuilderSidebar = () => {
     (state: RootState) => state.pageDesign
   )
 
-  const handleSelectedItem = (item: any) => {
+  const handleSelectedItem = (item: Control) => {
     dispatch(selectActiveTab(item.type))
     dispatch(selectActiveMenu(item.type))
   }

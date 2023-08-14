@@ -1,9 +1,16 @@
 import { useDrop } from 'react-dnd'
 import { COLUMN, COMPONENT, ROW, SIDEBAR_ITEM } from '../../constants'
+import { DropZoneData, onDrop } from 'components/DndDesigner/DndDesigner.type'
 
 const ACCEPTS = [SIDEBAR_ITEM, COMPONENT, ROW, COLUMN]
 
-export const useDropZone = ({ data, onDrop }: { data: any; onDrop: any }) => {
+export const useDropZone = ({
+  data,
+  onDrop,
+}: {
+  data: DropZoneData
+  onDrop: onDrop
+}) => {
   const [{ isOver, canDrop }, drop] = useDrop({
     accept: ACCEPTS,
     drop: (item: any) => {
@@ -14,27 +21,20 @@ export const useDropZone = ({ data, onDrop }: { data: any; onDrop: any }) => {
       const splitDropZonePath = dropZonePath.split('-')
       const itemPath = item.path
 
-      // sidebar items can always be dropped anywhere
       if (!itemPath) {
-        // if (data.childrenCount >= 3) {
-        //  return false;
-        // }
         return true
       }
 
       const splitItemPath = itemPath.split('-')
 
-      // limit columns when dragging from one row to another row
       const dropZonePathRowIndex = splitDropZonePath[0]
       const itemPathRowIndex = splitItemPath[0]
       const diffRow = dropZonePathRowIndex !== itemPathRowIndex
       if (
         diffRow &&
         splitDropZonePath.length === 2 &&
-        data.childrenCount >= 3
-      ) {
-        // return false
-      }
+        data.childrenCount! >= 3
+      )
 
       // Invalid (Can't drop a parent element (row) into a child (column))
       // const parentDropInChild = splitItemPath.length < splitDropZonePath.length

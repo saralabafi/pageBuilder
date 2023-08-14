@@ -2,6 +2,7 @@ import { renders } from '../../app/[locale]/page/layout.const'
 import DropZone from './components/DropZone/DropZone'
 import { SelectedWrapper } from './components/SelectedWrapper/SelectedWrapper'
 import { useDndDesigner } from './DndDesigner.biz'
+import { Control } from './DndDesigner.type'
 
 const DndDesigner = () => {
   const { handleDrop, designList, activeControl, handleClick } =
@@ -10,7 +11,7 @@ const DndDesigner = () => {
     <div className="w-full">
       <div className="flex flex-1 flex-col mb-[100px]">
         <div className="border border-gray-400 m-3 p-1">
-          {designList?.map((control: any, index: any) => {
+          {designList?.map((control: Control, index: number) => {
             const currentPath = `${index}`
             return (
               <div key={control.id}>
@@ -31,7 +32,7 @@ const DndDesigner = () => {
                   <div
                     className="w-full"
                     onClick={(e) => handleClick(e, control)}>
-                    {renders[control.type]?.(control, currentPath)}
+                    {renders[control.type]?.(control)}
                   </div>
                 </SelectedWrapper>
               </div>

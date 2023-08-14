@@ -1,13 +1,17 @@
 import { setDesignList } from 'redux/Design/Design'
 import shortid from 'shortid'
+import { Control, Dictionary, DropItem } from '../DndDesigner.type'
+interface IRenderList {
+  designList: Control[]
+  dispatch: (arg: any) => void
+}
+const RenderList = ({ designList, dispatch }: IRenderList) => {
+  const Dictionary: Dictionary = renderDictionary(designList)
 
-const RenderList = ({ designList, dispatch }: any) => {
-  const Dictionary: any = renderDictionary(designList)
-
-  const addControl = (component: any) => {
+  const addControl = (component: Control) => {
     Dictionary[component.id] = component
     if (component.type == 'grid') {
-      const obj: any = {
+      const obj = {
         id: shortid.generate(),
         type: 'column',
         children: [],
@@ -20,7 +24,10 @@ const RenderList = ({ designList, dispatch }: any) => {
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
 
-  const editControl = (selectedControlId: string, editConfig: any) => {
+  const editControl = (
+    selectedControlId: string,
+    editConfig: { [key: string]: number }
+  ) => {
     const updatedControl = { ...Dictionary[selectedControlId] }
 
     editConfig.column && changeColumnCount(selectedControlId, editConfig)
@@ -31,10 +38,13 @@ const RenderList = ({ designList, dispatch }: any) => {
     return dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
 
-  const changeColumnCount = (selectedControlId: string, editConfig: any) => {
+  const changeColumnCount = (
+    selectedControlId: string,
+    editConfig: { [key: string]: number }
+  ) => {
     const updatedControl = { ...Dictionary[selectedControlId] }
     const find = []
-    const keys: any = Object.keys(Dictionary)
+    const keys: string[] = Object.keys(Dictionary)
     for (const key of keys) {
       const item = Dictionary[key]
       item.parentId == selectedControlId && find.unshift(item.id)
@@ -82,7 +92,7 @@ const RenderList = ({ designList, dispatch }: any) => {
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
 
-  const moveControl = (component: any, newParentId: string) => {
+  const moveControl = (component: DropItem, newParentId: string) => {
     const { data } = component
     // Delete old place
     delete Dictionary[data.id]
@@ -96,7 +106,7 @@ const RenderList = ({ designList, dispatch }: any) => {
   return { addControl, moveControl, editControl, deleteItemInDesign }
 }
 
-const createColumn = (item: any) => {
+const createColumn = (item: Control) => {
   return {
     id: item.id,
     path: item.path,
@@ -107,11 +117,11 @@ const createColumn = (item: any) => {
   }
 }
 
-const renderDictionary = (designList: any) => {
-  const DictionaryItems:any = {}
+const renderDictionary = (designList: Control[]) => {
+  const DictionaryItems: Dictionary = {}
 
-  const createDictionaryItems = (items: any) => {
-    items.forEach((item: any) => {
+  const createDictionaryItems = (items: Control[]) => {
+    items.forEach((item: Control) => {
       DictionaryItems[item.id] = createColumn(item)
 
       if (item.children) {
@@ -125,9 +135,9 @@ const renderDictionary = (designList: any) => {
   return DictionaryItems
 }
 
-const convertObjectToArray = (obj: any) => {
+const convertObjectToArray = (obj: Dictionary) => {
   const resultMap = new Map()
-  const result: any = []
+  const result: Control[] = []
 
   for (const key in obj) {
     const { parentId, type, style } = obj[key]

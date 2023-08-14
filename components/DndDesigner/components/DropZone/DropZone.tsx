@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import { useDropZone } from './DropZone.biz'
+import { DropZoneData, onDrop } from 'components/DndDesigner/DndDesigner.type'
 
 const DropZone = ({
   data,
@@ -7,8 +8,8 @@ const DropZone = ({
   isLast,
   className,
 }: {
-  data: any
-  onDrop: any
+  data: DropZoneData
+  onDrop: onDrop
   isLast: any
   className: any
   path: string

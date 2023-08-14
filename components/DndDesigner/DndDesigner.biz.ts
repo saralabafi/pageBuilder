@@ -1,5 +1,4 @@
 import { useCallback } from 'react'
-import { handleRemoveItemFromLayout } from './components/helpers'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   selectActiveControl,
@@ -10,6 +9,7 @@ import {
 import shortid from 'shortid'
 import { RootState } from 'redux/Store'
 import RenderList from './components/RenderList.biz'
+import { Control, DropItem, DropZoneData } from './DndDesigner.type'
 
 export const useDndDesigner = () => {
   const dispatch = useDispatch()
@@ -17,27 +17,19 @@ export const useDndDesigner = () => {
     (state: RootState) => state.pageDesign
   )
 
-  const handleDropToTrashBin = useCallback(
-    (dropZone: any, item: any) => {
-      const splitItemPath = item.path.split('-')
-      dispatch(
-        setDesignList(handleRemoveItemFromLayout(designList, splitItemPath))
-      )
-    },
-    [designList]
-  )
+
 
   const handleDrop = useCallback(
-    (dropZone: any, item: any) => {
+    (dropZone: DropZoneData, item: DropItem) => {
       const splitDropZonePath = dropZone.path.split('-')
       const { addControl, moveControl } = RenderList({ designList, dispatch })
 
-      const newComponent = {
-        id: shortid.generate(),
-        path: splitDropZonePath,
+      const newComponent: Control = {
         childCount: dropZone.childrenCount,
-        parentId: dropZone.parentId,
         ...item.data.component,
+        path: splitDropZonePath,
+        id: shortid.generate(),
+        parentId: dropZone.parentId,
       }
 
       dispatch(selectActiveTab('setting'))
@@ -46,12 +38,12 @@ export const useDndDesigner = () => {
 
       item.data.type === 'sidebarItem'
         ? addControl(newComponent)
-        : moveControl(item, dropZone.parentId)
+        : moveControl(item, String(dropZone.parentId))
     },
     [designList, activeControl]
   )
 
-  const handleClick = (e: React.MouseEvent, data: any) => {
+  const handleClick = (e: React.MouseEvent, data: Control) => {
     e.stopPropagation()
 
     dispatch(selectActiveControl(data.id))
@@ -60,7 +52,6 @@ export const useDndDesigner = () => {
 
   return {
     handleDrop,
-    handleDropToTrashBin,
     activeControl,
     designList,
     handleClick,

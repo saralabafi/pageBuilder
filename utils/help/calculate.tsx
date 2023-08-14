@@ -1,4 +1,4 @@
-export const calculateColumn = (value: number) => {
+export const calculateColumn = (value?: number) => {
   enum columnSize {
     'grid-cols-1' = 1,
     'grid-cols-2',
@@ -13,5 +13,5 @@ export const calculateColumn = (value: number) => {
     'grid-cols-11',
     'grid-cols-12',
   }
-  return columnSize[value] ?? 'grid-cols-1'
+  return columnSize[value!] ?? 'grid-cols-1'
 }
