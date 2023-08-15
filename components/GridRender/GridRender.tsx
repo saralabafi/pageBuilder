@@ -1,43 +1,35 @@
-import { Flex } from 'components/CoreComponents/Flex/Flex'
-import DropZone from 'components/DndDesigner/components/DropZone/DropZone'
-import { useDispatch } from 'react-redux'
 import { DragComponent } from './DragComponent'
-import { selectActiveControl } from 'redux/Design/Design'
-import { calculateColumn } from '../../utils/help/calculate'
-import { useDndDesigner } from 'components/DndDesigner/DndDesigner.biz'
-import { SelectedWrapper } from '../DndDesigner/components/SelectedWrapper/SelectedWrapper'
+import { useGridRender } from './GridRender.biz'
+import { Flex } from 'components/CoreComponents/Flex/Flex'
 import { Control } from 'components/DndDesigner/DndDesigner.type'
+import DropZone from 'components/DndDesigner/components/DropZone/DropZone'
+import { SelectedWrapper } from '../DndDesigner/components/SelectedWrapper/SelectedWrapper'
 
-const OrgGrid = (props: Control) => {
-
-  const { handleDrop, activeControl } = useDndDesigner()
-  const dispatch = useDispatch()
-
-  const handleClick = (e: React.MouseEvent, item: Control) => {
-    e.stopPropagation()
-    dispatch(selectActiveControl(item.id))
-  }
-
+const GridRender = (props: Control) => {
+  const { columnCalculator, handleClick, handleDrop, activeControl } =
+    useGridRender(props)
   return (
     <div
       className={`grid 
-        ${calculateColumn(props.style?.column)}
+           grid-cols-12
            border-2 border-gray w-full p-2`}>
       {props?.children?.map((item: Control, index: number) => {
         const currentPath = `${props.path}-${index}`
         return (
-          <Flex key={index} align="items-center" customCSS="w-full">
+          <Flex
+            key={index}
+            align="items-center"
+            customCSS={`w-full ${columnCalculator()}`}>
             <div className="border border-dashed border-slate-400 m-1 p-5 w-full">
-              {item.children?.map((component: Control) => {
+              {item.children?.map((control: Control) => {
                 return (
                   <SelectedWrapper
-                    component={component}
-                    hidden={activeControl !== component.id}
-                    key={component.id}>
+                    control={control}
+                    hidden={activeControl !== control.id}
+                    key={control.id}>
                     <DragComponent
                       handleClick={handleClick}
-                      component={component}
-                      currentPath={currentPath}
+                      component={control}
                     />
                   </SelectedWrapper>
                 )
@@ -50,8 +42,8 @@ const OrgGrid = (props: Control) => {
                 }}
                 onDrop={handleDrop}
                 path=""
-                isLast={undefined}
-                className={undefined}
+                // isLast={undefined}
+                // className={undefined}
               />
             </div>
           </Flex>
@@ -60,4 +52,4 @@ const OrgGrid = (props: Control) => {
     </div>
   )
 }
-export default OrgGrid
+export default GridRender

@@ -10,7 +10,7 @@ import Setting from 'images/page/setting.svg'
 import Star from 'images/page/star.svg'
 import shortid from 'shortid'
 import { Renders } from 'components/DndDesigner/DndDesigner.type'
-import OrgGrid from 'components/OrgGrid/OrgGrid'
+import GridRender from 'components/GridRender/GridRender'
 
 export const sidebar_items = [
   { title: 'addItem', icon: <PlusCircle />, type: 'sidebar' },
@@ -85,7 +85,7 @@ export const control_items = [
 export const renders: Renders = {
   input: () => <h1>HTML editor</h1>,
   grid: (props) => {
-    return <OrgGrid {...props}  />
+    return <GridRender {...props} />
   },
   menu: () => <h1>Menu</h1>,
   column: () => <h1>Column</h1>,

@@ -6,6 +6,7 @@ import { usePageBuilderSideMenu } from './PageBuilderSideMenu.biz'
 export const PageBuilderSideMenu = () => {
   const { activeTab, handleClose, handleRenderTabMenu } =
     usePageBuilderSideMenu()
+
   return (
     <div
       className={`bg-neutral-100 w-[360px] h-screen border-e border-neutral-200 

@@ -5,6 +5,7 @@ import { RootState } from 'redux/Store'
 import { GridSettingsMenu } from './components/GridSettingsMenu/GridSettingsMenu'
 import { ControlMenu } from './components/ControlMenu/ControlMenu'
 import { NavigateMenu } from './components/NavigateMenu/NavigateMenu'
+import { ReactNode } from 'react'
 
 export const usePageBuilderSideMenu = () => {
   const dispatch = useDispatch()
@@ -14,12 +15,12 @@ export const usePageBuilderSideMenu = () => {
   )
 
   const handleClose = () => {
-    dispatch(selectActiveTab(0))
-    dispatch(selectActiveMenu(0))
+    dispatch(selectActiveTab(''))
+    dispatch(selectActiveMenu(''))
   }
 
   const handleRenderTabMenu = () => {
-    const availableMenu: any = {
+    const availableMenu: { [key: string]: { [key: string]: ReactNode} } = {
       sidebar: { title: t('add'), component: <ControlMenu /> },
       grid: { title: t('settings'), component: <GridSettingsMenu /> },
       navigation: { title: t('navigation'), component: <NavigateMenu /> },

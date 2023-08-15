@@ -3,7 +3,7 @@ import { useDrag } from 'react-dnd'
 import { renders } from '../../app/[locale]/page/layout.const'
 import { SIDEBAR_ITEM } from 'components/DndDesigner/constants'
 
-export const DragComponent = ({ handleClick, component, currentPath }: any) => {
+export const DragComponent = ({ handleClick, component}: any) => {
   const [{ opacity }, drag] = useDrag({
     type: SIDEBAR_ITEM,
     item: () => {
@@ -19,7 +19,7 @@ export const DragComponent = ({ handleClick, component, currentPath }: any) => {
       style={{ opacity }}
       className="w-full cursor-move"
       onClick={(e) => handleClick(e, component)}>
-      {renders[component.type]?.(component, currentPath)}
+      {renders[component.type]?.(component)}
     </div>
   )
 }

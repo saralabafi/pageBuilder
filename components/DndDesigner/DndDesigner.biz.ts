@@ -4,7 +4,6 @@ import {
   selectActiveControl,
   selectActiveMenu,
   selectActiveTab,
-  setDesignList,
 } from 'redux/Design/Design'
 import shortid from 'shortid'
 import { RootState } from 'redux/Store'
@@ -16,8 +15,6 @@ export const useDndDesigner = () => {
   const { designList, activeControl } = useSelector(
     (state: RootState) => state.pageDesign
   )
-
-
 
   const handleDrop = useCallback(
     (dropZone: DropZoneData, item: DropItem) => {
@@ -45,7 +42,6 @@ export const useDndDesigner = () => {
 
   const handleClick = (e: React.MouseEvent, data: Control) => {
     e.stopPropagation()
-
     dispatch(selectActiveControl(data.id))
     dispatch(selectActiveMenu(data.type))
   }

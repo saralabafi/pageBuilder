@@ -94,11 +94,8 @@ const RenderList = ({ designList, dispatch }: IRenderList) => {
 
   const moveControl = (component: DropItem, newParentId: string) => {
     const { data } = component
-    // Delete old place
-    delete Dictionary[data.id]
 
-    // Move to new place
-    Dictionary[data.id] = { ...data, parentId: newParentId }
+    Dictionary[data.id] = { ...Dictionary[data.id], parentId: newParentId }
 
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }

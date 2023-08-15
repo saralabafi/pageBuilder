@@ -4,7 +4,7 @@ export const useText = (props: ITextProps) => {
   const { fontSize = 14, fontWeight = 400 } = props
 
   const fontSizeRender = () => {
-    const fonts: any = {
+    const fonts: {[key:number]:string} = {
       12: 'text-xs',
       14: 'text-sm',
       16: 'text-base',
@@ -14,7 +14,6 @@ export const useText = (props: ITextProps) => {
       30: 'text-3xl',
     }
     
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return typeof fontSize === 'number' ? fonts[fontSize!] : fontSize
   }
 

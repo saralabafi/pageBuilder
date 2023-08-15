@@ -1,27 +1,19 @@
-import { ReactNode } from 'react'
 import TrashIcon from 'images/page/trash.svg'
 import HiddenIcon from 'images/page/hidden.svg'
 import DuplicateIcon from 'images/page/duplicate.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from 'redux/Store'
-import { setDesignList } from 'redux/Design/Design'
 import RenderList from '../RenderList.biz'
-
-interface ISelectedWrapper {
-  hidden: boolean
-  children: ReactNode
-  component: any
-}
+import { ISelectedWrapper } from './SelectedWrapper.type'
 
 export const SelectedWrapper = ({
   hidden,
   children,
-  component,
+  control,
 }: ISelectedWrapper) => {
   const { designList } = useSelector((state: RootState) => state.pageDesign)
   const dispatch = useDispatch()
   const { deleteItemInDesign } = RenderList({ designList, dispatch })
-
 
   if (hidden) return children
   return (
@@ -30,7 +22,7 @@ export const SelectedWrapper = ({
         <div className="w-4 h-4 relative">
           <TrashIcon
             className="text-blue-900 cursor-pointer"
-            onClick={() => deleteItemInDesign(component.id)}
+            onClick={() => deleteItemInDesign(control.id)}
           />
         </div>
         <div className="w-4 h-4 relative">
