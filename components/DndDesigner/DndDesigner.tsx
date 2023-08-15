@@ -23,12 +23,12 @@ const DndDesigner = () => {
                   }}
                   onDrop={handleDrop}
                   path={currentPath}
-                  isLast={undefined}
-                  className={undefined}
+                  // isLast={undefined}
+                  // className={undefined}
                 />
                 <SelectedWrapper
                   hidden={activeControl !== control.id}
-                  component={control}>
+                  control={control}>
                   <div
                     className="w-full"
                     onClick={(e) => handleClick(e, control)}>
@@ -46,8 +46,8 @@ const DndDesigner = () => {
             }}
             onDrop={handleDrop}
             path=""
-            isLast={undefined}
-            className={undefined}
+            // isLast={undefined}
+            // className={undefined}
           />
         </div>
       </div>

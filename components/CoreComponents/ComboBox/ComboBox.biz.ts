@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Option } from '../../utils/types/options'
+import { Option } from 'types/options'
+
 function useComboBox(options: Option[]) {
   const inputRef = useRef<HTMLInputElement>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -38,7 +39,7 @@ function useComboBox(options: Option[]) {
       inputRef.current.value = option.content
     }
   }
-  const serchOptionsHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const searchOptionsHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value
     const filterOptions = options.filter((option) =>
       option.content.toLocaleLowerCase().includes(inputValue)
@@ -69,7 +70,7 @@ function useComboBox(options: Option[]) {
     setSearchTerm,
     openListHandler,
     selectOptionHandler,
-    serchOptionsHandler,
+    searchOptionsHandler,
     onblurHandler,
   }
 }

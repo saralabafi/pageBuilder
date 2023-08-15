@@ -1,17 +1,15 @@
-import { Control } from 'components/DndDesigner/DndDesigner.type'
 import { useTranslations } from 'next-intl'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectActiveMenu, selectActiveTab } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
+import { SidebarItem } from '../../../app/[locale]/page/layout.const'
 
 export const usePageBuilderSidebar = () => {
   const t = useTranslations('layout')
   const dispatch = useDispatch()
-  const { activeTab } = useSelector(
-    (state: RootState) => state.pageDesign
-  )
+  const { activeTab } = useSelector((state: RootState) => state.pageDesign)
 
-  const handleSelectedItem = (item: Control) => {
+  const handleSelectedItem = (item: SidebarItem) => {
     dispatch(selectActiveTab(item.type))
     dispatch(selectActiveMenu(item.type))
   }

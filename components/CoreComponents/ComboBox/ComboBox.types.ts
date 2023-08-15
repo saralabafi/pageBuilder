@@ -1,5 +1,5 @@
 import { Properties } from 'csstype'
-import { Option } from '../../utils/types/options'
+import { Option } from 'types/options'
 export interface ComboBoxProp {
   disabled?: boolean
   defaultValue?: string

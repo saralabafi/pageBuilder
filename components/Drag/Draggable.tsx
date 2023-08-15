@@ -1,5 +1,6 @@
 'use client'
 import { useDraggable } from '@dnd-kit/core'
+import { IDraggable } from './Drag.type'
 
 export function Draggable(props: IDraggable) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({

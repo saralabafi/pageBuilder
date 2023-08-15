@@ -1,5 +1,7 @@
 import Button from 'components/CoreComponents/Button/Button'
+import { Renders } from 'components/DndDesigner/DndDesigner.type'
 import { SIDEBAR_ITEM } from 'components/DndDesigner/constants'
+import GridRender from 'components/GridRender/GridRender'
 import Code from 'images/page/code.svg'
 import Column from 'images/page/column.svg'
 import Folder from 'images/page/folder.svg'
@@ -8,11 +10,14 @@ import Menu from 'images/page/menu.svg'
 import PlusCircle from 'images/page/plusCircle.svg'
 import Setting from 'images/page/setting.svg'
 import Star from 'images/page/star.svg'
+import { ReactElement } from 'react'
 import shortid from 'shortid'
-import { Renders } from 'components/DndDesigner/DndDesigner.type'
-import GridRender from 'components/GridRender/GridRender'
-
-export const sidebar_items = [
+export type SidebarItem = {
+  title: string
+  icon: ReactElement
+  type: string
+}
+export const sidebar_items: SidebarItem[] = [
   { title: 'addItem', icon: <PlusCircle />, type: 'sidebar' },
   { title: 'navigation', icon: <Folder />, type: 'navigation' },
   { title: 'formats', icon: <Formats />, type: 'formats' },
