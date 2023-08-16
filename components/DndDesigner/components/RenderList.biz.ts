@@ -143,10 +143,10 @@ const RenderList = ({ designList, dispatch }: IRenderList) => {
       }
     } else {
       Dictionary[selectedId].style = {
-        columnCount: selectedControl - Math.abs(resizeCount),
+        columnCount: selectedControl + Math.abs(resizeCount),
       }
       Dictionary[neighberId].style = {
-        columnCount: neighberControl + Math.abs(resizeCount),
+        columnCount: neighberControl - Math.abs(resizeCount),
       }
     }
 
