@@ -92,7 +92,8 @@ export const control_items = [
 export const renders: Renders = {
   input: () => <h1>HTML editor</h1>,
   grid: (props) => {
-    return <ResizableItems />
+    // return <ResizableItems />
+    return <GridRender {...props} />
   },
   menu: () => <h1>Menu</h1>,
   column: () => <h1>Column</h1>,

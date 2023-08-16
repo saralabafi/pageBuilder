@@ -11,6 +11,7 @@ export const useGridRender = (props: Control) => {
     e.stopPropagation()
     dispatch(selectActiveControl(item.id))
   }
+  
   const columnCalculator = () => {
     const arr: { [key: number]: string } = {
       1: 'col-span-1',

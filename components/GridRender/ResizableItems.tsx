@@ -297,7 +297,7 @@ function ResizableItems() {
   const gridItems = document.querySelectorAll('.visualcomparison > div')
   const colwidth = gridItems[0]?.clientWidth + 16
   // Declare resizeCounts as a global variable
-  let resizeCounts: number[] = []
+  const resizeCounts: number[] = []
   const handleResize = (
     index: number,
     event: MouseEvent,
