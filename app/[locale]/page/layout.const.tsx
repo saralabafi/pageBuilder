@@ -2,6 +2,7 @@ import Button from 'components/CoreComponents/Button/Button'
 import { Renders } from 'components/DndDesigner/DndDesigner.type'
 import { SIDEBAR_ITEM } from 'components/DndDesigner/constants'
 import GridRender from 'components/GridRender/GridRender'
+import ResizableItems from 'components/GridRender/ResizableItems'
 import Code from 'images/page/code.svg'
 import Column from 'images/page/column.svg'
 import Folder from 'images/page/folder.svg'
@@ -17,7 +18,8 @@ export type SidebarItem = {
   icon: ReactElement
   type: string
 }
-export const sidebar_items: SidebarItem[] = [
+
+export const sidebar_items = [
   { title: 'addItem', icon: <PlusCircle />, type: 'sidebar' },
   { title: 'navigation', icon: <Folder />, type: 'navigation' },
   { title: 'formats', icon: <Formats />, type: 'formats' },
@@ -90,7 +92,7 @@ export const control_items = [
 export const renders: Renders = {
   input: () => <h1>HTML editor</h1>,
   grid: (props) => {
-    return <GridRender {...props} />
+    return <ResizableItems />
   },
   menu: () => <h1>Menu</h1>,
   column: () => <h1>Column</h1>,
