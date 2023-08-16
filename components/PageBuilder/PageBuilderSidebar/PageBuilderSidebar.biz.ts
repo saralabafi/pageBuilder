@@ -1,17 +1,18 @@
 import { useTranslations } from 'next-intl'
 import { useDispatch, useSelector } from 'react-redux'
-import { AddSelectedItem } from 'redux/Design/Design'
+import { selectActiveMenu, selectActiveTab } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
+import { SidebarItem } from '../../../app/[locale]/page/layout.const'
 
 export const usePageBuilderSidebar = () => {
   const t = useTranslations('layout')
   const dispatch = useDispatch()
-  const { selectedItem } = useSelector((state: RootState) => state.pageDesign)
+  const { activeTab } = useSelector((state: RootState) => state.pageDesign)
 
-  const isSelected = selectedItem - 1
-
-  const handleSelectedItem = (index: number) => {
-    dispatch(AddSelectedItem(index + 1))
+  const handleSelectedItem = (item: SidebarItem) => {
+    dispatch(selectActiveTab(item.type))
+    dispatch(selectActiveMenu(item.type))
   }
-  return { handleSelectedItem, isSelected, t }
+
+  return { handleSelectedItem, t, activeTab }
 }

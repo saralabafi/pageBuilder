@@ -17,8 +17,16 @@
     "generalBlock": "general block",
     "HTMLEditor": "HTML editor",
     "column": "column",
-    "logo": "logo",
+    "star": "star",
     "navigationMenu": "navigation menu",
-    "button": "button"
+    "selectColumnSize": "select column size",
+    "button": "button",
+    "add": "Add New Item",
+    "setting": "Setting",
+    "save": "Save",
+    "publish": "Publish",
+    "preview": "Preview",
+    "generalBlocks": "General Blocks",
+    "grid": "grid"
   }
 }
