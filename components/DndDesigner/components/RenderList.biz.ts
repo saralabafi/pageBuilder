@@ -16,6 +16,9 @@ const RenderList = ({ designList, dispatch }: IRenderList) => {
         type: 'column',
         children: [],
         parentId: component.id,
+        style: {
+          columnCount: 12,
+        },
       }
 
       Dictionary[obj.id] = obj
@@ -50,16 +53,29 @@ const RenderList = ({ designList, dispatch }: IRenderList) => {
       item.parentId == selectedControlId && find.unshift(item.id)
     }
 
+    const arr: { [key: number]: number } = {
+      1: 1,
+      2: 6,
+      3: 4,
+      4: 3,
+      5: 5,
+      6: 2,
+      12: 12,
+    }
+
     if (updatedControl?.style?.column) {
       const diff = updatedControl.style.column - editConfig.column
+
       if (updatedControl.style.column < editConfig.column) {
         for (let i = 1; i <= -diff; i++) {
           //when you want add column not first time
+
           const obj = {
             type: 'column',
             id: shortid.generate(),
             parentId: updatedControl.id,
             children: [],
+            style: { columnCount: arr[editConfig.column] },
           }
           Dictionary[obj.id] = obj
         }
@@ -77,8 +93,18 @@ const RenderList = ({ designList, dispatch }: IRenderList) => {
           id: shortid.generate(),
           parentId: updatedControl.id,
           children: [],
+          style: { columnCount: arr[editConfig.column] },
         }
         Dictionary[obj.id] = obj
+      }
+    }
+    //for set columnCount for first column
+    for (const key in Dictionary) {
+      const control = Dictionary[key]
+      if (control.parentId == selectedControlId) {
+        const x: any = { ...Dictionary[control.id].style }
+        x.columnCount = arr[editConfig.column]
+        Dictionary[control.id] = { ...Dictionary[control.id], style: x }
       }
     }
   }
@@ -99,8 +125,41 @@ const RenderList = ({ designList, dispatch }: IRenderList) => {
 
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
+  console.log(Dictionary)
+  const resizeColumn = (
+    selectedId: string,
+    neighberId: string,
+    resizeCount: any
+  ) => {
+    const selectedControl = Dictionary[selectedId]?.style?.columnCount
+    const neighberControl = Dictionary[neighberId]?.style?.columnCount
 
-  return { addControl, moveControl, editControl, deleteItemInDesign }
+    if (resizeCount < 0) {
+      Dictionary[selectedId].style = {
+        columnCount: selectedControl + resizeCount,
+      }
+      Dictionary[neighberId].style = {
+        columnCount: neighberControl - resizeCount,
+      }
+    } else {
+      Dictionary[selectedId].style = {
+        columnCount: selectedControl - Math.abs(resizeCount),
+      }
+      Dictionary[neighberId].style = {
+        columnCount: neighberControl + Math.abs(resizeCount),
+      }
+    }
+
+    dispatch(setDesignList(convertObjectToArray(Dictionary)))
+  }
+
+  return {
+    addControl,
+    moveControl,
+    editControl,
+    deleteItemInDesign,
+    resizeColumn,
+  }
 }
 
 const createColumn = (item: Control) => {

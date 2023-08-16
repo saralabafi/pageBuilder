@@ -8,7 +8,7 @@ export type Control = {
   content?: string
   children?: Control[]
   childCount?: number
-  style?: { [key: string]: number }
+  style: { [key: string]: number }
 }
 
 export type DropZoneData = {
