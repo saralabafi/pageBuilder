@@ -3,7 +3,7 @@ import BigFolder from 'images/dashboard/BigFolder.svg'
 import Home from 'images/dashboard/home.svg'
 import Star from 'images/dashboard/star.svg'
 import User from 'images/dashboard/user.svg'
-import Setting from 'images/dashboard/setting.svg'
+import Setting from 'images/dashboard/settingFill.svg'
 import { useTranslations } from 'next-intl'
 
 export const DashSidebarFirstCol = () => {
