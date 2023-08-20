@@ -18,8 +18,24 @@ export const Flex = forwardRef<HTMLDivElement, IFlexProps>((props, ref) => {
     borderColor,
     customCSS,
     sx,
-    onClick
+    onClick,
   } = props
+
+  const obj: any = {
+    ...(customCSS && { customCSS }),
+    ...(borderSize && { borderSize }),
+    ...(borderColor && { borderColor }),
+    ...(direction && { direction }),
+    ...(justify && { justify }),
+    ...(align && { align }),
+    ...(wrap && { wrap }),
+    ...(gap && { gap }),
+    ...(width && { width }),
+    ...(height && { height }),
+    ...(padding && { padding }),
+    ...(margin && { margin }),
+    ...(backgroundColor && { backgroundColor }),
+  }
 
   return (
     <div
@@ -27,19 +43,12 @@ export const Flex = forwardRef<HTMLDivElement, IFlexProps>((props, ref) => {
       onClick={onClick}
       style={sx}
       className={`flex   
-      ${customCSS || ''}
-      ${borderSize || ''}
-      ${borderColor || ''}
-      ${direction}
-      ${justify || ''}
-      ${align}
-      ${wrap || ''}
-      ${gap || ''}
-      ${width || ''}
-      ${height || ''}
-      ${padding || ''}
-      ${margin || ''}
-      ${backgroundColor || ''}`}>
+
+   ${Object.keys(obj)
+     .map((key) => obj[key] || '')
+     .join(' ')}
+     
+      `}>
       {children}
     </div>
   )
