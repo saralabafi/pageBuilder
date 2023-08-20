@@ -34,11 +34,38 @@ export const useGridRender = (props: Control) => {
 
     return arr[item.style?.columnCount || 12]
   }
+
+  const calculateColumnSpan = (delta: any) => {
+    const gridItems = document.querySelectorAll('.visualcomparison > div')
+    const colwidth = gridItems[0]?.clientWidth
+    const counterSize = delta / colwidth
+
+    return Math.round(counterSize)
+  }
+
+  const handleResize = (delta: any, item: any, _prev: any, _next: any) => {
+    const counterSize = calculateColumnSpan(delta.width)
+    const neighbor = _next || _prev
+    if (Math.abs(counterSize) == item.style.columnCount) return
+
+    resizeColumn(item.id, neighbor?.id, counterSize)
+  }
+
+  const isRightAvailable = (index: number) => {
+    return !props?.children?.[index - 1] ? 'pointer-events-none' : ''
+  }
+
+  const isLeftAvailable = (index: number) => {
+    return !props?.children?.[index + 1] ? 'pointer-events-none' : ''
+  }
+
   return {
     columnCalculator,
     handleClick,
     handleDrop,
     activeControl,
-    resizeColumn,
+    handleResize,
+    isRightAvailable,
+    isLeftAvailable,
   }
 }
