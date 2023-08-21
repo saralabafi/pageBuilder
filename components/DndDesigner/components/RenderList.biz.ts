@@ -125,28 +125,28 @@ const RenderList = ({ designList, dispatch }: IRenderList) => {
 
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
-  console.log(Dictionary)
+  
   const resizeColumn = (
     selectedId: string,
-    neighberId: string,
+    neighborId: string,
     resizeCount: any
   ) => {
     const selectedControl = Dictionary[selectedId]?.style?.columnCount
-    const neighberControl = Dictionary[neighberId]?.style?.columnCount
+    const neighborControl = Dictionary[neighborId]?.style?.columnCount
 
     if (resizeCount < 0) {
       Dictionary[selectedId].style = {
         columnCount: selectedControl + resizeCount,
       }
-      Dictionary[neighberId].style = {
-        columnCount: neighberControl - resizeCount,
+      Dictionary[neighborId].style = {
+        columnCount: neighborControl - resizeCount,
       }
     } else {
       Dictionary[selectedId].style = {
         columnCount: selectedControl + Math.abs(resizeCount),
       }
-      Dictionary[neighberId].style = {
-        columnCount: neighberControl - Math.abs(resizeCount),
+      Dictionary[neighborId].style = {
+        columnCount: neighborControl - Math.abs(resizeCount),
       }
     }
 
