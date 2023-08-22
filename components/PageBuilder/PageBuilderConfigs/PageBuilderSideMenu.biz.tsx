@@ -19,9 +19,9 @@ export const usePageBuilderSideMenu = () => {
     dispatch(selectActiveMenu(''))
   }
 
-  const handleRenderTabMenu = () => {
-    const availableMenu: { [key: string]: { [key: string]: ReactNode} } = {
-      sidebar: { title: t('add'), component: <ControlMenu /> },
+  const handleRenderTabMenu = (props: any) => {
+    const availableMenu: { [key: string]: { [key: string]: ReactNode } } = {
+      sidebar: { title: t('add'), component: <ControlMenu {...props} /> },
       grid: { title: t('settings'), component: <GridSettingsMenu /> },
       navigation: { title: t('navigation'), component: <NavigateMenu /> },
     }
