@@ -1,11 +1,11 @@
+import { SettingBox } from 'components/SettingsComponent/SettingBox/SettingBox'
 import { useTranslations } from 'next-intl'
+import { ReactNode } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectActiveMenu, selectActiveTab } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
-import { GridSettingsMenu } from './components/GridSettingsMenu/GridSettingsMenu'
 import { ControlMenu } from './components/ControlMenu/ControlMenu'
 import { NavigateMenu } from './components/NavigateMenu/NavigateMenu'
-import { ReactNode } from 'react'
 
 export const usePageBuilderSideMenu = () => {
   const dispatch = useDispatch()
@@ -20,9 +20,9 @@ export const usePageBuilderSideMenu = () => {
   }
 
   const handleRenderTabMenu = () => {
-    const availableMenu: { [key: string]: { [key: string]: ReactNode} } = {
+    const availableMenu: { [key: string]: { [key: string]: ReactNode } } = {
       sidebar: { title: t('add'), component: <ControlMenu /> },
-      grid: { title: t('settings'), component: <GridSettingsMenu /> },
+      setting: { title: t('settings'), component: <SettingBox /> },
       navigation: { title: t('navigation'), component: <NavigateMenu /> },
     }
     return availableMenu[activeMenu]
