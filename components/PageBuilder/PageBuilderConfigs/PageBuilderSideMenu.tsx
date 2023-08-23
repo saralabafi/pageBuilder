@@ -12,6 +12,7 @@ export const PageBuilderSideMenu = () => {
     [{ url: 'content-structure/forms/controls/definitions' }],
     services.GetData
   )
+
   return (
     <div
       className={`bg-neutral-100 w-[360px] h-screen border-e border-neutral-200 

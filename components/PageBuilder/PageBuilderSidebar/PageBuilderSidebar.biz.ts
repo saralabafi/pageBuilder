@@ -10,8 +10,6 @@ import {
   SidebarItem,
   control_items,
 } from '../../../app/[locale]/page/layout.const'
-import { services } from '../../../services/services'
-import { useQuery } from '@tanstack/react-query'
 
 export const usePageBuilderSidebar = () => {
   const t = useTranslations('layout')
