@@ -1,6 +1,6 @@
 import { marginType } from 'types/margin.type'
 import { paddingType } from 'types/padding.type'
-
+import { Properties } from 'csstype'
 export interface ITextProps {
   fontSize?: fontSizeType
   fontWeight?: fontWeightType
@@ -9,6 +9,8 @@ export interface ITextProps {
   lineHeight?: ''
   children?: React.ReactNode
   color?: string
+  customCSS?: string
+  sx?: Properties<string | number, string & {}>
 }
 
 type fontSizeType = 10 | 12 | 14 | 16 | 18 | 20 | 24 | 30 | string

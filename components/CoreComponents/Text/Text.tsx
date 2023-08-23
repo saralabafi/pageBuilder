@@ -3,14 +3,24 @@ import { useText } from './Text.biz'
 import { ITextProps } from './Text.types'
 
 function Text(props: ITextProps) {
+  const {
+    color = 'text-slate-700',
+    customCSS,
+    sx,
+    padding,
+    margin,
+    children,
+  } = props
   const { fontSizeRender, fontWeightRender } = useText(props)
   return (
     <p
       className={`
-      ${props.color} 
+      ${color} 
+      ${customCSS ?? ''} 
+      ${sx ?? ''} 
       ${fontSizeRender()} ${fontWeightRender()} 
-      ${props.padding ?? ''} ${props.margin ?? ''}`}>
-      {props.children}
+      ${padding ?? ''} ${margin ?? ''}`}>
+      {children}
     </p>
   )
 }
