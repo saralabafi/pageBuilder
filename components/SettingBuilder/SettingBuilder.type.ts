@@ -7,7 +7,7 @@ export type SettingCategoryType = {
   icon: string
   Name: TitleType
   Settings: any
-  SubCategories: any[]
+  SubCategories: SettingCategoryType[] | []
 }
 
 export type Control = {
@@ -15,5 +15,5 @@ export type Control = {
   Icon?: string
   Name: string
   Title: TitleType
-  SettingCategories:  SettingCategoryType[]
+  SettingCategories: SettingCategoryType[]
 }
