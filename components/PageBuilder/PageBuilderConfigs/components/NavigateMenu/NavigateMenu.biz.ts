@@ -9,8 +9,10 @@ export const useNavigateMenu = () => {
   const t = useTranslations('layout')
   const dispatch = useDispatch()
 
-  const handleChange = (e: any) => {
-    dispatch(setDesignList(e))
+  const handleChange = (item: any, e: any) => {
+    if (e?.droppedToParent?.type === 'column') {
+      dispatch(setDesignList(item))
+    }
   }
 
   return { sortableItems, t, handleChange }

@@ -100,7 +100,22 @@ const RenderList = ({ designList, dispatch }: IRenderList) => {
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
 
-  return { addControl, moveControl, editControl, deleteItemInDesign }
+  const duplicateControl = (id: string) => {
+    const newControl = { ...Dictionary[id] }
+    newControl.id = shortid.generate()
+
+    Dictionary[newControl.id] = newControl
+
+    dispatch(setDesignList(convertObjectToArray(Dictionary)))
+  }
+
+  return {
+    addControl,
+    moveControl,
+    editControl,
+    deleteItemInDesign,
+    duplicateControl,
+  }
 }
 
 const createColumn = (item: Control) => {
