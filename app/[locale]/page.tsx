@@ -3,7 +3,6 @@ import DndDesigner from 'components/DndDesigner/DndDesigner'
 import Link from 'next/link'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
-import SwitchControl from 'components/Tools/ContentStructureBuilder/SwitchControl/SwitchControl'
 export default function Home() {
   return (
     <div className="flex-col w-full h-screen bg-white text-black">

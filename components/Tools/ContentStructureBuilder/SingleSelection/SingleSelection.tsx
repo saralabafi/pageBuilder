@@ -13,7 +13,7 @@ const SingleSelection = (props: ISingleSelection) => {
     searchable = 'deactive',
     displayTitle = true,
   } = props
-  let layout = layoutType == 'line' ? 'flex-row' : 'flex-col'
+  const layout = layoutType == 'line' ? 'flex-row' : 'flex-col'
 
   return (
     <div className="m-4">
