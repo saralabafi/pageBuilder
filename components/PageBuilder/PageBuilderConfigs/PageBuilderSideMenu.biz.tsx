@@ -7,6 +7,36 @@ import { ControlMenu } from './components/ControlMenu/ControlMenu'
 import { NavigateMenu } from './components/NavigateMenu/NavigateMenu'
 import { ReactNode } from 'react'
 
+interface SubCategory {
+  Name: {
+    [key: string]: string
+  }
+  SubCategories: SubCategory[]
+  Settings: {
+    [key: string]: any
+  }
+}
+interface Category {
+  Name: {
+    [key: string]: string
+  }
+  SubCategories: SubCategory[]
+  Settings: {
+    [key: string]: any
+  }
+}
+interface Control {
+  Name: string
+  Title: {
+    [key: string]: string
+  }
+  Icon: string
+  SettingCategories: Category[]
+}
+interface ControlData {
+  data: Control[]
+}
+
 export const usePageBuilderSideMenu = () => {
   const dispatch = useDispatch()
   const t = useTranslations('layout')
@@ -19,9 +49,9 @@ export const usePageBuilderSideMenu = () => {
     dispatch(selectActiveMenu(''))
   }
 
-  const handleRenderTabMenu = () => {
-    const availableMenu: { [key: string]: { [key: string]: ReactNode} } = {
-      sidebar: { title: t('add'), component: <ControlMenu /> },
+  const handleRenderTabMenu = (props: ControlData) => {
+    const availableMenu: { [key: string]: { [key: string]: ReactNode } } = {
+      sidebar: { title: t('add'), component: <ControlMenu {...props} /> },
       grid: { title: t('settings'), component: <GridSettingsMenu /> },
       navigation: { title: t('navigation'), component: <NavigateMenu /> },
     }
