@@ -13,7 +13,12 @@ export type SettingCategoryType = {
 export type Control = {
   id?: number
   Icon?: string
+  type?: string
   Name: string
   Title: TitleType
   SettingCategories: SettingCategoryType[]
+}
+
+export interface ControlData {
+  data: Control[]
 }

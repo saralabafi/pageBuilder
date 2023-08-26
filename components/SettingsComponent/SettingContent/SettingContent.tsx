@@ -36,5 +36,5 @@ const RenderSettingLogic = (category: any) => {
 }
 
 export const SettingContent = ({ category }: any) => {
-  return <>{category && RenderSettingLogic(category)}</>
+  return category && RenderSettingLogic(category)
 }

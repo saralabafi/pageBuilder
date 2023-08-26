@@ -1,8 +1,9 @@
 import { Flex } from 'components/CoreComponents/Flex/Flex'
-import { useTabSetting } from './TabSetting.biz'
+import { useLocale } from 'next-intl'
 
-export const TabSetting = (props: any) => {
-  const { category, locale, options, selectedCategory } = useTabSetting(props)
+export const TabSetting = ({ options, category, selectedCategory }: any) => {
+  const locale = useLocale()
+  
   return (
     <Flex justify="justify-center" width="w-full" margin="my-2">
       <div className="bg-white rounded-3xl border border-slate-200 justify-start items-start inline-flex">

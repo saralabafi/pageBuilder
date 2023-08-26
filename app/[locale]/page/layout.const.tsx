@@ -96,4 +96,6 @@ export const renders: Renders = {
   column: () => <h1>Column</h1>,
   button: () => <Button>Button</Button>,
   star: () => <Star />,
+  TextControl: () => <h1>TextControl</h1>, //replace textControl component
+  SwitchControl: () => <h1>SwitchControl</h1>, // replace switchControl component
 }
