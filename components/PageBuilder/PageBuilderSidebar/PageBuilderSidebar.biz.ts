@@ -1,14 +1,12 @@
 import { useTranslations } from 'next-intl'
 import { useDispatch, useSelector } from 'react-redux'
 import {
-  selectActiveControl,
   selectActiveMenu,
-  selectActiveTab,
+  selectActiveTab
 } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
 import {
-  SidebarItem,
-  control_items,
+  SidebarItem
 } from '../../../app/[locale]/page/layout.const'
 
 export const usePageBuilderSidebar = () => {

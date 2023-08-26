@@ -8,12 +8,12 @@ interface IRenderList {
 const RenderList = ({ designList, dispatch }: IRenderList) => {
   const Dictionary: Dictionary = renderDictionary(designList)
 
-  const addControl = (component: Control) => {
+  const addControl = (component: any) => {
     Dictionary[component.id] = component
-    if (component.type == 'grid') {
+    if (component.Name == 'grid') {
       const obj = {
         id: shortid.generate(),
-        type: 'column',
+        Name: 'column',
         children: [],
         parentId: component.id,
       }
@@ -56,7 +56,7 @@ const RenderList = ({ designList, dispatch }: IRenderList) => {
         for (let i = 1; i <= -diff; i++) {
           //when you want add column not first time
           const obj = {
-            type: 'column',
+            Name: 'column',
             id: shortid.generate(),
             parentId: updatedControl.id,
             children: [],
@@ -73,7 +73,7 @@ const RenderList = ({ designList, dispatch }: IRenderList) => {
       // for Add column when first time you want add column
       for (let i = 2; i <= editConfig.column; i++) {
         const obj = {
-          type: 'column',
+          Name: 'column',
           id: shortid.generate(),
           parentId: updatedControl.id,
           children: [],
@@ -107,7 +107,7 @@ const createColumn = (item: Control) => {
   return {
     id: item.id,
     path: item.path,
-    type: item.type,
+    Name: item.Name,
     parentId: item.parentId,
     ...(item.style && { style: item.style }),
     childCount: item.childCount,
@@ -137,11 +137,11 @@ const convertObjectToArray = (obj: Dictionary) => {
   const result: Control[] = []
 
   for (const key in obj) {
-    const { parentId, type, style } = obj[key]
+    const { parentId, Name, style } = obj[key]
     resultMap.set(key, {
       id: key,
       parentId,
-      type,
+      Name,
       ...(style && { style }),
       children: [],
     })

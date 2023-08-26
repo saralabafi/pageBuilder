@@ -38,3 +38,9 @@ export interface IFlexProps {
   borderColor?: borderColorType
   sx?: Properties<string | number, string & {}>
 }
+
+export type FlexDirectionType =
+  | 'flex-row'
+  | 'flex-col'
+  | 'flex-row-reverse'
+  | 'flex-col-reverse'
