@@ -13,7 +13,7 @@ const SingleSelection = (props: ISingleSelection) => {
     searchable = 'deactive',
     displayTitle = true,
   } = props
-  const layout = layoutType == 'line' ? 'flex-row' : 'flex-col'
+  const layout = layoutType == 'row' ? 'flex-row' : 'flex-col'
 
   return (
     <div className="m-4">
@@ -34,7 +34,6 @@ const SingleSelection = (props: ISingleSelection) => {
               id={`${i}`}
               type="radio"
               name={title}
-              value=""
               className="w-4 h-4 text-blue-600 "
             />
             <label htmlFor={`${i}`} className="ms-2 text-[12px] text-slate-700">

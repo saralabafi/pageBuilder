@@ -25,9 +25,6 @@ const NumericControl = (props: INumericControl) => {
         placeholder={placeholder}
         type="number"
         step={numberType === 'int' ? '1' : 'any'}
-        // type="text"
-        // inputMode="numeric"
-        pattern="^[-\d]\d*$"
         onChange={onChange}
       />
       {helpText ? (

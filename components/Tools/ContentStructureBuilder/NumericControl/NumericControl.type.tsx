@@ -9,5 +9,5 @@ export interface INumericControl {
   searchable?: 'deactive' | 'keyWord'
   hide?: boolean
   displayTitle?: boolean
-  onChange?: () => void | undefined
+  onChange?: (obj: any) => void
 }

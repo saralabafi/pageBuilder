@@ -1,7 +1,7 @@
 export interface ISingleSelection {
   title: string
   helpText?: string
-  layoutType?: 'line' | 'list'
+  layoutType?: 'row' | 'colomn'
   required?: boolean
   errorMassage?: string
   options: string[]

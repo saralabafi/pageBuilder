@@ -10,10 +10,10 @@ const TextControl = (props: TextControlProps) => {
     backgroundColor = 'bg-transparent',
     value,
     defaultValue,
-    disabled,
+    disabled = false,
     type = 'text',
     placeholder,
-    readOnly,
+    readOnly = false,
     required,
     customCss,
     sx,
@@ -44,8 +44,8 @@ const TextControl = (props: TextControlProps) => {
           autoFocus={autoFocus}
           value={value}
           defaultValue={defaultValue}
-          disabled={disabled ?? false}
-          readOnly={readOnly ?? false}
+          disabled={disabled}
+          readOnly={readOnly}
           id={id}
           placeholder={placeholder}
           style={sx}
