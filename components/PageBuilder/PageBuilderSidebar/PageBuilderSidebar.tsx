@@ -14,19 +14,17 @@ export const PageBuilderSidebar = () => {
             key={index}
             onClick={() => handleSelectedItem(item)}
             className={`flex flex-col items-center w-[76px] border-b 
-                ${activeTab == item.type && 'bg-blue-600'}
+                ${activeTab == item.type}
                  px-2 py-3 cursor-pointer`}>
             {React.cloneElement(item.icon, {
               className:
-                activeTab === item.type
-                  ? 'text-neutral-50'
-                  : 'text-neutral-500',
+                activeTab === item.type ? 'text-blue-600' : 'text-neutral-500',
             })}
             <Text
               fontSize={'text-[10px]'}
               fontWeight={400}
               color={
-                activeTab === item.type ? 'text-neutral-50' : 'text-neutral-500'
+                activeTab === item.type ? 'text-blue-600' : 'text-neutral-500'
               }>
               {t(item.title)}
             </Text>

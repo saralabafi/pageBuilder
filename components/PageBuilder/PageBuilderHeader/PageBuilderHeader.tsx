@@ -8,10 +8,16 @@ import PhoneIcon from 'images/page/phone.svg'
 import SaveIcon from 'images/page/save.svg'
 import SearchIcon from 'images/page/search.svg'
 import TabletIcon from 'images/page/tablet.svg'
+import ArrowLeft from 'images/page/arrowleft.svg'
+import ArrowRight from 'images/page/arrowright.svg'
+import Arrowmenu from 'images/page/arrowmenu.svg'
 import { useTranslations } from 'next-intl'
+import { useEffect } from 'react'
+import classNames from 'classnames'
 
 export const PageBuilderHeader = () => {
   const t = useTranslations('layout')
+
   return (
     <Flex
       customCSS="h-[72px] border-b border-neutral-200"
@@ -20,24 +26,33 @@ export const PageBuilderHeader = () => {
       align="items-center"
       justify="justify-between">
       <Flex align="items-center">
-        <ApplicationIcon />
+        <Arrowmenu />
         <div className="ms-4">
-          <Text fontWeight={600} fontSize={16} color="text-neutral-700">
-            {t('pageBuilder')}
-          </Text>
-          <Text
-            fontWeight={400}
-            fontSize={12}
-            color="text-neutral-400"
-            margin="mt-1">
-            {t('sample')}
-          </Text>
+          <Flex>
+            <Text fontWeight={600} fontSize={16} color="text-neutral-700">
+              <span className="w-24 h-8 px-4 py-1 bg-blue-50 rounded justify-center items-center inline-flex">
+                <span className="text-right text-blue-600 text-xs font-medium leading-tight">
+                  {t('pageBuilder')}
+                </span>
+              </span>
+            </Text>
+            <Text
+              fontWeight={400}
+              fontSize={12}
+              color="text-neutral-400"
+              margin="mt-1">
+              <span className="text-right text-slate-700 text-sm font-medium leading-tight">
+                {' '}
+                {t('sample')}
+              </span>
+            </Text>
+          </Flex>
         </div>
       </Flex>
       <Flex align="items-center" gap="gap-2">
-        <PCIcon />
-        <TabletIcon />
-        <PhoneIcon />
+        <PCIcon id="pc-icon" />
+        <TabletIcon id="tablet-icon" />
+        <PhoneIcon id="phone-icon" />
         <Flex
           customCSS="border-s border-neutral-400"
           gap="gap-1"
@@ -50,7 +65,18 @@ export const PageBuilderHeader = () => {
           </Text>
         </Flex>
       </Flex>
+
       <Flex align="items-center" gap="gap-4">
+        <Flex align="items-center" gap="gap-2">
+          <div className="border border-1 border-neutral-200 rounded p-2 ">
+            {' '}
+            <ArrowRight />
+          </div>
+          <div className="border border-1 border-neutral-200 rounded p-2">
+            {' '}
+            <ArrowLeft />
+          </div>
+        </Flex>
         <Button
           customCSS="border-1 border-neutral-200"
           backgroundColor="transparent"
