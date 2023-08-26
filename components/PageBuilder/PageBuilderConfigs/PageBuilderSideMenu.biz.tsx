@@ -7,6 +7,36 @@ import { RootState } from 'redux/Store'
 import { ControlMenu } from './components/ControlMenu/ControlMenu'
 import { NavigateMenu } from './components/NavigateMenu/NavigateMenu'
 
+interface SubCategory {
+  Name: {
+    [key: string]: string
+  }
+  SubCategories: SubCategory[]
+  Settings: {
+    [key: string]: any
+  }
+}
+interface Category {
+  Name: {
+    [key: string]: string
+  }
+  SubCategories: SubCategory[]
+  Settings: {
+    [key: string]: any
+  }
+}
+interface Control {
+  Name: string
+  Title: {
+    [key: string]: string
+  }
+  Icon: string
+  SettingCategories: Category[]
+}
+interface ControlData {
+  data: Control[]
+}
+
 export const usePageBuilderSideMenu = () => {
   const dispatch = useDispatch()
   const t = useTranslations('layout')
