@@ -7,7 +7,7 @@ export interface TabItem {
 }
 
 export interface TabProps {
-  visableIcon: boolean
+  visibleIcon?: boolean
   tabList: TabItem[]
   activeTabId: TabItem['id']
 }

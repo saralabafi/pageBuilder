@@ -30,7 +30,7 @@ export const useDndDesigner = () => {
       }
 
       dispatch(selectActiveTab('setting'))
-      dispatch(selectActiveMenu(newComponent.type))
+      dispatch(selectActiveMenu(newComponent.Name))
       dispatch(selectActiveControl(newComponent.id))
 
       item.data.type === 'sidebarItem'
@@ -43,7 +43,7 @@ export const useDndDesigner = () => {
   const handleClick = (e: React.MouseEvent, data: Control) => {
     e.stopPropagation()
     dispatch(selectActiveControl(data.id))
-    dispatch(selectActiveMenu(data.type))
+    dispatch(selectActiveMenu(data.Name))
   }
 
   return {

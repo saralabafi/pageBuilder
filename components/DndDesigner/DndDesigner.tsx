@@ -32,7 +32,7 @@ const DndDesigner = () => {
                   <div
                     className="w-full"
                     onClick={(e) => handleClick(e, control)}>
-                    {renders[control.type]?.(control)}
+                    {renders[control.Name]?.(control)}
                   </div>
                 </SelectedWrapper>
               </div>

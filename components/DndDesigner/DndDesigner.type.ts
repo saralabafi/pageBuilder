@@ -3,8 +3,9 @@ import { ReactElement, ReactNode } from 'react'
 export type Control = {
   path?: string[]
   id: string
+  Name: string
   parentId: string | number
-  type: string
+  type?: string
   content?: string
   children?: Control[]
   childCount?: number
