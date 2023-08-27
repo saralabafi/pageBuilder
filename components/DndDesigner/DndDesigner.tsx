@@ -3,14 +3,20 @@ import DropZone from './components/DropZone/DropZone'
 import { SelectedWrapper } from './components/SelectedWrapper/SelectedWrapper'
 import { useDndDesigner } from './DndDesigner.biz'
 import { Control } from './DndDesigner.type'
+import PlusCircle from 'images/page/plusCircle.svg'
+import classNames from 'classnames'
+
+import { useTranslations } from 'next-intl'
 
 const DndDesigner = () => {
   const { handleDrop, designList, activeControl, handleClick } =
     useDndDesigner()
+
+  const t = useTranslations('layout')
   return (
     <div className="w-full">
       <div className="flex flex-1 flex-col mb-[100px]">
-        <div className="border border-gray-400 m-3 p-1">
+        <div className="p-2 bg-slate-50 rounded-lg border border-dashed border-slate-300 flex-col m-5 ">
           {designList?.map((control: Control, index: number) => {
             const currentPath = `${index}`
             return (
@@ -38,6 +44,14 @@ const DndDesigner = () => {
               </div>
             )
           })}
+          {!designList.length ? (
+            <div className="text-slate-400 text-xs font-medium leading-none text-center">
+              <div className="flex items-center justify-center mb-2">
+                <PlusCircle classNames="text-center" />
+              </div>
+              <span>{t('getstarteddrag')}</span>
+            </div>
+          ) : null}
           <DropZone
             data={{
               parentId: 0,

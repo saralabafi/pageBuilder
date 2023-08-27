@@ -49,9 +49,11 @@ export const PageBuilderHeader = () => {
         </div>
       </Flex>
       <Flex align="items-center" gap="gap-2">
-        <PCIcon id="pc-icon" />
-        <TabletIcon id="tablet-icon" />
-        <PhoneIcon id="phone-icon" />
+        <>
+          <PCIcon id="pc-icon" className="text-blue-500" />
+          <TabletIcon id="tablet-icon" className="text-blue-500" />
+          <PhoneIcon id="phone-icon" className="text-blue-500" />
+        </>
         <Flex
           customCSS="border-s border-neutral-400"
           gap="gap-1"
@@ -67,24 +69,24 @@ export const PageBuilderHeader = () => {
 
       <Flex align="items-center" gap="gap-4">
         <Flex align="items-center" gap="gap-2">
-          <div className="border border-1 border-neutral-200 rounded p-2 ">
+          <div className="border border-1 border-neutral-200 rounded p-2 text-blue-500 cursor-pointer ">
             {' '}
             <ArrowRight />
           </div>
-          <div className="border border-1 border-neutral-200 rounded p-2">
+          <div className="border border-1 border-neutral-200 rounded p-2 text-blue-500 cursor-pointer">
             {' '}
             <ArrowLeft />
           </div>
         </Flex>
         <Button
-          customCSS="border-1 border-neutral-200"
+          customCSS="border-1 border-neutral-200  text-blue-500"
           backgroundColor="transparent"
           onClick={() => undefined}>
           <SearchIcon />
           <Text>{t('preview')}</Text>
         </Button>
         <Button
-          customCSS="border-1 border-solid border-neutral-200"
+          customCSS="border-1 border-solid border-neutral-200 text-blue-500"
           backgroundColor="transparent"
           onClick={() => undefined}>
           <SaveIcon />
