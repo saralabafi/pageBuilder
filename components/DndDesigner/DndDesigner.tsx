@@ -6,9 +6,13 @@ import { Control } from './DndDesigner.type'
 import PlusCircle from 'images/page/plusCircle.svg'
 import classNames from 'classnames'
 
+import { useTranslations } from 'next-intl'
+
 const DndDesigner = () => {
   const { handleDrop, designList, activeControl, handleClick } =
     useDndDesigner()
+
+  const t = useTranslations('layout')
   return (
     <div className="w-full">
       <div className="flex flex-1 flex-col mb-[100px]">
@@ -45,7 +49,7 @@ const DndDesigner = () => {
               <div className="flex items-center justify-center mb-2">
                 <PlusCircle classNames="text-center" />
               </div>
-              <span>برای شروع، یک آیتم را به اینجا بکشید</span>
+              <span>{t('getstarteddrag')}</span>
             </div>
           ) : null}
           <DropZone
