@@ -1,15 +1,6 @@
 import Switch from './Switch'
 import React, { useState } from 'react'
-
-interface SwitchControlProps {
-  label?: string
-  isCheckedControl: boolean
-  onChange: (checked: boolean) => void
-  disabled: boolean
-  isRequired: boolean
-  errorMessage?: string
-  helpText?: string
-}
+import { SwitchControlProps } from './SwitchControl.types'
 
 const SwitchControl: React.FC<SwitchControlProps> = ({
   label,
@@ -46,7 +37,7 @@ const SwitchControl: React.FC<SwitchControlProps> = ({
             onChange={handleDisplayChange}
           />
           <label className="mr-2" htmlFor="displayCheckbox">
-            نمایش چک باکس
+            {/* Display chackbox */}
           </label>
         </div>
 
@@ -70,7 +61,6 @@ const SwitchControl: React.FC<SwitchControlProps> = ({
                 disabled={disabled}
                 onChange={(checked: boolean) => {
                   // Handle the toggle change logic
-                  console.log('Toggle changed:', checked)
                 }}
                 checked={isChecked}
                 required={isRequired}
