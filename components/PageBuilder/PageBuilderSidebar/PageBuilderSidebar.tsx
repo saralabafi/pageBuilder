@@ -13,8 +13,7 @@ export const PageBuilderSidebar = () => {
           <li
             key={index}
             onClick={() => handleSelectedItem(item)}
-            className={`flex flex-col items-center w-[76px] border-b 
-                ${activeTab == item.type && 'bg-blue-600'}
+            className={`flex flex-col items-center w-[76px] border-b      
                  px-2 py-3 cursor-pointer`}>
             {React.cloneElement(item.icon, {
               className:
