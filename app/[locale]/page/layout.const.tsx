@@ -1,3 +1,4 @@
+import ContainerRender from 'components/ContainerRender/ContainerRender'
 import Button from 'components/CoreComponents/Button/Button'
 import { Renders } from 'components/DndDesigner/DndDesigner.type'
 import { SIDEBAR_ITEM } from 'components/DndDesigner/constants'
@@ -32,6 +33,16 @@ export const control_items = [
     icon: <Column />,
     component: {
       type: 'grid',
+      content: 'Some input',
+    },
+  },
+  {
+    id: shortid.generate(),
+    type: SIDEBAR_ITEM,
+    title: 'container',
+    icon: <Column />,
+    component: {
+      type: 'container',
       content: 'Some input',
     },
   },
@@ -91,6 +102,9 @@ export const renders: Renders = {
   input: () => <h1>HTML editor</h1>,
   grid: (props) => {
     return <GridRender {...props} />
+  },
+  container: (props) => {
+    return <ContainerRender {...props} />
   },
   menu: () => <h1>Menu</h1>,
   column: () => <h1>Column</h1>,
