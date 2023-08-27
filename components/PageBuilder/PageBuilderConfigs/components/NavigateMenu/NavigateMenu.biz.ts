@@ -1,3 +1,4 @@
+import { TreeItems } from 'dnd-kit-sortable-tree'
 import { useTranslations } from 'next-intl'
 import { useDispatch, useSelector } from 'react-redux'
 import { setDesignList } from 'redux/Design/Design'
@@ -9,7 +10,10 @@ export const useNavigateMenu = () => {
   const t = useTranslations('layout')
   const dispatch = useDispatch()
 
-  const handleChange = (item: any, e: any) => {
+  const handleChange = (
+    item: TreeItems<{ id: string; type: string }>,
+    e: any
+  ) => {
     if (e?.droppedToParent?.type === 'column') {
       dispatch(setDesignList(item))
     }

@@ -5,48 +5,25 @@ import {
   SortableTree,
   TreeItemComponentProps,
 } from 'dnd-kit-sortable-tree'
-import React from 'react'
-import { ArrayType, ITreeView } from './TreeView.type'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectActiveControl } from 'redux/Design/Design'
-import TrashIcon from 'images/page/trash.svg'
 import DuplicateIcon from 'images/page/duplicate.svg'
 import MoveIcon from 'images/page/move_handle.svg'
-import { RootState } from 'redux/Store'
-import RenderList from 'components/DndDesigner/components/RenderList.biz'
+import TrashIcon from 'images/page/trash.svg'
+import React from 'react'
+import { useTreeView } from './TreeView.biz'
+import { ITreeView } from './TreeView.type'
 
 export const TreeView = ({
   sortableItems,
   handleChange,
   renderText,
 }: ITreeView) => {
-  const dispatch = useDispatch()
-  const calculatePadding = (clone: any, depth: any, indentationWidth: any) => {
-    const array: ArrayType = {
-      0: 'ps-0 !pe-0',
-      10: 'ps-[10px] !pe-0',
-      20: 'ps-[20px] !pe-0',
-      30: 'ps-[30px] !pe-0',
-      40: 'ps-[50px] !pe-0',
-      50: 'ps-[60px] !pe-0',
-      60: 'ps-[70px] !pe-0',
-      70: 'ps-[80px] !pe-0',
-      80: 'ps-[100px] !pe-0',
-    }
-
-    return array[clone ? indentationWidth : indentationWidth * depth]
-  }
-  const { activeControl, designList } = useSelector(
-    (state: RootState) => state.pageDesign
-  )
-  const handleClick = ({ item }: any) => {
-    dispatch(selectActiveControl(item.id))
-  }
-  const isActive = (id: string) => activeControl === id
-  const { deleteItemInDesign, duplicateControl} = RenderList({
-    designList,
-    dispatch,
-  })
+  const {
+    calculatePadding,
+    deleteItemInDesign,
+    duplicateControl,
+    handleClick,
+    isActive,
+  } = useTreeView()
 
   return (
     <SortableTree
@@ -64,7 +41,7 @@ export const TreeView = ({
             <SimpleTreeItemWrapper
               {...props}
               ref={ref}
-              disableInteraction={props.item.type == 'column' ? true : false}
+              disableInteraction={props.item.type == 'column'}
               showDragHandle={false}
               className={calculatePadding(
                 props.clone,
@@ -82,7 +59,7 @@ export const TreeView = ({
                   align="items-center"
                   gap="gap-1"
                   padding="p-1"
-                  onClick={() => handleClick(props)}>
+                  onClick={() => handleClick(props.item.id)}>
                   <div className="w-3 h-3 border border-dashed border-neutral-500 " />
                   <Text fontWeight={300} fontSize={12} color="text-neutral-500">
                     {renderText(props.item.type)}
