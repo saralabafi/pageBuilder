@@ -27,7 +27,9 @@
     "publish": "Publish",
     "preview": "Preview",
     "generalBlocks": "General Blocks",
-    "grid": "grid"
+    "grid": "grid",
+    "formBuilder": "form builder",
+    "userRegistrationForm": "user registration form"
   },
   "GlobalHeader": {
     "search": "search in dashboard",
