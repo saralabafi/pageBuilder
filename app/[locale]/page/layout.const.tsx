@@ -3,6 +3,8 @@ import Button from 'components/CoreComponents/Button/Button'
 import { Renders } from 'components/DndDesigner/DndDesigner.type'
 import { SIDEBAR_ITEM } from 'components/DndDesigner/constants'
 import GridRender from 'components/GridRender/GridRender'
+import SwitchControl from 'components/Tools/ContentStructureBuilder/SwitchControl/SwitchControl'
+import TextControl from 'components/Tools/ContentStructureBuilder/TextControl/TextControl'
 import Code from 'images/page/code.svg'
 import Column from 'images/page/column.svg'
 import Folder from 'images/page/folder.svg'
@@ -110,6 +112,6 @@ export const renders: Renders = {
   column: () => <h1>Column</h1>,
   button: () => <Button>Button</Button>,
   star: () => <Star />,
-  TextControl: () => <h1>TextControl</h1>, //replace textControl component
-  SwitchControl: () => <h1>SwitchControl</h1>, // replace switchControl component
-}
+  TextControl: () => <TextControl />,
+  // SwitchControl: (props) => <SwitchControl {...props} />,
+} 
