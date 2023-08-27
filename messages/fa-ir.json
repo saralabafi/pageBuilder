@@ -27,8 +27,9 @@
     "star": "لوگو سایت",
     "navigationMenu": "منو ناوبری",
     "button": "دکمه",
-    "grid": "گرید"
-
+    "grid": "گرید",
+    "formBuilder": "فرم ساز",
+    "userRegistrationForm": "فرم ثبت نام کاربر"
   },
   "GlobalHeader": {
     "search": "جستجو در داشبورد",
