@@ -32,14 +32,14 @@ export const ContentStructureHeader = () => {
             fontSize={14}
             color="text-blue-600"
             customCSS="px-4 py-2 bg-blue-50 rounded rounded-sm mx-2">
-            فرم ساز
+            {t('formBuilder')}
           </Text>
           <Text
             fontWeight={400}
             fontSize={12}
             color="text-slate-700"
             margin="mt-1">
-            فرم ثبت نام کاربر
+            {t('userRegistrationForm')}
           </Text>
         </Flex>
       </Flex>
