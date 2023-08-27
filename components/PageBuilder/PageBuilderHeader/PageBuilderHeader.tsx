@@ -12,7 +12,6 @@ import ArrowLeft from 'images/page/arrowleft.svg'
 import ArrowRight from 'images/page/arrowright.svg'
 import Arrowmenu from 'images/page/arrowmenu.svg'
 import { useTranslations } from 'next-intl'
-import { useEffect } from 'react'
 import classNames from 'classnames'
 
 export const PageBuilderHeader = () => {
