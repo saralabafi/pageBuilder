@@ -8,7 +8,7 @@ export const NavigateMenu = () => {
     <TreeView
       sortableItems={sortableItems}
       handleChange={handleChange}
-      renderText={(e: string) => t(e)}
+      renderText={(text: string) => t(text)}
     />
   )
 }
