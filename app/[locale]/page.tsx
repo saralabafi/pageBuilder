@@ -11,6 +11,7 @@ export default function Home() {
           For view test Page
         </Link>
       </div>
+
       <div>
         <DndProvider backend={HTML5Backend}>
           <DndDesigner />

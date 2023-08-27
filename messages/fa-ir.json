@@ -27,5 +27,10 @@
     "navigationMenu": "منو ناوبری",
     "button": "دکمه",
     "grid": "گرید"
+
+  },
+  "GlobalHeader": {
+    "search": "جستجو در داشبورد",
+    "logo": "لوگو"
   }
 }
