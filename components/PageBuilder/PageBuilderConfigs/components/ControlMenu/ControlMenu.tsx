@@ -1,21 +1,19 @@
-import Text from 'components/CoreComponents/Text/Text'
-import React from 'react'
-import { control_items } from '../../../../../app/[locale]/page/layout.const'
-import { SIDEBAR_ITEM } from 'components/DndDesigner/constants'
-import { useDrag } from 'react-dnd'
 import { Flex } from 'components/CoreComponents/Flex/Flex'
-import { useTranslations } from 'next-intl'
-import classNames from 'classnames'
+import Text from 'components/CoreComponents/Text/Text'
+import { SIDEBAR_ITEM } from 'components/DndDesigner/constants'
+import { useLocale, useTranslations } from 'next-intl'
+import { useDrag } from 'react-dnd'
 
-export const ControlMenu = (props: any) => {
+export const ControlMenu = ({ controls }: any) => {
   const t = useTranslations('layout')
+  const locale = useLocale()
+
   return (
     <div className="p-3 gap-3">
       <Text margin="mb-4" fontSize={12} color="text-neutral-700">
         {t('generalBlocks')}
       </Text>
-      {console.log('props.data', props.data)}
-      {props.data.map((control: any, index: any) => {
+      {controls.map((control: any, index: number) => {
         const [{ opacity }, drag] = useDrag({
           type: SIDEBAR_ITEM,
           item: () => {
@@ -35,11 +33,13 @@ export const ControlMenu = (props: any) => {
             sx={{ opacity }}
             backgroundColor="bg-neutral-50"
             customCSS="border border-neutral-200 rounded py-2 px-3 cursor-pointer">
-            <p className="text-xs">{control.Icon}</p>
+            {/* <p className="text-xs">{control.Icon}</p> */}
             {/* {React.cloneElement(control.Icon, {
               className: 'text-neutral-400',
             })} */}
-            <Text color="text-neutral-700">{control.Title['fa-ir']}</Text>
+            <Text color="text-neutral-700">
+              {control.component.Title[locale]}
+            </Text>
           </Flex>
         )
       })}

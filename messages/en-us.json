@@ -29,5 +29,9 @@
     "preview": "Preview",
     "generalBlocks": "General Blocks",
     "grid": "grid"
+  },
+  "GlobalHeader": {
+    "search": "search in dashboard",
+    "logo": "logo"
   }
 }

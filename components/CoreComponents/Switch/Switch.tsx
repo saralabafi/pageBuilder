@@ -1,26 +1,43 @@
 import React from 'react'
-import { switchProps } from "./Switch.types"
+import { switchProps } from './Switch.types'
 
-
-const Sample: React.FC<switchProps> = React.forwardRef((
-    { label, checked, disabled, onChangeEv, edge, id, required, size, value, sx, checkedColor, customCSS }, ref) => {
-    const position_EL = edge === "start" ? "ml-0" : "ml-3"
-    const sizeElement = size === "small" ? "after:h-4 after:w-4  h-3 w-8" : "after:h-5 after:w-5  h-3.5 w-10"
+const Sample: React.FC<switchProps> = React.forwardRef(
+  (
+    {
+      label,
+      checked,
+      disabled,
+      onChange,
+      edge,
+      id,
+      required,
+      size,
+      value,
+      sx,
+      checkedColor,
+      customCSS,
+    },
+    ref
+  ) => {
+    const position_EL = edge === 'start' ? 'ml-0' : 'ml-3'
+    const sizeElement =
+      size === 'small'
+        ? 'after:h-4 after:w-4  h-3 w-8'
+        : 'after:h-5 after:w-5  h-3.5 w-10'
     const switchColorChecked = {
-        primary: "checked:bg-blue-300 checked:after:bg-blue-500",
-        error: "checked:bg-red-300 checked:after:bg-red-500",
-        success: "checked:bg-green-300 checked:after:bg-green-500"
+      primary: 'checked:bg-blue-300 checked:after:bg-blue-500',
+      error: 'checked:bg-red-300 checked:after:bg-red-500',
+      success: 'checked:bg-green-300 checked:after:bg-green-500',
     }
 
     return (
-        <div>
-            <label
-                className=" pl-[0.15rem] hover:cursor-pointer flex items-center"
-                htmlFor={id}
-                style={sx}
-            >
-                <input
-                    className={`mr-2 
+      <div>
+        <label
+          className=" pl-[0.15rem] hover:cursor-pointer flex items-center"
+          htmlFor={id}
+          style={sx}>
+          <input
+            className={`mr-2 
                 ${position_EL}
                 ${customCSS || ''}
 
@@ -43,23 +60,22 @@ const Sample: React.FC<switchProps> = React.forwardRef((
                 checked:after:border-none 
                 checked:after:transition-[background-color_0.2s,transform_0.2s] 
                 checked:after:content-[''] hover:cursor-pointer focus:outline-none 
-                ${switchColorChecked[checkedColor]}
+                ${switchColorChecked[checkedColor!]}
               `}
-                    type="checkbox"
-                    role="switch"
-                    id={id}
-                    defaultChecked={checked}
-                    disabled={disabled}
-                    ref={ref}
-                    onChange={onChangeEv}
-                    required={required}
-                    defaultValue={value}
-                />
-                {label}
-            </label>
-
-        </div>
+            type="checkbox"
+            role="switch"
+            id={id}
+            defaultChecked={checked}
+            disabled={disabled}
+            ref={ref}
+            onChange={onChange}
+            required={required}
+            defaultValue={value}
+          />
+          {label}
+        </label>
+      </div>
     )
-
-})
+  }
+)
 export default Sample
