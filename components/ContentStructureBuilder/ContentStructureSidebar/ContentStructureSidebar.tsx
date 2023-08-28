@@ -14,7 +14,7 @@ export const ContentStructureSidebar = () => {
             key={index}
             onClick={() => handleSelectedItem(item)}
             className={`flex flex-col items-center w-[76px] border-b 
-                ${activeTab == item.type && 'bg-blue-600'}
+                ${activeTab == item.type && 'text-blue-600'}
                  px-2 py-3 cursor-pointer`}>
             {React.cloneElement(item.icon, {
               className:

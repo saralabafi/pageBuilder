@@ -25,7 +25,7 @@ const TextControl = (props: TextControlProps) => {
   } = props
   const inputBorder = errorMassage ? 'border-red-500' : 'border-gray-500'
   let multiLine = true
-  if (layoutType === 'line') {
+  if (layoutType === 'row') {
     multiLine = false
   }
   return (
