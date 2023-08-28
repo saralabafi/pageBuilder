@@ -1,16 +1,11 @@
-import { Properties } from 'csstype'
-export interface switchProps {
-  label?: string
-  checked?: boolean
-  disabled?: boolean
-  checkedColor?: 'primary' | 'error' | 'success' 
-  ref?: React.Ref<HTMLInputElement> | null
-  onChange?: () => void
-  edge?: 'start' | 'end'
+export interface SwitchProps {
   id?: string
+  type?: string
+  className?: string
+  disabled?: boolean
+  onChange?: any
+  checked?: boolean
   required?: boolean
-  size?: 'small' | 'medium'
-  value?: any
+  ariaInvalid?: any
   customCSS?: string
-  sx?: Properties<string | number, string & {}>
 }

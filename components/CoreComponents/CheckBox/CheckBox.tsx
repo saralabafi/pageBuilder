@@ -7,20 +7,18 @@ const Checkbox = (CheckboxProps: ICheckboxProps) => {
     isChecked,
     isDisabled,
     isReadonly,
+    isRequired,
+    ariaInvalid,
     direction = 'flex-col',
-    backgroundColor = 'bg-gray-50',
+    backgroundColor = '',
     borderColor = 'border-gray-300',
-    textColor = 'text-gray-900',
+    textColor = '',
   } = CheckboxProps
 
   return (
     <>
       <div
-        className={`${backgroundColor} border-2 ${borderColor} ${textColor} 
-      text-sm rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500 block 
-      w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
-      dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 
-      ${direction}`}>
+        className={`${backgroundColor}  ${borderColor} ${textColor} ${direction}`}>
         <label htmlFor={label}>{label}</label>
         <input
           className={`${direction}`}
@@ -28,9 +26,12 @@ const Checkbox = (CheckboxProps: ICheckboxProps) => {
           checked={isChecked}
           disabled={isDisabled}
           readOnly={isReadonly}
+          required={isRequired}
+          ariaInvalid={ariaInvalid}
           id={label}
           name={label}
-          onChange={(e) => e.target.value}
+          // onChange={(e) => e.target.value}
+          onChange={(e) => CheckboxProps.onChange?.(e)}
         />
       </div>
     </>
