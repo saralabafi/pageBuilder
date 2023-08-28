@@ -1,6 +1,6 @@
+import React from 'react'
 import Text from 'components/CoreComponents/Text/Text'
-import React, { useEffect } from 'react'
-import { sidebar_items } from '../../../app/[locale]/page/layout.const'
+import { visualSidebarItems } from '../../../app/[locale]/page/layout.const'
 import { usePageBuilderSidebar } from './PageBuilderSidebar.biz'
 
 export const PageBuilderSidebar = () => {
@@ -8,7 +8,7 @@ export const PageBuilderSidebar = () => {
 
   return (
     <ul className="w-[76px] bg-neutral-50 h-full border-e border-neutral-200 z-10">
-      {sidebar_items.map((item, index) => {
+      {visualSidebarItems.map((item, index) => {
         return (
           <li
             key={index}

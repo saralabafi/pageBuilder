@@ -1,5 +1,5 @@
 import { Control } from 'components/DndDesigner/DndDesigner.type'
-import RenderList from 'components/DndDesigner/components/RenderList.biz'
+import VisualRenderList from 'components/DndDesigner/components/VisualRenderList.biz'
 import { useTranslations } from 'next-intl'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from 'redux/Store'
@@ -15,7 +15,7 @@ export const useGridSettingsMenu = () => {
   const selectedControl = designList.find(
     (control: Control) => control.id === activeControl
   )
-  const { editControl } = RenderList({ designList, dispatch })
+  const { editControl } = VisualRenderList({ designList, dispatch })
 
   const handleOnChangeColumnSize = (input: string) => {
     const column = { column: Number(input) }

@@ -1,8 +1,8 @@
-import RenderList from 'components/DndDesigner/components/RenderList.biz'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectActiveControl } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
 import { ArrayType } from './TreeView.type'
+import VisualRenderList from 'components/DndDesigner/components/VisualRenderList.biz'
 
 export const useTreeView = () => {
   const dispatch = useDispatch()
@@ -32,7 +32,7 @@ export const useTreeView = () => {
     dispatch(selectActiveControl(id))
   }
   const isActive = (id: string) => activeControl === id
-  const { deleteItemInDesign, duplicateControl } = RenderList({
+  const { deleteItemInDesign, duplicateControl } = VisualRenderList({
     designList,
     dispatch,
   })
