@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ChangeEvent } from 'react'
 import { ICheckboxProps } from './CheckBox.type'
 
 const Checkbox = (CheckboxProps: ICheckboxProps) => {
@@ -8,19 +8,16 @@ const Checkbox = (CheckboxProps: ICheckboxProps) => {
     isDisabled,
     isReadonly,
     direction = 'flex-col',
-    backgroundColor = 'bg-gray-50',
+    backgroundColor = '',
     borderColor = 'border-gray-300',
-    textColor = 'text-gray-900',
+    textColor = '',
+    onChange,
   } = CheckboxProps
 
   return (
     <>
       <div
-        className={`${backgroundColor} border-2 ${borderColor} ${textColor} 
-      text-sm rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500 block 
-      w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
-      dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 
-      ${direction}`}>
+        className={`${backgroundColor}  ${borderColor} ${textColor} ${direction}`}>
         <label htmlFor={label}>{label}</label>
         <input
           className={`${direction}`}
@@ -30,7 +27,7 @@ const Checkbox = (CheckboxProps: ICheckboxProps) => {
           readOnly={isReadonly}
           id={label}
           name={label}
-          onChange={(e) => e.target.value}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e)}
         />
       </div>
     </>

@@ -1,20 +1,13 @@
-export interface SwitchProps {
-  id: string
-  type: string | any
-  className: string
-  disabled: boolean
-  onChange: any
-  checked: boolean
-  required: boolean
-  ariaInvalid: any
-}
+import { SwitchProps } from 'components/CoreComponents/Switch/Switch.types'
 
-export interface SwitchControlProps {
+export interface SwitchControlProps extends SwitchProps {
   label?: string
-  isCheckedControl: boolean
-  onChange: (checked: boolean) => void
-  disabled: boolean
-  isRequired: boolean
+  isCheckedControl?: boolean
+  disabled?: boolean
+  isRequired?: boolean
   errorMessage?: string
   helpText?: string
+  type?: string
+  className?: string
+  onChangeSwitch: (checked: boolean) => void
 }
