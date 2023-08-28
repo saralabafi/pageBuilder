@@ -63,7 +63,7 @@ const SwitchControl: React.FC<SwitchControlProps> = ({
                 }}
                 checked={isChecked}
                 required={isRequired}
-                ariaInvalid={isRequired && !!errorMessage}
+                // ariaInvalid={isRequired && !!errorMessage}
               />
             </div>
           )}

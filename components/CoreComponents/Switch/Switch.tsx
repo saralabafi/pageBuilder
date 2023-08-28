@@ -20,14 +20,14 @@ function Switch(SwitchProps: SwitchProps) {
     <>
       {/* Switch Container */}
       <div
-        style={{ direction: 'ltr' }}
-        className={`md:w-14 md:h-7 w-12 h-6 flex items-center bg-gray-200 rounded-full cursor-pointer ${
+        dir="ltr"
+        className={`md:w-9 md:h-5 w-h-3 flex items-center bg-gray-200 rounded-full cursor-pointer ${
           SwitchProps.disabled ? 'opacity-50 cursor-not-allowed' : ''
         }`}
         onClick={handleClick}>
         {/* Switch */}
         <div
-          className={`bg-blue-500 md:w-6 md:h-6 h-5 w-5 rounded-full shadow-md transform duration-300 ease-in-out${
+          className={`bg-blue-500 md:w-4 md:h-4 h-3 w-3 rounded-full shadow-md transform duration-300 ease-in-out${
             toggle ? '' : toggleClass
           }`}></div>
         {/* Tick */}
