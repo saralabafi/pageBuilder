@@ -27,7 +27,7 @@ const Checkbox = (CheckboxProps: ICheckboxProps) => {
           disabled={isDisabled}
           readOnly={isReadonly}
           required={isRequired}
-          ariaInvalid={ariaInvalid}
+          aria-invalid={ariaInvalid}
           id={label}
           name={label}
           // onChange={(e) => e.target.value}
