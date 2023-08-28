@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ChangeEvent } from 'react'
 import { ICheckboxProps } from './CheckBox.type'
 
 const Checkbox = (CheckboxProps: ICheckboxProps) => {
@@ -13,6 +13,7 @@ const Checkbox = (CheckboxProps: ICheckboxProps) => {
     backgroundColor = '',
     borderColor = 'border-gray-300',
     textColor = '',
+    onChange,
   } = CheckboxProps
 
   return (
@@ -30,8 +31,7 @@ const Checkbox = (CheckboxProps: ICheckboxProps) => {
           aria-invalid={ariaInvalid}
           id={label}
           name={label}
-          // onChange={(e) => e.target.value}
-          onChange={(e) => CheckboxProps.onChange?.(e)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e)}
         />
       </div>
     </>

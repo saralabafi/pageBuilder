@@ -60,7 +60,6 @@ const SwitchControl: React.FC<SwitchControlProps> = ({
                 disabled={disabled}
                 onChange={(checked: boolean) => {
                   // Handle the toggle change logic
-                  console.log('Toggle changed:', checked)
                 }}
                 checked={isChecked}
                 required={isRequired}
