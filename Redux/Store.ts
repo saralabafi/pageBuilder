@@ -1,12 +1,14 @@
 'use client'
 import { configureStore } from '@reduxjs/toolkit'
 import managementAuth from './Auth/Auth'
-import  manageDesign  from './Design/Design'
+import manageDesign from './Design/Design'
+import manageContentDesign from './ContentDesign/ContentDesign'
 
 export const store = configureStore({
   reducer: {
     counter: managementAuth,
-    pageDesign:manageDesign
+    pageDesign: manageDesign,
+    contentDesign: manageContentDesign,
   },
 })
 
