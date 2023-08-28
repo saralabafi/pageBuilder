@@ -7,8 +7,6 @@ const Checkbox = (CheckboxProps: ICheckboxProps) => {
     isChecked,
     isDisabled,
     isReadonly,
-    isRequired,
-    ariaInvalid,
     direction = 'flex-col',
     backgroundColor = '',
     borderColor = 'border-gray-300',
@@ -27,8 +25,6 @@ const Checkbox = (CheckboxProps: ICheckboxProps) => {
           checked={isChecked}
           disabled={isDisabled}
           readOnly={isReadonly}
-          required={isRequired}
-          aria-invalid={ariaInvalid}
           id={label}
           name={label}
           onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e)}

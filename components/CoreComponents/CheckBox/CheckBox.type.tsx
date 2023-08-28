@@ -4,8 +4,6 @@ export interface ICheckboxProps {
   isChecked: boolean
   isDisabled?: boolean
   isReadonly?: boolean
-  isRequired?: boolean
-  ariaInvalid?:any
   label?: string
   id?: string
   className?: string

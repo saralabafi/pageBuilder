@@ -1,51 +1,48 @@
 import { useState } from 'react'
 import { SwitchProps } from './Switch.types'
+import Check from 'images/page/check.svg'
 
 function Switch(SwitchProps: SwitchProps) {
   const [toggle, setToggle] = useState(SwitchProps.checked)
-  const toggleClass = ' transform translate-x-5 !bg-stone-50'
 
   const handleClick = () => {
     if (!SwitchProps.disabled) {
       const newToggle = !toggle
       setToggle(newToggle)
       // Call the onChange callback with the updated toggle value
-      SwitchProps.onChange(newToggle)
+      if (SwitchProps.onChange) {
+        SwitchProps.onChange(newToggle)
+      }
       // Custom toggle change logic
       // ...
     }
   }
 
   return (
-    <>
-      {/* Switch Container */}
+    <div
+      className={`ToggleSwitch w-10 h-6 p-1 rounded-3xl justify-end items-center gap-1 inline-flex ${
+        toggle ? 'bg-blue-600' : 'bg-gray-200'
+      } ${SwitchProps.disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+      onClick={handleClick}>
+      {/* Check */}
+      {toggle && (
+        <Check
+          className="w-3 h-3 text-white"
+          style={{
+            position: 'absolute',
+            top: '55%',
+            left: '35%',
+            transform: 'translate(-50%, -50%)',
+          }}
+        />
+      )}
+      {/* ToggleCircle */}
       <div
-        dir="ltr"
-        className={`md:w-9 md:h-5 w-h-3 flex items-center bg-gray-200 rounded-full cursor-pointer ${
-          SwitchProps.disabled ? 'opacity-50 cursor-not-allowed' : ''
+        className={`ToggleCircle w-4 h-4 bg-white rounded-full transform transition-transform duration-300 ease-in-out${
+          toggle ? ' translate-x-full' : ''
         }`}
-        onClick={handleClick}>
-        {/* Switch */}
-        <div
-          className={`bg-blue-500 md:w-4 md:h-4 h-3 w-3 rounded-full shadow-md transform duration-300 ease-in-out${
-            toggle ? '' : toggleClass
-          }`}></div>
-        {/* Tick */}
-        {toggle && (
-          <></>
-          //  <svg></svg>
-        )}
-      </div>
-      {/* Additional props */}
-      <input
-        type="hidden"
-        value={toggle ? 'on' : 'off'}
-        name="switch"
-        required={SwitchProps.required}
-        aria-required={SwitchProps.required}
-        aria-invalid={SwitchProps.ariaInvalid}
       />
-    </>
+    </div>
   )
 }
 

@@ -9,6 +9,5 @@ export interface SwitchControlProps extends SwitchProps {
   helpText?: string
   type?: string
   className?: string
-  ariaInvalid?: boolean
   onChangeSwitch: (checked: boolean) => void
 }

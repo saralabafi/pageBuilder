@@ -1,31 +1,12 @@
-// import Switch from './Switch'
 import React, { useState } from 'react'
-import { SwitchControlProps } from './SwitchControl.types'
 import Switch from 'components/CoreComponents/Switch/Switch'
 import CheckBox from 'components/CoreComponents/CheckBox/CheckBox'
+import { useSwitch } from './SwitchControl.biz'
+import { SwitchControlProps } from './SwitchControl.types'
 
-const SwitchControl: React.FC<SwitchControlProps> = ({
-  label,
-  isCheckedControl,
-  onChangeSwitch,
-  disabled,
-  isRequired,
-  errorMessage,
-  helpText,
-  type,
-}) => {
-  const [isChecked, setIsChecked] = useState(isCheckedControl)
-  const [isCheckbox, setIsCheckbox] = useState(false)
-
-  const handleToggleChange = (checked: boolean) => {
-    setIsChecked(checked)
-    onChangeSwitch(checked)
-  }
-
-  const handleDisplayChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { checked } = event.target
-    setIsCheckbox(checked)
-  }
+export const SwitchControl = (props: SwitchControlProps) => {
+  const { isChecked, isCheckbox, handleToggleChange, handleDisplayChange } =
+    useSwitch(props)
 
   return (
     <>
@@ -45,9 +26,7 @@ const SwitchControl: React.FC<SwitchControlProps> = ({
           {isCheckbox ? (
             <CheckBox
               isChecked={isChecked as any}
-              isDisabled={disabled}
-              isRequired={isRequired}
-              ariaInvalid={isRequired && !!errorMessage}
+              isDisabled={props.disabled}
               onChange={(event) =>
                 handleToggleChange(event.target.checked)
               }></CheckBox>
@@ -57,25 +36,20 @@ const SwitchControl: React.FC<SwitchControlProps> = ({
                 type="checkbox"
                 className="absolute opacity-0 w-0 h-0"
                 id="toggleSwitch"
-                disabled={disabled}
-                onChange={(checked: boolean) => {
-                  // Handle the toggle change logic
-                }}
+                disabled={props.disabled}
                 checked={isChecked}
-                required={isRequired}
-                // ariaInvalid={isRequired && !!errorMessage}
               />
             </div>
           )}
           <label className="mr-2 text-sm" htmlFor="toggleInput">
-            {label}
+            {props.label}
           </label>
         </div>
-        {helpText && (
-          <div className="text-gray-500 text-xs mb-2">{helpText}</div>
+        {props.helpText && (
+          <div className="text-gray-500 text-xs mb-2">{props.helpText}</div>
         )}
-        {isRequired && errorMessage && (
-          <div className="text-red-500 text-xs">{errorMessage}</div>
+        {props.isRequired && props.errorMessage && (
+          <div className="text-red-500 text-xs">{props.errorMessage}</div>
         )}
       </div>
     </>
