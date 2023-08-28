@@ -30,10 +30,9 @@ export const useContentStructureSideMenu = () => {
   }
 
   const { data, status } = useQuery(
-    [{ url: 'content-structure/forms/controls/definitions' }],
+    [{ url: 'forms/v1.0/siteName/controls/definitions' }],
     services.GetData
   )
-
   const controls: Control[] = data?.map((control: Control) => {
     return { component: control, type: 'sidebarItem' }
   })

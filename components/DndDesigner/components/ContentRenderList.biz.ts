@@ -5,22 +5,28 @@ interface IRenderList {
   designList: Control[]
   dispatch: (arg: any) => void
 }
-const RenderList = ({ designList, dispatch }: IRenderList) => {
+const ContentRenderList = ({ designList, dispatch }: IRenderList) => {
   const Dictionary: Dictionary = renderDictionary(designList)
 
   const addControl = (component: any) => {
-    Dictionary[component.id] = component
-    if (component.Name == 'grid') {
-      const obj = {
-        id: shortid.generate(),
-        Name: 'column',
-        children: [],
-        parentId: component.id,
-      }
-
-      Dictionary[obj.id] = obj
+    const grid = {
+      id: shortid.generate(),
+      Name: 'grid',
+      children: [],
+      parentId: 0,
     }
 
+    const column = {
+      id: shortid.generate(),
+      Name: 'column',
+      children: [],
+      parentId: grid.id,
+    }
+    component.parentId = column.id
+
+    Dictionary[grid.id] = grid
+    Dictionary[column.id] = column
+    Dictionary[component.id] = component
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
 
@@ -175,4 +181,4 @@ const convertObjectToArray = (obj: Dictionary) => {
   return result
 }
 
-export default RenderList
+export default ContentRenderList
