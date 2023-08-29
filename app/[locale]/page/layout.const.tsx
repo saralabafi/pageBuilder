@@ -1,7 +1,7 @@
 import ContainerRender from 'components/ContainerRender/ContainerRender'
 import { Renders } from 'components/DndDesigner/DndDesigner.type'
 import GridRender from 'components/GridRender/GridRender'
-import TextControl from 'components/Tools/ContentStructureBuilder/TextControl/TextControl'
+import TextControl from 'components/Tools/ContentStructureBuilder/Contrrols/TextControl'
 import Folder from 'images/page/folder.svg'
 import Formats from 'images/page/formats.svg'
 import PlusCircle from 'images/page/plusCircle.svg'
