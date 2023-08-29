@@ -12,7 +12,7 @@ export const SideBarIcons: { [key: string]: any } = {
   GridWidgetDefinition: <GridIcon />,
   TextControlDefinition: <TextIcon />,
   SwitchControlDefinition: <SwitchIcon />,
-  NumericControlDefinition: <NumericIcon />,
+  NumberControlDefinition: <NumericIcon />,
   ContainerWidgetDefinition: <ContainerIcon />,
   SingleSelectionControlDefinition: <SingleSelectionIcon />,
   MultiSelectionControlDefinition: <MultiSelectionIcon />,
