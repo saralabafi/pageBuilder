@@ -1,6 +1,6 @@
-import { INumericControl } from './NumericControl.type'
+import { INumericSetting } from './NumericSetting.type'
 
-const NumericControl = (props: INumericControl) => {
+const NumericSetting = (props: INumericSetting) => {
   const {
     title,
     placeholder,
@@ -37,4 +37,4 @@ const NumericControl = (props: INumericControl) => {
   )
 }
 
-export default NumericControl
+export default NumericSetting

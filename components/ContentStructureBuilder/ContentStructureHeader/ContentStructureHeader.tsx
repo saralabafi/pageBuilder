@@ -13,7 +13,7 @@ export const ContentStructureHeader = () => {
   const t = useTranslations('layout')
   return (
     <Flex
-      customCSS="h-[72px] border-b border-neutral-200"
+      customCSS="h-[72px] border-b border-neutral-200 bg-white"
       width="w-full"
       padding="px-6"
       align="items-center"
