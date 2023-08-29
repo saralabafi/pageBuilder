@@ -1,7 +1,7 @@
 import React from 'react'
-import { DesignedTextProps } from './DesignedText.types'
+import { TextControlProps } from './TextControl.types'
 
-const DesignedText = (props: DesignedTextProps) => {
+const TextControl = (props: TextControlProps) => {
   const {
     id,
     color = 'text-neutral-500',
@@ -55,4 +55,4 @@ const DesignedText = (props: DesignedTextProps) => {
   )
 }
 
-export default DesignedText
+export default TextControl
