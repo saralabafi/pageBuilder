@@ -58,8 +58,8 @@ const TextControl = (props: TextControlProps) => {
           autoFocus={autoFocus}
           value={value}
           defaultValue={defaultValue}
-          disabled={disabled ?? false}
-          readOnly={readOnly ?? false}
+          disabled={disabled}
+          readOnly={readOnly}
           type={type}
           id={id}
           className={`appearance-none block w-full bg-white text-gray-700 border ${inputBorder} rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white`}
