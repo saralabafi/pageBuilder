@@ -34,7 +34,7 @@ export const GlobalHeader = () => {
         </div>
       </div>
       <Flex
-        padding="px-6"
+        padding="ps-6"
         align="items-center"
         gap="gap-1"
         justify="justify-between">
