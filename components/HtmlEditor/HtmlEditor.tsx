@@ -1,8 +1,8 @@
 import { EditorState } from 'draft-js'
 import { useEffect, useState } from 'react'
 import { Editor } from 'react-draft-wysiwyg'
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import { stateFromHTML } from 'draft-js-import-html'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
 interface IHtmlEditor {
   htmlDraftConvert: (value: EditorState) => void
