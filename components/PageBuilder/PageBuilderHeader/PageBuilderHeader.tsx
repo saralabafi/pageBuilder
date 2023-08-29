@@ -97,7 +97,7 @@ export const PageBuilderHeader = () => {
           textColor="text-neutral-50"
           backgroundColor="bg-blue-600"
           onClick={() => undefined}>
-          <Text>{t('publish')}</Text>
+          <Text color="text-white">{t('publish')}</Text>
           <ArrowLeftIcon />
         </Button>
       </Flex>
