@@ -2,7 +2,6 @@ import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from 'redux/Store'
 import { Control, DropItem, DropZoneData } from './DndDesigner.type'
-// import VisualRenderList from './components/VisualRenderList.biz'
 import shortid from 'shortid'
 import {
   selectActiveControl,

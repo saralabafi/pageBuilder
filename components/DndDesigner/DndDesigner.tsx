@@ -2,7 +2,6 @@ import { EmptyBox } from 'components/Tools/Common/EmptyBox/EmptyBox'
 import DropZone from './components/DropZone/DropZone'
 import { useDndDesigner } from './DndDesigner.biz'
 import { Control, IDndDesignerProps } from './DndDesigner.type'
-import { log } from 'console'
 
 const DndDesigner = ({
   handleDrop,
@@ -33,10 +32,7 @@ const DndDesigner = ({
                   // isLast={undefined}
                   // className={undefined}
                 /> */}
-                <SelectedWrapper
-                  // hidden={activeControl !== control.id}
-                  deleteItem={handleDelete}
-                  control={control}>
+                <SelectedWrapper deleteItem={handleDelete} control={control}>
                   <div
                     className="w-full"
                     onClick={(e) => handleClick(e, control)}>

@@ -14,7 +14,6 @@ import {
 } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
 import shortid from 'shortid'
-import { log } from 'console'
 
 const useFormBuilder = () => {
   const dispatch = useDispatch()
@@ -51,7 +50,6 @@ const useFormBuilder = () => {
 
   const handleClick = (e: React.MouseEvent, data: Control) => {
     const component = data.children?.[0]?.children?.[0] as Control
-    console.log(component)
 
     e.stopPropagation()
     dispatch(selectActiveControl(component.id))
