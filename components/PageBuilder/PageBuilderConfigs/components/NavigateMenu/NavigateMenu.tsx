@@ -3,7 +3,7 @@ import { useNavigateMenu } from './NavigateMenu.biz'
 
 export const NavigateMenu = () => {
   const { t, handleChange, sortableItems } = useNavigateMenu()
-
+  
   return (
     <TreeView
       sortableItems={sortableItems}
