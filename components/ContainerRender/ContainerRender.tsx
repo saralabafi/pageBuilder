@@ -5,6 +5,8 @@ import DropZone from 'components/DndDesigner/components/DropZone/DropZone'
 import { DragComponent } from 'components/GridRender/DragComponent'
 import useContainerRender from './ContainerRender.biz'
 import { VisualSelectedWrapper } from 'components/DndDesigner/components/VisualSelectedWrapper/VisualSelectedWrapper'
+import { visualRenderItems } from '../../app/[locale]/page/layout.const'
+import Link from 'next/link'
 
 const ContainerRender = (props: Control) => {
   const { style, children, id } = props
@@ -20,18 +22,23 @@ const ContainerRender = (props: Control) => {
       padding="p-2"
       width="w-full"
       height="h-full">
-      {children?.map((control: Control) => {
-        return (
-          <VisualSelectedWrapper
-            deleteItem={() => {}}
-            control={control}
-            hidden={activeControl !== control.id}
-            key={control.id}>
-            <DragComponent handleClick={handleClick} component={control} />
-          </VisualSelectedWrapper>
-        )
-      })}
-      <DropZone
+      <Link href='' target='' >
+        {children?.map((control: Control) => {
+          return (
+            <VisualSelectedWrapper
+              deleteItem={() => {}}
+              control={control}
+              hidden={activeControl !== control.id}
+              key={control.id}>
+              <DragComponent
+                handleClick={handleClick}
+                component={control}
+                renders={visualRenderItems}
+              />
+            </VisualSelectedWrapper>
+          )
+        })}
+        {/* <DropZone
         data={{
           parentId: id,
           path: '0',
@@ -39,7 +46,8 @@ const ContainerRender = (props: Control) => {
         }}
         onDrop={handleDrop}
         path=""
-      />
+      /> */}
+      </Link>
     </Flex>
   )
 }

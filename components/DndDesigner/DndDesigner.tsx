@@ -15,12 +15,12 @@ const DndDesigner = ({
   return (
     <div className="w-full">
       <div className="flex flex-1 flex-col mb-[100px]">
-        <div className="p-2 bg-slate-50 rounded-lg border border-dashed border-slate-300 flex-col m-5 ">
+        <div className="p-2 bg-slate-50 rounded-lg border border-dashed flex-col ">
           {designList?.map((control: Control, index: number) => {
             const currentPath = `${index}`
             return (
               <div key={control.id}>
-                <DropZone
+                {/* <DropZone
                   data={{
                     parentId: control.id,
                     path: currentPath,
@@ -30,7 +30,7 @@ const DndDesigner = ({
                   path={currentPath}
                   // isLast={undefined}
                   // className={undefined}
-                />
+                /> */}
                 <SelectedWrapper
                   hidden={activeControl !== control.id}
                   deleteItem={handleDelete}
