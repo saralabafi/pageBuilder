@@ -2,6 +2,7 @@ import { EmptyBox } from 'components/Tools/Common/EmptyBox/EmptyBox'
 import DropZone from './components/DropZone/DropZone'
 import { useDndDesigner } from './DndDesigner.biz'
 import { Control, IDndDesignerProps } from './DndDesigner.type'
+import { log } from 'console'
 
 const DndDesigner = ({
   handleDrop,
@@ -9,8 +10,9 @@ const DndDesigner = ({
   handleClick,
   handleDelete,
   SelectedWrapper,
+  renderList,
 }: IDndDesignerProps) => {
-  const { designList, activeControl } = useDndDesigner()
+  const { designList, activeControl } = useDndDesigner(renderList)
 
   return (
     <div className="w-full">
@@ -32,7 +34,7 @@ const DndDesigner = ({
                   // className={undefined}
                 /> */}
                 <SelectedWrapper
-                  hidden={activeControl !== control.id}
+                  // hidden={activeControl !== control.id}
                   deleteItem={handleDelete}
                   control={control}>
                   <div
