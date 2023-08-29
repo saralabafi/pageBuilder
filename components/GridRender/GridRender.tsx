@@ -31,6 +31,7 @@ const GridRender = (props: Control) => {
                     <DragComponent
                       handleClick={handleClick}
                       component={control}
+                      renders={{}}
                     />
                   </VisualSelectedWrapper>
                 )
