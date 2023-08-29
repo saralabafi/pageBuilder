@@ -5,10 +5,14 @@ import { ReactNode } from 'react'
 
 const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
   const obj: { [key: string]: ReactNode } = {
-    TextSetting: <Input />,
-    RadioSetting: <RadioGroup Source={Setting.Source} Title={Setting.Title} />,
-    SwitchSetting: <Switch />,
-    RequiredSetting: <h1>1</h1>,
+    TextSettingDefinition: <Input />,
+    RadioSettingDefinition: (
+      <RadioGroup Source={Setting.Source} Title={Setting.Title} />
+    ),
+    SwitchSettingDefinition: <Switch />,
+    RequiredSettingDefinition: <h1>1</h1>,
+    NumberSettingDefinition: <h1>number</h1>,
+    CheckBoxSettingDefinition: <h1>check box</h1>,
   }
   return obj[Setting.BaseType]
 }

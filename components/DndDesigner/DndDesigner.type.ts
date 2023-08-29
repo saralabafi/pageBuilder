@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from 'react'
+import { ElementType, ReactElement, ReactNode } from 'react'
 
 export type Control = {
   path?: string[]
@@ -38,4 +38,12 @@ export type DropItem = {
 
 export type Dictionary = {
   [key: string]: Control
+}
+
+export interface IDndDesignerProps {
+  renders: { [key: string]: (props: any) => ReactNode }
+  handleDrop: (dropZone: DropZoneData, item: DropItem) => void
+  handleDelete: (id: string) => void
+  handleClick: (e: React.MouseEvent, control: Control) => void
+  SelectedWrapper: ElementType
 }

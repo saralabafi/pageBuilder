@@ -1,18 +1,17 @@
-import { renders } from '../../app/[locale]/page/layout.const'
+import { EmptyBox } from 'components/Tools/Common/EmptyBox/EmptyBox'
 import DropZone from './components/DropZone/DropZone'
-import { SelectedWrapper } from './components/SelectedWrapper/SelectedWrapper'
 import { useDndDesigner } from './DndDesigner.biz'
-import { Control } from './DndDesigner.type'
-import PlusCircle from 'images/page/plusCircle.svg'
-import classNames from 'classnames'
+import { Control, IDndDesignerProps } from './DndDesigner.type'
 
-import { useTranslations } from 'next-intl'
+const DndDesigner = ({
+  handleDrop,
+  renders,
+  handleClick,
+  handleDelete,
+  SelectedWrapper,
+}: IDndDesignerProps) => {
+  const { designList, activeControl } = useDndDesigner()
 
-const DndDesigner = () => {
-  const { handleDrop, designList, activeControl, handleClick } =
-    useDndDesigner()
-
-  const t = useTranslations('layout')
   return (
     <div className="w-full">
       <div className="flex flex-1 flex-col mb-[100px]">
@@ -34,24 +33,18 @@ const DndDesigner = () => {
                 />
                 <SelectedWrapper
                   hidden={activeControl !== control.id}
+                  deleteItem={handleDelete}
                   control={control}>
                   <div
                     className="w-full"
                     onClick={(e) => handleClick(e, control)}>
-                    {renders[control.Name]?.(control)}
+                    {renders[control.Name](control)}
                   </div>
                 </SelectedWrapper>
               </div>
             )
           })}
-          {!designList.length ? (
-            <div className="text-slate-400 text-xs font-medium leading-none text-center">
-              <div className="flex items-center justify-center mb-2">
-                <PlusCircle classNames="text-center" />
-              </div>
-              <span>{t('getstarteddrag')}</span>
-            </div>
-          ) : null}
+          {!designList.length ? <EmptyBox /> : null}
           <DropZone
             data={{
               parentId: 0,

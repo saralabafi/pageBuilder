@@ -30,7 +30,11 @@ export const usePageBuilderSideMenu = () => {
   }
 
   const { data, status } = useQuery(
-    [{ url: 'content-structure/forms/controls/definitions' }],
+    [
+      {
+        url: 'cms/v1.0/siteName/pages/widgets/definitions',
+      },
+    ],
     services.GetData
   )
 

@@ -1,25 +1,25 @@
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  selectActiveControl,
-  selectActiveMenu,
-  selectActiveTab,
-} from 'redux/Design/Design'
-import shortid from 'shortid'
 import { RootState } from 'redux/Store'
-import RenderList from './components/RenderList.biz'
 import { Control, DropItem, DropZoneData } from './DndDesigner.type'
+import VisualRenderList from './components/VisualRenderList.biz'
+import shortid from 'shortid'
+import { selectActiveControl, selectActiveMenu, selectActiveTab } from 'redux/Design/Design'
 
 export const useDndDesigner = () => {
-  const dispatch = useDispatch()
   const { designList, activeControl } = useSelector(
     (state: RootState) => state.pageDesign
   )
 
+  const dispatch = useDispatch()
+
   const handleDrop = useCallback(
     (dropZone: DropZoneData, item: DropItem) => {
       const splitDropZonePath = dropZone.path.split('-')
-      const { addControl, moveControl } = RenderList({ designList, dispatch })
+      const { addControl, moveControl } = VisualRenderList({
+        designList,
+        dispatch,
+      })
 
       const newComponent: Control = {
         childCount: dropZone.childrenCount,
@@ -40,16 +40,9 @@ export const useDndDesigner = () => {
     [designList, activeControl]
   )
 
-  const handleClick = (e: React.MouseEvent, data: Control) => {
-    e.stopPropagation()
-    dispatch(selectActiveControl(data.id))
-    dispatch(selectActiveMenu(data.Name))
-  }
-
   return {
-    handleDrop,
     activeControl,
     designList,
-    handleClick,
+    handleDrop,
   }
 }

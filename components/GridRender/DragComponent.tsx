@@ -1,9 +1,8 @@
 import React from 'react'
 import { useDrag } from 'react-dnd'
-import { renders } from '../../app/[locale]/page/layout.const'
 import { SIDEBAR_ITEM } from 'components/DndDesigner/constants'
 
-export const DragComponent = ({ handleClick, component}: any) => {
+export const DragComponent = ({ handleClick, component, renders }: any) => {
   const [{ opacity }, drag] = useDrag({
     type: SIDEBAR_ITEM,
     item: () => {

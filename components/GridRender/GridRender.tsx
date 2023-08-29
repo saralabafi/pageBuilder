@@ -3,7 +3,7 @@ import { useGridRender } from './GridRender.biz'
 import { Flex } from 'components/CoreComponents/Flex/Flex'
 import { Control } from 'components/DndDesigner/DndDesigner.type'
 import DropZone from 'components/DndDesigner/components/DropZone/DropZone'
-import { SelectedWrapper } from '../DndDesigner/components/SelectedWrapper/SelectedWrapper'
+import { VisualSelectedWrapper } from 'components/DndDesigner/components/VisualSelectedWrapper/VisualSelectedWrapper'
 
 const GridRender = (props: Control) => {
   const { columnCalculator, handleClick, handleDrop, activeControl } =
@@ -23,7 +23,8 @@ const GridRender = (props: Control) => {
             <div className="border border-dashed border-slate-400 m-1 p-5 w-full">
               {item.children?.map((control: Control) => {
                 return (
-                  <SelectedWrapper
+                  <VisualSelectedWrapper
+                    deleteItem={() => {}}
                     control={control}
                     hidden={activeControl !== control.id}
                     key={control.id}>
@@ -31,7 +32,7 @@ const GridRender = (props: Control) => {
                       handleClick={handleClick}
                       component={control}
                     />
-                  </SelectedWrapper>
+                  </VisualSelectedWrapper>
                 )
               })}
               <DropZone
