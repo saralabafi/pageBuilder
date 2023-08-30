@@ -32,7 +32,7 @@ const ContentRenderList = ({ designList, dispatch }: IRenderList) => {
 
   const editControl = (
     selectedControlId: string,
-    editConfig: { [key: string]: number }
+    editConfig: { [key: string]: any }
   ) => {
     const updatedControl = { ...Dictionary[selectedControlId] }
 

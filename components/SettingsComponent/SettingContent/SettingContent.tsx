@@ -22,14 +22,19 @@ const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
 const RenderSettingLogic = (category: any) => {
   const settingElements: JSX.Element[] = []
 
-  const settingArray = Object.values(category?.Settings)
+  const settingArray = Object.keys(category?.Settings).map((key) => ({
+    ...category?.Settings[key],
+    type: key,
+  }))
 
-  const currentSettingElements = settingArray?.map((i: any) => (
-    <>
-      {RenderSettingComponents(i)}
-      <hr className="bg-zinc-200 w-full h-[1px] my-2" />
-    </>
-  ))
+  const currentSettingElements = settingArray?.map((i: any) => {
+    return (
+      <>
+        {RenderSettingComponents(i)}
+        <hr className="bg-zinc-200 w-full h-[1px] my-2" />
+      </>
+    )
+  })
 
   settingElements.push(...currentSettingElements)
   if (category?.SubCategories?.length) {

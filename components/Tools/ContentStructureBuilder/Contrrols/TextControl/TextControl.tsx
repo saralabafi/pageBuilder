@@ -1,55 +1,28 @@
-import React from 'react'
-import { TextControlProps } from './TextControl.types'
+import { Control } from 'components/DndDesigner/DndDesigner.type'
 
-const TextControl = (props: TextControlProps) => {
-  const {
-    id,
-    color = 'text-neutral-500',
-    backgroundColor = 'bg-transparent',
-    value,
-    defaultValue,
-    disabled = false,
-    type = 'text',
-    placeholder,
-    readOnly,
-    required,
-    customCss,
-    sx,
-    label,
-    helpText,
-    layoutType,
-    errorMassage,
-  } = props
-  const inputBorder = errorMassage ? 'border-red-500' : 'border-slate-200'
-  let multiLine = true
-  if (layoutType === 'row') {
-    multiLine = false
-  }
+const TextControl = (props: Control) => {
   return (
     <div className="relative mx-2 mb-3">
-      {errorMassage ? <span className="text-red-500 me-2">*</span> : null}
-      <label
-        htmlFor={id}
-        className="inline-block uppercase tracking-wide text-black text-xs font-bold mb-2">
-        {label}
+      {props?.style?.REQUIRED.show ? (
+        <span className="text-red-500 me-2">*</span>
+      ) : null}
+      <label className="inline-block uppercase tracking-wide text-black text-xs font-bold mb-2">
+        {props.style?.LABEL}
       </label>
       <input
-        required={required}
-        value={value}
-        defaultValue={defaultValue}
-        disabled={disabled}
-        readOnly={true}
-        type={type}
-        id={id}
-        className={`appearance-none block w-full bg-white text-gray-700 border ${inputBorder} rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white`}
-        placeholder={placeholder}
-        style={sx}
+        readOnly
+        className={`appearance-none block w-full bg-white text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white`}
+        placeholder={props?.style?.PLACEHOLDER || ''}
       />
-      {helpText ? (
-        <p className="text-gray-600 text-xs italic">{helpText}</p>
+      {props?.style?.HELP ? (
+        <p className="text-gray-600 text-xs italic">
+          {props?.style?.HELP || ''}
+        </p>
       ) : null}
-      {errorMassage ? (
-        <p className="text-red-500 text-xs italic">{errorMassage}</p>
+      {props?.style?.REQUIRED?.message ? (
+        <p className="text-red-500 text-xs italic">
+          {props?.style?.REQUIRED?.message}
+        </p>
       ) : null}
     </div>
   )

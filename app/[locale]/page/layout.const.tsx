@@ -49,8 +49,7 @@ export const formRenderItems: Renders = {
     formRenderItems[props.children?.[0]?.Name as string](
       props.children?.[0] as any
     ),
-  TextControlDefinition: () => <TextControl />,
-  // SwitchControlDefinition: (props) => <SwitchControl {...props} />,
+  TextControlDefinition: (props) => <TextControl {...props} />,
   SwitchControlDefinition: () => <SwitchControl />,
   NumberControlDefinition: () => <NumericControl />,
   SingleSelectionControlDefinition: () => <SingleSelection />,
