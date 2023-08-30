@@ -3,8 +3,8 @@ import { Control } from 'components/DndDesigner/DndDesigner.type'
 import { useDispatch } from 'react-redux'
 import { selectActiveControl } from 'redux/Design/Design'
 
-const useContainerRender = () => {
-  const { handleDrop, activeControl } = useDndDesigner()
+const useContainerWidget = () => {
+  const { activeControl, handleDrop } = useDndDesigner()
   const dispatch = useDispatch()
 
   const handleClick = (e: React.MouseEvent, item: Control) => {
@@ -31,4 +31,4 @@ const useContainerRender = () => {
   return { handleClick, handleDrop, generateStyles, activeControl }
 }
 
-export default useContainerRender
+export default useContainerWidget

@@ -3,7 +3,7 @@ import { Control } from 'components/DndDesigner/DndDesigner.type'
 import { useDispatch } from 'react-redux'
 import { selectActiveControl } from 'redux/Design/Design'
 
-export const useGridRender = (props: Control) => {
+export const useGridWidget = (props: Control) => {
   const { handleDrop, activeControl } = useDndDesigner()
   const dispatch = useDispatch()
 
