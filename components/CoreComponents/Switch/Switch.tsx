@@ -9,12 +9,10 @@ function Switch(SwitchProps: SwitchProps) {
     if (!SwitchProps.disabled) {
       const newToggle = !toggle
       setToggle(newToggle)
-      // Call the onChange callback with the updated toggle value
+
       if (SwitchProps.onChange) {
         SwitchProps.onChange(newToggle)
       }
-      // Custom toggle change logic
-      // ...
     }
   }
 

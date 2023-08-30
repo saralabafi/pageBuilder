@@ -6,6 +6,8 @@ import { RootState } from 'redux/Store'
 import ContentRenderList from 'components/DndDesigner/components/ContentRenderList.biz'
 
 export const useRequiredSetting = (props: IRequiredSettingProps) => {
+
+  
   const [toggle, setToggle] = useState(props.checked)
   const [inputValue, setInputValue] = useState('')
   const { activeControl, designList } = useSelector(
