@@ -8,7 +8,6 @@ import MoveHandler from 'images/page/move_handle.svg'
 import { useSelector } from 'react-redux'
 import { RootState } from 'redux/Store'
 export const VisualSelectedWrapper = ({
-  // hidden,
   children,
   control,
   deleteItem,
@@ -16,7 +15,6 @@ export const VisualSelectedWrapper = ({
   const { activeControl } = useSelector((state: RootState) => state.pageDesign)
 
   const hidden = control.id !== activeControl
-  console.log(activeControl, control.id)
   if (hidden) return children
   return (
     <div className="border justify-center items-center inline-flex relative p-[2px] w-full">
