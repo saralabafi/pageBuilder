@@ -2,8 +2,13 @@ import { Flex } from 'components/CoreComponents/Flex/Flex'
 import React, { useState } from 'react'
 import { ChromePicker, ColorResult } from 'react-color'
 import Arowpath from 'images/page/arrowpath.svg'
+import { useLocale } from 'next-intl'
+import { IColorpickerProps } from './ColorpickerSetting.types'
 
-function ColorPicker() {
+function ColorPicker (props: IColorpickerProps) {
+  const { Title, DefaultValue, Help, PlaceHolder } = props.Source
+  const locale = useLocale()
+
   const [selectedColor, setSelectedColor] = useState<string>('#ffffff')
   const [showPicker, setShowPicker] = useState<boolean>(false)
 
