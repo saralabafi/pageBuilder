@@ -30,7 +30,15 @@
     "grid": "گرید",
     "formBuilder": "فرم ساز",
     "conditions": "شرط‌ها",
-    "userRegistrationForm": "فرم ثبت نام کاربر"
+    "userRegistrationForm": "فرم ثبت نام کاربر",
+    "HtmlWidgetDefinition": "HTML",
+    "GridWidgetDefinition": "گرید",
+    "TextControlDefinition": "نوشته",
+    "SwitchControlDefinition": "سویچ",
+    "NumberControlDefinition": "عدد",
+    "ContainerWidgetDefinition": "مانتینر",
+    "SingleSelectionControlDefinition": "تک انتخابی",
+    "MultiSelectionControlDefinition": "چند انتخابی"
   },
   "GlobalHeader": {
     "search": "جستجو در داشبورد",

@@ -1,6 +1,4 @@
 'use client'
-import Button from 'components/CoreComponents/Button/Button'
-import { Flex } from 'components/CoreComponents/Flex/Flex'
 import { IModalProps } from './Modal.type'
 
 const index = (props: IModalProps) => {
@@ -24,7 +22,7 @@ const index = (props: IModalProps) => {
           className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
           <div
             id="modal-content"
-            className={`relative ${width}  max-w-lg mx-auto my-4 z-10`}>
+            className={`relative ${width} mx-auto my-4 z-10`}>
             <div className="relative flex flex-col w-full bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none">
               <div className="text-black flex items-start justify-between p-5 border-b border-solid rounded-t-lg border-blueGray-200">
                 <span
@@ -35,7 +33,7 @@ const index = (props: IModalProps) => {
                 <h3 className="text-2xl font-semibold">{title}</h3>
               </div>
               <div className="relative p-6 flex-auto">{children}</div>
-              <Flex
+              {/* <Flex
                 customCSS="border-t py-4"
                 justify="justify-start"
                 padding="px-4">
@@ -48,7 +46,7 @@ const index = (props: IModalProps) => {
                 <Button backgroundColor="bg-blue-600" onClick={() => onClose()}>
                   confirm
                 </Button>
-              </Flex>
+              </Flex> */}
             </div>
           </div>
           <div className="fixed inset-0  bg-black opacity-25"></div>

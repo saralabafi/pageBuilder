@@ -2,6 +2,7 @@ import { Flex } from 'components/CoreComponents/Flex/Flex'
 import Text from 'components/CoreComponents/Text/Text'
 import { SIDEBAR_ITEM } from 'components/DndDesigner/constants'
 import { SideBarIcons } from 'components/SettingsComponent/SideBarIcons/SideBarIcons.biz'
+import { log } from 'console'
 import { useLocale, useTranslations } from 'next-intl'
 import React from 'react'
 import { useDrag } from 'react-dnd'
@@ -35,9 +36,9 @@ export const ControlMenu = ({ controls }: any) => {
             sx={{ opacity }}
             backgroundColor="bg-neutral-50"
             customCSS="border border-neutral-200 rounded py-2 px-3 cursor-pointer">
-            {/* {React.cloneElement(SideBarIcons[control.component.Name], {
+            {React.cloneElement(SideBarIcons[control.component.Name], {
               className: 'text-neutral-500',
-            })} */}
+            })}
             <Text color="text-neutral-600">
               {control.component.Title[locale]}
             </Text>

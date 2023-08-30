@@ -4,10 +4,12 @@ import { Flex } from 'components/CoreComponents/Flex/Flex'
 import { Control } from 'components/DndDesigner/DndDesigner.type'
 import DropZone from 'components/DndDesigner/components/DropZone/DropZone'
 import { VisualSelectedWrapper } from 'components/DndDesigner/components/VisualSelectedWrapper/VisualSelectedWrapper'
+import { visualRenderItems } from '../../app/[locale]/page/layout.const'
 
 const GridRender = (props: Control) => {
   const { columnCalculator, handleClick, handleDrop, activeControl } =
     useGridRender(props)
+  
   return (
     <div
       className={`grid 
@@ -29,9 +31,9 @@ const GridRender = (props: Control) => {
                     hidden={activeControl !== control.id}
                     key={control.id}>
                     <DragComponent
+                      renders={visualRenderItems}
                       handleClick={handleClick}
                       component={control}
-                      renders={{}}
                     />
                   </VisualSelectedWrapper>
                 )

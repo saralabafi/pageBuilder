@@ -46,5 +46,4 @@ export interface IDndDesignerProps {
   handleDelete: (id: string) => void
   handleClick: (e: React.MouseEvent, control: Control) => void
   SelectedWrapper: ElementType
-  renderList:any
 }

@@ -4,7 +4,7 @@ import {
   DropItem,
   DropZoneData,
 } from 'components/DndDesigner/DndDesigner.type'
-import ContentRenderList from 'components/DndDesigner/components/ContentRenderList.biz'
+import VisualRenderList from 'components/DndDesigner/components/VisualRenderList.biz'
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -14,19 +14,18 @@ import {
 } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
 import shortid from 'shortid'
-
-const useFormBuilder = () => {
+const useVisualBuilder = () => {
   const dispatch = useDispatch()
   const { designList, activeControl } = useSelector(
     (state: RootState) => state.pageDesign
   )
-  const { addControl, moveControl, deleteItemInDesign } = ContentRenderList({
-    designList,
-    dispatch,
-  })
   const handleDrop = useCallback(
     (dropZone: DropZoneData, item: DropItem) => {
       const splitDropZonePath = dropZone.path.split('-')
+      const { addControl, moveControl } = VisualRenderList({
+        designList,
+        dispatch,
+      })
 
       const newComponent: Control = {
         childCount: dropZone.childrenCount,
@@ -46,18 +45,11 @@ const useFormBuilder = () => {
     },
     [designList, activeControl]
   )
-
   const handleClick = (e: React.MouseEvent, data: Control) => {
-    const component = data.children?.[0]?.children?.[0] as Control
-
     e.stopPropagation()
-    dispatch(selectActiveControl(component.id))
-    dispatch(selectActiveMenu(component.Name))
+    dispatch(selectActiveControl(data.id))
+    dispatch(selectActiveMenu(data.Name))
   }
-
-  const handleDelete = (id: string) => deleteItemInDesign(id)
-
-  return { handleDrop, handleClick, handleDelete }
+  return { handleClick, handleDrop }
 }
-
-export default useFormBuilder
+export default useVisualBuilder
