@@ -6,6 +6,7 @@ import { formRenderItems } from '../page/layout.const'
 import LayoutFormBuilder from './layoutFormBuilder'
 import useFormBuilder from './formBuilder.biz'
 import { ContentSelectedWrapper } from 'components/DndDesigner/components/ContentSelectedWrapper/ContentSelectedWrapper'
+import ContentRenderList from 'components/DndDesigner/components/ContentRenderList.biz'
 
 const FormBuilder = () => {
   const { handleClick, handleDrop, handleDelete } = useFormBuilder()
@@ -17,6 +18,7 @@ const FormBuilder = () => {
           handleDelete={handleDelete}
           handleDrop={handleDrop}
           renders={formRenderItems}
+          renderList={ContentRenderList}
           handleClick={handleClick}
         />
       </LayoutFormBuilder>

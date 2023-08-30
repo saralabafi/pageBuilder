@@ -3,6 +3,7 @@ import { RadioGroup } from 'components/CoreComponents/RadioGroup/RadioGroup'
 import { SwitchSetting } from 'components/Tools/ContentStructureBuilder/SettingType/SwitchSetting/SwitchSetting'
 import { ReactNode } from 'react'
 import RequiredSetting from 'components/Tools/ContentStructureBuilder/SettingType/RequiredSetting/RequiredSetting'
+import DynamicOptionSetting from 'components/Tools/ContentStructureBuilder/SettingType/DynamicOptionSetting/DynamicOptionSetting'
 
 const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
   const obj: { [key: string]: ReactNode } = {
@@ -14,7 +15,7 @@ const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
     RequiredSettingDefinition: <RequiredSetting Source={Setting} />,
     NumberSettingDefinition: <h1>number</h1>,
     CheckBoxSettingDefinition: <h1>check box</h1>,
-    DynamicOptionsSettingDefinition: <h1>Dynamic options</h1>,
+    DynamicOptionsSettingDefinition: <DynamicOptionSetting Source={Setting} />,
   }
   return obj[Setting.BaseType]
 }

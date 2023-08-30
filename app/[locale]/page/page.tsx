@@ -32,6 +32,7 @@ const page = () => {
           handleDelete={() => {}}
           handleDrop={handleDrop}
           renders={visualRenderItems}
+          renderList={VisualRenderList}
           handleClick={handleClick}
         />
       </LayoutPageBuilder>

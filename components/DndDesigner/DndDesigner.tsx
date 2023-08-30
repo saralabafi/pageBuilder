@@ -9,30 +9,19 @@ const DndDesigner = ({
   handleClick,
   handleDelete,
   SelectedWrapper,
+  renderList,
 }: IDndDesignerProps) => {
-  const { designList, activeControl } = useDndDesigner()
+  const { designList } = useDndDesigner(renderList)
 
   return (
     <div className="w-full">
       <div className="flex flex-1 flex-col mb-[100px]">
         <div className="p-2 bg-slate-50 rounded-lg border border-dashed flex-col ">
           {designList?.map((control: Control, index: number) => {
-            const currentPath = `${index}`
             return (
               <div key={control.id}>
-                {/* <DropZone
-                  data={{
-                    parentId: control.id,
-                    path: currentPath,
-                    childrenCount: control?.children?.length,
-                  }}
-                  onDrop={handleDrop}
-                  path={currentPath}
-                  // isLast={undefined}
-                  // className={undefined}
-                /> */}
+                
                 <SelectedWrapper
-                  hidden={activeControl !== control.id}
                   deleteItem={handleDelete}
                   control={control}>
                   <div
