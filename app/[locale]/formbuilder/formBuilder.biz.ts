@@ -24,6 +24,7 @@ const useFormBuilder = () => {
     designList,
     dispatch,
   })
+
   const handleDrop = useCallback(
     (dropZone: DropZoneData, item: DropItem) => {
       const splitDropZonePath = dropZone.path.split('-')
