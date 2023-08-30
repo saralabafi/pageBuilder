@@ -1,6 +1,5 @@
 import { useDndDesigner } from 'components/DndDesigner/DndDesigner.biz'
 import { Control } from 'components/DndDesigner/DndDesigner.type'
-import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { selectActiveControl } from 'redux/Design/Design'
 
@@ -12,9 +11,7 @@ export const useGridRender = (props: Control) => {
     e.stopPropagation()
     dispatch(selectActiveControl(item.id))
   }
-  useEffect(()=>{},[])
 
-  
   const columnCalculator = () => {
     const arr: { [key: number]: string } = {
       1: 'col-span-1',

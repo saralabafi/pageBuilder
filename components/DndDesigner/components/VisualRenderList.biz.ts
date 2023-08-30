@@ -1,9 +1,11 @@
 import { setDesignList } from 'redux/Design/Design'
 import shortid from 'shortid'
 import { Control, Dictionary, DropItem } from '../DndDesigner.type'
+import { Dispatch } from 'react'
+import { AnyAction } from '@reduxjs/toolkit'
 interface IRenderList {
   designList: Control[]
-  dispatch: (arg: any) => void
+  dispatch: Dispatch<AnyAction>
 }
 const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
   const Dictionary: Dictionary = renderDictionary(designList)
