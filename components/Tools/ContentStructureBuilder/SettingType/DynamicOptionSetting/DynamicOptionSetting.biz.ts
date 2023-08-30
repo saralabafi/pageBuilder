@@ -2,7 +2,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import React, { useState } from 'react'
 import { DynamicOptionsSttingProps } from './DynamicOptionSetting.type'
 
-const useDynamicOptions = (props: DynamicOptionsSttingProps) => {
+const useDynamicOptionSetting = (props: DynamicOptionsSttingProps) => {
   const { Title, DefaultValue, Help, PlaceHolder, ErrorMessage } = props.Source
   const locale = useLocale()
   const [options, setOptions] = useState<string[]>([''])
@@ -43,4 +43,4 @@ const useDynamicOptions = (props: DynamicOptionsSttingProps) => {
   }
 }
 
-export default useDynamicOptions
+export default useDynamicOptionSetting
