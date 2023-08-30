@@ -9,9 +9,8 @@ const DndDesigner = ({
   handleClick,
   handleDelete,
   SelectedWrapper,
-  renderList,
 }: IDndDesignerProps) => {
-  const { designList, activeControl } = useDndDesigner(renderList)
+  const { designList, activeControl } = useDndDesigner()
 
   return (
     <div className="w-full">
@@ -32,7 +31,10 @@ const DndDesigner = ({
                   // isLast={undefined}
                   // className={undefined}
                 /> */}
-                <SelectedWrapper deleteItem={handleDelete} control={control}>
+                <SelectedWrapper
+                  hidden={activeControl !== control.id}
+                  deleteItem={handleDelete}
+                  control={control}>
                   <div
                     className="w-full"
                     onClick={(e) => handleClick(e, control)}>

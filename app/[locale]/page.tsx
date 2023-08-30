@@ -1,8 +1,6 @@
 'use client'
 import DndDesigner from 'components/DndDesigner/DndDesigner'
-
 import Link from 'next/link'
-
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 export default function Home() {
@@ -13,6 +11,7 @@ export default function Home() {
           For view test Page
         </Link>
       </div>
+
       <div>
         <DndProvider backend={HTML5Backend}>
           <DndDesigner />

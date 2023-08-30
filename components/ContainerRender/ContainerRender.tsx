@@ -1,28 +1,26 @@
 'use client'
 import { Flex } from 'components/CoreComponents/Flex/Flex'
 import { Control } from 'components/DndDesigner/DndDesigner.type'
-import DropZone from 'components/DndDesigner/components/DropZone/DropZone'
-import { DragComponent } from 'components/GridRender/DragComponent'
-import useContainerRender from './ContainerRender.biz'
 import { VisualSelectedWrapper } from 'components/DndDesigner/components/VisualSelectedWrapper/VisualSelectedWrapper'
-import { visualRenderItems } from '../../app/[locale]/page/layout.const'
+import { DragComponent } from 'components/GridRender/DragComponent'
 import Link from 'next/link'
+import { visualRenderItems } from '../../app/[locale]/page/layout.const'
+import useContainerRender from './ContainerRender.biz'
 
 const ContainerRender = (props: Control) => {
-  const { style, children, id } = props
-  const { handleClick, handleDrop, activeControl, generateStyles } =
-    useContainerRender()
+  const { style, children } = props
+  const { handleClick, activeControl, generateStyles } = useContainerRender()
 
   return (
     <Flex
       borderSize="border"
       direction="flex-col"
-      borderColor="border-gray-400"
-      customCSS={generateStyles(style!)}
-      padding="p-2"
+      borderColor="border-slate-400"
+      customCSS={`${generateStyles(style!)} border-dashed`}
+      padding="p-9"
       width="w-full"
       height="h-full">
-      <Link href='' target='' >
+      <Link href="" target="">
         {children?.map((control: Control) => {
           return (
             <VisualSelectedWrapper

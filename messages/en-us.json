@@ -31,7 +31,15 @@
     "grid": "grid",
     "conditions": "conditions",
     "formBuilder": "form builder",
-    "userRegistrationForm": "user registration form"
+    "userRegistrationForm": "user registration form",
+    "HtmlWidgetDefinition": "HTML",
+    "GridWidgetDefinition": "Grid",
+    "TextControlDefinition": "Text",
+    "SwitchControlDefinition": "Switch",
+    "NumberControlDefinition": "Number",
+    "ContainerWidgetDefinition": "Container",
+    "SingleSelectionControlDefinition": "Single Selection",
+    "MultiSelectionControlDefinition": "Multi Selection"
   },
   "GlobalHeader": {
     "search": "search in dashboard",

@@ -8,7 +8,7 @@ import ContainerIcon from 'images/page/container.svg'
 import HTMLIcon from 'images/page/HTML_Editor.svg'
 
 export const SideBarIcons: { [key: string]: any } = {
-  HTMLIconDefinition: <HTMLIcon />,
+  HtmlWidgetDefinition: <HTMLIcon />,
   GridWidgetDefinition: <GridIcon />,
   TextControlDefinition: <TextIcon />,
   SwitchControlDefinition: <SwitchIcon />,

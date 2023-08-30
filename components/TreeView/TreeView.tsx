@@ -31,17 +31,17 @@ export const TreeView = ({
       items={JSON.parse(sortableItems)}
       TreeItemComponent={React.forwardRef<
         HTMLDivElement,
-        TreeItemComponentProps<{ id: string; type: string }>
+        TreeItemComponentProps<{ id: string; type: string,Name:string }>
       >(
         (
-          props: TreeItemComponentProps<{ id: string; type: string }>,
+          props: TreeItemComponentProps<{ id: string; type: string,Name:string }>,
           ref: any
         ) => {
           return (
             <SimpleTreeItemWrapper
               {...props}
               ref={ref}
-              disableInteraction={props.item.type == 'column'}
+              disableInteraction={props.item.Name == 'column'}
               showDragHandle={false}
               className={calculatePadding(
                 props.clone,
@@ -62,10 +62,10 @@ export const TreeView = ({
                   onClick={() => handleClick(props.item.id)}>
                   <div className="w-3 h-3 border border-dashed border-neutral-500 " />
                   <Text fontWeight={300} fontSize={12} color="text-neutral-500">
-                    {renderText(props.item.type)}
+                    {renderText(props.item.Name)}
                   </Text>
                 </Flex>
-                {isActive(props.item.id) && props.item.type !== 'column' && (
+                {isActive(props.item.id) && props.item.Name !== 'column' && (
                   <Flex gap="gap-2">
                     <TrashIcon
                       className="text-slate-400 cursor-pointer"
