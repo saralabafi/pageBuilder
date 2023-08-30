@@ -1,11 +1,11 @@
-import { Input } from 'components/CoreComponents/Input/Input'
+import { TextSetting } from 'components/Tools/ContentStructureBuilder/SettingType/TextSetting/TextSetting'
 import { RadioGroup } from 'components/CoreComponents/RadioGroup/RadioGroup'
 import Switch from 'components/CoreComponents/Switch/Switch'
 import { ReactNode } from 'react'
 
 const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
   const obj: { [key: string]: ReactNode } = {
-    TextSettingDefinition: <Input />,
+    TextSettingDefinition: <TextSetting Source={Setting} />,
     RadioSettingDefinition: (
       <RadioGroup Source={Setting.Source} Title={Setting.Title} />
     ),
