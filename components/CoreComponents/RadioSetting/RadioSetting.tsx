@@ -1,21 +1,20 @@
 import { Flex } from '../Flex/Flex'
 import Text from '../Text/Text'
-import { useRadioGroup } from './RadioGroup.biz'
-import { IRadioGroup } from './RadioGroup.type'
+import { useRadioSetting } from './RadioSetting.biz'
+import { IRadioGroup } from './RadioSetting.type'
 
-export const RadioGroup = (props: IRadioGroup) => {
-  const { Title, direction, gap, id, locale, options, setId } =
-    useRadioGroup(props)
-
+export const RadioSetting = (props: IRadioGroup) => {
+  const { id, locale, options, handleSelect } = useRadioSetting(props)
+  
   return (
-    <Flex gap={gap} direction={direction} align="items-start">
+    <Flex gap="gap-3" direction="flex-col" align="items-start">
       <Text fontSize={12} fontWeight={500}>
-        {Title[locale]}
+        {props.Source.Title[locale]}
       </Text>
       {options?.map((option) => {
         return (
           <div
-            onClick={() => setId(option.value)}
+            onClick={() => handleSelect(option.value)}
             className="flex items-center cursor-pointer"
             key={option.value}>
             <div
@@ -26,7 +25,7 @@ export const RadioGroup = (props: IRadioGroup) => {
             </div>
 
             <Text fontSize={12} customCSS="ms-2">
-              {option.title?.[locale]}
+              {option.title?.[locale as any]}
             </Text>
           </div>
         )

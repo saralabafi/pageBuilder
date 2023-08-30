@@ -1,17 +1,15 @@
 import { TextSetting } from 'components/Tools/ContentStructureBuilder/SettingType/TextSetting/TextSetting'
-import { RadioGroup } from 'components/CoreComponents/RadioGroup/RadioGroup'
 import { SwitchSetting } from 'components/Tools/ContentStructureBuilder/SettingType/SwitchSetting/SwitchSetting'
 import { ReactNode } from 'react'
 import RequiredSetting from 'components/Tools/ContentStructureBuilder/SettingType/RequiredSetting/RequiredSetting'
 import { NumericSetting } from 'components/Tools/ContentStructureBuilder/SettingType/NumericSetting/NumericSetting'
 import DynamicOptionSetting from 'components/Tools/ContentStructureBuilder/SettingType/DynamicOptionSetting/DynamicOptionSetting'
+import { RadioSetting } from 'components/CoreComponents/RadioSetting/RadioSetting'
 
 const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
   const obj: { [key: string]: ReactNode } = {
     TextSettingDefinition: <TextSetting Source={Setting} />,
-    RadioSettingDefinition: (
-      <RadioGroup Source={Setting.Source} Title={Setting.Title} />
-    ),
+    RadioSettingDefinition: <RadioSetting Source={Setting} />,
     SwitchSettingDefinition: <SwitchSetting Source={Setting} />,
     RequiredSettingDefinition: <RequiredSetting Source={Setting} />,
     NumberSettingDefinition: <NumericSetting Source={Setting} />,
