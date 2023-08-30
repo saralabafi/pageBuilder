@@ -7,6 +7,7 @@ export interface INumericSettingProps {
   DefaultValue?: OptionType
   PlaceHolder?: string
   Help?: string
+  Units?: OptionType
   onChange?: () => void
 }
 
