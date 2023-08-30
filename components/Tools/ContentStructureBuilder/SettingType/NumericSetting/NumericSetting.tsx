@@ -1,40 +1,22 @@
-import { INumericSetting } from './NumericSetting.type'
+import React from 'react'
+import { INumericSettingProps } from './NumericSetting.type'
+import { useLocale } from 'next-intl'
 
-const NumericSetting = (props: INumericSetting) => {
-  const {
-    title,
-    placeholder,
-    helpText,
-    numberType = 'int',
-    required = false,
-    errorMassage,
-    defaultValue,
-    searchable,
-    hide = false,
-    displayTitle = true,
-    onChange,
-  } = props
+export const NumericSetting = (props: INumericSettingProps) => {
+  const { Title, DefaultValue, Help, PlaceHolder } = props.Source
+  const locale = useLocale()
   return (
-    <div className="p-2">
-      <p className="text-[12px] pb-2">
-        {required ? <span className="text-red-500 me-2">*</span> : null}
-        {displayTitle ? title : null}
-      </p>
+    <div className="w-full relative mb-3">
+      <label className="inline-block uppercase tracking-wide text-slate-700 text-[12px] mb-2">
+        {Title[locale]}
+      </label>
       <input
-        className="border border-slate-200 rounded p-1 mb-2 text-[12px]"
-        placeholder={placeholder}
+        defaultValue={DefaultValue.Data[locale]}
+        readOnly={false}
         type="number"
-        step={numberType === 'int' ? '1' : 'any'}
-        onChange={onChange}
+        className={`bg-gray-50 border border-slate-200 appearance-none block w-full h-[32px] bg-white text-gray-700 border text-[12px] rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white`}
+        placeholder={PlaceHolder[locale]}
       />
-      {helpText ? (
-        <p className="text-slate-400 text-[10px] italic">{helpText}</p>
-      ) : null}
-      {errorMassage ? (
-        <p className="text-red-500 text-[10px] italic pb-2">{errorMassage}</p>
-      ) : null}
     </div>
   )
 }
-
-export default NumericSetting

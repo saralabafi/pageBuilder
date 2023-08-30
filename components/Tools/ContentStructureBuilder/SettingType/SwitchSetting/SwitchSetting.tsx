@@ -8,7 +8,6 @@ export const SwitchSetting = (props: ISwitchSettingProps) => {
   const locale = useLocale()
   const { Title, DefaultValue } = props.Source
   const [toggle, setToggle] = useState(new Boolean(DefaultValue.Data))
-  debugger
 
   const handleClick = () => {
     const newToggle = !toggle
