@@ -10,7 +10,7 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
 
   const addControl = (component: any) => {
     Dictionary[component.id] = component
-    if (component.Name == 'grid') {
+    if (component.Name == 'GridWidgetDefinition') {
       const obj = {
         id: shortid.generate(),
         Name: 'column',
