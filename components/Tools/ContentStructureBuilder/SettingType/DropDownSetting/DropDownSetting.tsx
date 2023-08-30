@@ -25,7 +25,7 @@ export const DropDownSetting = (props: IDropDownSettingProps) => {
         <Select
           customCSS="text-right text-gray-700 text-xs font-normal leading-none"
           placeholder={PlaceHolder ? PlaceHolder[locale] : ''}
-          value={DefaultValue ? DefaultValue[locale] : 'غیر فعال'}
+          value={DefaultValue ? DefaultValue[locale] : ''}
           options={options}
           onChange={function (obj: any): void {
             // throw new Error('Function not implemented.')
