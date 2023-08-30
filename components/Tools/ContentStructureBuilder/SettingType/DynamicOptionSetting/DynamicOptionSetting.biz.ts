@@ -1,8 +1,10 @@
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import React, { useState } from 'react'
-import { DynamicOptionsProps } from './DynamicOptions.type'
+import { DynamicOptionsSttingProps } from './DynamicOptionSetting.type'
 
-const useDynamicOptions = ({}: DynamicOptionsProps) => {
+const useDynamicOptions = (props: DynamicOptionsSttingProps) => {
+  const { Title, DefaultValue, Help, PlaceHolder, ErrorMessage } = props.Source
+  const locale = useLocale()
   const [options, setOptions] = useState<string[]>([''])
   const t = useTranslations('visual_builder')
   const handleOptionChange = (index: number, value: string) => {
@@ -26,7 +28,19 @@ const useDynamicOptions = ({}: DynamicOptionsProps) => {
     onOptionsChange(updatedOptions)
   }
 
-  return { handleRemoveOption, handleAddOption, handleOptionChange, options, t }
+  return {
+    handleRemoveOption,
+    handleAddOption,
+    handleOptionChange,
+    options,
+    t,
+    Title,
+    DefaultValue,
+    Help,
+    PlaceHolder,
+    ErrorMessage,
+    onOptionsChange,
+  }
 }
 
 export default useDynamicOptions

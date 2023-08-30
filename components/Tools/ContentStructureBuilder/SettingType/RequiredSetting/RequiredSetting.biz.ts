@@ -3,6 +3,8 @@ import { useLocale } from 'next-intl'
 import { IRequiredSettingProps } from './RequiredSetting.types'
 
 export const useRequiredSetting = (props: IRequiredSettingProps) => {
+
+  
   const [toggle, setToggle] = useState(props.checked)
   const [inputValue, setInputValue] = useState('')
 
