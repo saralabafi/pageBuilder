@@ -4,11 +4,11 @@ export interface ITextSettingProps {
   Source: OptionType
   id?: string
   Title?: TitleType
-  DefaultValue?: string
+  DefaultValue?: OptionType
   Default?: string
   PlaceHolder?: string
   Help?: string
   onChange?: () => void
 }
 
-export type OptionType = { [key: string]: { [key: string]: string } }
+export type OptionType = { [key: string]: { [key: string]: any } }

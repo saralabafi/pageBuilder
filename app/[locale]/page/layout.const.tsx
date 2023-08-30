@@ -1,6 +1,9 @@
 import ContainerWidget from 'components/Tools/VisualBuilder/Widgets/ContainerWidget/ContainerWidget'
 import { Renders } from 'components/DndDesigner/DndDesigner.type'
 import TextControl from 'components/Tools/ContentStructureBuilder/Contrrols/TextControl/TextControl'
+import SwitchControl from 'components/Tools/ContentStructureBuilder/SwitchControl/SwitchControl'
+import NumericControl from 'components/Tools/ContentStructureBuilder/Contrrols/NumericControl/NumericControl'
+import SingleSelection from 'components/Tools/ContentStructureBuilder/SingleSelection/SingleSelection'
 import Folder from 'images/page/folder.svg'
 import Formats from 'images/page/formats.svg'
 import PlusCircle from 'images/page/plusCircle.svg'
@@ -48,4 +51,7 @@ export const formRenderItems: Renders = {
     ),
   TextControlDefinition: () => <TextControl />,
   // SwitchControlDefinition: (props) => <SwitchControl {...props} />,
+  SwitchControlDefinition: () => <SwitchControl />,
+  NumberControlDefinition: () => <NumericControl />,
+  SingleSelectionControlDefinition: () => <SingleSelection />,
 }
