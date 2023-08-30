@@ -5,7 +5,7 @@ import Arowpath from 'images/page/arrowpath.svg'
 import { useLocale } from 'next-intl'
 import { IColorpickerProps } from './ColorpickerSetting.types'
 
-function ColorPicker (props: IColorpickerProps) {
+function ColorPicker(props: IColorpickerProps) {
   const { Title, DefaultValue, Help, PlaceHolder } = props.Source
   const locale = useLocale()
 
