@@ -8,6 +8,7 @@ import PlusCircle from 'images/page/plusCircle.svg'
 import Setting from 'images/page/setting.svg'
 import ConditionIcon from 'images/ContentStructureBuilder/condition.svg'
 import { ReactElement } from 'react'
+import { HtmlWidget } from 'components/Tools/VisualBuilder/Widgets/HTML_Widget/HtmlWidget'
 
 export type SidebarItem = {
   title: string
@@ -33,6 +34,9 @@ export const visualRenderItems: Renders = {
   },
   ContainerWidgetDefinition: (props) => {
     return <ContainerRender {...props} />
+  },
+  HtmlWidgetDefinition: (props) => {
+    return <HtmlWidget {...props} />
   },
 }
 

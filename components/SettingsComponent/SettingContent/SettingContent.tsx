@@ -1,6 +1,6 @@
 import { TextSetting } from 'components/Tools/ContentStructureBuilder/SettingType/TextSetting/TextSetting'
 import { RadioGroup } from 'components/CoreComponents/RadioGroup/RadioGroup'
-import Switch from 'components/CoreComponents/Switch/Switch'
+import { SwitchSetting } from 'components/Tools/ContentStructureBuilder/SettingType/SwitchSetting/SwitchSetting'
 import { ReactNode } from 'react'
 
 const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
@@ -9,7 +9,7 @@ const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
     RadioSettingDefinition: (
       <RadioGroup Source={Setting.Source} Title={Setting.Title} />
     ),
-    SwitchSettingDefinition: <Switch />,
+    SwitchSettingDefinition: <SwitchSetting Source={Setting} />,
     RequiredSettingDefinition: <h1>1</h1>,
     NumberSettingDefinition: <h1>number</h1>,
     CheckBoxSettingDefinition: <h1>check box</h1>,
