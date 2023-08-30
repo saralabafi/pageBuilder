@@ -3,7 +3,6 @@ import HiddenIcon from 'images/page/hidden.svg'
 import TrashIcon from 'images/page/trash.svg'
 import { IVisualSelectedWrapper } from './VisualSelectedWrapper.type'
 
-
 export const VisualSelectedWrapper = ({
   hidden,
   children,
