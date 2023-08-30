@@ -1,14 +1,14 @@
 import { DragComponent } from './DragComponent'
-import { useGridRender } from './GridRender.biz'
 import { Flex } from 'components/CoreComponents/Flex/Flex'
 import { Control } from 'components/DndDesigner/DndDesigner.type'
 import DropZone from 'components/DndDesigner/components/DropZone/DropZone'
 import { VisualSelectedWrapper } from 'components/DndDesigner/components/VisualSelectedWrapper/VisualSelectedWrapper'
-import { visualRenderItems } from '../../app/[locale]/page/layout.const'
+import { useGridWidget } from './GridWidget.biz'
+import { visualRenderItems } from '../../../../../app/[locale]/page/layout.const'
 
-const GridRender = (props: Control) => {
+const GridWidget = (props: Control) => {
   const { columnCalculator, handleClick, handleDrop, activeControl } =
-    useGridRender(props)
+    useGridWidget(props)
   
   return (
     <div
@@ -56,4 +56,4 @@ const GridRender = (props: Control) => {
     </div>
   )
 }
-export default GridRender
+export default GridWidget

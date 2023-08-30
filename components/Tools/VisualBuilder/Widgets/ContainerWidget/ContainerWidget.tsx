@@ -2,14 +2,16 @@
 import { Flex } from 'components/CoreComponents/Flex/Flex'
 import { Control } from 'components/DndDesigner/DndDesigner.type'
 import { VisualSelectedWrapper } from 'components/DndDesigner/components/VisualSelectedWrapper/VisualSelectedWrapper'
-import { DragComponent } from 'components/GridRender/DragComponent'
+import { DragComponent } from 'components/Tools/VisualBuilder/Widgets/GridWidget/DragComponent'
 import Link from 'next/link'
-import { visualRenderItems } from '../../app/[locale]/page/layout.const'
-import useContainerRender from './ContainerRender.biz'
+import { visualRenderItems } from '../../../../../app/[locale]/page/layout.const'
+import useContainerWidget from './ContainerWidget.biz'
+import DropZone from 'components/DndDesigner/components/DropZone/DropZone'
 
-const ContainerRender = (props: Control) => {
-  const { style, children } = props
-  const { handleClick, activeControl, generateStyles } = useContainerRender()
+const ContainerWidget = (props: Control) => {
+  const { style, children, id } = props
+  const { handleClick, activeControl, handleDrop, generateStyles } =
+    useContainerWidget()
 
   return (
     <Flex
@@ -17,10 +19,10 @@ const ContainerRender = (props: Control) => {
       direction="flex-col"
       borderColor="border-slate-400"
       customCSS={`${generateStyles(style!)} border-dashed`}
-      padding="p-9"
+      padding={children?.length ? 'p-1' : 'p-9'}
       width="w-full"
       height="h-full">
-      <Link href="" target="">
+      <Link href="" target="" className="w-full h-full">
         {children?.map((control: Control) => {
           return (
             <VisualSelectedWrapper
@@ -36,18 +38,18 @@ const ContainerRender = (props: Control) => {
             </VisualSelectedWrapper>
           )
         })}
-        {/* <DropZone
-        data={{
-          parentId: id,
-          path: '0',
-          childrenCount: 0,
-        }}
-        onDrop={handleDrop}
-        path=""
-      /> */}
+        <DropZone
+          data={{
+            parentId: id,
+            path: '0',
+            childrenCount: 0,
+          }}
+          onDrop={handleDrop}
+          path=""
+        />
       </Link>
     </Flex>
   )
 }
 
-export default ContainerRender
+export default ContainerWidget

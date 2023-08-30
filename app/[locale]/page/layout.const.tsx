@@ -1,6 +1,5 @@
-import ContainerRender from 'components/ContainerRender/ContainerRender'
+import ContainerWidget from 'components/Tools/VisualBuilder/Widgets/ContainerWidget/ContainerWidget'
 import { Renders } from 'components/DndDesigner/DndDesigner.type'
-import GridRender from 'components/GridRender/GridRender'
 import TextControl from 'components/Tools/ContentStructureBuilder/Contrrols/TextControl/TextControl'
 import Folder from 'images/page/folder.svg'
 import Formats from 'images/page/formats.svg'
@@ -9,6 +8,7 @@ import Setting from 'images/page/setting.svg'
 import ConditionIcon from 'images/ContentStructureBuilder/condition.svg'
 import { ReactElement } from 'react'
 import { HtmlWidget } from 'components/Tools/VisualBuilder/Widgets/HTML_Widget/HtmlWidget'
+import GridWidget from 'components/Tools/VisualBuilder/Widgets/GridWidget/GridRender'
 
 export type SidebarItem = {
   title: string
@@ -30,13 +30,13 @@ export const visualSidebarItems: SidebarItem[] = [
 
 export const visualRenderItems: Renders = {
   GridWidgetDefinition: (props) => {
-    return <GridRender {...props} />
+    return <GridWidget {...props} />
   },
   ContainerWidgetDefinition: (props) => {
-    return <ContainerRender {...props} />
+    return <ContainerWidget {...props} />
   },
-  HtmlWidgetDefinition: (props) => {
-    return <HtmlWidget {...props} />
+  HtmlWidgetDefinition: () => {
+    return <HtmlWidget />
   },
 }
 
