@@ -3,37 +3,15 @@ import React, { useState } from 'react'
 import CancelCircle from 'images/page/cancel_circle.svg'
 import MoveHandler from 'images/page/move_handle.svg'
 import Plus from 'images/page/plus.svg'
-
-interface DynamicOptionsProps {
-  title: string
-  onOptionsChange: (options: string[]) => void
-}
+import useDynamicOptions from './DynamicOptions.biz'
+import { DynamicOptionsProps } from './DynamicOptions.type'
 
 const DynamicOptions: React.FC<DynamicOptionsProps> = ({
   title,
   onOptionsChange,
 }) => {
-  const [options, setOptions] = useState<string[]>([''])
-
-  const handleOptionChange = (index: number, value: string) => {
-    const updatedOptions = [...options]
-    updatedOptions[index] = value
-    setOptions(updatedOptions)
-    onOptionsChange(updatedOptions)
-  }
-
-  const handleAddOption = () => {
-    setOptions([...options, ''])
-    onOptionsChange([...options, ''])
-  }
-
-  const handleRemoveOption = (index: number) => {
-    const updatedOptions = [...options]
-    updatedOptions.splice(index, 1)
-    setOptions(updatedOptions)
-    onOptionsChange(updatedOptions)
-  }
-
+  const { handleAddOption, handleOptionChange, handleRemoveOption ,options,t} =
+    useDynamicOptions({ title, onOptionsChange })
   return (
     <div>
       <h2 className="w-80 h-4 justify-end text-righ text-slate-700 text-xs font-medium leading-none mb-3 pr-5">
@@ -65,7 +43,7 @@ const DynamicOptions: React.FC<DynamicOptionsProps> = ({
         customCSS="pr-5 justify-center items-end gap-2 inline-flex cursor-pointer">
         <Plus className="w-4 h-4 relative" />
         <div className="text-right text-blue-500 text-xs font-normal leading-none">
-          گزینه جدید
+          {t('new_option')}
         </div>
       </Flex>
     </div>

@@ -40,6 +40,9 @@
     "SingleSelectionControlDefinition": "تک انتخابی",
     "MultiSelectionControlDefinition": "چند انتخابی"
   },
+  "visual_builder": {
+    "new_option": "گزینه جدید"
+  },
   "GlobalHeader": {
     "search": "جستجو در داشبورد",
     "logo": "لوگو"

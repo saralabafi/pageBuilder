@@ -41,6 +41,9 @@
     "SingleSelectionControlDefinition": "Single Selection",
     "MultiSelectionControlDefinition": "Multi Selection"
   },
+  "visual_builder": {
+    "new_option": "new options"
+  },
   "GlobalHeader": {
     "search": "search in dashboard",
     "logo": "logo"
