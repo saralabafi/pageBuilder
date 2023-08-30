@@ -20,7 +20,7 @@ function Switch(SwitchProps: SwitchProps) {
 
   return (
     <div
-      className={`ToggleSwitch w-10 h-6 p-1 rounded-3xl justify-end items-center gap-1 inline-flex ${
+      className={`ToggleSwitch relative w-10 h-6 p-1 rounded-3xl justify-end items-center gap-1 inline-flex ${
         toggle ? 'bg-blue-600' : 'bg-gray-200'
       } ${SwitchProps.disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
       onClick={handleClick}>
@@ -31,7 +31,7 @@ function Switch(SwitchProps: SwitchProps) {
           style={{
             position: 'absolute',
             top: '55%',
-            left: '35%',
+            left: '30%',
             transform: 'translate(-50%, -50%)',
           }}
         />
