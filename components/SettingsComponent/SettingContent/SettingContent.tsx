@@ -13,6 +13,7 @@ const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
     RequiredSettingDefinition: <h1>1</h1>,
     NumberSettingDefinition: <h1>number</h1>,
     CheckBoxSettingDefinition: <h1>check box</h1>,
+    DynamicOptionsSettingDefinition: <h1>Dynamic options</h1>,
   }
   return obj[Setting.BaseType]
 }
