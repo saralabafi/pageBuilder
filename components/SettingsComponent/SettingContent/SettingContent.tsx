@@ -7,7 +7,7 @@ import DynamicOptionSetting from 'components/Tools/ContentStructureBuilder/Setti
 import { DropDownSetting } from 'components/Tools/ContentStructureBuilder/SettingType/DropDownSetting/DropDownSetting'
 
 const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
-  console.log(Setting)
+
 
   const obj: { [key: string]: ReactNode } = {
     TextSettingDefinition: <TextSetting Source={Setting} />,

@@ -5,7 +5,7 @@ import { Select } from 'components/CoreComponents/Select/Select'
 
 export const DropDownSetting = (props: IDropDownSettingProps) => {
   const { Title, DefaultValue, Help, PlaceHolder, Source } = props.Source
-  console.log(Source, DefaultValue)
+
   const locale = useLocale()
 
   const options = Object.entries(Source).map(([id, option], index) => ({
@@ -13,8 +13,6 @@ export const DropDownSetting = (props: IDropDownSettingProps) => {
     value: id,
     title: id,
   }))
-
-  console.log(options)
 
   return (
     <div className="w-full h-12 flex-col justify-start items-start gap-1 inline-flex">
