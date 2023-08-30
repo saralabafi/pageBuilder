@@ -9,9 +9,7 @@ import { visualRenderItems } from '../../app/[locale]/page/layout.const'
 const GridRender = (props: Control) => {
   const { columnCalculator, handleClick, handleDrop, activeControl } =
     useGridRender(props)
-  console.log('====================================')
-  console.log(props)
-  console.log('====================================')
+  
   return (
     <div
       className={`grid 
