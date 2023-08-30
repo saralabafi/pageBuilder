@@ -3,6 +3,7 @@ import { Flex } from 'components/CoreComponents/Flex/Flex'
 import Switch from 'components/CoreComponents/Switch/Switch'
 import { IRequiredSettingProps } from './RequiredSetting.types'
 import { useRequiredSetting } from './RequiredSetting.biz'
+import { TitleType } from 'components/SettingBuilder/SettingBuilder.type'
 
 export const RequiredSetting = (props: IRequiredSettingProps) => {
   const {
@@ -18,7 +19,6 @@ export const RequiredSetting = (props: IRequiredSettingProps) => {
     handleInputChange,
   } = useRequiredSetting(props)
 
-  console.log(props)
   return (
     <div className="w-full h-50 p-4 bg-neutral-50 rounded border border-neutral-200 flex-col justify-start items-start gap-4 inline-flex">
       <div className="w-full h-6 justify-between items-center gap-2 inline-flex">

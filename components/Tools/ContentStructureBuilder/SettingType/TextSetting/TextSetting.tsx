@@ -1,11 +1,9 @@
 import React from 'react'
 import { ITextSettingProps } from './TextSetting.types'
 import { useLocale } from 'next-intl'
-import { log } from 'console'
 
 export const TextSetting = (props: ITextSettingProps) => {
   const { Title, DefaultValue, Help, PlaceHolder } = props.Source
-  console.log(PlaceHolder)
 
   const locale = useLocale()
   return (
