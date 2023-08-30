@@ -39,7 +39,7 @@ const useDynamicOptions = (props: DynamicOptionsSttingProps) => {
     Help,
     PlaceHolder,
     ErrorMessage,
-    onOptionsChange, 
+    onOptionsChange,
   }
 }
 
