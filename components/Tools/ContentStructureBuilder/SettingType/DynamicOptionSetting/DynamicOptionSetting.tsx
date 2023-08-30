@@ -3,11 +3,11 @@ import React, { useState } from 'react'
 import CancelCircle from 'images/page/cancel_circle.svg'
 import MoveHandler from 'images/page/move_handle.svg'
 import Plus from 'images/page/plus.svg'
-import useDynamicOptions from './DynamicOptionSetting.biz'
+import useDynamicOptionSetting from './DynamicOptionSetting.biz'
 import { DynamicOptionsSttingProps } from './DynamicOptionSetting.type'
 import { useLocale } from 'next-intl'
 
-const DynamicOptions = (props: DynamicOptionsSttingProps) => {
+const DynamicOptionSetting = (props: DynamicOptionsSttingProps) => {
   const locale = useLocale()
   const {
     handleAddOption,
@@ -16,7 +16,7 @@ const DynamicOptions = (props: DynamicOptionsSttingProps) => {
     options,
     t,
     Title,
-  } = useDynamicOptions(props)
+  } = useDynamicOptionSetting(props)
   return (
     <div>
       <h2 className="w-80 h-4 justify-end text-righ text-slate-700 text-xs font-medium leading-none mb-3 pr-5">
@@ -56,4 +56,4 @@ const DynamicOptions = (props: DynamicOptionsSttingProps) => {
   )
 }
 
-export default DynamicOptions
+export default DynamicOptionSetting

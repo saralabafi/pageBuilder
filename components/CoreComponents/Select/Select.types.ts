@@ -1,4 +1,4 @@
-import { Properties } from "csstype"
+import { Properties } from 'csstype'
 
 export interface ISelectProps {
   id?: string
