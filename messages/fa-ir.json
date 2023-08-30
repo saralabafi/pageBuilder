@@ -36,7 +36,7 @@
     "TextControlDefinition": "نوشته",
     "SwitchControlDefinition": "سویچ",
     "NumberControlDefinition": "عدد",
-    "ContainerWidgetDefinition": "مانتینر",
+    "ContainerWidgetDefinition": "کانتینر",
     "SingleSelectionControlDefinition": "تک انتخابی",
     "MultiSelectionControlDefinition": "چند انتخابی"
   },

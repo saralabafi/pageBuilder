@@ -3,7 +3,7 @@ import { Control } from 'components/DndDesigner/DndDesigner.type'
 const TextControl = (props: Control) => {
   return (
     <div className="relative mx-2 mb-3">
-      {props?.style?.REQUIRED.show ? (
+      {props?.style?.REQUIRED?.show ? (
         <span className="text-red-500 me-2">*</span>
       ) : null}
       <label className="inline-block uppercase tracking-wide text-black text-xs font-bold mb-2">
