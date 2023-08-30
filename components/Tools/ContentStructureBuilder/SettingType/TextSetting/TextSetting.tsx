@@ -11,7 +11,7 @@ export const TextSetting = (props: ITextSettingProps) => {
         {Title[locale]}
       </label>
       <input
-        defaultValue={DefaultValue[locale]}
+        defaultValue={DefaultValue.Data[locale]}
         readOnly={false}
         type="text"
         className={`bg-gray-50 border border-slate-200 appearance-none block w-full h-[32px] bg-white text-gray-700 border text-[12px] rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white`}
