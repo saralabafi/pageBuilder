@@ -5,8 +5,12 @@ import RequiredSetting from 'components/Tools/ContentStructureBuilder/SettingTyp
 import { NumericSetting } from 'components/Tools/ContentStructureBuilder/SettingType/NumericSetting/NumericSetting'
 import DynamicOptionSetting from 'components/Tools/ContentStructureBuilder/SettingType/DynamicOptionSetting/DynamicOptionSetting'
 import { RadioSetting } from 'components/CoreComponents/RadioSetting/RadioSetting'
+import { DropDownSetting } from 'components/Tools/ContentStructureBuilder/SettingType/DropDownSetting/DropDownSetting'
+
 
 const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
+
+
   const obj: { [key: string]: ReactNode } = {
     TextSettingDefinition: <TextSetting Source={Setting} />,
     RadioSettingDefinition: <RadioSetting Source={Setting} />,
@@ -14,6 +18,7 @@ const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
     RequiredSettingDefinition: <RequiredSetting Source={Setting} />,
     NumberSettingDefinition: <NumericSetting Source={Setting} />,
     CheckBoxSettingDefinition: <h1>check box</h1>,
+    DropDownSettingDefinition: <DropDownSetting Source={Setting} />,
     DynamicOptionsSettingDefinition: <DynamicOptionSetting Source={Setting} />,
   }
   return obj[Setting.BaseType]
