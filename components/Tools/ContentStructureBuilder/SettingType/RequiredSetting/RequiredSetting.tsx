@@ -6,10 +6,10 @@ import { IRequiredSettingProps } from './RequiredSetting.types'
 export const RequiredSetting = (props: IRequiredSettingProps) => {
   const {
     locale,
-    toggle,
     inputValue,
     Title,
     ErrorMessage,
+    value,
     handleClick,
     handleInputChange,
   } = useRequiredSetting(props)
@@ -23,6 +23,7 @@ export const RequiredSetting = (props: IRequiredSettingProps) => {
           </div>
         </div>
         <Switch
+          checked={value.Enabled}
           onChange={handleClick}
           className="h-6 p-1 bg-blue-600 rounded-3xl justify-end items-center gap-1 flex"
         />
@@ -30,19 +31,19 @@ export const RequiredSetting = (props: IRequiredSettingProps) => {
 
       <Flex customCSS="flex-col w-full">
         <div className="w-full text-right text-slate-700 text-xs font-normal leading-none mb-2">
-          {toggle && (
+          {value.Enabled && (
             <span style={{ color: 'red' }}>
               {ErrorMessage.Title[locale as any]}
             </span>
           )}
         </div>
         <div className="w-full">
-          {toggle && (
+          {value.Enabled && (
             <div className="w-full h-8 p-0 bg-white rounded border-l border-r border-t border-b border-slate-200 justify-end items-center gap-1 inline-flex">
               <div className="w-full h-4 px-1 justify-start items-center gap-1 inline-flex">
                 <input
                   type="text"
-                  value={inputValue}
+                  value={value?.ErrorMessage?.[locale]}
                   onChange={handleInputChange}
                   placeholder={
                     ErrorMessage.PlaceHolder

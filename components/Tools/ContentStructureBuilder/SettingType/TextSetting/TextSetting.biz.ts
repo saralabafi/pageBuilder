@@ -9,6 +9,7 @@ export const useTextSetting = (props: ITextSettingProps) => {
   const { activeControl, designList } = useSelector(
     (state: RootState) => state.pageDesign
   )
+  
   const dispatch = useDispatch()
   const { editControl, returnDefaultValue } = ContentRenderList({
     designList,

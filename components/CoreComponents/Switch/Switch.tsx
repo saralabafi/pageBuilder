@@ -1,17 +1,12 @@
-import { useState } from 'react'
-import { SwitchProps } from './Switch.types'
 import Check from 'images/page/check.svg'
+import { SwitchProps } from './Switch.types'
 
-function Switch(SwitchProps: SwitchProps) {
-  const [toggle, setToggle] = useState(SwitchProps.checked)
+function Switch(props: SwitchProps) {
 
   const handleClick = () => {
-    if (!SwitchProps.disabled) {
-      const newToggle = !toggle
-      setToggle(newToggle)
-
-      if (SwitchProps.onChange) {
-        SwitchProps.onChange(newToggle)
+    if (!props.disabled) {
+      if (props.onChange) {
+        props.onChange(!props.checked)
       }
     }
   }
@@ -19,11 +14,10 @@ function Switch(SwitchProps: SwitchProps) {
   return (
     <div
       className={`ToggleSwitch relative w-10 h-6 p-1 rounded-3xl justify-end items-center gap-1 inline-flex ${
-        toggle ? 'bg-blue-600' : 'bg-gray-200'
-      } ${SwitchProps.disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+        props.checked ? 'bg-blue-600' : 'bg-gray-200'
+      } ${props.disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
       onClick={handleClick}>
-      {/* Check */}
-      {toggle && (
+      {props.checked && (
         <Check
           className="w-3 h-3 text-white"
           style={{
@@ -34,10 +28,9 @@ function Switch(SwitchProps: SwitchProps) {
           }}
         />
       )}
-      {/* ToggleCircle */}
       <div
         className={`ToggleCircle w-4 h-4 bg-white rounded-full transform transition-transform duration-300 ease-in-out${
-          toggle ? ' translate-x-full' : ''
+          props.checked ? ' translate-x-full' : ''
         }`}
       />
     </div>

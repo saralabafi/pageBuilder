@@ -8,11 +8,11 @@ export const SwitchSetting = (props: ISwitchSettingProps) => {
   const locale = useLocale()
   const { Title, DefaultValue } = props.Source
   const [toggle, setToggle] = useState(new Boolean(DefaultValue.Data))
-
   const handleClick = () => {
     const newToggle = !toggle
     setToggle(newToggle)
   }
+  
   return (
     <Flex justify="justify-between" width="w-full" customCSS="">
       <p className="text-[12px]">{Title[locale]}</p>
@@ -21,7 +21,6 @@ export const SwitchSetting = (props: ISwitchSettingProps) => {
           toggle ? 'bg-blue-600' : 'bg-gray-200'
         }`}
         onClick={handleClick}>
-        {/* Check */}
         {toggle && (
           <Check
             className="w-3 h-3 text-white"
@@ -33,7 +32,6 @@ export const SwitchSetting = (props: ISwitchSettingProps) => {
             }}
           />
         )}
-        {/* ToggleCircle */}
         <div
           className={`ToggleCircle w-4 h-4 bg-white rounded-full transform transition-transform duration-300 ease-in-out${
             toggle ? ' translate-x-full' : ''

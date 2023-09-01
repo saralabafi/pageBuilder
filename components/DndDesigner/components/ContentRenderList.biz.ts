@@ -39,7 +39,7 @@ const ContentRenderList = ({ designList, dispatch }: IRenderList) => {
       JSON.stringify(Dictionary[selectedControlId])
     )
 
-    editConfig.column && changeColumnCount(selectedControlId, editConfig)
+    // editConfig.column && changeColumnCount(selectedControlId, editConfig)
 
     const settings: any = { ...Dictionary[selectedControlId]?.settings }
     settings[type] = editConfig
@@ -120,7 +120,7 @@ const ContentRenderList = ({ designList, dispatch }: IRenderList) => {
   }
 
   const returnDefaultValue = (id: string, type: string) => {
-    return Dictionary[id].settings?.[type].Data
+    return Dictionary?.[id]?.settings?.[type]?.Data
   }
 
   return {
