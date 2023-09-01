@@ -34,8 +34,8 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
 
     editConfig.column && changeColumnCount(selectedControlId, editConfig)
 
-    const style = { ...Dictionary[selectedControlId]?.style, ...editConfig }
-    updatedControl.style = style
+    const settings = { ...Dictionary[selectedControlId]?.settings, ...editConfig }
+    updatedControl.settings = settings
     Dictionary[selectedControlId] = updatedControl
     return dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
@@ -52,9 +52,9 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
       item.parentId == selectedControlId && find.unshift(item.id)
     }
 
-    if (updatedControl?.style?.column) {
-      const diff = updatedControl.style.column - editConfig.column
-      if (updatedControl.style.column < editConfig.column) {
+    if (updatedControl?.settings?.column) {
+      const diff = updatedControl.settings.column - editConfig.column
+      if (updatedControl.settings.column < editConfig.column) {
         for (let i = 1; i <= -diff; i++) {
           //when you want add column not first time
           const obj = {
@@ -126,7 +126,7 @@ const createColumn = (item: Control) => {
     path: item.path,
     Name: item.Name,
     parentId: item.parentId,
-    ...(item.style && { style: item.style }),
+    ...(item.settings && { settings: item.settings }),
     childCount: item.childCount,
   }
 }
@@ -154,12 +154,12 @@ const convertObjectToArray = (obj: Dictionary) => {
   const result: Control[] = []
 
   for (const key in obj) {
-    const { parentId, Name, style } = obj[key]
+    const { parentId, Name, settings } = obj[key]
     resultMap.set(key, {
       id: key,
       parentId,
       Name,
-      ...(style && { style }),
+      ...(settings && { settings }),
       children: [],
     })
   }

@@ -1,7 +1,7 @@
 import { TitleType } from 'components/SettingBuilder/SettingBuilder.type'
 
 export interface ITextSettingProps {
-  Source: OptionType
+  Source: any
   id?: string
   Title?: TitleType
   DefaultValue?: OptionType

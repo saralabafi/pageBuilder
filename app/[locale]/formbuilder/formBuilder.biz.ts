@@ -28,13 +28,13 @@ const useFormBuilder = () => {
   const handleDrop = useCallback(
     (dropZone: DropZoneData, item: DropItem) => {
       const splitDropZonePath = dropZone.path.split('-')
-
       const newComponent: Control = {
         childCount: dropZone.childrenCount,
         ...item.data.component,
         path: splitDropZonePath,
         id: shortid.generate(),
         parentId: dropZone.parentId,
+        settings: settingPreMaker(item.data.component),
       }
 
       dispatch(selectActiveTab('setting'))
@@ -62,3 +62,12 @@ const useFormBuilder = () => {
 }
 
 export default useFormBuilder
+
+const settingPreMaker = (component: any) => {
+  const obj: { [key: string]: any } = {}
+  component.SettingCategories.map((category: any) => {
+    const xy: any = Object.entries(category?.Settings)
+    return xy.map((key: any) => (obj[key[0]] = key[1]?.DefaultValue))
+  })
+  return obj
+}
