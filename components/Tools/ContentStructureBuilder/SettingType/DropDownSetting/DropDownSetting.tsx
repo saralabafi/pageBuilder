@@ -1,35 +1,10 @@
-import React from 'react'
-import { IDropDownSettingProps } from './DropDownSetting.type'
-import { useLocale } from 'next-intl'
 import { Select } from 'components/CoreComponents/Select/Select'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from 'redux/Store'
-import ContentRenderList from 'components/DndDesigner/components/ContentRenderList.biz'
+import { useDropDownSetting } from './DropDownSetting.biz'
+import { IDropDownSettingProps } from './DropDownSetting.type'
 
 export const DropDownSetting = (props: IDropDownSettingProps) => {
-  const { Title, DefaultValue, Help, PlaceHolder, Source } = props.Source
-
-  const locale = useLocale()
-  const { activeControl, designList } = useSelector(
-    (state: RootState) => state.pageDesign
-  )
-
-  const dispatch = useDispatch()
-  const { editControl, returnDefaultValue } = ContentRenderList({
-    designList,
-    dispatch,
-  })
-  const options = Object.entries(Source).map(([id, option], index) => ({
-    key: id,
-    value: id,
-    title: id,
-  }))
-  
-  const type: any = props.Source.type
-
-  const handleSelect = (e: string) => {
-    editControl(activeControl, type, { Data: e })
-  }
+  const { Title, DefaultValue, PlaceHolder } = props.Source
+  const { handleSelect, options, locale } = useDropDownSetting(props)
 
   return (
     <div className="w-full h-12 flex-col justify-start items-start gap-1 inline-flex">

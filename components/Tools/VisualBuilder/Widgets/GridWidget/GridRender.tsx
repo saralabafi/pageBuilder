@@ -14,6 +14,7 @@ const GridWidget = (props: Control) => {
     <div
       className={`grid 
            grid-cols-12
+           ${props.settings?.SHOW_GUTTER.Data && 'gap-2'}
            border-2 border-gray w-full p-2`}>
       {props?.children?.map((item: Control, index: number) => {
         const currentPath = `${props.path}-${index}`
@@ -22,7 +23,7 @@ const GridWidget = (props: Control) => {
             key={index}
             align="items-center"
             customCSS={`w-full ${columnCalculator()}`}>
-            <div className="border border-dashed border-slate-400 m-1 p-5 w-full">
+            <div className="border border-dashed border-slate-400 p-5 w-full">
               {item.children?.map((control: Control) => {
                 return (
                   <VisualSelectedWrapper
