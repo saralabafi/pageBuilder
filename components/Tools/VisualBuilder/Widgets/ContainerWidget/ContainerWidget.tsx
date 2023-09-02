@@ -1,12 +1,12 @@
 'use client'
+import Link from 'next/link'
+import useContainerWidget from './ContainerWidget.biz'
 import { Flex } from 'components/CoreComponents/Flex/Flex'
 import { Control } from 'components/DndDesigner/DndDesigner.type'
+import DropZone from 'components/DndDesigner/components/DropZone/DropZone'
 import { VisualSelectedWrapper } from 'components/DndDesigner/components/VisualSelectedWrapper/VisualSelectedWrapper'
 import { DragComponent } from 'components/Tools/VisualBuilder/Widgets/GridWidget/DragComponent'
-import Link from 'next/link'
 import { visualRenderItems } from '../../../../../app/[locale]/page/layout.const'
-import useContainerWidget from './ContainerWidget.biz'
-import DropZone from 'components/DndDesigner/components/DropZone/DropZone'
 
 const ContainerWidget = (props: Control) => {
   const { settings, children, id } = props
@@ -15,6 +15,7 @@ const ContainerWidget = (props: Control) => {
 
   return (
     <Flex
+      width="w-full"
       borderSize="border"
       direction="flex-col"
       borderColor="border-slate-400"

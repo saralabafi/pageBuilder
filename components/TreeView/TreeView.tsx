@@ -31,10 +31,14 @@ export const TreeView = ({
       items={JSON.parse(sortableItems)}
       TreeItemComponent={React.forwardRef<
         HTMLDivElement,
-        TreeItemComponentProps<{ id: string; type: string,Name:string }>
+        TreeItemComponentProps<{ id: string; type: string; Name: string }>
       >(
         (
-          props: TreeItemComponentProps<{ id: string; type: string,Name:string }>,
+          props: TreeItemComponentProps<{
+            id: string
+            type: string
+            Name: string
+          }>,
           ref: any
         ) => {
           return (
@@ -52,14 +56,14 @@ export const TreeView = ({
               <Flex
                 justify="justify-between"
                 width="w-full"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  handleClick(props.item.id)
+                }}
                 customCSS={`rounded  py-2 mx-1 ${
                   isActive(props.item.id) && 'bg-slate-100'
                 }`}>
-                <Flex
-                  align="items-center"
-                  gap="gap-1"
-                  padding="p-1"
-                  onClick={() => handleClick(props.item.id)}>
+                <Flex align="items-center" gap="gap-1" padding="p-1">
                   <div className="w-3 h-3 border border-dashed border-neutral-500 " />
                   <Text fontWeight={300} fontSize={12} color="text-neutral-500">
                     {renderText(props.item.Name)}
@@ -69,11 +73,17 @@ export const TreeView = ({
                   <Flex gap="gap-2">
                     <TrashIcon
                       className="text-slate-400 cursor-pointer"
-                      onClick={() => deleteItemInDesign(props.item.id)}
+                      onClick={(e: any) => {
+                        e.stopPropagation()
+                        deleteItemInDesign(props.item.id)
+                      }}
                     />
                     <DuplicateIcon
                       className="text-slate-400 cursor-pointer"
-                      onClick={() => duplicateControl(props.item.id)}
+                      onClick={(e: any) => {
+                        e.stopPropagation()
+                        duplicateControl(props.item.id)
+                      }}
                     />
                     <MoveIcon className="text-slate-400 cursor-pointer" />
                   </Flex>

@@ -26,21 +26,21 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
 
-    const editControl = (
-      selectedControlId: string,
-      type: string,
-      editConfig: { [key: string]: any }
-    ) => {
-      const updatedControl = { ...Dictionary[selectedControlId] }
+  const editControl = (
+    selectedControlId: string,
+    type: string,
+    editConfig: { [key: string]: any }
+  ) => {
+    const updatedControl = { ...Dictionary[selectedControlId] }
 
-      // editConfig.column && changeColumnCount(selectedControlId, editConfig)
+    type === 'COLUMNS_COUNT' && changeColumnCount(selectedControlId, editConfig)
 
     const settings: any = { ...Dictionary[selectedControlId]?.settings }
     settings[type] = editConfig
     updatedControl.settings = settings
     Dictionary[selectedControlId] = updatedControl
-      return dispatch(setDesignList(convertObjectToArray(Dictionary)))
-    }
+    return dispatch(setDesignList(convertObjectToArray(Dictionary)))
+  }
 
   const changeColumnCount = (
     selectedControlId: string,
@@ -54,9 +54,15 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
       item.parentId == selectedControlId && find.unshift(item.id)
     }
 
-    if (updatedControl?.settings?.column) {
-      const diff = updatedControl.settings.column - editConfig.column
-      if (updatedControl.settings.column < editConfig.column) {
+    if (Number(updatedControl?.settings?.COLUMNS_COUNT.Data)) {
+      const diff =
+        Number(updatedControl.settings?.COLUMNS_COUNT.Data) -
+        Number(editConfig.Data)
+
+      if (
+        Number(updatedControl.settings?.COLUMNS_COUNT.Data) <
+        Number(editConfig.Data)
+      ) {
         for (let i = 1; i <= -diff; i++) {
           //when you want add column not first time
           const obj = {
@@ -75,7 +81,7 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
       }
     } else {
       // for Add column when first time you want add column
-      for (let i = 2; i <= editConfig.column; i++) {
+      for (let i = 2; i <= editConfig.Data; i++) {
         const obj = {
           Name: 'column',
           id: shortid.generate(),
@@ -105,9 +111,17 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
   }
 
   const duplicateControl = (id: string) => {
+    const arr = []
+    for (const key of Object.keys(Dictionary)) {
+      Dictionary[key]?.parentId === id && arr.push({ ...Dictionary[key] })
+    }
     const newControl = { ...Dictionary[id] }
     newControl.id = shortid.generate()
-
+    arr.map((item: any) => {
+      item.id = shortid.generate()
+      item.parentId = newControl.id
+      Dictionary[item.id] = item
+    })
     Dictionary[newControl.id] = newControl
 
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
