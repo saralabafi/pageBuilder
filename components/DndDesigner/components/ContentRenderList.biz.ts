@@ -39,7 +39,6 @@ const ContentRenderList = ({ designList, dispatch }: IRenderList) => {
       JSON.stringify(Dictionary[selectedControlId])
     )
 
-    // editConfig.column && changeColumnCount(selectedControlId, editConfig)
 
     const settings: any = { ...Dictionary[selectedControlId]?.settings }
     settings[type] = editConfig
@@ -48,50 +47,6 @@ const ContentRenderList = ({ designList, dispatch }: IRenderList) => {
     return dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
 
-  const changeColumnCount = (
-    selectedControlId: string,
-    editConfig: { [key: string]: number }
-  ) => {
-    const updatedControl = { ...Dictionary[selectedControlId] }
-    const find = []
-    const keys: string[] = Object.keys(Dictionary)
-    for (const key of keys) {
-      const item = Dictionary[key]
-      item.parentId == selectedControlId && find.unshift(item.id)
-    }
-
-    if (updatedControl?.settings?.column) {
-      const diff = updatedControl.settings.column - editConfig.column
-      if (updatedControl.settings.column < editConfig.column) {
-        for (let i = 1; i <= -diff; i++) {
-          //when you want add column not first time
-          const obj = {
-            Name: 'column',
-            id: shortid.generate(),
-            parentId: updatedControl.id,
-            children: [],
-          }
-          Dictionary[obj.id] = obj
-        }
-      } else {
-        // for Delete column
-        for (let i = 0; i < diff; i++) {
-          delete Dictionary[find[i]]
-        }
-      }
-    } else {
-      // for Add column when first time you want add column
-      for (let i = 2; i <= editConfig.column; i++) {
-        const obj = {
-          Name: 'column',
-          id: shortid.generate(),
-          parentId: updatedControl.id,
-          children: [],
-        }
-        Dictionary[obj.id] = obj
-      }
-    }
-  }
 
   const deleteItemInDesign = (selectedControlId: string) => {
     for (const key of Object.keys(Dictionary)) {
