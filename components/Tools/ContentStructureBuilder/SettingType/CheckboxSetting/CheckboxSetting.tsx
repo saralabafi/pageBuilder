@@ -3,7 +3,6 @@ import { useLocale } from 'next-intl'
 
 export const CheckboxSetting = (props: ICheckboxSettingProps) => {
   const locale = useLocale()
-  debugger
   const { Title, DefaultValue } = props.Source
 
   return (
