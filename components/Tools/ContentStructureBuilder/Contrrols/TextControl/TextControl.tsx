@@ -1,8 +1,8 @@
 import { Control } from 'components/DndDesigner/DndDesigner.type'
-import { useLocale } from 'next-intl';
+import { useLocale } from 'next-intl'
 
 const TextControl = (props: Control) => {
-  const locale=useLocale()
+  const locale = useLocale()
   return (
     <div className="relative mx-2 mb-3">
       {props?.settings?.REQUIRED?.Data?.Enabled ? (
@@ -21,7 +21,8 @@ const TextControl = (props: Control) => {
           {props?.settings?.HELP.Data[locale] || ''}
         </p>
       ) : null}
-      {props?.settings?.REQUIRED?.Data?.ErrorMessage ? (
+      {props?.settings?.REQUIRED?.Data?.Enabled &&
+      props?.settings?.REQUIRED?.Data?.ErrorMessage ? (
         <p className="text-red-500 text-xs italic">
           {props?.settings?.REQUIRED?.Data.ErrorMessage[locale]}
         </p>

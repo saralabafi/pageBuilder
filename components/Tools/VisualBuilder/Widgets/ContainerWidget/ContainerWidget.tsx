@@ -9,7 +9,7 @@ import useContainerWidget from './ContainerWidget.biz'
 import DropZone from 'components/DndDesigner/components/DropZone/DropZone'
 
 const ContainerWidget = (props: Control) => {
-  const { style, children, id } = props
+  const { settings, children, id } = props
   const { handleClick, activeControl, handleDrop, generateStyles } =
     useContainerWidget()
 
@@ -18,35 +18,47 @@ const ContainerWidget = (props: Control) => {
       borderSize="border"
       direction="flex-col"
       borderColor="border-slate-400"
-      customCSS={`${generateStyles(style!)} border-dashed`}
+      customCSS={`${generateStyles(settings!)} border-dashed`}
       padding={children?.length ? 'p-1' : 'p-9'}
       width="w-full"
       height="h-full">
       <Link href="" target="" className="w-full h-full">
-        {children?.map((control: Control) => {
-          return (
-            <VisualSelectedWrapper
-              deleteItem={() => {}}
-              control={control}
-              hidden={activeControl !== control.id}
-              key={control.id}>
-              <DragComponent
-                handleClick={handleClick}
-                component={control}
-                renders={visualRenderItems}
-              />
-            </VisualSelectedWrapper>
-          )
-        })}
-        <DropZone
-          data={{
-            parentId: id,
-            path: '0',
-            childrenCount: 0,
-          }}
-          onDrop={handleDrop}
-          path=""
-        />
+        {children?.length ? (
+          children?.map((control: Control) => {
+            return (
+              <VisualSelectedWrapper
+                deleteItem={() => {}}
+                control={control}
+                hidden={activeControl !== control.id}
+                key={control.id}>
+                <DragComponent
+                  handleClick={handleClick}
+                  component={control}
+                  renders={visualRenderItems}
+                />
+                <DropZone
+                  data={{
+                    parentId: control.id,
+                    path: '0',
+                    childrenCount: 0,
+                  }}
+                  onDrop={handleDrop}
+                  path=""
+                />
+              </VisualSelectedWrapper>
+            )
+          })
+        ) : (
+          <DropZone
+            data={{
+              parentId: id,
+              path: '0',
+              childrenCount: 0,
+            }}
+            onDrop={handleDrop}
+            path=""
+          />
+        )}
       </Link>
     </Flex>
   )

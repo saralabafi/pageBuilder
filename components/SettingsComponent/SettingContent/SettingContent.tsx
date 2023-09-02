@@ -7,6 +7,7 @@ import DynamicOptionSetting from 'components/Tools/ContentStructureBuilder/Setti
 import { RadioSetting } from 'components/CoreComponents/RadioSetting/RadioSetting'
 import { DropDownSetting } from 'components/Tools/ContentStructureBuilder/SettingType/DropDownSetting/DropDownSetting'
 import { CheckboxSetting } from 'components/Tools/ContentStructureBuilder/SettingType/CheckboxSetting/CheckboxSetting'
+import ColorPicker from 'components/Tools/ContentStructureBuilder/SettingType/ColorpickerSetting/ColorPickerSetting'
 
 const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
   const obj: { [key: string]: ReactNode } = {
@@ -18,6 +19,7 @@ const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
     CheckBoxSettingDefinition: <CheckboxSetting Source={Setting} />,
     DropDownSettingDefinition: <DropDownSetting Source={Setting} />,
     DynamicOptionsSettingDefinition: <DynamicOptionSetting Source={Setting} />,
+    ColorPickerSettingDefinition: <ColorPicker Source={Setting} />,
   }
   return obj[Setting.BaseType]
 }

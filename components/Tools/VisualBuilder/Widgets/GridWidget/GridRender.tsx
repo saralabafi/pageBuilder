@@ -9,7 +9,7 @@ import { visualRenderItems } from '../../../../../app/[locale]/page/layout.const
 const GridWidget = (props: Control) => {
   const { columnCalculator, handleClick, handleDrop, activeControl } =
     useGridWidget(props)
-  
+
   return (
     <div
       className={`grid 
@@ -34,6 +34,17 @@ const GridWidget = (props: Control) => {
                       renders={visualRenderItems}
                       handleClick={handleClick}
                       component={control}
+                    />
+                    <DropZone
+                      data={{
+                        parentId: item.id,
+                        path: currentPath,
+                        childrenCount: item?.children?.length,
+                      }}
+                      onDrop={handleDrop}
+                      path=""
+                      // isLast={undefined}
+                      // className={undefined}
                     />
                   </VisualSelectedWrapper>
                 )
