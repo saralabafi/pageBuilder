@@ -1,6 +1,6 @@
 import { ChromePicker } from 'react-color'
 import { useColorPicker } from './ColorPickerSetting.biz'
-import { IColorPickerProps } from './ColorpickerSetting.types'
+import { IColorPickerProps } from './ColorPickerSetting.types'
 
 function ColorPicker(props: IColorPickerProps) {
   const { controlValue, handleColorChange } = useColorPicker(props)
