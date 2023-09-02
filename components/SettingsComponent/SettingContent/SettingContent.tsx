@@ -6,21 +6,20 @@ import { NumericSetting } from 'components/Tools/ContentStructureBuilder/Setting
 import DynamicOptionSetting from 'components/Tools/ContentStructureBuilder/SettingType/DynamicOptionSetting/DynamicOptionSetting'
 import { RadioSetting } from 'components/CoreComponents/RadioSetting/RadioSetting'
 import { DropDownSetting } from 'components/Tools/ContentStructureBuilder/SettingType/DropDownSetting/DropDownSetting'
+import { CheckboxSetting } from 'components/Tools/ContentStructureBuilder/SettingType/CheckboxSetting/CheckboxSetting'
 import ColorPicker from 'components/Tools/ContentStructureBuilder/SettingType/ColorpickerSetting/ColorPickerSetting'
 
 const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
-
-
   const obj: { [key: string]: ReactNode } = {
     TextSettingDefinition: <TextSetting Source={Setting} />,
     RadioSettingDefinition: <RadioSetting Source={Setting} />,
     SwitchSettingDefinition: <SwitchSetting Source={Setting} />,
     RequiredSettingDefinition: <RequiredSetting Source={Setting} />,
     NumberSettingDefinition: <NumericSetting Source={Setting} />,
-    CheckBoxSettingDefinition: <h1>check box</h1>,
+    CheckBoxSettingDefinition: <CheckboxSetting Source={Setting} />,
     DropDownSettingDefinition: <DropDownSetting Source={Setting} />,
     DynamicOptionsSettingDefinition: <DynamicOptionSetting Source={Setting} />,
-    ColorPickerSettingDefinition:<ColorPicker Source={Setting}/>,
+    ColorPickerSettingDefinition: <ColorPicker Source={Setting} />,
   }
   return obj[Setting.BaseType]
 }
