@@ -2,7 +2,7 @@ import { TitleType } from 'components/SettingBuilder/SettingBuilder.type'
 import { ChangeEvent } from 'react'
 
 export interface ISwitchSettingProps {
-  Source: OptionType
+  Source: any
   id?: string
   Title?: TitleType
   DefaultValue?: DefaultValueType
