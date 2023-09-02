@@ -1,12 +1,12 @@
 import React from 'react'
 import { INumericSettingProps } from './NumericSetting.type'
-import { useLocale } from 'next-intl'
+import { useNumericSetting } from './NumericSetting.biz'
 
 export const NumericSetting = (props: INumericSettingProps) => {
   const { Title, DefaultValue, Help, PlaceHolder, Units } = props.Source
-  const locale = useLocale()
+  const { locale, onChange, controlValue } = useNumericSetting(props)
   return (
-    <div className="relative mb-3">
+    <div className="relative w-full mb-3">
       <label className="inline-block uppercase tracking-wide text-slate-700 text-[12px] mb-2">
         {Title[locale]}
       </label>
@@ -14,6 +14,8 @@ export const NumericSetting = (props: INumericSettingProps) => {
         defaultValue={DefaultValue.Data[locale]}
         readOnly={false}
         type="number"
+        value={controlValue ? controlValue[locale] : ''}
+        onChange={(e) => onChange(e.target.value)}
         className={`bg-gray-50 border border-slate-200 appearance-none block w-full h-[32px] text-gray-700 border text-[12px] rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white`}
         placeholder={PlaceHolder ? PlaceHolder[locale] : ''}
       />
