@@ -1,24 +1,73 @@
 import { useLocale, useTranslations } from 'next-intl'
 import React, { useState } from 'react'
 import { DynamicOptionsSttingProps } from './DynamicOptionSetting.type'
+import { RootState } from 'redux/Store'
+import { useDispatch, useSelector } from 'react-redux'
+import ContentRenderList from 'components/DndDesigner/components/ContentRenderList.biz'
+
+interface Option {
+  Id: number
+  Order: number
+  Title: {
+    [key: string]: string
+  }
+}
 
 const useDynamicOptionSetting = (props: DynamicOptionsSttingProps) => {
   const { Title, DefaultValue, Help, PlaceHolder, ErrorMessage } = props.Source
+
   const locale = useLocale()
-  const [options, setOptions] = useState<string[]>([''])
+
+  const [options, setOptions] = useState<Option[]>([
+    {
+      Id: 0,
+      Order: 0,
+      Title: {
+        'fa-ir': '',
+      },
+    },
+  ])
   const t = useTranslations('visual_builder')
-  const handleOptionChange = (index: number, value: string) => {
+
+  const type: any = props.Source.type
+
+  const { activeControl, designList } = useSelector(
+    (state: RootState) => state.pageDesign
+  )
+  const dispatch = useDispatch()
+  const { editControl, returnDefaultValue } = ContentRenderList({
+    designList,
+    dispatch,
+  })
+
+  const handleOptionChange = (index: number, value: Option) => {
     const updatedOptions = [...options]
-    updatedOptions[index] = value
+    console.log(value)
+
+    updatedOptions[index] = {
+      ...updatedOptions[index],
+      Title: value.Title,
+    }
+    // console.log(updatedOptions)
     setOptions(updatedOptions)
     onOptionsChange(updatedOptions)
+    editControl(activeControl, type, { Data: updatedOptions })
   }
-  const onOptionsChange = (newOptions: any) => {
+
+  const onOptionsChange = (newOptions: Option[]) => {
     setOptions(newOptions)
   }
+
   const handleAddOption = () => {
-    setOptions([...options, ''])
-    onOptionsChange([...options, ''])
+    const newOption: Option = {
+      Id: 0,
+      Order: 0,
+      Title: {
+        'fa-ir': ' ',
+      },
+    }
+    setOptions([...options, newOption])
+    onOptionsChange([...options, newOption])
   }
 
   const handleRemoveOption = (index: number) => {
@@ -26,6 +75,7 @@ const useDynamicOptionSetting = (props: DynamicOptionsSttingProps) => {
     updatedOptions.splice(index, 1)
     setOptions(updatedOptions)
     onOptionsChange(updatedOptions)
+    editControl(activeControl, type, { Data: updatedOptions })
   }
 
   return {

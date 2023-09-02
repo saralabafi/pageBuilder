@@ -52,5 +52,5 @@ export const formRenderItems: Renders = {
   TextControlDefinition: (props) => <TextControl {...props} />,
   SwitchControlDefinition: (props) => <SwitchControl {...props} />,
   NumberControlDefinition: () => <NumericControl />,
-  SingleSelectionControlDefinition: () => <SingleSelection />,
+  SingleSelectionControlDefinition: (props) => <SingleSelection {...props} />,
 }
