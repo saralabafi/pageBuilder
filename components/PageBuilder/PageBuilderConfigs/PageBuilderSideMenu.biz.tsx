@@ -38,7 +38,7 @@ export const usePageBuilderSideMenu = () => {
     services.GetData
   )
 
-  const controls: Control[] = data?.map((control: Control) => {
+  const controls:any = data?.map((control: any) => {
     return { component: control, type: 'sidebarItem' }
   })
 

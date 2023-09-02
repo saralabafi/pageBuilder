@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Control } from 'components/SettingBuilder/SettingBuilder.type'
 import { SettingBox } from 'components/SettingsComponent/SettingBox/SettingBox'
 import { useTranslations } from 'next-intl'
-import { ReactNode } from 'react'
+import { ReactNode, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectActiveMenu, selectActiveTab } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
@@ -13,17 +13,25 @@ import { NavigateMenu } from '../../PageBuilder/PageBuilderConfigs/components/Na
 export const useContentStructureSideMenu = () => {
   const dispatch = useDispatch()
   const t = useTranslations('layout')
-  const { activeTab } = useSelector((state: RootState) => state.pageDesign)
+  const { activeTab, activeControl } = useSelector(
+    (state: RootState) => state.pageDesign
+  )
 
   const handleClose = () => {
     dispatch(selectActiveTab(''))
     dispatch(selectActiveMenu(''))
   }
-
+  const SettingBoxMemoize = useCallback(
+    (props: any) => <SettingBox {...props} />,
+    [activeControl]
+  )
   const handleRenderTabMenu = (props: { controls: Control[] }) => {
     const availableMenu: { [key: string]: { [key: string]: ReactNode } } = {
       sidebar: { title: t('add'), component: <ControlMenu {...props} /> },
-      setting: { title: t('settings'), component: <SettingBox {...props} /> },
+      setting: {
+        title: t('settings'),
+        component: <SettingBoxMemoize {...props} />,
+      },
       navigation: { title: t('navigation'), component: <NavigateMenu /> },
     }
     return availableMenu[activeTab]
@@ -33,7 +41,8 @@ export const useContentStructureSideMenu = () => {
     [{ url: 'forms/v1.0/siteName/controls/definitions' }],
     services.GetData
   )
-  const controls: Control[] = data?.map((control: Control) => {
+
+  const controls: any[] = data?.map((control: any) => {
     return { component: control, type: 'sidebarItem' }
   })
 

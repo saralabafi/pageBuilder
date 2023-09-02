@@ -32,6 +32,7 @@ const useVisualBuilder = () => {
         ...item.data.component,
         path: splitDropZonePath,
         id: shortid.generate(),
+        settings:settingPreMaker(item.data.component),
         parentId: dropZone.parentId,
       }
 
@@ -53,3 +54,15 @@ const useVisualBuilder = () => {
   return { handleClick, handleDrop }
 }
 export default useVisualBuilder
+
+
+const settingPreMaker = (component: any) => {
+  const newDefaultValue: { [key: string]: any } = {}
+  component.SettingCategories.map((category: any) => {
+    const listSetting: any = Object.entries(category?.Settings)
+    return listSetting.map(
+      (key: any) => (newDefaultValue[key[0]] = key[1]?.DefaultValue)
+    )
+  })
+  return newDefaultValue
+}
