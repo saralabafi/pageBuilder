@@ -23,7 +23,8 @@ const NumericControl = (props: Control) => {
           {props?.settings?.HELP.Data[locale] || ''}
         </p>
       ) : null}
-      {props?.settings?.REQUIRED?.Data?.ErrorMessage ? (
+      {props?.settings?.REQUIRED?.Data?.Enabled &&
+      props?.settings?.REQUIRED?.Data?.ErrorMessage ? (
         <p className="text-red-500 text-[10px] italic pb-2">
           {props?.settings?.REQUIRED?.Data.ErrorMessage[locale]}
         </p>
