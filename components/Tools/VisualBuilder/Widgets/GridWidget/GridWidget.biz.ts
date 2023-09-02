@@ -1,10 +1,11 @@
 import { useDndDesigner } from 'components/DndDesigner/DndDesigner.biz'
 import { Control } from 'components/DndDesigner/DndDesigner.type'
+import VisualRenderList from 'components/DndDesigner/components/VisualRenderList.biz'
 import { useDispatch } from 'react-redux'
 import { selectActiveControl } from 'redux/Design/Design'
 
 export const useGridWidget = (props: Control) => {
-  const { handleDrop, activeControl } = useDndDesigner()
+  const { handleDrop, activeControl } = useDndDesigner(VisualRenderList)
   const dispatch = useDispatch()
 
   const handleClick = (e: React.MouseEvent, item: Control) => {
@@ -22,7 +23,7 @@ export const useGridWidget = (props: Control) => {
       12: 'col-span-12',
     }
 
-    return arr[props.style?.column || 12]
+    return arr[props.settings?.column || 12]
   }
   return { columnCalculator, handleClick, handleDrop, activeControl }
 }
