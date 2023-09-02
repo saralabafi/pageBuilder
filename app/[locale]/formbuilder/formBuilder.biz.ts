@@ -64,10 +64,12 @@ const useFormBuilder = () => {
 export default useFormBuilder
 
 const settingPreMaker = (component: any) => {
-  const obj: { [key: string]: any } = {}
+  const newDefaultValue: { [key: string]: any } = {}
   component.SettingCategories.map((category: any) => {
-    const xy: any = Object.entries(category?.Settings)
-    return xy.map((key: any) => (obj[key[0]] = key[1]?.DefaultValue))
+    const listSetting: any = Object.entries(category?.Settings)
+    return listSetting.map(
+      (key: any) => (newDefaultValue[key[0]] = key[1]?.DefaultValue)
+    )
   })
-  return obj
+  return newDefaultValue
 }

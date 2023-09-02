@@ -27,20 +27,6 @@ export const RadioSetting = (props: IRadioGroup) => {
             </Text>
           </label>
 
-          // <div
-          //   onClick={() => handleSelect(option.value)}
-          //   className="flex items-center cursor-pointer"
-          //   key={option.value}>
-          //   <div
-          //     className={`w-4 h-4 ${
-          //       option.value === id ? 'bg-blue-600' : 'bg-slate-50'
-          //     } rounded-3xl border border-slate-300 flex-col justify-center items-center inline-flex`}>
-          //     <div className="w-[6px] h-[6px] relative bg-slate-50 rounded-lg" />
-          //   </div>
-          // <Text fontSize={12} customCSS="ms-2">
-          //            {option.title?.[locale as any]}
-          //           </Text>
-          // </div>
         )
       })}
     </Flex>
