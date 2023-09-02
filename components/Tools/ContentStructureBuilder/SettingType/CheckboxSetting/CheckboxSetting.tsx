@@ -1,14 +1,15 @@
+import { useCheckboxSetting } from './CheckboxSetting.biz'
 import { ICheckboxSettingProps } from './CheckboxSetting.type'
-import { useLocale } from 'next-intl'
 
 export const CheckboxSetting = (props: ICheckboxSettingProps) => {
-  const locale = useLocale()
-  const { Title, DefaultValue } = props.Source
+  const { locale, handleClick, controlValue } = useCheckboxSetting(props)
+  const { Title } = props.Source
 
   return (
     <div className="flex-col">
       <input
-        checked={DefaultValue.Data}
+        onChange={handleClick}
+        checked={controlValue}
         id={Title[locale]}
         type="checkbox"
         className="w-4 h-4 relative align-middle bg-slate-200 border rounded-md border-slate-400"

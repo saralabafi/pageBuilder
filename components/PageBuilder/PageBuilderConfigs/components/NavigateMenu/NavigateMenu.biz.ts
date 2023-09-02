@@ -14,7 +14,7 @@ export const useNavigateMenu = () => {
     item: TreeItems<{ id: string; type: string }>,
     e: any
   ) => {
-    if (e?.droppedToParent?.Name === 'column') {
+    if (e?.droppedToParent?.Name !== 'GridWidgetDefinition') {
       dispatch(setDesignList(item))
     }
   }
