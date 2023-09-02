@@ -13,9 +13,7 @@ const LinkWidget = (props: any) => {
   const { settings, children, id } = props
   const {
     handleInputChange,
-    handleSelectChange,
     handleSelect,
-    handleDrop,
     activeControl,
     options,
     locale,
@@ -55,6 +53,7 @@ const LinkWidget = (props: any) => {
         </div>
         <input
           type="text"
+          onChange={handleInputChange}
           className="text-right text-slate-400 text-xs font-normal leading-none w-full self-stretch h-8 p-2 bg-white rounded border-l border-r border-t border-b border-slate-200 justify-start gap-1"
           placeholder={`${t('sample')}: https://example.com`}
         />

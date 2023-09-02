@@ -1,7 +1,7 @@
 import { ElementType, ReactElement, ReactNode } from 'react'
 
 export type Control = {
-  Source: { Title: any; DefaultValue: any; Help: any; PlaceHolder: any; Source: any }
+  Source: any
   path?: string[]
   id: string
   Name: string
@@ -47,5 +47,5 @@ export interface IDndDesignerProps {
   handleDelete: (id: string) => void
   handleClick: (e: React.MouseEvent, control: Control) => void
   SelectedWrapper: ElementType
-  renderList:any
+  renderList: any
 }
