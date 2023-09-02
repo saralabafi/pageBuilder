@@ -27,7 +27,6 @@ export const Flex = forwardRef<HTMLDivElement, IFlexProps>((props, ref) => {
       onClick={onClick}
       style={sx}
       className={`flex   
-      ${customCSS || ''}
       ${borderSize || ''}
       ${borderColor || ''}
       ${direction}
@@ -39,6 +38,7 @@ export const Flex = forwardRef<HTMLDivElement, IFlexProps>((props, ref) => {
       ${height || ''}
       ${padding || ''}
       ${margin || ''}
+      ${customCSS || ''}
       ${backgroundColor || ''}`}>
       {children}
     </div>

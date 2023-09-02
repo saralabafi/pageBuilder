@@ -1,27 +1,23 @@
-import React, { useState } from 'react'
-import { ISwitchSettingProps } from './SwitchSetting.type'
+import { Flex } from 'components/CoreComponents/Flex/Flex'
 import Check from 'images/page/check.svg'
 import { useLocale } from 'next-intl'
-import { Flex } from 'components/CoreComponents/Flex/Flex'
+import { useSwitchSetting } from './SwitchSetting.biz'
+import { ISwitchSettingProps } from './SwitchSetting.type'
 
 export const SwitchSetting = (props: ISwitchSettingProps) => {
+  const { Title } = props.Source
   const locale = useLocale()
-  const { Title, DefaultValue } = props.Source
-  const [toggle, setToggle] = useState(new Boolean(DefaultValue.Data))
-  const handleClick = () => {
-    const newToggle = !toggle
-    setToggle(newToggle)
-  }
+  const { handleChange, controlValue } = useSwitchSetting(props)
   
   return (
     <Flex justify="justify-between" width="w-full" customCSS="">
       <p className="text-[12px]">{Title[locale]}</p>
       <div
         className={`ToggleSwitch w-10 h-6 p-1 rounded-3xl justify-end items-center gap-1 inline-flex ${
-          toggle ? 'bg-blue-600' : 'bg-gray-200'
+          controlValue ? 'bg-blue-600' : 'bg-gray-200'
         }`}
-        onClick={handleClick}>
-        {toggle && (
+        onClick={handleChange}>
+        {controlValue && (
           <Check
             className="w-3 h-3 text-white"
             style={{
@@ -34,7 +30,7 @@ export const SwitchSetting = (props: ISwitchSettingProps) => {
         )}
         <div
           className={`ToggleCircle w-4 h-4 bg-white rounded-full transform transition-transform duration-300 ease-in-out${
-            toggle ? ' translate-x-full' : ''
+            controlValue ? ' translate-x-full' : ''
           }`}
         />
       </div>
