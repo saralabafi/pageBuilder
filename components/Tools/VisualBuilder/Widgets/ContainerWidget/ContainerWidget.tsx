@@ -18,10 +18,9 @@ const ContainerWidget = (props: Control) => {
       borderSize="border"
       direction="flex-col"
       borderColor="border-slate-400"
-      customCSS={`${generateStyles(settings!)} border-dashed`}
-      padding={children?.length ? 'p-1' : 'p-9'}
-      width="w-full"
-      height="h-full">
+      sx={generateStyles(settings!)}
+      customCSS={`border-dashed w-[300px]`}
+      padding={children?.length ? 'p-1' : 'p-9'}>
       <Link href="" target="" className="w-full h-full">
         {children?.length ? (
           children?.map((control: Control) => {

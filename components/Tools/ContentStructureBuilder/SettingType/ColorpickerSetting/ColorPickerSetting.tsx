@@ -1,10 +1,11 @@
 import { ChromePicker, ColorResult } from 'react-color'
-import { IColorPickerProps } from './ColorpickerSetting.types'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from 'redux/Store'
-import VisualRenderList from 'components/DndDesigner/components/VisualRenderList.biz'
+import { useColorPicker } from './ColorPickerSetting.biz'
+import { IColorPickerProps } from './ColorPickerSetting.types'
 import { useLocale } from 'next-intl'
 import { TitleType } from 'components/SettingBuilder/SettingBuilder.type'
+import VisualRenderList from 'components/DndDesigner/components/VisualRenderList.biz'
+import { useSelector, useDispatch } from 'react-redux'
+import { RootState } from 'redux/Store'
 
 function ColorPicker(props: IColorPickerProps) {
   const { activeControl, designList } = useSelector(
@@ -31,6 +32,7 @@ function ColorPicker(props: IColorPickerProps) {
 
     editControl(activeControl, type, editConfig)
   }
+  
 
   return (
     <>

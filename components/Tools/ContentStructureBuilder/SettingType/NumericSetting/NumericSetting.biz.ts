@@ -3,7 +3,6 @@ import { RootState } from 'redux/Store'
 import { useDispatch, useSelector } from 'react-redux'
 import { INumericSettingProps } from './NumericSetting.type'
 import ContentRenderList from 'components/DndDesigner/components/ContentRenderList.biz'
-import { TitleType } from 'components/SettingBuilder/SettingBuilder.type'
 
 export const useNumericSetting = (props: INumericSettingProps) => {
   const { activeControl, designList } = useSelector(
@@ -18,13 +17,14 @@ export const useNumericSetting = (props: INumericSettingProps) => {
 
   const locale = useLocale()
   const controlValue = returnDefaultValue(activeControl, type)
-  const onChange = (value: string) => {
-    const editConfig: { [key: string]: TitleType } = {}
-    editConfig['Data'] = {
+
+  const onChange = (Value: string) => {
+    const Data = {
       ...controlValue,
-      [locale]: value,
+      Value,
     }
-    editControl(activeControl, type, editConfig)
+
+    editControl(activeControl, type, { Data })
   }
   return { onChange, locale, controlValue }
 }
