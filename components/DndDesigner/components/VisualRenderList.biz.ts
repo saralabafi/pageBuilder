@@ -26,19 +26,21 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
 
-  const editControl = (
-    selectedControlId: string,
-    editConfig: { [key: string]: number }
-  ) => {
-    const updatedControl = { ...Dictionary[selectedControlId] }
+    const editControl = (
+      selectedControlId: string,
+      type: string,
+      editConfig: { [key: string]: any }
+    ) => {
+      const updatedControl = { ...Dictionary[selectedControlId] }
 
-    editConfig.column && changeColumnCount(selectedControlId, editConfig)
+      // editConfig.column && changeColumnCount(selectedControlId, editConfig)
 
-    const settings = { ...Dictionary[selectedControlId]?.settings, ...editConfig }
+    const settings: any = { ...Dictionary[selectedControlId]?.settings }
+    settings[type] = editConfig
     updatedControl.settings = settings
     Dictionary[selectedControlId] = updatedControl
-    return dispatch(setDesignList(convertObjectToArray(Dictionary)))
-  }
+      return dispatch(setDesignList(convertObjectToArray(Dictionary)))
+    }
 
   const changeColumnCount = (
     selectedControlId: string,
@@ -111,12 +113,17 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
 
+  const returnDefaultValue = (id: string, type: string) => {
+    return Dictionary?.[id]?.settings?.[type]?.Data
+  }
+
   return {
     addControl,
     moveControl,
     editControl,
-    deleteItemInDesign,
     duplicateControl,
+    deleteItemInDesign,
+    returnDefaultValue,
   }
 }
 
