@@ -23,7 +23,7 @@ const DynamicOptionSetting = (props: DynamicOptionsSttingProps) => {
         {/* {Title} */}
         {Title[locale]}
       </h2>
-      {options.map((option, index) => (
+      {options.map((option: any, index) => (
         <Flex>
           <div className="w-4 h-8 justify-center items-center gap-2.5">
             <MoveHandler />
@@ -33,8 +33,13 @@ const DynamicOptionSetting = (props: DynamicOptionsSttingProps) => {
             customCSS="w-full mb-3 h-8 p-2 bg-white rounded border-l border-r border-t border-b border-slate-200 inline-flex">
             <input
               className="w-full px-1 justify-end items-center gap-1 inline-flex"
-              value={option}
-              onChange={(e) => handleOptionChange(index, e.target.value)}
+              value={options[index]?.Title[locale]}
+              onChange={(e) =>
+                handleOptionChange(index, {
+                  ...options[index],
+                  Title: { [locale]: e.target.value },
+                })
+              }
             />
             <div
               className="cursor-pointer"

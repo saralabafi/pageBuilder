@@ -42,7 +42,8 @@
     "MultiSelectionControlDefinition": "Multi Selection"
   },
   "visual_builder": {
-    "new_option": "new options"
+    "new_option": "new options",
+    "sample": "sample"
   },
   "GlobalHeader": {
     "search": "search in dashboard",

@@ -8,6 +8,7 @@ import { RadioSetting } from 'components/CoreComponents/RadioSetting/RadioSettin
 import { DropDownSetting } from 'components/Tools/ContentStructureBuilder/SettingType/DropDownSetting/DropDownSetting'
 import { CheckboxSetting } from 'components/Tools/ContentStructureBuilder/SettingType/CheckboxSetting/CheckboxSetting'
 import ColorPicker from 'components/Tools/ContentStructureBuilder/SettingType/ColorpickerSetting/ColorPickerSetting'
+import LinkWidget from 'components/Tools/VisualBuilder/Widgets/LinkWidget/LinkWidget'
 
 const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
   const obj: { [key: string]: ReactNode } = {
@@ -20,6 +21,7 @@ const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
     DropDownSettingDefinition: <DropDownSetting Source={Setting} />,
     DynamicOptionsSettingDefinition: <DynamicOptionSetting Source={Setting} />,
     ColorPickerSettingDefinition: <ColorPicker Source={Setting} />,
+    LinkSettingDefinition: <LinkWidget Source={Setting} />,
   }
   return obj[Setting.BaseType]
 }

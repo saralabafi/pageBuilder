@@ -83,14 +83,14 @@ export const PageBuilderHeader = () => {
           backgroundColor="transparent"
           onClick={() => undefined}>
           <SearchIcon />
-          <Text>{t('preview')}</Text>
+          <Text color="text-blue-500">{t('preview')}</Text>
         </Button>
         <Button
           customCSS="border-1 border-solid border-neutral-200 text-blue-500"
           backgroundColor="transparent"
           onClick={() => undefined}>
           <SaveIcon />
-          <Text>{t('save')}</Text>
+          <Text color="text-blue-500">{t('save')}</Text>
         </Button>
         <Button
           border={false}
