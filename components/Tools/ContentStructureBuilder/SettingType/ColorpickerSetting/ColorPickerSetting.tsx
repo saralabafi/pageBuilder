@@ -1,42 +1,41 @@
-import { Flex } from 'components/CoreComponents/Flex/Flex'
-import React, { useState } from 'react'
 import { ChromePicker, ColorResult } from 'react-color'
-import Arowpath from 'images/page/arrowpath.svg'
+import { IColorPickerProps } from './ColorPickerSetting.types'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from 'redux/Store'
+import VisualRenderList from 'components/DndDesigner/components/VisualRenderList.biz'
 import { useLocale } from 'next-intl'
-import { IColorpickerProps } from './ColorpickerSetting.types'
+import { TitleType } from 'components/SettingBuilder/SettingBuilder.type'
 
-function ColorPicker(props: IColorpickerProps) {
-  const { Title, DefaultValue, Help, PlaceHolder } = props.Source
+function ColorPicker(props: IColorPickerProps) {
+  const { activeControl, designList } = useSelector(
+    (state: RootState) => state.pageDesign
+  )
+
+  const dispatch = useDispatch()
+  const { editControl, returnDefaultValue } = VisualRenderList({
+    designList,
+    dispatch,
+  })
+  const type: string = props.Source.type
+
   const locale = useLocale()
 
-  const [selectedColor, setSelectedColor] = useState<string>('#ffffff')
-  const [showPicker, setShowPicker] = useState<boolean>(false)
+  const controlValue = returnDefaultValue(activeControl, type)
 
   const handleColorChange = (color: ColorResult) => {
-    setSelectedColor(color.hex)
+    const editConfig: { [key: string]: TitleType } = {}
+    editConfig['Data'] = {
+      ...controlValue,
+      [locale]: color.hex,
+    }
+
+    editControl(activeControl, type, editConfig)
   }
-  const handleInputClick = () => {
-    setShowPicker(!showPicker)
-  }
+  
+
   return (
     <>
-      <Flex
-        customCSS="w-full h-8 px-2 py-1 bg-white rounded border-l border-r border-t border-b border-slate-200 justify-end items-center gap-2 inline-flex"
-        onClick={handleInputClick}>
-        <div
-          style={{ backgroundColor: selectedColor }}
-          className="w-6 h-6 relative  rounded-3xl border border-slate-200"
-        />
-        <div className="grow shrink basis-0 text-right text-slate-800 text-xs font-normal leading-none">
-          {selectedColor}
-        </div>
-        <div>
-          <Arowpath />
-        </div>
-      </Flex>
-      {showPicker && (
-        <ChromePicker color={selectedColor} onChange={handleColorChange} />
-      )}
+      <ChromePicker color={'controlValue.de'} onChange={handleColorChange} />
     </>
   )
 }

@@ -1,7 +1,7 @@
 import { TitleType } from 'components/SettingBuilder/SettingBuilder.type'
 
-export interface IColorpickerProps {
-  Source: OptionType
+export interface IColorPickerProps {
+  Source: any
   id?: string
   Title?: TitleType
   DefaultValue?: string
