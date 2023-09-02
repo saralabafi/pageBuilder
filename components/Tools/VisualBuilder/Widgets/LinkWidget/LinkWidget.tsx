@@ -1,12 +1,5 @@
 import { Flex } from 'components/CoreComponents/Flex/Flex'
-import { useDndDesigner } from 'components/DndDesigner/DndDesigner.biz'
-import VisualRenderList from 'components/DndDesigner/components/VisualRenderList.biz'
-import { useLocale } from 'next-intl'
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Select } from 'components/CoreComponents/Select/Select'
-import { RootState } from 'redux/Store'
-import ContentRenderList from 'components/DndDesigner/components/ContentRenderList.biz'
 import { useLinkWidget } from './LinkWidget.biz'
 
 const LinkWidget = (props: any) => {

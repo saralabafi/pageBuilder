@@ -1,12 +1,9 @@
 import { Control } from 'components/DndDesigner/DndDesigner.type'
-import { useDndDesigner } from 'components/DndDesigner/DndDesigner.biz'
-import VisualRenderList from 'components/DndDesigner/components/VisualRenderList.biz'
 import { useLocale, useTranslations } from 'next-intl'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectActiveControl } from 'redux/Design/Design'
-import { RootState } from 'redux/Store'
 import ContentRenderList from 'components/DndDesigner/components/ContentRenderList.biz'
+import { RootState } from 'redux/Store'
 
 export const useLinkWidget = (props: Control) => {
   const { Title, DefaultValue, Help, PlaceHolder, Source } = props.Source

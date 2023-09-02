@@ -2,7 +2,7 @@ import VisualRenderList from 'components/DndDesigner/components/VisualRenderList
 import { ColorResult } from 'react-color'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from 'redux/Store'
-import { IColorPickerProps } from './ColorPickerSetting.types'
+import { IColorPickerProps } from './ColorpickerSetting.types'
 
 export const useColorPicker = (props: IColorPickerProps) => {
   const { activeControl, designList } = useSelector(

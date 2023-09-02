@@ -23,7 +23,7 @@ const useDynamicOptionSetting = (props: DynamicOptionsSttingProps) => {
       Id: 0,
       Order: 0,
       Title: {
-        'fa-ir': '',
+        [locale]: '',
       },
     },
   ])
@@ -60,7 +60,7 @@ const useDynamicOptionSetting = (props: DynamicOptionsSttingProps) => {
       Id: 0,
       Order: 0,
       Title: {
-        'fa-ir': ' ',
+        [locale]: ' ',
       },
     }
     setOptions([...options, newOption])
