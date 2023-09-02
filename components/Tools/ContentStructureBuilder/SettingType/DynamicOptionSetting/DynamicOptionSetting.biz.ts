@@ -42,13 +42,10 @@ const useDynamicOptionSetting = (props: DynamicOptionsSttingProps) => {
 
   const handleOptionChange = (index: number, value: Option) => {
     const updatedOptions = [...options]
-    console.log(value)
-
     updatedOptions[index] = {
       ...updatedOptions[index],
       Title: value.Title,
     }
-    // console.log(updatedOptions)
     setOptions(updatedOptions)
     onOptionsChange(updatedOptions)
     editControl(activeControl, type, { Data: updatedOptions })

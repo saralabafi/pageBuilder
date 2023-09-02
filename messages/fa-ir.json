@@ -41,7 +41,8 @@
     "MultiSelectionControlDefinition": "چند انتخابی"
   },
   "visual_builder": {
-    "new_option": "گزینه جدید"
+    "new_option": "گزینه جدید",
+    "sample": "مثال"
   },
   "GlobalHeader": {
     "search": "جستجو در داشبورد",

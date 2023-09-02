@@ -1,5 +1,5 @@
 import { ChromePicker, ColorResult } from 'react-color'
-import { IColorPickerProps } from './ColorPickerSetting.types'
+import { IColorPickerProps } from './ColorpickerSetting.types'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from 'redux/Store'
 import VisualRenderList from 'components/DndDesigner/components/VisualRenderList.biz'
@@ -31,7 +31,6 @@ function ColorPicker(props: IColorPickerProps) {
 
     editControl(activeControl, type, editConfig)
   }
-  
 
   return (
     <>

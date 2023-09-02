@@ -1,6 +1,7 @@
 import { ElementType, ReactElement, ReactNode } from 'react'
 
 export type Control = {
+  Source: { Title: any; DefaultValue: any; Help: any; PlaceHolder: any; Source: any }
   path?: string[]
   id: string
   Name: string
