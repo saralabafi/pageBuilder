@@ -5,8 +5,10 @@ import DropZone from 'components/DndDesigner/components/DropZone/DropZone'
 import { VisualSelectedWrapper } from 'components/DndDesigner/components/VisualSelectedWrapper/VisualSelectedWrapper'
 import { useGridWidget } from './GridWidget.biz'
 import { visualRenderItems } from '../../../../../app/[locale]/page/layout.const'
+import { generateStyles } from '../../../../../utils/help/GenerateStyle'
 
 const GridWidget = (props: Control) => {
+  const { settings } = props
   const { columnCalculator, handleClick, handleDrop, activeControl } =
     useGridWidget(props)
 
@@ -22,6 +24,7 @@ const GridWidget = (props: Control) => {
           <Flex
             key={index}
             align="items-center"
+            sx={generateStyles(settings!)}
             customCSS={`w-full ${columnCalculator()}`}>
             <div className="border border-dashed border-slate-400 p-5 w-full">
               {item.children?.map((control: Control) => {
