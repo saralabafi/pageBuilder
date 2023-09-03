@@ -38,8 +38,8 @@ export const visualRenderItems: Renders = {
   ContainerWidgetDefinition: (props) => {
     return <ContainerWidget {...props} />
   },
-  HtmlWidgetDefinition: () => {
-    return <HtmlWidget />
+  HtmlWidgetDefinition: (props) => {
+    return <HtmlWidget {...props} />
   },
 }
 

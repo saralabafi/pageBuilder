@@ -4,12 +4,15 @@ import draftToHtml from 'draftjs-to-html'
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+import { Control } from 'components/DndDesigner/DndDesigner.type'
+import { generateStyles } from '../../../../../utils/help/GenerateStyle'
 
 const HtmlEditor = dynamic(() => import('components/HtmlEditor/HtmlEditor'), {
   ssr: false,
 })
 
-export const HtmlWidget = () => {
+export const HtmlWidget = (props: Control) => {
+  const { settings } = props
   const [htmlValue, setHtmlValue] = useState<string>('')
   const [visible, setVisible] = useState<boolean>(false)
 
@@ -27,6 +30,7 @@ export const HtmlWidget = () => {
       <div
         onClick={() => setVisible(true)}
         dangerouslySetInnerHTML={{ __html: htmlValue || contentString }}
+        style={generateStyles(settings!)}
       />
 
       <Modal

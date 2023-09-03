@@ -7,11 +7,11 @@ import DropZone from 'components/DndDesigner/components/DropZone/DropZone'
 import { VisualSelectedWrapper } from 'components/DndDesigner/components/VisualSelectedWrapper/VisualSelectedWrapper'
 import { DragComponent } from 'components/Tools/VisualBuilder/Widgets/GridWidget/DragComponent'
 import { visualRenderItems } from '../../../../../app/[locale]/page/layout.const'
+import { generateStyles } from '../../../../../utils/help/GenerateStyle'
 
 const ContainerWidget = (props: Control) => {
   const { settings, children, id } = props
-  const { handleClick, activeControl, handleDrop, generateStyles } =
-    useContainerWidget()
+  const { handleClick, activeControl, handleDrop } = useContainerWidget()
   return (
     <Flex
       width="w-full"
