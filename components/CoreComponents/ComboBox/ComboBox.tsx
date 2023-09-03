@@ -1,5 +1,4 @@
 'use client'
-import { TbArrowsSort } from "react-icons/tb"
 import useComboBox from './ComboBox.biz';
 import { ComboBoxProp } from './ComboBox.types';
 import { useEffect } from "react";
@@ -54,11 +53,11 @@ const ComboBox: React.FC<ComboBoxProp> = (props) => {
             className={` border rounded text-black w-full pl-2 top  focus:outline ${outline_input} outline-2 h-full`}
             onMouseDown={(event) => event.stopPropagation()}
           />
-          <TbArrowsSort
+          {/* <TbArrowsSort
             onClick={() => openListHandler()}
             size={18}
             className={`text-gray-500 hover:text-gray-600 transition-all  absolute  ${position_icon} right-3 cursor-pointer`}
-          />
+          /> */}
         </div>
         {isOpen && (
           <div

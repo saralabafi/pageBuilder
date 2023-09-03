@@ -19,7 +19,7 @@ export const useGridSettingsMenu = () => {
 
   const handleOnChangeColumnSize = (input: string) => {
     const column = { column: Number(input) }
-    editControl(activeControl, column)
+    // editControl(activeControl, column)
   }
 
   return { selectedControl, handleOnChangeColumnSize, columns, t }

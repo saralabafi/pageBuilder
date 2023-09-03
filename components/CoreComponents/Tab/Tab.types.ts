@@ -1,8 +1,7 @@
-import { IconType } from 'react-icons/lib'
 export interface TabItem {
   title: string
   id: string
-  icon?: IconType
+  icon?: any
   content: JSX.Element 
 }
 

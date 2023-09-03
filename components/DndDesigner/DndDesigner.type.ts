@@ -1,7 +1,7 @@
 import { ElementType, ReactElement, ReactNode } from 'react'
 
 export type Control = {
-  Source: any
+  Source?: any
   path?: string[]
   id: string
   Name: string

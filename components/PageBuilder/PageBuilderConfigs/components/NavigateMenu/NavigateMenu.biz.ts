@@ -10,10 +10,7 @@ export const useNavigateMenu = () => {
   const t = useTranslations('layout')
   const dispatch = useDispatch()
 
-  const handleChange = (
-    item: TreeItems<{ id: string; type: string }>,
-    e: any
-  ) => {
+  const handleChange = (item: any, e: any) => {
     if (e?.droppedToParent?.Name !== 'GridWidgetDefinition') {
       dispatch(setDesignList(item))
     }
