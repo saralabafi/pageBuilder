@@ -5,7 +5,7 @@ interface IQueryKey {
   page?: number
 }
 const base_api = axios.create({
-  baseURL: 'https://mocki.io/v1/',
+  baseURL: 'http://gateway.dourtal.co/api/',
 })
 
 const GetData = async ({ queryKey }: QueryFunctionContext) => {

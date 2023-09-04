@@ -1,0 +1,52 @@
+{
+  "Index": {
+    "home": "Front-End Member ..... :D"
+  },
+  "Component": {
+    "table": {
+      "itemperpage": "Items per Page"
+    }
+  },
+  "layout": {
+    "pageBuilder": "page builder",
+    "sample": "central > .... > news category ",
+    "addItem": "add item",
+    "navigation": "navigation",
+    "formats": "formats ",
+    "settings": "settings",
+    "generalBlock": "general block",
+    "HTMLEditor": "HTML editor",
+    "column": "column",
+    "star": "star",
+    "navigationMenu": "navigation menu",
+    "selectColumnSize": "select column size",
+    "button": "button",
+    "add": "Add New Item",
+    "setting": "Setting",
+    "save": "Save",
+    "getstarteddrag": "To get started, drag an item here",
+    "publish": "Publish",
+    "preview": "Preview",
+    "generalBlocks": "General Blocks",
+    "grid": "grid",
+    "conditions": "conditions",
+    "formBuilder": "form builder",
+    "userRegistrationForm": "user registration form",
+    "HtmlWidgetDefinition": "HTML",
+    "GridWidgetDefinition": "Grid",
+    "TextControlDefinition": "Text",
+    "SwitchControlDefinition": "Switch",
+    "NumberControlDefinition": "Number",
+    "ContainerWidgetDefinition": "Container",
+    "SingleSelectionControlDefinition": "Single Selection",
+    "MultiSelectionControlDefinition": "Multi Selection"
+  },
+  "visual_builder": {
+    "new_option": "new options",
+    "sample": "sample"
+  },
+  "GlobalHeader": {
+    "search": "search in dashboard",
+    "logo": "logo"
+  }
+}
