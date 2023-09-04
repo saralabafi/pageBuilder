@@ -1,4 +1,4 @@
-import { Flex } from 'components/Flex/Flex'
+import { Flex } from 'components/CoreComponents/Flex/Flex'
 import BigFolder from 'images/dashboard/BigFolder.svg'
 import Home from 'images/dashboard/home.svg'
 import Star from 'images/dashboard/star.svg'

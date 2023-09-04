@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
-import { Flex } from 'components/Flex/Flex'
-import Text from 'components/Text/Text'
+import { Flex } from 'components/CoreComponents/Flex/Flex'
+import Text from 'components/CoreComponents/Text/Text'
 import { quick_access_items } from './DashMainConst'
 
 export const DashMain = () => {

@@ -1,5 +1,5 @@
-import { Flex } from 'components/Flex/Flex'
-import Button from 'components/Button/Button'
+import { Flex } from 'components/CoreComponents/Flex/Flex'
+import Button from 'components/CoreComponents/Button/Button'
 import SearchIcon from 'images/dashboard/search.svg'
 import QuestionIcon from 'images/dashboard/questionCircleFill.svg'
 import BellIcon from 'images/dashboard/NotificationFill.svg'
@@ -12,7 +12,7 @@ export const DashHeader = () => {
   return (
     <Flex
       customCSS="h-[72px] border-b border-neutral-200"
-      width="full"
+      width="w-full"
       padding="px-6"
       align="items-center"
       justify="justify-between">
@@ -27,7 +27,7 @@ export const DashHeader = () => {
         />
       </div>
       <Flex
-        width="full"
+        width="w-full"
         padding="px-6"
         align="items-center"
         gap="gap-1"
