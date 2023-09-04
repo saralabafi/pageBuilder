@@ -3,11 +3,11 @@ import { useLocale } from 'next-intl'
 
 export const TabSetting = ({ options, category, selectedCategory }: any) => {
   const locale = useLocale()
-  
+
   return (
     <Flex justify="justify-center" width="w-full" margin="my-2">
       <div className="bg-white rounded-3xl border border-slate-200 justify-start items-start inline-flex">
-        {options.map((option: any) => {
+        {options?.map((option: any) => {
           return (
             <Flex>
               <div
