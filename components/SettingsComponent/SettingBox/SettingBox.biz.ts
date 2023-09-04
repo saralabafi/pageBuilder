@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from 'redux/Store'
 
-export const useSettingBox = ( controls : any) => {
+export const useSettingBox = (controls: any) => {
   const [category, selectedCategory] = useState<SettingCategoryType>()
   const { settingsControls } = SettingBuilder(controls)
   const { activeMenu } = useSelector((state: RootState) => state.pageDesign)
@@ -14,7 +14,7 @@ export const useSettingBox = ( controls : any) => {
   }, [activeMenu])
 
   useEffect(() => {
-    selectedCategory(options[0])
+    selectedCategory(options ? options[0] : undefined)
   }, [options])
 
   return { options, category, selectedCategory, settingsControls, activeMenu }

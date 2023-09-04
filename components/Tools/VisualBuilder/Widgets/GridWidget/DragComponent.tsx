@@ -28,7 +28,8 @@ export const DragComponent = ({
       ref={drag}
       style={{ opacity }}
       className="w-full cursor-move"
-      onClick={(e) => handleClick(e, component)}>
+      // onClick={(e) => handleClick(e, component)}
+    >
       {renders[component.Name]?.(component)}
     </div>
   )
