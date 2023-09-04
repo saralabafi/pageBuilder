@@ -1,4 +1,3 @@
-import { TreeItems } from 'dnd-kit-sortable-tree'
 import { useTranslations } from 'next-intl'
 import { useDispatch, useSelector } from 'react-redux'
 import { setDesignList } from 'redux/Design/Design'

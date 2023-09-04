@@ -8,7 +8,6 @@ import { selectActiveMenu, selectActiveTab } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
 import { services } from 'services/services'
 import { ControlMenu } from '../../PageBuilder/PageBuilderConfigs/components/ControlMenu/ControlMenu'
-import { NavigateMenu } from '../../PageBuilder/PageBuilderConfigs/components/NavigateMenu/NavigateMenu'
 
 export const useContentStructureSideMenu = () => {
   const dispatch = useDispatch()
@@ -32,7 +31,6 @@ export const useContentStructureSideMenu = () => {
         title: t('settings'),
         component: <SettingBoxMemoize {...props} />,
       },
-      navigation: { title: t('navigation'), component: <NavigateMenu /> },
     }
     return availableMenu[activeTab]
   }
