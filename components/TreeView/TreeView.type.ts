@@ -2,6 +2,7 @@ import { ItemChangedReason, TreeItems } from 'dnd-kit-sortable-tree/dist/types'
 import { ReactNode } from 'react'
 
 export interface ITreeView {
+  icons?: any
   sortableItems: any
   handleChange: (
     items: TreeItems<{

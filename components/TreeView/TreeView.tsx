@@ -16,6 +16,7 @@ export const TreeView = ({
   sortableItems,
   handleChange,
   renderText,
+  icons,
 }: ITreeView) => {
   const {
     calculatePadding,
@@ -41,6 +42,7 @@ export const TreeView = ({
           }>,
           ref: any
         ) => {
+
           return (
             <SimpleTreeItemWrapper
               {...props}
@@ -64,8 +66,15 @@ export const TreeView = ({
                   isActive(props.item.id) && 'bg-slate-100'
                 }`}>
                 <Flex align="items-center" gap="gap-1" padding="p-1">
-                  <div className="w-3 h-3 border border-dashed border-neutral-500 " />
-                  <Text fontWeight={300} fontSize={12} color="text-neutral-500">
+                  {icons &&
+                    React.cloneElement(icons[props.item.Name], {
+                      className: 'text-neutral-600 font-xs',
+                    })}
+
+                  <Text
+                    fontWeight={300}
+                    fontSize={12}
+                    color="text-neutral-500 ms-1">
                     {renderText(props.item.Name)}
                   </Text>
                 </Flex>
