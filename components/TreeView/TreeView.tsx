@@ -42,6 +42,8 @@ export const TreeView = ({
           }>,
           ref: any
         ) => {
+          console.log(props.item.Name)
+
           return (
             <SimpleTreeItemWrapper
               {...props}

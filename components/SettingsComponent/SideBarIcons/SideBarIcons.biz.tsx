@@ -6,8 +6,10 @@ import MultiSelectionIcon from 'images/ContentStructureBuilder/multiSelection.sv
 import NumericIcon from 'images/ContentStructureBuilder/numeric.svg'
 import ContainerIcon from 'images/page/container.svg'
 import HTMLIcon from 'images/page/HTML_Editor.svg'
+import ColumnIcon from 'images/page/column.svg'
 
 export const SideBarIcons: { [key: string]: any } = {
+  column: <ColumnIcon />,
   HtmlWidgetDefinition: <HTMLIcon />,
   GridWidgetDefinition: <GridIcon />,
   TextControlDefinition: <TextIcon />,

@@ -16,13 +16,13 @@ const GridWidget = (props: Control) => {
     <div
       className={`grid 
            grid-cols-12
-           ${props.settings?.SHOW_GUTTER.Data && 'gap-2'}
+           ${props.settings?.SHOW_GUTTER?.Data && 'gap-2'}
            border-2 border-gray w-full p-2`}>
       {props?.children?.map((item: Control, index: number) => {
         const currentPath = `${props.path}-${index}`
         return (
           <Flex
-            key={index}
+            key={item.id}
             align="items-center"
             sx={generateStyles(settings!)}
             customCSS={`w-full ${columnCalculator()}`}>
