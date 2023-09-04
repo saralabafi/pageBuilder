@@ -60,6 +60,15 @@
       "dataStructure": "ساختار داده ",
       "file&Media": "فایل و مدیا",
       "setting": "پیکربندی"
+    },
+    "Content": {
+      "newContent": "محتوا جدید",
+      "content": "محتوا",
+      "title": "عنوان",
+      "data_structure": "ساختار داده",
+      "author": "ایجادکننده",
+      "status": "وضعیت انتشار",
+      "recently_change": "آخرین تغییرات"
     }
   }
 }

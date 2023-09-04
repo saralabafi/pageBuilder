@@ -1,11 +1,12 @@
 'use client'
 import { DashboardHeader } from 'components/Dashboard/DashboardHeader/DashboardHeader'
 
-function dashboardLayout() {
+function dashboardLayout({ children }: any) {
   return (
-    <div className="flex h-screen">
+    <>
       <DashboardHeader />
-    </div>
+      {children}
+    </>
   )
 }
 

@@ -61,6 +61,15 @@
       "dataStructure": "data structure",
       "file&Media": "file and media ",
       "setting": "setting"
+    },
+    "Content": {
+      "newContent": "new content",
+      "content": "content",
+      "title":"title",
+      "data_structure": "data Structure",
+      "author": "author",
+      "status": "status",
+      "recently_change": "recently change"
     }
   }
 }
