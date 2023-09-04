@@ -47,5 +47,19 @@
   "GlobalHeader": {
     "search": "جستجو در داشبورد",
     "logo": "لوگو"
+  },
+  "Dashboard": {
+    "HeaderDashboard": {
+      "contentManagement": "مدیریت محتوا",
+      "dashboard": "داشبورد",
+      "webManagement": "مدیرت سایت",
+      "visualBuilder": "ویژوال بیلدر",
+      "formBuilder": "فرم ساز",
+      "flowBuilder": "فرایندساز",
+      "content": "محتوا",
+      "dataStructure": "ساختار داده ",
+      "file&Media": "فایل و مدیا",
+      "setting": "پیکربندی"
+    }
   }
 }

@@ -48,5 +48,19 @@
   "GlobalHeader": {
     "search": "search in dashboard",
     "logo": "logo"
+  },
+  "Dashboard": {
+    "HeaderDashboard": {
+      "contentManagement": " content management",
+      "dashboard": "dashboard",
+      "webManagement": "web management",
+      "visualBuilder": "visual builder",
+      "formBuilder": "form builder",
+      "flowBuilder": "flow builder",
+      "content": "content ",
+      "dataStructure": "data structure",
+      "file&Media": "file and media ",
+      "setting": "setting"
+    }
   }
 }
