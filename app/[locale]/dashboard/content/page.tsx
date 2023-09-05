@@ -1,17 +1,16 @@
 'use client'
-import Link from 'next/link'
-import PlusIcon from 'images/page/plus.svg'
-import { useTranslations } from 'next-intl'
-import DocumentIcon from 'images/page/formats.svg'
-import FilterIcon from 'images/dashboard/filter.svg'
+import Button from 'components/CoreComponents/Button/Button'
+import { Flex } from 'components/CoreComponents/Flex/Flex'
+import Table from 'components/CoreComponents/Table/Table'
 import Text from 'components/CoreComponents/Text/Text'
 import DownloadIcon from 'images/dashboard/download.svg'
-import ContentTableData from './contentTable.const.json'
-import Table from 'components/CoreComponents/Table/Table'
-import { Flex } from 'components/CoreComponents/Flex/Flex'
-import Button from 'components/CoreComponents/Button/Button'
 import DuplicateIcon from 'images/dashboard/duplicateOutline.svg'
-
+import FilterIcon from 'images/dashboard/filter.svg'
+import DocumentIcon from 'images/page/formats.svg'
+import PlusIcon from 'images/page/plus.svg'
+import { useTranslations } from 'next-intl'
+import Link from 'next/link'
+import ContentTableData from './contentTable.const.json'
 
 function ContentPage() {
   const t = useTranslations('Dashboard.Content')
@@ -119,15 +118,8 @@ function ContentPage() {
         </Flex>
       </Flex>
       <Flex>
-        <Flex customCSS="w-[20%] p-2">
-          {/* <TreeView
-            sortableItems={JSON.stringify(ContentFolderData)}
-            handleChange={(i: any, e: any) => {}}
-            renderText={(text: string) => {
-              console.log(text)
-              return 'amir'
-            }}
-          /> */}
+        <Flex customCSS="w-[20%] p-2 border-e ">
+          {/* <NavigationDynamicContent/> */}
         </Flex>
         <Flex customCSS="w-[80%] p-2">
           <Table columns={columns} dataSource={ContentTableData.records} />

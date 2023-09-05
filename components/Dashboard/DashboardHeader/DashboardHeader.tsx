@@ -4,7 +4,7 @@ import ApplicationIcon from 'images/dashboard/application.svg'
 import SettingIcon from 'images/dashboard/setting.svg'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+
 export const DashboardHeader = () => {
   const t = useTranslations('Dashboard.HeaderDashboard')
   const headerList = [
@@ -30,9 +30,8 @@ export const DashboardHeader = () => {
         </Text>
         {headerList.map((nav, index: number) => {
           return (
-            <Link href={`/${nav.link}`}>
+            <Link href={`/${nav.link}`} key={index}>
               <Text
-                key={index}
                 customCSS="px-2 py-1 hover:text-blue-600 hover:bg-blue-50"
                 color="text-slate-500"
                 fontSize={'text-[13px]'}
