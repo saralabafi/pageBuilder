@@ -1,27 +1,33 @@
 'use client'
-import FilterIcon from 'images/dashboard/filter.svg'
-import DownloadIcon from 'images/dashboard/download.svg'
-import Button from 'components/CoreComponents/Button/Button'
-import { Flex } from 'components/CoreComponents/Flex/Flex'
-import Text from 'components/CoreComponents/Text/Text'
+import Link from 'next/link'
+import PlusIcon from 'images/page/plus.svg'
 import { useTranslations } from 'next-intl'
 import DocumentIcon from 'images/page/formats.svg'
-import PlusIcon from 'images/page/plus.svg'
+import FilterIcon from 'images/dashboard/filter.svg'
+import Text from 'components/CoreComponents/Text/Text'
+import DownloadIcon from 'images/dashboard/download.svg'
+import ContentTableData from './contentTable.const.json'
 import Table from 'components/CoreComponents/Table/Table'
+import { Flex } from 'components/CoreComponents/Flex/Flex'
+import Button from 'components/CoreComponents/Button/Button'
+import DuplicateIcon from 'images/dashboard/duplicateOutline.svg'
+
 
 function ContentPage() {
   const t = useTranslations('Dashboard.Content')
-  const render = (text: any) => (
+  const render = (text: string) => (
     <Text fontSize={12} customCSS="p-2" fontWeight={400} color="text-slate-500">
       {text}
     </Text>
   )
-  
-  
-  
-  
-  
+
   const columns = [
+    {
+      key: 'count',
+      title: '#',
+      dataIndex: 'count',
+      render: (text: any) => render(text),
+    },
     {
       key: 'title',
       title: t('title'),
@@ -29,15 +35,15 @@ function ContentPage() {
       render: (text: any) => render(text),
     },
     {
-      key: 'data_structure',
-      title: t('data_structure'),
-      dataIndex: 'data_structure',
+      key: 'contentType',
+      title: t('contentType'),
+      dataIndex: 'contentType',
       render: (text: any) => render(text),
     },
     {
-      key: 'author',
-      title: t('author'),
-      dataIndex: 'author',
+      key: 'createdByFullName',
+      title: t('createdByFullName'),
+      dataIndex: 'createdByFullName',
       render: (text: any) => render(text),
     },
     {
@@ -45,22 +51,41 @@ function ContentPage() {
       title: t('status'),
       dataIndex: 'status',
       render: (text: any) => render(text),
-    },   {
-      key: 'recently_change',
-      title: t('recently_change'),
-      dataIndex: 'recently_change',
+    },
+    {
+      key: 'lastModifiedAt',
+      title: t('lastModifiedAt'),
+      dataIndex: 'lastModifiedAt',
       render: (text: any) => render(text),
     },
-  ]
-
-  const dataSource = [
     {
-      count: '1',
-      name: 'John Doe',
-      age: '25',
-      email: 'john@example.com',
+      key: 'link',
+      title: t('link'),
+      dataIndex: 'link',
+      render: (text: any) => (
+        <Link
+          href={text}
+          className="flex align-middle gap-2 mx-2"
+          target="_blank">
+          <DuplicateIcon className="text-blue-500 w-4 h-4" />
+          <Text fontSize={12} fontWeight={400} color="text-blue-500">
+            {text}
+          </Text>
+        </Link>
+      ),
     },
-    { count: '2', name: 'Jane Smith', age: '30', email: 'jane@example.com' },
+    {
+      key: '',
+      title: '',
+      dataIndex: '',
+      render: (text: any, e: any) => (
+        <div
+          className="text-center cursor-pointer text-slate-400"
+          onClick={() => console.log(e)}>
+          ...
+        </div>
+      ),
+    },
   ]
 
   return (
@@ -94,9 +119,18 @@ function ContentPage() {
         </Flex>
       </Flex>
       <Flex>
-        <Flex customCSS="w-[20%]"></Flex>
-        <Flex customCSS="w-[80%] p-4">
-          <Table columns={columns} dataSource={dataSource} />
+        <Flex customCSS="w-[20%] p-2">
+          {/* <TreeView
+            sortableItems={JSON.stringify(ContentFolderData)}
+            handleChange={(i: any, e: any) => {}}
+            renderText={(text: string) => {
+              console.log(text)
+              return 'amir'
+            }}
+          /> */}
+        </Flex>
+        <Flex customCSS="w-[80%] p-2">
+          <Table columns={columns} dataSource={ContentTableData.records} />
         </Flex>
       </Flex>
     </div>

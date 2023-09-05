@@ -1,4 +1,3 @@
-import classNames from 'classnames'
 import Text from '../Text/Text'
 import { ITableProps } from './Table.type'
 
@@ -8,13 +7,11 @@ const Table = ({ columns, dataSource }: ITableProps) => {
       <thead>
         <tr>
           {columns.map((column, index) => (
-            <th
-              key={index}
-              className=" bg-slate-50 py-2 border border-slate-200">
+            <th key={index} className=" bg-slate-50 border border-slate-200">
               <Text
-                fontSize={10}
+                fontSize={'text-[10px]'}
                 fontWeight={500}
-                customCSS="text-start p-2 "
+                customCSS="text-start px-2 py-1 "
                 color="text-slate-400">
                 {column.title}
               </Text>

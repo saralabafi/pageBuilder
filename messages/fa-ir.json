@@ -65,10 +65,11 @@
       "newContent": "محتوا جدید",
       "content": "محتوا",
       "title": "عنوان",
-      "data_structure": "ساختار داده",
-      "author": "ایجادکننده",
+      "contentType": "ساختار داده",
+      "createdByFullName": "ایجادکننده",
       "status": "وضعیت انتشار",
-      "recently_change": "آخرین تغییرات"
+      "lastModifiedAt": "آخرین تغییرات",
+      "link": "لینک"
     }
   }
 }

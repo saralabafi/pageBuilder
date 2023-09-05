@@ -66,10 +66,11 @@
       "newContent": "new content",
       "content": "content",
       "title":"title",
-      "data_structure": "data Structure",
-      "author": "author",
+      "contentType": "data Structure",
+      "createdByFullName": "author",
       "status": "status",
-      "recently_change": "recently change"
+      "lastModifiedAt": "recently change",
+      "link": "link"
     }
   }
 }
