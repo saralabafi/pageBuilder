@@ -19,7 +19,7 @@ export const VisualSelectedWrapper = ({
     <div className="border border-blue-300 justify-center items-center inline-flex relative p-[2px] w-full flex-col">
       <div className="px-2 rounded-bl rounded-br justify-end items-center gap-2 flex absolute top-[-24px]  bg-blue-100 border border-blue-300 ">
         <div className="border-l pl-2  border-blue-300 text-blue-600">
-          {t(control.Name)}
+          {t(control.SupportedDefinitionType)}
         </div>
         <div className="w-4 h-4 relative">
           <TrashIcon

@@ -10,6 +10,11 @@ interface IRenderList {
 const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
   const Dictionary: Dictionary = renderDictionary(designList)
 
+  const initialRender = (component: any) => {
+    Dictionary[component] = component
+    dispatch(setDesignList(convertObjectToArray(Dictionary)))
+  }
+
   const addControl = (component: any) => {
     Dictionary[component.id] = component
     if (component.Name == 'GridWidgetDefinition') {
@@ -35,9 +40,9 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
 
     type === 'COLUMNS_COUNT' && changeColumnCount(selectedControlId, editConfig)
 
-    const settings: any = { ...Dictionary[selectedControlId]?.settings }
+    const settings: any = { ...Dictionary[selectedControlId]?.Settings }
     settings[type] = editConfig
-    updatedControl.settings = settings
+    updatedControl.Settings = settings
     Dictionary[selectedControlId] = updatedControl
     return dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
@@ -54,13 +59,13 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
       item.parentId == selectedControlId && find.unshift(item.id)
     }
 
-    if (Number(updatedControl?.settings?.COLUMNS_COUNT.Data)) {
+    if (Number(updatedControl?.Settings?.COLUMNS_COUNT.Data)) {
       const diff =
-        Number(updatedControl.settings?.COLUMNS_COUNT.Data) -
+        Number(updatedControl.Settings?.COLUMNS_COUNT.Data) -
         Number(editConfig.Data)
 
       if (
-        Number(updatedControl.settings?.COLUMNS_COUNT.Data) <
+        Number(updatedControl.Settings?.COLUMNS_COUNT.Data) <
         Number(editConfig.Data)
       ) {
         for (let i = 1; i <= -diff; i++) {
@@ -128,10 +133,11 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
   }
 
   const returnDefaultValue = (id: string, type: string) => {
-    return Dictionary?.[id]?.settings?.[type]?.Data
+    return Dictionary?.[id]?.Settings?.[type]?.Data
   }
 
   return {
+    initialRender,
     addControl,
     moveControl,
     editControl,
@@ -147,7 +153,7 @@ const createColumn = (item: Control) => {
     path: item.path,
     Name: item.Name,
     parentId: item.parentId,
-    ...(item.settings && { settings: item.settings }),
+    ...(item.Settings && { settings: item.Settings }),
     childCount: item.childCount,
   }
 }
@@ -175,12 +181,12 @@ const convertObjectToArray = (obj: Dictionary) => {
   const result: Control[] = []
 
   for (const key in obj) {
-    const { parentId, Name, settings } = obj[key]
+    const { parentId, Name, Settings } = obj[key]
     resultMap.set(key, {
       id: key,
       parentId,
       Name,
-      ...(settings && { settings }),
+      ...(Settings && { Settings }),
       children: [],
     })
   }

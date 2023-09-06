@@ -1,0 +1,773 @@
+[
+  {
+    "Name": "HtmlWidget",
+    "Value": {
+      "Data": {
+        "fa-ir": "ویرایشگر html",
+        "en-us": "Html Editor"
+      }
+    },
+    "Settings": {
+      "WIDTH": {
+        "Name": "NumberSetting",
+        "Value": {
+          "Data": {
+            "Value": null,
+            "Unit": "PIXEL"
+          }
+        },
+        "SupportedDefinition": "NumberSettingDefinition"
+      },
+      "HEIGHT": {
+        "Name": "NumberSetting",
+        "Value": {
+          "Data": {
+            "Value": null,
+            "Unit": "PIXEL"
+          }
+        },
+        "SupportedDefinition": "NumberSettingDefinition"
+      },
+      "MIN_WIDTH": {
+        "Name": "NumberSetting",
+        "Value": {
+          "Data": {
+            "Value": null,
+            "Unit": "PIXEL"
+          }
+        },
+        "SupportedDefinition": "NumberSettingDefinition"
+      },
+      "MIN_HEIGHT": {
+        "Name": "NumberSetting",
+        "Value": {
+          "Data": {
+            "Value": null,
+            "Unit": "PIXEL"
+          }
+        },
+        "SupportedDefinition": "NumberSettingDefinition"
+      },
+      "MAX_WIDTH": {
+        "Name": "NumberSetting",
+        "Value": {
+          "Data": {
+            "Value": null,
+            "Unit": "PIXEL"
+          }
+        },
+        "SupportedDefinition": "NumberSettingDefinition"
+      },
+      "MAX_HEIGHT": {
+        "Name": "NumberSetting",
+        "Value": {
+          "Data": {
+            "Value": null,
+            "Unit": "PIXEL"
+          }
+        },
+        "SupportedDefinition": "NumberSettingDefinition"
+      },
+      "BACKGROUND_COLOR": {
+        "Name": "ColorPickerSetting",
+        "Value": {
+          "Data": ""
+        },
+        "SupportedDefinition": "ColorPickerSettingDefinition"
+      },
+      "TOP_MARGIN": {
+        "Name": "NumberSetting",
+        "Value": {
+          "Data": {
+            "Value": null,
+            "Unit": "PIXEL"
+          }
+        },
+        "SupportedDefinition": "NumberSettingDefinition"
+      },
+      "BOTTOM_MARGIN": {
+        "Name": "NumberSetting",
+        "Value": {
+          "Data": {
+            "Value": null,
+            "Unit": "PIXEL"
+          }
+        },
+        "SupportedDefinition": "NumberSettingDefinition"
+      },
+      "LEFT_MARGIN": {
+        "Name": "NumberSetting",
+        "Value": {
+          "Data": {
+            "Value": null,
+            "Unit": "PIXEL"
+          }
+        },
+        "SupportedDefinition": "NumberSettingDefinition"
+      },
+      "RIGHT_MARGIN": {
+        "Name": "NumberSetting",
+        "Value": {
+          "Data": {
+            "Value": null,
+            "Unit": "PIXEL"
+          }
+        },
+        "SupportedDefinition": "NumberSettingDefinition"
+      },
+      "CSS_CLASSES": {
+        "Name": "TagSetting",
+        "Value": {
+          "Data": {
+            "SelectedItems": []
+          }
+        },
+        "SupportedDefinition": "TagSettingDefinition"
+      },
+      "CUSTOM_CSS": {
+        "Name": "CssEditorSetting",
+        "Value": {
+          "Data": ""
+        },
+        "SupportedDefinition": "CssEditorSettingDefinition"
+      }
+    },
+    "SupportedDefinitionType": "HtmlWidgetDefinition",
+    "Id": 1000,
+    "DefaultValue": null
+  },
+  {
+    "Name": "ContainerWidget",
+    "Children": [
+      {
+        "Name": "HtmlWidget",
+        "Value": {
+          "Data": {
+            "fa-ir": "فرزند کانتیر هستم - سلام",
+            "en-us": "i am container child - hi"
+          }
+        },
+        "Settings": {
+          "WIDTH": {
+            "Name": "NumberSetting",
+            "Value": {
+              "Data": {
+                "Value": null,
+                "Unit": "PIXEL"
+              }
+            },
+            "SupportedDefinition": "NumberSettingDefinition"
+          },
+          "HEIGHT": {
+            "Name": "NumberSetting",
+            "Value": {
+              "Data": {
+                "Value": null,
+                "Unit": "PIXEL"
+              }
+            },
+            "SupportedDefinition": "NumberSettingDefinition"
+          },
+          "MIN_WIDTH": {
+            "Name": "NumberSetting",
+            "Value": {
+              "Data": {
+                "Value": null,
+                "Unit": "PIXEL"
+              }
+            },
+            "SupportedDefinition": "NumberSettingDefinition"
+          },
+          "MIN_HEIGHT": {
+            "Name": "NumberSetting",
+            "Value": {
+              "Data": {
+                "Value": null,
+                "Unit": "PIXEL"
+              }
+            },
+            "SupportedDefinition": "NumberSettingDefinition"
+          },
+          "MAX_WIDTH": {
+            "Name": "NumberSetting",
+            "Value": {
+              "Data": {
+                "Value": null,
+                "Unit": "PIXEL"
+              }
+            },
+            "SupportedDefinition": "NumberSettingDefinition"
+          },
+          "MAX_HEIGHT": {
+            "Name": "NumberSetting",
+            "Value": {
+              "Data": {
+                "Value": null,
+                "Unit": "PIXEL"
+              }
+            },
+            "SupportedDefinition": "NumberSettingDefinition"
+          },
+          "BACKGROUND_COLOR": {
+            "Name": "ColorPickerSetting",
+            "Value": {
+              "Data": ""
+            },
+            "SupportedDefinition": "ColorPickerSettingDefinition"
+          },
+          "TOP_MARGIN": {
+            "Name": "NumberSetting",
+            "Value": {
+              "Data": {
+                "Value": null,
+                "Unit": "PIXEL"
+              }
+            },
+            "SupportedDefinition": "NumberSettingDefinition"
+          },
+          "BOTTOM_MARGIN": {
+            "Name": "NumberSetting",
+            "Value": {
+              "Data": {
+                "Value": null,
+                "Unit": "PIXEL"
+              }
+            },
+            "SupportedDefinition": "NumberSettingDefinition"
+          },
+          "LEFT_MARGIN": {
+            "Name": "NumberSetting",
+            "Value": {
+              "Data": {
+                "Value": null,
+                "Unit": "PIXEL"
+              }
+            },
+            "SupportedDefinition": "NumberSettingDefinition"
+          },
+          "RIGHT_MARGIN": {
+            "Name": "NumberSetting",
+            "Value": {
+              "Data": {
+                "Value": null,
+                "Unit": "PIXEL"
+              }
+            },
+            "SupportedDefinition": "NumberSettingDefinition"
+          },
+          "CSS_CLASSES": {
+            "Name": "TagSetting",
+            "Value": {
+              "Data": {
+                "SelectedItems": []
+              }
+            },
+            "SupportedDefinition": "TagSettingDefinition"
+          },
+          "CUSTOM_CSS": {
+            "Name": "CssEditorSetting",
+            "Value": {
+              "Data": ""
+            },
+            "SupportedDefinition": "CssEditorSettingDefinition"
+          }
+        },
+        "SupportedDefinitionType": "HtmlWidgetDefinition",
+        "Id": 1002,
+        "DefaultValue": null
+      }
+    ],
+    "Value": null,
+    "Settings": {
+      "LINK": {
+        "Name": "LinkSetting",
+        "Value": {
+          "Data": {
+            "SelectedValue": "URL",
+            "Address": {},
+            "PageId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "SupportedDefinition": "LinkSettingDefinition"
+      },
+      "NEW_TAB": {
+        "Name": "CheckBoxSetting",
+        "Value": {
+          "Data": false
+        },
+        "SupportedDefinition": "CheckBoxSettingDefinition"
+      },
+      "BACKGROUND_COLOR": {
+        "Name": "ColorPickerSetting",
+        "Value": {
+          "Data": ""
+        },
+        "SupportedDefinition": "ColorPickerSettingDefinition"
+      },
+      "TOP_MARGIN": {
+        "Name": "NumberSetting",
+        "Value": {
+          "Data": {
+            "Value": null,
+            "Unit": "PIXEL"
+          }
+        },
+        "SupportedDefinition": "NumberSettingDefinition"
+      },
+      "BOTTOM_MARGIN": {
+        "Name": "NumberSetting",
+        "Value": {
+          "Data": {
+            "Value": null,
+            "Unit": "PIXEL"
+          }
+        },
+        "SupportedDefinition": "NumberSettingDefinition"
+      },
+      "LEFT_MARGIN": {
+        "Name": "NumberSetting",
+        "Value": {
+          "Data": {
+            "Value": null,
+            "Unit": "PIXEL"
+          }
+        },
+        "SupportedDefinition": "NumberSettingDefinition"
+      },
+      "RIGHT_MARGIN": {
+        "Name": "NumberSetting",
+        "Value": {
+          "Data": {
+            "Value": null,
+            "Unit": "PIXEL"
+          }
+        },
+        "SupportedDefinition": "NumberSettingDefinition"
+      },
+      "HTML_TAG": {
+        "Name": "DropDownSetting",
+        "Value": {
+          "Data": "empty"
+        },
+        "SupportedDefinition": "DropDownSettingDefinition"
+      },
+      "CSS_CLASSES": {
+        "Name": "TagSetting",
+        "Value": {
+          "Data": {
+            "SelectedItems": []
+          }
+        },
+        "SupportedDefinition": "TagSettingDefinition"
+      },
+      "CUSTOM_CSS": {
+        "Name": "CssEditorSetting",
+        "Value": {
+          "Data": ""
+        },
+        "SupportedDefinition": "CssEditorSettingDefinition"
+      }
+    },
+    "SupportedDefinitionType": "ContainerWidgetDefinition",
+    "Id": 1001,
+    "DefaultValue": null
+  },
+  {
+    "Name": "GridWidget",
+    "Children": [
+      {
+        "Name": "ColumnWidget",
+        "Children": [
+          {
+            "Name": "HtmlWidget",
+            "Value": {
+              "Data": {
+                "fa-ir": "grid-col1-html",
+                "en-us": "grid-col1-html"
+              }
+            },
+            "Settings": {
+              "WIDTH": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "HEIGHT": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "MIN_WIDTH": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "MIN_HEIGHT": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "MAX_WIDTH": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "MAX_HEIGHT": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "BACKGROUND_COLOR": {
+                "Name": "ColorPickerSetting",
+                "Value": {
+                  "Data": ""
+                },
+                "SupportedDefinition": "ColorPickerSettingDefinition"
+              },
+              "TOP_MARGIN": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "BOTTOM_MARGIN": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "LEFT_MARGIN": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "RIGHT_MARGIN": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "CSS_CLASSES": {
+                "Name": "TagSetting",
+                "Value": {
+                  "Data": {
+                    "SelectedItems": []
+                  }
+                },
+                "SupportedDefinition": "TagSettingDefinition"
+              },
+              "CUSTOM_CSS": {
+                "Name": "CssEditorSetting",
+                "Value": {
+                  "Data": ""
+                },
+                "SupportedDefinition": "CssEditorSettingDefinition"
+              }
+            },
+            "SupportedDefinitionType": "HtmlWidgetDefinition",
+            "Id": 1000,
+            "DefaultValue": null
+          }
+        ],
+        "Value": null,
+        "Settings": {
+          "GRID_SIZE": {
+            "Name": "DropDownSetting",
+            "Value": {
+              "Data": "6"
+            },
+            "SupportedDefinition": "DropDownSettingDefinition"
+          }
+        },
+        "SupportedDefinitionType": "ColumnWidgetDefinition",
+        "Id": 10004,
+        "DefaultValue": null
+      },
+      {
+        "Name": "ColumnWidget",
+        "Children": [
+          {
+            "Name": "HtmlWidget",
+            "Value": {
+              "Data": {
+                "fa-ir": "grid-col2-html",
+                "en-us": "grid-col2-html"
+              }
+            },
+            "Settings": {
+              "WIDTH": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "HEIGHT": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "MIN_WIDTH": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "MIN_HEIGHT": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "MAX_WIDTH": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "MAX_HEIGHT": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "BACKGROUND_COLOR": {
+                "Name": "ColorPickerSetting",
+                "Value": {
+                  "Data": ""
+                },
+                "SupportedDefinition": "ColorPickerSettingDefinition"
+              },
+              "TOP_MARGIN": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "BOTTOM_MARGIN": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "LEFT_MARGIN": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "RIGHT_MARGIN": {
+                "Name": "NumberSetting",
+                "Value": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "SupportedDefinition": "NumberSettingDefinition"
+              },
+              "CSS_CLASSES": {
+                "Name": "TagSetting",
+                "Value": {
+                  "Data": {
+                    "SelectedItems": []
+                  }
+                },
+                "SupportedDefinition": "TagSettingDefinition"
+              },
+              "CUSTOM_CSS": {
+                "Name": "CssEditorSetting",
+                "Value": {
+                  "Data": ""
+                },
+                "SupportedDefinition": "CssEditorSettingDefinition"
+              }
+            },
+            "SupportedDefinitionType": "HtmlWidgetDefinition",
+            "Id": 1000,
+            "DefaultValue": null
+          }
+        ],
+        "Value": null,
+        "Settings": {
+          "GRID_SIZE": {
+            "Name": "DropDownSetting",
+            "Value": {
+              "Data": "6"
+            },
+            "SupportedDefinition": "DropDownSettingDefinition"
+          }
+        },
+        "SupportedDefinitionType": "ColumnWidgetDefinition",
+        "Id": 10005,
+        "DefaultValue": null
+      }
+    ],
+    "Value": null,
+    "Settings": {
+      "COLUMNS_COUNT": {
+        "Name": "DropDownSetting",
+        "Value": {
+          "Data": "empty"
+        },
+        "SupportedDefinition": "DropDownSettingDefinition"
+      },
+      "SHOW_GUTTER": {
+        "Name": "CheckBoxSetting",
+        "Value": {
+          "Data": false
+        },
+        "SupportedDefinition": "CheckBoxSettingDefinition"
+      },
+      "BACKGROUND_COLOR": {
+        "Name": "ColorPickerSetting",
+        "Value": {
+          "Data": ""
+        },
+        "SupportedDefinition": "ColorPickerSettingDefinition"
+      },
+      "TOP_MARGIN": {
+        "Name": "NumberSetting",
+        "Value": {
+          "Data": {
+            "Value": null,
+            "Unit": "PIXEL"
+          }
+        },
+        "SupportedDefinition": "NumberSettingDefinition"
+      },
+      "BOTTOM_MARGIN": {
+        "Name": "NumberSetting",
+        "Value": {
+          "Data": {
+            "Value": null,
+            "Unit": "PIXEL"
+          }
+        },
+        "SupportedDefinition": "NumberSettingDefinition"
+      },
+      "LEFT_MARGIN": {
+        "Name": "NumberSetting",
+        "Value": {
+          "Data": {
+            "Value": null,
+            "Unit": "PIXEL"
+          }
+        },
+        "SupportedDefinition": "NumberSettingDefinition"
+      },
+      "RIGHT_MARGIN": {
+        "Name": "NumberSetting",
+        "Value": {
+          "Data": {
+            "Value": null,
+            "Unit": "PIXEL"
+          }
+        },
+        "SupportedDefinition": "NumberSettingDefinition"
+      },
+      "CSS_CLASSES": {
+        "Name": "TagSetting",
+        "Value": {
+          "Data": {
+            "SelectedItems": []
+          }
+        },
+        "SupportedDefinition": "TagSettingDefinition"
+      },
+      "CUSTOM_CSS": {
+        "Name": "CssEditorSetting",
+        "Value": {
+          "Data": ""
+        },
+        "SupportedDefinition": "CssEditorSettingDefinition"
+      }
+    },
+    "SupportedDefinitionType": "GridWidgetDefinition",
+    "Id": 10003,
+    "DefaultValue": null
+  }
+]

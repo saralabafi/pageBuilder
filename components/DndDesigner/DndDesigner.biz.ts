@@ -33,7 +33,7 @@ export const useDndDesigner = (renderList: any) => {
       }
 
       dispatch(selectActiveTab('setting'))
-      dispatch(selectActiveMenu(newComponent.Name))
+      dispatch(selectActiveMenu(newComponent.SupportedDefinitionType))
       dispatch(selectActiveControl(newComponent.id))
 
       item.data.type === 'sidebarItem'

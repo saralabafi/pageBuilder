@@ -30,7 +30,7 @@ export const DragComponent = ({
       className="w-full cursor-move"
       // onClick={(e) => handleClick(e, component)}
     >
-      {renders[component.Name]?.(component)}
+      {renders[component.SupportedDefinitionType]?.(component)}
     </div>
   )
 }

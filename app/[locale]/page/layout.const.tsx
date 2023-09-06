@@ -46,7 +46,7 @@ export const visualRenderItems: Renders = {
 export const formRenderItems: Renders = {
   grid: (props) => formRenderItems['column'](props.children?.[0] as any),
   column: (props) =>
-    formRenderItems[props.children?.[0]?.Name as string](
+    formRenderItems[props.children?.[0]?.SupportedDefinitionType as string](
       props.children?.[0] as any
     ),
   TextControlDefinition: (props) => <TextControl {...props} />,

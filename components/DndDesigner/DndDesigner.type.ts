@@ -10,7 +10,9 @@ export type Control = {
   content?: string
   children?: Control[]
   childCount?: number
-  settings?: { [key: string]: any }
+  Settings?: { [key: string]: any }
+  Value?: { [key: string]: any }
+  SupportedDefinitionType?: string
 }
 
 export type DropZoneData = {
