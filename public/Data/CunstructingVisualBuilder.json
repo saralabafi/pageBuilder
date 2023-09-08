@@ -1,6 +1,7 @@
 [
   {
     "Name": "HtmlWidget",
+    "Children": [],
     "Value": {
       "Data": {
         "fa-ir": "ویرایشگر html",
@@ -133,14 +134,16 @@
       }
     },
     "SupportedDefinitionType": "HtmlWidgetDefinition",
-    "Id": 1000,
-    "DefaultValue": null
+    "Id": "1000",
+    "DefaultValue": null,
+    "parentId": 0
   },
   {
     "Name": "ContainerWidget",
     "Children": [
       {
         "Name": "HtmlWidget",
+        "Children": [],
         "Value": {
           "Data": {
             "fa-ir": "فرزند کانتیر هستم - سلام",
@@ -273,8 +276,9 @@
           }
         },
         "SupportedDefinitionType": "HtmlWidgetDefinition",
-        "Id": 1002,
-        "DefaultValue": null
+        "Id": "1002",
+        "DefaultValue": null,
+        "parentId": "1001"
       }
     ],
     "Value": null,
@@ -369,14 +373,15 @@
       }
     },
     "SupportedDefinitionType": "ContainerWidgetDefinition",
-    "Id": 1001,
-    "DefaultValue": null
+    "Id": "1001",
+    "DefaultValue": null,
+    "parentId": 0
   },
   {
     "Name": "GridWidget",
     "Children": [
       {
-        "Name": "ColumnWidget",
+        "Name": "Column",
         "Children": [
           {
             "Name": "HtmlWidget",
@@ -512,27 +517,10 @@
               }
             },
             "SupportedDefinitionType": "HtmlWidgetDefinition",
-            "Id": 1000,
-            "DefaultValue": null
-          }
-        ],
-        "Value": null,
-        "Settings": {
-          "GRID_SIZE": {
-            "Name": "DropDownSetting",
-            "Value": {
-              "Data": "6"
-            },
-            "SupportedDefinition": "DropDownSettingDefinition"
-          }
-        },
-        "SupportedDefinitionType": "ColumnWidgetDefinition",
-        "Id": 10004,
-        "DefaultValue": null
-      },
-      {
-        "Name": "ColumnWidget",
-        "Children": [
+            "Id": "88",
+            "DefaultValue": null,
+            "parentId": "10004"
+          },
           {
             "Name": "HtmlWidget",
             "Value": {
@@ -667,8 +655,9 @@
               }
             },
             "SupportedDefinitionType": "HtmlWidgetDefinition",
-            "Id": 1000,
-            "DefaultValue": null
+            "Id": "999",
+            "DefaultValue": null,
+            "parentId": "10004"
           }
         ],
         "Value": null,
@@ -681,9 +670,10 @@
             "SupportedDefinition": "DropDownSettingDefinition"
           }
         },
-        "SupportedDefinitionType": "ColumnWidgetDefinition",
-        "Id": 10005,
-        "DefaultValue": null
+        "SupportedDefinitionType": "Column",
+        "Id": "10004",
+        "DefaultValue": null,
+        "parentId": "10003"
       }
     ],
     "Value": null,
@@ -767,7 +757,8 @@
       }
     },
     "SupportedDefinitionType": "GridWidgetDefinition",
-    "Id": 10003,
-    "DefaultValue": null
+    "Id": "10003",
+    "DefaultValue": null,
+    "parentId": 0
   }
 ]

@@ -12,7 +12,7 @@ const HtmlEditor = dynamic(() => import('components/HtmlEditor/HtmlEditor'), {
 })
 
 export const HtmlWidget = (props: Control) => {
-  const { settings } = props
+  const { Settings } = props
   const [htmlValue, setHtmlValue] = useState<string>('')
   const [visible, setVisible] = useState<boolean>(false)
 
@@ -30,7 +30,7 @@ export const HtmlWidget = (props: Control) => {
       <div
         onClick={() => setVisible(true)}
         dangerouslySetInnerHTML={{ __html: htmlValue || contentString }}
-        style={generateStyles(settings!)}
+        style={generateStyles(Settings!)}
       />
 
       <Modal

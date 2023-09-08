@@ -10,7 +10,7 @@ export const useGridWidget = (props: Control) => {
 
   const handleClick = (e: React.MouseEvent, item: Control) => {
     e.stopPropagation()
-    dispatch(selectActiveControl(item.id))
+    dispatch(selectActiveControl(item.Id))
   }
   const columnCalculator = () => {
     const arr: { [key: number]: string } = {
@@ -23,7 +23,7 @@ export const useGridWidget = (props: Control) => {
       12: 'col-span-1',
     }
 
-    return arr[Number(props.settings?.COLUMNS_COUNT.Data) || 1]
+    return arr[Number(props.Settings?.COLUMNS_COUNT.Data) || 1]
   }
   return { columnCalculator, handleClick, handleDrop, activeControl }
 }

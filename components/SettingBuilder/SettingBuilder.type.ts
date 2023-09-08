@@ -17,6 +17,7 @@ export type Control = {
   Name: string
   Title: TitleType
   SettingCategories: SettingCategoryType[]
+  SupportedDefinitionType: string
 }
 
 export interface ControlData {

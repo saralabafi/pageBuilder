@@ -10,22 +10,22 @@ const ContentRenderList = ({ designList, dispatch }: IRenderList) => {
 
   const addControl = (component: any) => {
     const grid = {
-      id: shortid.generate(),
+      Id: shortid.generate(),
       Name: 'grid',
       children: [],
       parentId: 0,
     }
 
     const column = {
-      id: shortid.generate(),
+      Id: shortid.generate(),
       Name: 'column',
       children: [],
-      parentId: grid.id,
+      parentId: grid.Id,
     }
-    component.parentId = column.id
+    component.parentId = column.Id
 
-    Dictionary[grid.id] = grid
-    Dictionary[column.id] = column
+    Dictionary[grid.Id] = grid
+    Dictionary[column.Id] = column
     Dictionary[component.id] = component
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
@@ -39,14 +39,12 @@ const ContentRenderList = ({ designList, dispatch }: IRenderList) => {
       JSON.stringify(Dictionary[selectedControlId])
     )
 
-
-    const settings: any = { ...Dictionary[selectedControlId]?.settings }
+    const settings: any = { ...Dictionary[selectedControlId]?.Settings }
     settings[type] = editConfig
     updatedControl.settings = settings
     Dictionary[selectedControlId] = updatedControl
     return dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
-
 
   const deleteItemInDesign = (selectedControlId: string) => {
     for (const key of Object.keys(Dictionary)) {
@@ -60,22 +58,22 @@ const ContentRenderList = ({ designList, dispatch }: IRenderList) => {
   const moveControl = (component: DropItem, newParentId: string) => {
     const { data } = component
 
-    Dictionary[data.id] = { ...Dictionary[data.id], parentId: newParentId }
+    Dictionary[data.Id] = { ...Dictionary[data.Id], parentId: newParentId }
 
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
 
   const duplicateControl = (id: string) => {
     const newControl = { ...Dictionary[id] }
-    newControl.id = shortid.generate()
+    newControl.Id = shortid.generate()
 
-    Dictionary[newControl.id] = newControl
+    Dictionary[newControl.Id] = newControl
 
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
 
   const returnDefaultValue = (id: string, type: string) => {
-    return Dictionary?.[id]?.settings?.[type]?.Data
+    return Dictionary?.[id]?.Settings?.[type]?.Data
   }
 
   return {
@@ -92,11 +90,11 @@ export default ContentRenderList
 
 const createColumn = (item: Control) => {
   return {
-    id: item.id,
+    Id: item.Id,
     path: item.path,
     Name: item.Name,
     parentId: item.parentId,
-    ...(item.settings && { settings: item.settings }),
+    ...(item.Settings && { settings: item.Settings }),
     childCount: item.childCount,
   }
 }
@@ -106,10 +104,10 @@ const renderDictionary = (designList: Control[]) => {
 
   const createDictionaryItems = (items: Control[]) => {
     items.forEach((item: Control) => {
-      DictionaryItems[item.id] = createColumn(item)
+      DictionaryItems[item.Id] = createColumn(item)
 
-      if (item.children) {
-        createDictionaryItems(item.children)
+      if (item.Children) {
+        createDictionaryItems(item.Children)
       }
     })
   }
@@ -124,12 +122,12 @@ const convertObjectToArray = (obj: Dictionary) => {
   const result: Control[] = []
 
   for (const key in obj) {
-    const { parentId, Name, settings } = obj[key]
+    const { parentId, Name, Settings } = obj[key]
     resultMap.set(key, {
       id: key,
       parentId,
       Name,
-      ...(settings && { settings }),
+      ...(Settings && { Settings }),
       children: [],
     })
   }

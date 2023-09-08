@@ -26,19 +26,22 @@ const useVisualBuilder = () => {
         designList,
         dispatch,
       })
-
+      debugger
       const newComponent: Control = {
         childCount: dropZone.childrenCount,
         ...item.data.component,
         path: splitDropZonePath,
-        id: shortid.generate(),
+        Id: shortid.generate(),
         Settings: settingPreMaker(item.data.component),
         parentId: dropZone.parentId,
+        SupportedDefinitionType: item.data.component
+          ? item.data.component.SupportedDefinitionType
+          : item.data.SupportedDefinitionType,
       }
 
       dispatch(selectActiveTab('setting'))
       dispatch(selectActiveMenu(newComponent.SupportedDefinitionType))
-      dispatch(selectActiveControl(newComponent.id))
+      dispatch(selectActiveControl(newComponent.Id))
 
       item.data.type === 'sidebarItem'
         ? addControl(newComponent)
@@ -48,7 +51,7 @@ const useVisualBuilder = () => {
   )
   const handleClick = (e: React.MouseEvent, data: Control) => {
     e.stopPropagation()
-    dispatch(selectActiveControl(data.id))
+    dispatch(selectActiveControl(data.Id))
     dispatch(selectActiveMenu(data.SupportedDefinitionType))
   }
   return { handleClick, handleDrop }

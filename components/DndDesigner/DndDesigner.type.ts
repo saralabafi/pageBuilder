@@ -3,12 +3,12 @@ import { ElementType, ReactElement, ReactNode } from 'react'
 export type Control = {
   Source?: any
   path?: string[]
-  id: string
+  Id: string
   Name: string
   parentId: string | number
   type?: string
   content?: string
-  children?: Control[]
+  Children?: Control[]
   childCount?: number
   Settings?: { [key: string]: any }
   Value?: { [key: string]: any }
@@ -33,9 +33,10 @@ export type DropItem = {
     content: string
     type: string
     icon: ReactElement
-    id: string
+    Id: string
     title: string
     parentId: string
+    SupportedDefinitionType: string
   }
 }
 

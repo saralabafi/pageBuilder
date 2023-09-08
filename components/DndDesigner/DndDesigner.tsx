@@ -14,22 +14,22 @@ const DndDesigner = ({
 }: IDndDesignerProps) => {
   renderList
   console.log('TT is : ', TT)
-  debugger
-  // const { designList } = useDndDesigner(renderList)
-  const designList = TT
+  const { designList } = useDndDesigner(renderList)
 
   return (
     <div className="w-full">
       <div className="flex flex-1 flex-col mb-[100px]">
         <div className="p-2 bg-slate-50 rounded-lg border border-dashed flex-col ">
-          {designList?.map((control: any, index: number) => {
+          {designList?.map((control: Control, index: number) => {
             return (
-              <div key={control.id}>
+              <div key={control.Id}>
                 <SelectedWrapper deleteItem={handleDelete} control={control}>
                   <div
                     className="w-full"
                     onClick={(e) => handleClick(e, control)}>
-                    {renders[control.SupportedDefinitionType](control)}
+                    {control.SupportedDefinitionType
+                      ? renders[control.SupportedDefinitionType](control)
+                      : null}
                   </div>
                 </SelectedWrapper>
               </div>

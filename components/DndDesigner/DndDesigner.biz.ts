@@ -23,18 +23,20 @@ export const useDndDesigner = (renderList: any) => {
         designList,
         dispatch,
       })
-
       const newComponent: Control = {
         childCount: dropZone.childrenCount,
         ...item.data.component,
         path: splitDropZonePath,
-        id: shortid.generate(),
+        Id: shortid.generate(),
         parentId: dropZone.parentId,
+        SupportedDefinitionType: item.data.component
+          ? item.data.component.Name
+          : item.data.SupportedDefinitionType,
       }
 
       dispatch(selectActiveTab('setting'))
       dispatch(selectActiveMenu(newComponent.SupportedDefinitionType))
-      dispatch(selectActiveControl(newComponent.id))
+      dispatch(selectActiveControl(newComponent.Id))
 
       item.data.type === 'sidebarItem'
         ? addControl(newComponent)

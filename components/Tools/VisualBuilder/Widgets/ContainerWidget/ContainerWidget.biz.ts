@@ -10,7 +10,7 @@ const useContainerWidget = () => {
 
   const handleClick = (e: React.MouseEvent, item: Control) => {
     e.stopPropagation()
-    dispatch(selectActiveControl(item.id))
+    dispatch(selectActiveControl(item.Id))
   }
 
   return { handleClick, handleDrop, activeControl }

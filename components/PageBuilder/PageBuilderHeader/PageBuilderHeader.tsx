@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Button from 'components/CoreComponents/Button/Button'
 import { Flex } from 'components/CoreComponents/Flex/Flex'
 import Text from 'components/CoreComponents/Text/Text'
@@ -13,9 +14,21 @@ import ArrowRight from 'images/page/arrowright.svg'
 import Arrowmenu from 'images/page/arrowmenu.svg'
 import { useTranslations } from 'next-intl'
 import classNames from 'classnames'
+import { RootState } from 'redux/Store'
+import { useDispatch, useSelector } from 'react-redux'
+import TT from '../../../public/Data/CunstructingVisualBuilder.json'
+import { setDesignList } from 'redux/Design/Design'
 
 export const PageBuilderHeader = () => {
   const t = useTranslations('layout')
+  const { designList, activeControl } = useSelector(
+    (state: RootState) => state.pageDesign
+  )
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(setDesignList(TT))
+  }, [])
 
   return (
     <Flex
@@ -88,7 +101,7 @@ export const PageBuilderHeader = () => {
         <Button
           customCSS="border-1 border-solid border-neutral-200 text-blue-500"
           backgroundColor="transparent"
-          onClick={() => undefined}>
+          onClick={() => console.log('sending data is: ', designList)}>
           <SaveIcon />
           <Text color="text-blue-500">{t('save')}</Text>
         </Button>

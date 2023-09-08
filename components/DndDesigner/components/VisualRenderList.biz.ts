@@ -9,23 +9,25 @@ interface IRenderList {
 }
 const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
   const Dictionary: Dictionary = renderDictionary(designList)
-
   const initialRender = (component: any) => {
+    debugger
     Dictionary[component] = component
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
 
   const addControl = (component: any) => {
-    Dictionary[component.id] = component
+    debugger
+    Dictionary[component.Id] = component
     if (component.Name == 'GridWidgetDefinition') {
       const obj = {
-        id: shortid.generate(),
+        Id: shortid.generate(),
         Name: 'column',
-        children: [],
-        parentId: component.id,
+        Children: [],
+        parentId: component.Id,
+        SupportedDefinitionType: component.Name,
       }
 
-      Dictionary[obj.id] = obj
+      Dictionary[obj.Id] = obj
     }
 
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
@@ -40,9 +42,9 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
 
     type === 'COLUMNS_COUNT' && changeColumnCount(selectedControlId, editConfig)
 
-    const settings: any = { ...Dictionary[selectedControlId]?.Settings }
-    settings[type] = editConfig
-    updatedControl.Settings = settings
+    const Settings: any = { ...Dictionary[selectedControlId]?.Settings }
+    Settings[type] = editConfig
+    updatedControl.Settings = Settings
     Dictionary[selectedControlId] = updatedControl
     return dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
@@ -56,7 +58,7 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
     const keys: string[] = Object.keys(Dictionary)
     for (const key of keys) {
       const item = Dictionary[key]
-      item.parentId == selectedControlId && find.unshift(item.id)
+      item.parentId == selectedControlId && find.unshift(item.Id)
     }
 
     if (Number(updatedControl?.Settings?.COLUMNS_COUNT.Data)) {
@@ -69,14 +71,16 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
         Number(editConfig.Data)
       ) {
         for (let i = 1; i <= -diff; i++) {
+          debugger
           //when you want add column not first time
           const obj = {
             Name: 'column',
-            id: shortid.generate(),
-            parentId: updatedControl.id,
-            children: [],
+            Id: shortid.generate(),
+            parentId: updatedControl.Id,
+            Children: [],
+            SupportedDefinitionType: updatedControl.SupportedDefinitionType,
           }
-          Dictionary[obj.id] = obj
+          Dictionary[obj.Id] = obj
         }
       } else {
         // for Delete column
@@ -89,11 +93,12 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
       for (let i = 2; i <= editConfig.Data; i++) {
         const obj = {
           Name: 'column',
-          id: shortid.generate(),
-          parentId: updatedControl.id,
-          children: [],
+          Id: shortid.generate(),
+          parentId: updatedControl.Id,
+          Children: [],
+          SupportedDefinitionType: updatedControl.Name,
         }
-        Dictionary[obj.id] = obj
+        Dictionary[obj.Id] = obj
       }
     }
   }
@@ -110,7 +115,7 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
   const moveControl = (component: DropItem, newParentId: string) => {
     const { data } = component
 
-    Dictionary[data.id] = { ...Dictionary[data.id], parentId: newParentId }
+    Dictionary[data.Id] = { ...Dictionary[data.Id], parentId: newParentId }
 
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
@@ -121,13 +126,13 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
       Dictionary[key]?.parentId === id && arr.push({ ...Dictionary[key] })
     }
     const newControl = { ...Dictionary[id] }
-    newControl.id = shortid.generate()
+    newControl.Id = shortid.generate()
     arr.map((item: any) => {
       item.id = shortid.generate()
-      item.parentId = newControl.id
+      item.parentId = newControl.Id
       Dictionary[item.id] = item
     })
-    Dictionary[newControl.id] = newControl
+    Dictionary[newControl.Id] = newControl
 
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
@@ -148,25 +153,29 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
 }
 
 const createColumn = (item: Control) => {
+  debugger
   return {
-    id: item.id,
+    Id: item.Id,
     path: item.path,
     Name: item.Name,
     parentId: item.parentId,
-    ...(item.Settings && { settings: item.Settings }),
+    ...(item.Settings && { Settings: item.Settings }),
     childCount: item.childCount,
+    SupportedDefinitionType: item.SupportedDefinitionType
+      ? item.SupportedDefinitionType
+      : item.Name,
   }
 }
 
 const renderDictionary = (designList: Control[]) => {
   const DictionaryItems: Dictionary = {}
-
+  debugger
   const createDictionaryItems = (items: Control[]) => {
     items.forEach((item: Control) => {
-      DictionaryItems[item.id] = createColumn(item)
+      DictionaryItems[item.Id] = createColumn(item)
 
-      if (item.children) {
-        createDictionaryItems(item.children)
+      if (item.Children) {
+        createDictionaryItems(item.Children)
       }
     })
   }
@@ -179,15 +188,19 @@ const renderDictionary = (designList: Control[]) => {
 const convertObjectToArray = (obj: Dictionary) => {
   const resultMap = new Map()
   const result: Control[] = []
+  debugger
 
   for (const key in obj) {
-    const { parentId, Name, Settings } = obj[key]
+    const { parentId, Name, Settings, SupportedDefinitionType } = obj[key]
     resultMap.set(key, {
-      id: key,
+      Id: key,
       parentId,
       Name,
       ...(Settings && { Settings }),
-      children: [],
+      Children: [],
+      SupportedDefinitionType: SupportedDefinitionType
+        ? SupportedDefinitionType
+        : Name,
     })
   }
 
@@ -196,7 +209,7 @@ const convertObjectToArray = (obj: Dictionary) => {
     const parent = resultMap.get(node.parentId)
 
     if (parent) {
-      parent.children.push(node)
+      parent.Children.push(node)
     } else {
       result.push(node)
     }
