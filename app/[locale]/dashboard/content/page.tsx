@@ -22,11 +22,12 @@ import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import ContentTableData from './contentTable.const.json'
+import { Pagination } from 'components/CoreComponents/Pagination/Pagination'
 
 function ContentPage() {
   const t = useTranslations('Dashboard.Content')
 
-  const data =ContentTableData.records.map((item: any, index: number) => {
+  const data = ContentTableData.records.map((item: any, index: number) => {
     return { ...item, count: index + 1 }
   })
 
@@ -54,8 +55,7 @@ function ContentPage() {
       key: 'count',
       title: '#',
       dataIndex: 'count',
-      render
-      ,
+      render,
     },
     {
       key: 'title',
@@ -220,15 +220,18 @@ function ContentPage() {
         </Flex>
       </Flex>
       <Flex align="items-start">
-        <Flex customCSS="w-[30%] p-2">
+        <Flex customCSS="w-[25%]">
           {showNavigation && <NavigationDynamicContent />}
         </Flex>
         <Flex
-          customCSS="w-[70%] p-2 border-s"
+          customCSS="w-[75%] p-2 border-s"
           direction="flex-col"
           align="items-start">
           <BreadCrumbComponent />
           <Table columns={columns} dataSource={data} />
+          <Flex width='w-full' justify="justify-end" margin="my-4">
+            <Pagination />
+          </Flex>
         </Flex>
       </Flex>
     </div>
