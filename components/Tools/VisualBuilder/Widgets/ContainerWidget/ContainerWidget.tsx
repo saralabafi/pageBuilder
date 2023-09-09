@@ -21,7 +21,7 @@ const ContainerWidget = (props: Control) => {
       sx={generateStyles(Settings!)}
       customCSS="border-dashed w-[300px]"
       padding={Children?.length ? 'p-1' : 'p-9'}>
-      {props.Settings?.LINK?.Value.Data.Address ? (
+      {props.Settings?.LINK?.Value?.Data.Address ? (
         <Link
           href={props.Settings.LINK.Value.Data.Address || ''}
           target=""

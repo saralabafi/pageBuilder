@@ -3,9 +3,10 @@ import { Control } from 'components/DndDesigner/DndDesigner.type'
 import VisualRenderList from 'components/DndDesigner/components/VisualRenderList.biz'
 import { useDispatch } from 'react-redux'
 import { selectActiveControl } from 'redux/Design/Design'
+import useVisualBuilder from '../../../../../app/[locale]/page/visualBuilder.biz'
 
 export const useGridWidget = (props: Control) => {
-  const { handleDrop, activeControl } = useDndDesigner(VisualRenderList)
+  const { handleDrop } = useVisualBuilder()
   const dispatch = useDispatch()
 
   const handleClick = (e: React.MouseEvent, item: Control) => {
@@ -25,5 +26,5 @@ export const useGridWidget = (props: Control) => {
 
     return arr[Number(props.Settings?.COLUMNS_COUNT.Data) || 1]
   }
-  return { columnCalculator, handleClick, handleDrop, activeControl }
+  return { columnCalculator, handleClick, handleDrop }
 }

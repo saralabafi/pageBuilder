@@ -41,7 +41,7 @@ const ContentRenderList = ({ designList, dispatch }: IRenderList) => {
 
     const settings: any = { ...Dictionary[selectedControlId]?.Settings }
     settings[type] = editConfig
-    updatedControl.settings = settings
+    updatedControl.Settings = settings
     Dictionary[selectedControlId] = updatedControl
     return dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
@@ -94,8 +94,11 @@ const createColumn = (item: Control) => {
     path: item.path,
     Name: item.Name,
     parentId: item.parentId,
-    ...(item.Settings && { settings: item.Settings }),
+    ...(item.Settings && { Settings: item.Settings }),
     childCount: item.childCount,
+    SupportedDefinitionType: item.SupportedDefinitionType
+      ? item.SupportedDefinitionType
+      : item.Name,
   }
 }
 
@@ -122,13 +125,16 @@ const convertObjectToArray = (obj: Dictionary) => {
   const result: Control[] = []
 
   for (const key in obj) {
-    const { parentId, Name, Settings } = obj[key]
+    const { parentId, Name, Settings, SupportedDefinitionType } = obj[key]
     resultMap.set(key, {
-      id: key,
+      Id: key,
       parentId,
       Name,
       ...(Settings && { Settings }),
-      children: [],
+      Children: [],
+      SupportedDefinitionType: SupportedDefinitionType
+        ? SupportedDefinitionType
+        : Name,
     })
   }
 
@@ -137,7 +143,7 @@ const convertObjectToArray = (obj: Dictionary) => {
     const parent = resultMap.get(node.parentId)
 
     if (parent) {
-      parent.children.push(node)
+      parent.Children.push(node)
     } else {
       result.push(node)
     }

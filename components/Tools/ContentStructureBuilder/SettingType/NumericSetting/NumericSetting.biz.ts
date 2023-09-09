@@ -18,13 +18,19 @@ export const useNumericSetting = (props: INumericSettingProps) => {
   const locale = useLocale()
   const controlValue = returnDefaultValue(activeControl, type)
 
-  const onChange = (Value: string) => {
-    const Data = {
-      ...controlValue,
-      Value,
+  const onChange = (value: string) => {
+    const Value = {
+      Data: {
+        ...controlValue,
+        Value: value,
+      },
     }
+    // const Data = {
+    //   ...controlValue,
+    //   value,
+    // }
 
-    editControl(activeControl, type, { Data })
+    editControl(activeControl, type, { Value })
   }
   return { onChange, locale, controlValue }
 }

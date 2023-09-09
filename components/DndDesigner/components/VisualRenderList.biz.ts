@@ -9,14 +9,8 @@ interface IRenderList {
 }
 const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
   const Dictionary: Dictionary = renderDictionary(designList)
-  const initialRender = (component: any) => {
-    debugger
-    Dictionary[component] = component
-    dispatch(setDesignList(convertObjectToArray(Dictionary)))
-  }
 
   const addControl = (component: any) => {
-    debugger
     Dictionary[component.Id] = component
     if (component.Name == 'GridWidgetDefinition') {
       const obj = {
@@ -24,7 +18,9 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
         Name: 'column',
         Children: [],
         parentId: component.Id,
-        SupportedDefinitionType: component.Name,
+        SupportedDefinitionType: component.SupportedDefinitionType
+          ? component.SupportedDefinitionType
+          : component.Name,
       }
 
       Dictionary[obj.Id] = obj
@@ -60,8 +56,7 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
       const item = Dictionary[key]
       item.parentId == selectedControlId && find.unshift(item.Id)
     }
-
-    if (Number(updatedControl?.Settings?.COLUMNS_COUNT.Data)) {
+    if (Number(updatedControl?.Settings?.COLUMNS_COUNT?.Data)) {
       const diff =
         Number(updatedControl.Settings?.COLUMNS_COUNT.Data) -
         Number(editConfig.Data)
@@ -71,7 +66,6 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
         Number(editConfig.Data)
       ) {
         for (let i = 1; i <= -diff; i++) {
-          debugger
           //when you want add column not first time
           const obj = {
             Name: 'column',
@@ -142,7 +136,6 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
   }
 
   return {
-    initialRender,
     addControl,
     moveControl,
     editControl,
@@ -153,7 +146,6 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
 }
 
 const createColumn = (item: Control) => {
-  debugger
   return {
     Id: item.Id,
     path: item.path,
@@ -169,7 +161,6 @@ const createColumn = (item: Control) => {
 
 const renderDictionary = (designList: Control[]) => {
   const DictionaryItems: Dictionary = {}
-  debugger
   const createDictionaryItems = (items: Control[]) => {
     items.forEach((item: Control) => {
       DictionaryItems[item.Id] = createColumn(item)
@@ -188,7 +179,6 @@ const renderDictionary = (designList: Control[]) => {
 const convertObjectToArray = (obj: Dictionary) => {
   const resultMap = new Map()
   const result: Control[] = []
-  debugger
 
   for (const key in obj) {
     const { parentId, Name, Settings, SupportedDefinitionType } = obj[key]

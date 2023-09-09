@@ -15,6 +15,7 @@ const DndDesigner = ({
   renderList
   console.log('TT is : ', TT)
   const { designList } = useDndDesigner(renderList)
+  console.log('designList is: ', designList)
 
   return (
     <div className="w-full">

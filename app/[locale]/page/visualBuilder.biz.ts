@@ -60,6 +60,7 @@ export default useVisualBuilder
 
 const settingPreMaker = (component: any) => {
   const newDefaultValue: { [key: string]: any } = {}
+  let Value: { [key: string]: any } = {}
 
   const objectValue = (settingCategories: any) => {
     settingCategories.SubCategories.length &&
@@ -67,13 +68,15 @@ const settingPreMaker = (component: any) => {
         objectValue(setting)
       })
     const listSetting: any = Object.entries(settingCategories?.Settings)
-    return listSetting.map(
-      (key: any) => (newDefaultValue[key[0]] = key[1]?.DefaultValue)
-    )
+    return listSetting.map((key: any) => {
+      Value = { Value: key[1]?.DefaultValue }
+      newDefaultValue[key[0]] = Value
+    })
   }
 
   component?.SettingCategories.map((SettingCategories: any) => {
     objectValue(SettingCategories)
   })
+  console.log(newDefaultValue)
   return newDefaultValue
 }
