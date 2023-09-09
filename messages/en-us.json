@@ -49,5 +49,37 @@
   "GlobalHeader": {
     "search": "search in dashboard",
     "logo": "logo"
+  },
+  "Dashboard": {
+    "HeaderDashboard": {
+      "contentManagement": " content management",
+      "dashboard": "dashboard",
+      "webManagement": "web management",
+      "visualBuilder": "visual builder",
+      "formBuilder": "form builder",
+      "flowBuilder": "flow builder",
+      "content": "content ",
+      "dataStructure": "data structure",
+      "file&Media": "file and media ",
+      "setting": "setting"
+    },
+    "Content": {
+      "newContent": "new content",
+      "content": "content",
+      "title": "title",
+      "contentType": "data Structure",
+      "createdByFullName": "author",
+      "status": "status",
+      "lastModifiedAt": "recently change",
+      "link": "link",
+      "PUBLISHED": "PUBLISHED",
+      "REJECTED": "REJECTED",
+      "INPROGRESS": "IN PROGRESS",
+      "copy": "copy",
+      "move": "move",
+      "edit": "edit",
+      "history": "history",
+      "delete": "delete"
+    }
   }
 }

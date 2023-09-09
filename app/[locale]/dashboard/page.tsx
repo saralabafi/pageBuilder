@@ -1,9 +1,10 @@
-import React from "react";
+import { useRouter } from 'next/router'
+import React from 'react'
 
-const page = () => {
-    return (
-        <div></div>
-    )
+const dashboard = () => {
+  
+
+  return <div>sddfg</div>
 }
 
-export default page;
+export default dashboard
