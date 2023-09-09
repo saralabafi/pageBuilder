@@ -1,25 +1,27 @@
 'use client'
+import { BreadCrumbComponent } from 'components/BreadCrumbComponent/BreadCrumbComponent'
 import Button from 'components/CoreComponents/Button/Button'
 import { Flex } from 'components/CoreComponents/Flex/Flex'
 import { Menu } from 'components/CoreComponents/Menu/Menu'
 import { MenuItem } from 'components/CoreComponents/Menu/MenuItem'
 import Table from 'components/CoreComponents/Table/Table'
 import Text from 'components/CoreComponents/Text/Text'
+import { NavigationDynamicContent } from 'components/Dashboard/DashboardHeader/DynamicContent/NavigationDynamicContent'
+import DotsButtonIcon from 'images/dashboard/dotsButton.svg'
 import DownloadIcon from 'images/dashboard/download.svg'
 import DuplicateIcon from 'images/dashboard/duplicateOutline.svg'
-import ExternalLinkIcon from 'images/dashboard/externalLink.svg'
-import HistoryIcon from 'images/dashboard/history.svg'
 import EditIcon from 'images/dashboard/edit.svg'
-import TickIcon from 'images/dashboard/tick.svg'
+import ExternalLinkIcon from 'images/dashboard/externalLink.svg'
 import FilterIcon from 'images/dashboard/filter.svg'
+import HistoryIcon from 'images/dashboard/history.svg'
+import TickIcon from 'images/dashboard/tick.svg'
 import DocumentIcon from 'images/page/formats.svg'
 import PlusIcon from 'images/page/plus.svg'
+import TrashIcon from 'images/page/trash.svg'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import ContentTableData from './contentTable.const.json'
-import TrashIcon from 'images/page/trash.svg'
-import { NavigateMenu } from 'components/PageBuilder/PageBuilderConfigs/components/NavigateMenu/NavigateMenu'
-import { BreadCrumbComponent } from 'components/BreadCrumbComponent/BreadCrumbComponent'
 
 function ContentPage() {
   const t = useTranslations('Dashboard.Content')
@@ -103,7 +105,10 @@ function ContentPage() {
       render: (text: any, e: any) => (
         <Menu
           trigger={
-            <div className="text-center cursor-pointer text-slate-400">...</div>
+            <DotsButtonIcon
+              width={18}
+              className="text-center cursor-pointer text-slate-400"
+            />
           }>
           <MenuItem>
             <Flex
@@ -153,6 +158,18 @@ function ContentPage() {
     },
   ]
 
+  const [showNavigation, setShowNavigation] = useState(false)
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setShowNavigation(true)
+    }, 100)
+
+    return () => {
+      clearTimeout(timeoutId)
+    }
+  }, [])
+
   return (
     <div className=" rounded gap-3 border border-slate-100 bg-white shadow-sm mx-3 my-2 ">
       <Flex justify="justify-between" customCSS="border-b p-3">
@@ -183,12 +200,14 @@ function ContentPage() {
           </Button>
         </Flex>
       </Flex>
-      <Flex>
-        <Flex customCSS="w-[30%] p-2 border-e ">
-          {/* <NavigationDynamicContent/> */}
-          {/* <NavigateMenu /> */}
+      <Flex align="items-start">
+        <Flex customCSS="w-[30%] p-2">
+          {showNavigation && <NavigationDynamicContent />}
         </Flex>
-        <Flex customCSS="w-[70%] p-2" direction="flex-col" align='items-start'>
+        <Flex
+          customCSS="w-[70%] p-2 border-s"
+          direction="flex-col"
+          align="items-start">
           <BreadCrumbComponent />
           <Table columns={columns} dataSource={ContentTableData.records} />
         </Flex>

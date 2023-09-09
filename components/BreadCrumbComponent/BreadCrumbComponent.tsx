@@ -10,7 +10,7 @@ export const BreadCrumbComponent = () => {
     { label: 'محتوا', url: '/products/category/current-page' },
   ]
   return (
-    <nav className="text-sm">
+    <nav className="text-sm mb-4">
       <ol className="list-none p-0 inline-flex gap-1">
         {breadcrumbItems.map((item, index) => (
           <li key={index} className="flex items-center">
@@ -32,7 +32,7 @@ export const BreadCrumbComponent = () => {
                 {item.label}
               </Text>
             ) : (
-              <Link href={item.url}>
+              // <Link href={item.url}>
                 <Text
                   fontSize={12}
                   fontWeight={400}
@@ -40,7 +40,7 @@ export const BreadCrumbComponent = () => {
                   color="text-slate-400">
                   {item.label}
                 </Text>
-              </Link>
+              // </Link>
             )}
           </li>
         ))}
