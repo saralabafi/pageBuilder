@@ -69,7 +69,15 @@
       "createdByFullName": "ایجادکننده",
       "status": "وضعیت انتشار",
       "lastModifiedAt": "آخرین تغییرات",
-      "link": "لینک"
+      "link": "لینک",
+      "PUBLISHED": "منتشر شده",
+      "REJECTED": "رد شده",
+      "INPROGRESS": "رد شده",
+      "copy": "کپی",
+      "move": "انتقال",
+      "edit": "ویرایش",
+      "history": "تاریخچه",
+      "delete": "حذف"
     }
   }
 }

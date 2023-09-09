@@ -65,12 +65,20 @@
     "Content": {
       "newContent": "new content",
       "content": "content",
-      "title":"title",
+      "title": "title",
       "contentType": "data Structure",
       "createdByFullName": "author",
       "status": "status",
       "lastModifiedAt": "recently change",
-      "link": "link"
+      "link": "link",
+      "PUBLISHED": "PUBLISHED",
+      "REJECTED": "REJECTED",
+      "INPROGRESS": "IN PROGRESS",
+      "copy": "copy",
+      "move": "move",
+      "edit": "edit",
+      "history": "history",
+      "delete": "delete"
     }
   }
 }
