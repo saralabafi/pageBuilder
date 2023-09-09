@@ -19,6 +19,7 @@ import Link from 'next/link'
 import ContentTableData from './contentTable.const.json'
 import TrashIcon from 'images/page/trash.svg'
 import { NavigateMenu } from 'components/PageBuilder/PageBuilderConfigs/components/NavigateMenu/NavigateMenu'
+import { BreadCrumbComponent } from 'components/BreadCrumbComponent/BreadCrumbComponent'
 
 function ContentPage() {
   const t = useTranslations('Dashboard.Content')
@@ -187,7 +188,8 @@ function ContentPage() {
           {/* <NavigationDynamicContent/> */}
           {/* <NavigateMenu /> */}
         </Flex>
-        <Flex customCSS="w-[70%] p-2">
+        <Flex customCSS="w-[70%] p-2" direction="flex-col" align='items-start'>
+          <BreadCrumbComponent />
           <Table columns={columns} dataSource={ContentTableData.records} />
         </Flex>
       </Flex>
