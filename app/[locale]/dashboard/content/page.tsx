@@ -26,6 +26,10 @@ import ContentTableData from './contentTable.const.json'
 function ContentPage() {
   const t = useTranslations('Dashboard.Content')
 
+  const data =ContentTableData.records.map((item: any, index: number) => {
+    return { ...item, count: index + 1 }
+  })
+
   const render = (text: string) => (
     <Text fontSize={12} customCSS="p-2" fontWeight={400} color="text-slate-500">
       {text}
@@ -50,7 +54,8 @@ function ContentPage() {
       key: 'count',
       title: '#',
       dataIndex: 'count',
-      render: (text: any) => render(text),
+      render
+      ,
     },
     {
       key: 'title',
@@ -103,57 +108,71 @@ function ContentPage() {
       title: '',
       dataIndex: '',
       render: (text: any, e: any) => (
-        <Menu
-          trigger={
-            <DotsButtonIcon
-              width={18}
-              className="text-center cursor-pointer text-slate-400"
-            />
-          }>
-          <MenuItem>
-            <Flex
-              align="items-center"
-              justify="justify-start"
-              customCSS="py-2 px-4 ">
-              <DuplicateIcon className="text-slate-400" />
-              <Text fontSize={12} fontWeight={400} color="text-slate-600 ms-3">
-                {t('copy')}
-              </Text>
-            </Flex>
-          </MenuItem>
-          <MenuItem>
-            <Flex align="items-center" customCSS="border-t py-2 px-4 ">
-              <ExternalLinkIcon className="text-slate-600" />
-              <Text fontSize={12} fontWeight={400} color="text-slate-600 ms-3">
-                {t('move')}
-              </Text>
-            </Flex>
-          </MenuItem>
-          <MenuItem>
-            <Flex align="items-center" customCSS="border-t py-2 px-4 ">
-              <EditIcon className="text-slate-600" />
-              <Text fontSize={12} fontWeight={400} color="text-slate-600 ms-3">
-                {t('edit')}
-              </Text>
-            </Flex>
-          </MenuItem>
-          <MenuItem>
-            <Flex align="items-center" customCSS="border-t py-2 px-4 ">
-              <HistoryIcon className="text-slate-600" />
-              <Text fontSize={12} fontWeight={400} color="text-slate-600 ms-3">
-                {t('history')}
-              </Text>
-            </Flex>
-          </MenuItem>
-          <MenuItem>
-            <Flex align="items-center" customCSS="border-t py-2 px-4 ">
-              <TrashIcon className="text-red-600" />
-              <Text fontSize={12} fontWeight={400} color="text-red-600 ms-3">
-                {t('delete')}
-              </Text>
-            </Flex>
-          </MenuItem>
-        </Menu>
+        <Flex justify="justify-center">
+          <Menu
+            trigger={
+              <DotsButtonIcon
+                width={18}
+                className="text-center cursor-pointer text-slate-400"
+              />
+            }>
+            <MenuItem>
+              <Flex
+                align="items-center"
+                justify="justify-start"
+                customCSS="py-2 px-4 ">
+                <DuplicateIcon className="text-slate-400" />
+                <Text
+                  fontSize={12}
+                  fontWeight={400}
+                  color="text-slate-600 ms-3">
+                  {t('copy')}
+                </Text>
+              </Flex>
+            </MenuItem>
+            <MenuItem>
+              <Flex align="items-center" customCSS="border-t py-2 px-4 ">
+                <ExternalLinkIcon className="text-slate-600" />
+                <Text
+                  fontSize={12}
+                  fontWeight={400}
+                  color="text-slate-600 ms-3">
+                  {t('move')}
+                </Text>
+              </Flex>
+            </MenuItem>
+            <MenuItem>
+              <Flex align="items-center" customCSS="border-t py-2 px-4 ">
+                <EditIcon className="text-slate-600" />
+                <Text
+                  fontSize={12}
+                  fontWeight={400}
+                  color="text-slate-600 ms-3">
+                  {t('edit')}
+                </Text>
+              </Flex>
+            </MenuItem>
+            <MenuItem>
+              <Flex align="items-center" customCSS="border-t py-2 px-4 ">
+                <HistoryIcon className="text-slate-600" />
+                <Text
+                  fontSize={12}
+                  fontWeight={400}
+                  color="text-slate-600 ms-3">
+                  {t('history')}
+                </Text>
+              </Flex>
+            </MenuItem>
+            <MenuItem>
+              <Flex align="items-center" customCSS="border-t py-2 px-4 ">
+                <TrashIcon className="text-red-600" />
+                <Text fontSize={12} fontWeight={400} color="text-red-600 ms-3">
+                  {t('delete')}
+                </Text>
+              </Flex>
+            </MenuItem>
+          </Menu>
+        </Flex>
       ),
     },
   ]
@@ -209,7 +228,7 @@ function ContentPage() {
           direction="flex-col"
           align="items-start">
           <BreadCrumbComponent />
-          <Table columns={columns} dataSource={ContentTableData.records} />
+          <Table columns={columns} dataSource={data} />
         </Flex>
       </Flex>
     </div>
