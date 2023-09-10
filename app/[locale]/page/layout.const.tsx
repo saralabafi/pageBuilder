@@ -12,6 +12,7 @@ import ConditionIcon from 'images/ContentStructureBuilder/condition.svg'
 import { ReactElement } from 'react'
 import { HtmlWidget } from 'components/Tools/VisualBuilder/Widgets/HTML_Widget/HtmlWidget'
 import GridWidget from 'components/Tools/VisualBuilder/Widgets/GridWidget/GridRender'
+import { ContainerControl } from 'components/Tools/ContentStructureBuilder/Contrrols/ContainerControl/ContainerControl'
 
 export type SidebarItem = {
   title: string
@@ -52,5 +53,6 @@ export const formRenderItems: Renders = {
   TextControlDefinition: (props) => <TextControl {...props} />,
   SwitchControlDefinition: (props) => <SwitchControl {...props} />,
   NumberControlDefinition: (props) => <NumericControl {...props} />,
+  ContainerControlDefinition: (props) => <ContainerControl  {...props} />,
   SingleSelectionControlDefinition: (props) => <SingleSelection {...props} />,
 }
