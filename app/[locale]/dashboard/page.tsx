@@ -1,10 +1,5 @@
-import { useRouter } from 'next/router'
-import React from 'react'
-
 const dashboard = () => {
-  
-
-  return <div>sddfg</div>
+  return <div>dashboard</div>
 }
 
 export default dashboard

@@ -20,9 +20,9 @@ const Table = ({ columns, dataSource }: ITableProps) => {
         </tr>
       </thead>
       <tbody className="bg-white divide-slate-200">
-        {dataSource.map((row: any) => (
+        {dataSource.map((row) => (
           <tr key={row.key}>
-            {columns.map((column: any) => {
+            {columns.map((column) => {
               return (
                 <td
                   key={`${row.key}-${column.key}`}
