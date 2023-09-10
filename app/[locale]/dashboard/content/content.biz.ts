@@ -1,21 +1,47 @@
+import { useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
-import ContentTableData from './contentTable.const.json'
-export const useContent = () => {
-  const data = ContentTableData.records.map((item: any, index: number) => {
-    return { ...item, count: index + 1 }
-  })
+import { services } from 'services/services'
 
-  const [showNavigation, setShowNavigation] = useState(false)
+export const useContent = () => {
+  const [activeFolder, setActiveFolder] = useState<string>()
+  const [activePage, setActivePage] = useState<number>(1)
+  const [total, setTotal] = useState<number>()
+  const pageSize = 10
+
+  const { data } = useQuery(
+    [
+      {
+        url: `cms/v1.0/{site}/dynamic-contents/folders/${activeFolder}/records`,
+        page: activePage,
+        pageSize,
+      },
+    ],
+    services.GetData
+  )
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setShowNavigation(true)
-    }, 100)
+    setTotal(data?.total)
+  }, [data?.total])
 
-    return () => {
-      clearTimeout(timeoutId)
-    }
-  }, [])
-  
-  return { data, showNavigation }
+  useEffect(() => {
+    setActivePage(1)
+  }, [activeFolder])
+
+  const dataTable = data?.records?.map((item: any, index: number) => {
+    return { ...item, count: index + 1 + (activePage - 1) * pageSize }
+  })
+
+  const handlePageChange = (page: number) => {
+    setActivePage(page)
+  }
+
+  return {
+    dataTable,
+    activeFolder,
+    setActiveFolder,
+    activePage,
+    pageSize,
+    total,
+    handlePageChange,
+  }
 }
