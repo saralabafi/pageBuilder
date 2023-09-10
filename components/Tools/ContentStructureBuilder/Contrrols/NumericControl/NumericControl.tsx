@@ -27,6 +27,11 @@ const NumericControl = (props: Control) => {
             placeholder={props?.settings?.PLACEHOLDER.Data[locale] || ''}
             type="text"
             readOnly={true}
+            value={
+              props?.settings?.PREDEFINED_VALUE?.Data[locale] != null
+                ? props.settings.PREDEFINED_VALUE.Data[locale]
+                : ''
+            }
           />
           {props?.settings?.HELP ? (
             <p className="text-slate-400 text-[10px] italic">

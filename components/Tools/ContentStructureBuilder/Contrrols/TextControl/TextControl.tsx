@@ -19,13 +19,21 @@ const TextControl = (props: Control) => {
           readOnly
           className={`appearance-none block w-full bg-white text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white`}
           placeholder={props?.settings?.PLACEHOLDER.Data[locale] || ''}
+          value={
+            props?.settings?.PREDEFINED_VALUE?.Data[locale] != null
+              ? props.settings.PREDEFINED_VALUE.Data[locale]
+              : ''
+          }
         />
       ) : (
         <textarea
           readOnly
           className={`appearance-none block w-full bg-white text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white`}
-          placeholder={
-            props?.settings?.PLACEHOLDER.Data[locale] || ''
+          placeholder={props?.settings?.PLACEHOLDER.Data[locale] || ''}
+          value={
+            props?.settings?.PREDEFINED_VALUE?.Data[locale] != null
+              ? props.settings.PREDEFINED_VALUE.Data[locale]
+              : ''
           }></textarea>
       )}
 
