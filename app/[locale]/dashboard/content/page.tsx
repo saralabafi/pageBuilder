@@ -23,9 +23,10 @@ import Link from 'next/link'
 
 import { Pagination } from 'components/CoreComponents/Pagination/Pagination'
 import { useContent } from './content.biz'
+import { Loading } from 'components/CoreComponents/Loading/Loading'
 
 function ContentPage() {
-  const { data, showNavigation } = useContent()
+  const { dataTable,activeFolder,setActiveFolder } = useContent()
   const t = useTranslations('Dashboard.Content')
 
   const render = (text: string) => (
@@ -174,12 +175,12 @@ function ContentPage() {
     },
   ]
 
-   const breadcrumbItems = [
-     { label: 'استقلال', url: '/' },
-     { label: 'تیم های داخلی', url: '/products' },
-     { label: 'اخبار ورزشی', url: '/products/category' },
-     { label: 'محتوا', url: '/products/category/current-page' },
-   ]
+  const breadcrumbItems = [
+    { label: 'استقلال', url: '/' },
+    { label: 'تیم های داخلی', url: '/products' },
+    { label: 'اخبار ورزشی', url: '/products/category' },
+    { label: 'محتوا', url: '/products/category/current-page' },
+  ]
 
   return (
     <div className=" rounded gap-3 border border-slate-100 bg-white shadow-sm mx-3 my-2 ">
@@ -213,14 +214,20 @@ function ContentPage() {
       </Flex>
       <Flex align="items-start">
         <Flex customCSS="w-[25%]">
-          {showNavigation && <NavigationDynamicContent />}
+          <NavigationDynamicContent activeFolder={activeFolder} setActiveFolder={setActiveFolder} />
         </Flex>
         <Flex
           customCSS="w-[75%] p-2 border-s"
           direction="flex-col"
           align="items-start">
           <BreadCrumbComponent breadcrumbItems={breadcrumbItems} />
-          <Table columns={columns} dataSource={data} />
+          {dataTable ? (
+            <Table columns={columns} dataSource={dataTable} />
+          ) : (
+            <Flex width="w-full" justify="justify-center" margin="my-10">
+              <Loading />
+            </Flex>
+          )}
           <Flex width="w-full" justify="justify-end" margin="my-4">
             <Pagination />
           </Flex>

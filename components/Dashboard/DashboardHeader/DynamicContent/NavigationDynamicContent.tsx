@@ -1,43 +1,41 @@
 'use client'
 import { Flex } from 'components/CoreComponents/Flex/Flex'
+import { Input } from 'components/CoreComponents/Input/Input'
+import { Loading } from 'components/CoreComponents/Loading/Loading'
+import { Menu } from 'components/CoreComponents/Menu/Menu'
+import { MenuItem } from 'components/CoreComponents/Menu/MenuItem'
 import Text from 'components/CoreComponents/Text/Text'
 import { TreeView } from 'components/TreeView/TreeView'
 import DotsButtonIcon from 'images/dashboard/dotsButton.svg'
-import FolderPlusIcon from 'images/dashboard/folderPlus.svg'
-import FolderIcon from 'images/page/folder.svg'
-import { useLocale, useTranslations } from 'next-intl'
-import { useState } from 'react'
-import ContentFolderData from './contentFolder.const.json'
-import { Menu } from 'components/CoreComponents/Menu/Menu'
-import { MenuItem } from 'components/CoreComponents/Menu/MenuItem'
-import ExternalLinkIcon from 'images/dashboard/externalLink.svg'
-import SearchIcon from 'images/globalHeader/search.svg'
-import EditIcon from 'images/dashboard/edit.svg'
 import DuplicateIcon from 'images/dashboard/duplicateOutline.svg'
+import EditIcon from 'images/dashboard/edit.svg'
+import ExternalLinkIcon from 'images/dashboard/externalLink.svg'
+import FolderPlusIcon from 'images/dashboard/folderPlus.svg'
+import SearchIcon from 'images/globalHeader/search.svg'
+import FolderIcon from 'images/page/folder.svg'
 import TrashIcon from 'images/page/trash.svg'
-import { Input } from 'components/CoreComponents/Input/Input'
+import { useState } from 'react'
+import { useNavigationDynamicContent } from './NavigationDynamicContent.biz'
+import { INavigationDynamicContent } from './NavigationDynamicContent.type'
 
-export const NavigationDynamicContent = () => {
-  const t = useTranslations('Dashboard.Content')
-  const locale = useLocale()
-  const [activeFolder, setActiveFolder] = useState()
-  const isActive = (index: number) => {
-    return index === activeFolder
-  }
-  const renderFolder = (props: any) => {
+export const NavigationDynamicContent = (props: INavigationDynamicContent) => {
+  const { isActive, locale, t, sortableItems, setSortableItems } =
+    useNavigationDynamicContent(props)
+
+  const renderFolder = (folder: any) => {
     const [actionVisible, setActionVisible] = useState(false)
 
     return (
       <div
         onClick={(e) => {
           e.stopPropagation()
-          setActiveFolder(props.item.id)
+          props.setActiveFolder(folder.item.id)
         }}
         onMouseOver={() => setActionVisible(true)}
         onMouseLeave={() => setActionVisible(false)}
         className={`flex w-full justify-between rounded py-1 border border-transparent hover:border-blue-100
         ${
-          isActive(props.item.id) &&
+          isActive(folder.item.id) &&
           'bg-blue-50 border-blue-100 rounded-sm !text-blue-500'
         }
         
@@ -47,7 +45,7 @@ export const NavigationDynamicContent = () => {
             width="20px"
             height="20px"
             className={`text-neutral-400 ${
-              isActive(props.item.index) &&
+              isActive(folder.item.id) &&
               'bg-blue-50 border-blue-100 rounded-sm !text-blue-500'
             }`}
           />
@@ -55,12 +53,12 @@ export const NavigationDynamicContent = () => {
             fontWeight={300}
             fontSize={12}
             color="text-neutral-600"
-            customCSS={` ${
+            customCSS={` folder
               isActive(props.item.index) &&
               'bg-blue-50 border-blue-100 rounded-sm !text-blue-500'
             }
         `}>
-            {props.item.title[locale]}
+            {folder.item.title[locale]}
           </Text>
         </Flex>
         {actionVisible && (
@@ -127,20 +125,25 @@ export const NavigationDynamicContent = () => {
     )
   }
 
-  const [sortableItems, setSortableItems] = useState(ContentFolderData)
   return (
     <Flex direction="flex-col" align="items-start" width="w-full">
       <Flex padding="p-3" width="w-full">
         <Input placeholder={t('search')} icon={<SearchIcon />} />
       </Flex>
-      <TreeView
-        disableInteraction={() => false}
-        renderItem={renderFolder}
-        sortableItems={JSON.stringify(sortableItems)}
-        handleChange={(changedItems: any) => {
-          setSortableItems(changedItems)
-        }}
-      />
+      {!sortableItems ? (
+        <Flex justify="justify-center" width="w-full" margin="mt-4">
+          <Loading />
+        </Flex>
+      ) : (
+        <TreeView
+          disableInteraction={() => false}
+          renderItem={renderFolder}
+          sortableItems={JSON.stringify(sortableItems)}
+          handleChange={(changedItems: any) => {
+            setSortableItems(changedItems)
+          }}
+        />
+      )}
     </Flex>
   )
 }
