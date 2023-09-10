@@ -39,6 +39,7 @@
     "SwitchControlDefinition": "Switch",
     "NumberControlDefinition": "Number",
     "ContainerWidgetDefinition": "Container",
+    "ContainerControlDefinition": "Container",
     "SingleSelectionControlDefinition": "Single Selection",
     "MultiSelectionControlDefinition": "Multi Selection"
   },

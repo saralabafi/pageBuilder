@@ -8,6 +8,7 @@ import { selectActiveMenu, selectActiveTab } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
 import { services } from 'services/services'
 import { ControlMenu } from '../../PageBuilder/PageBuilderConfigs/components/ControlMenu/ControlMenu'
+import data from "../../../public/Data/ContentStructer.json"
 
 export const useContentStructureSideMenu = () => {
   const dispatch = useDispatch()
@@ -20,10 +21,12 @@ export const useContentStructureSideMenu = () => {
     dispatch(selectActiveTab(''))
     dispatch(selectActiveMenu(''))
   }
+
   const SettingBoxMemoize = useCallback(
     (props: any) => <SettingBox {...props} />,
     [activeControl]
   )
+
   const handleRenderTabMenu = (props: { controls: Control[] }) => {
     const availableMenu: { [key: string]: { [key: string]: ReactNode } } = {
       sidebar: { title: t('add'), component: <ControlMenu {...props} /> },
@@ -35,10 +38,10 @@ export const useContentStructureSideMenu = () => {
     return availableMenu[activeTab]
   }
 
-  const { data, status } = useQuery(
-    [{ url: 'forms/v1.0/siteName/controls/definitions' }],
-    services.GetData
-  )
+  // const { data, status } = useQuery(
+  //   [{ url: 'forms/v1.0/siteName/controls/definitions' }],
+  //   services.GetData
+  // )
 
   const controls: any[] = data?.map((control: any) => {
     return { component: control, type: 'sidebarItem' }

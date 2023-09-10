@@ -1,6 +1,6 @@
 [
   {
-    "Name": "TextControlDefinition",
+    "Name": "ContainerControlDefinition",
     "Title": {
       "fa-ir": "متن",
       "en-us": "Text"
