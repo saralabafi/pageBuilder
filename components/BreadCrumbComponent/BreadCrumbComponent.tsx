@@ -1,14 +1,8 @@
-import React from 'react'
-import Link from 'next/link'
 import Text from 'components/CoreComponents/Text/Text'
+import { IBreadCrumb } from './BreadCrumb.type'
 
-export const BreadCrumbComponent = () => {
-  const breadcrumbItems = [
-    { label: 'استقلال', url: '/' },
-    { label: 'تیم های داخلی', url: '/products' },
-    { label: 'اخبار ورزشی', url: '/products/category' },
-    { label: 'محتوا', url: '/products/category/current-page' },
-  ]
+export const BreadCrumbComponent = ({ breadcrumbItems }:IBreadCrumb) => {
+ 
   return (
     <nav className="text-sm mb-4">
       <ol className="list-none p-0 inline-flex gap-1">
@@ -32,15 +26,13 @@ export const BreadCrumbComponent = () => {
                 {item.label}
               </Text>
             ) : (
-              // <Link href={item.url}>
-                <Text
-                  fontSize={12}
-                  fontWeight={400}
-                  padding="p-1"
-                  color="text-slate-400">
-                  {item.label}
-                </Text>
-              // </Link>
+              <Text
+                fontSize={12}
+                fontWeight={400}
+                padding="p-1"
+                color="text-slate-400">
+                {item.label}
+              </Text>
             )}
           </li>
         ))}

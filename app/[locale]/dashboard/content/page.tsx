@@ -20,16 +20,13 @@ import PlusIcon from 'images/page/plus.svg'
 import TrashIcon from 'images/page/trash.svg'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import ContentTableData from './contentTable.const.json'
+
 import { Pagination } from 'components/CoreComponents/Pagination/Pagination'
+import { useContent } from './content.biz'
 
 function ContentPage() {
+  const { data, showNavigation } = useContent()
   const t = useTranslations('Dashboard.Content')
-
-  const data = ContentTableData.records.map((item: any, index: number) => {
-    return { ...item, count: index + 1 }
-  })
 
   const render = (text: string) => (
     <Text fontSize={12} customCSS="p-2" fontWeight={400} color="text-slate-500">
@@ -61,37 +58,37 @@ function ContentPage() {
       key: 'title',
       title: t('title'),
       dataIndex: 'title',
-      render: (text: any) => render(text),
+      render,
     },
     {
       key: 'contentType',
       title: t('contentType'),
       dataIndex: 'contentType',
-      render: (text: any) => render(text),
+      render,
     },
     {
       key: 'createdByFullName',
       title: t('createdByFullName'),
       dataIndex: 'createdByFullName',
-      render: (text: any) => render(text),
+      render,
     },
     {
       key: 'status',
       title: t('status'),
       dataIndex: 'status',
-      render: (text: any) => renderStatus(text),
+      render: renderStatus,
     },
     {
       key: 'lastModifiedAt',
       title: t('lastModifiedAt'),
       dataIndex: 'lastModifiedAt',
-      render: (text: any) => render(text),
+      render,
     },
     {
       key: 'link',
       title: t('link'),
       dataIndex: 'link',
-      render: (text: any) => (
+      render: (text: string) => (
         <Link
           href={text}
           className="flex align-middle gap-2 mx-2"
@@ -107,7 +104,7 @@ function ContentPage() {
       key: '',
       title: '',
       dataIndex: '',
-      render: (text: any, e: any) => (
+      render: () => (
         <Flex justify="justify-center">
           <Menu
             trigger={
@@ -177,17 +174,12 @@ function ContentPage() {
     },
   ]
 
-  const [showNavigation, setShowNavigation] = useState(false)
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setShowNavigation(true)
-    }, 100)
-
-    return () => {
-      clearTimeout(timeoutId)
-    }
-  }, [])
+   const breadcrumbItems = [
+     { label: 'استقلال', url: '/' },
+     { label: 'تیم های داخلی', url: '/products' },
+     { label: 'اخبار ورزشی', url: '/products/category' },
+     { label: 'محتوا', url: '/products/category/current-page' },
+   ]
 
   return (
     <div className=" rounded gap-3 border border-slate-100 bg-white shadow-sm mx-3 my-2 ">
@@ -227,9 +219,9 @@ function ContentPage() {
           customCSS="w-[75%] p-2 border-s"
           direction="flex-col"
           align="items-start">
-          <BreadCrumbComponent />
+          <BreadCrumbComponent breadcrumbItems={breadcrumbItems} />
           <Table columns={columns} dataSource={data} />
-          <Flex width='w-full' justify="justify-end" margin="my-4">
+          <Flex width="w-full" justify="justify-end" margin="my-4">
             <Pagination />
           </Flex>
         </Flex>
