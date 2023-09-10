@@ -2,6 +2,7 @@ import React from 'react'
 import { ISingleSelection } from './SingleSelection.types'
 import { Control } from 'components/DndDesigner/DndDesigner.type'
 import { useLocale } from 'next-intl'
+import { LAYOUT_TYPE } from 'types/genral.types'
 
 const SingleSelection = (props: Control, Componentitem: ISingleSelection) => {
   const locale = useLocale()
@@ -14,7 +15,9 @@ const SingleSelection = (props: Control, Componentitem: ISingleSelection) => {
   }
 
   const layout =
-    props?.settings?.LAYOUT_TYPE.Data == 'row' ? 'flex-row' : 'flex-col'
+    props?.settings?.LAYOUT_TYPE.Data == LAYOUT_TYPE.LINE
+      ? 'flex-row'
+      : 'flex-col'
   return (
     <div className="m-4">
       <p>
