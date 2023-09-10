@@ -11,6 +11,7 @@ export type TreeViewProps = TreeItemComponentProps<{
   Name: string
 }>
 export interface ITreeView {
+  icons?: any
   sortableItems: any
   disableInteraction: (props: any) => boolean | undefined
   renderItem: (

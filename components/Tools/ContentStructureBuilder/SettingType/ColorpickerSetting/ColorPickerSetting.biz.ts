@@ -22,5 +22,9 @@ export const useColorPicker = (props: IColorPickerProps) => {
     editControl(activeControl, type, { Data: color.hex })
   }
 
-  return { controlValue, handleColorChange }
+  const handleReset = () => {
+    editControl(activeControl, type, { Data: '#ffff' })
+  }
+
+  return { controlValue, handleColorChange, handleReset }
 }

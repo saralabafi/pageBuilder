@@ -69,7 +69,7 @@ const settingPreMaker = (component: any) => {
     )
   }
 
-  component.SettingCategories.map((SettingCategories: any) => {
+  component?.SettingCategories.map((SettingCategories: any) => {
     objectValue(SettingCategories)
   })
   return newDefaultValue

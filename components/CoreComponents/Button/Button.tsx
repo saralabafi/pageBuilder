@@ -12,6 +12,9 @@ const Button = (props: IButtonProps) => {
     padding = 'p-2',
     margin,
     textColor,
+    width,
+    justify,
+    height,
     radius = 'rounded',
     customCSS,
     border = 'border border-neutral-200',
@@ -26,6 +29,9 @@ const Button = (props: IButtonProps) => {
       h-[36px] 
       ${extraStyle || ''}
       ${border || ''}
+      ${width || ''}
+      ${height || ''}
+      ${justify || ''}
       ${textColor} ${radius} ${padding}
       ${backgroundColor} ${loading ? 'animate-spin' : ''}
       ${size || ''} ${margin || ''} ${customCSS || ''}
