@@ -80,6 +80,18 @@
       "history": "تاریخچه",
       "delete": "حذف",
       "search": "جستجو در دسته‌بندی‌ها"
+    },
+    "DataStructure": {
+      "dataStructure": "ساختار داده",
+      "newContent": "محتوا جدید",
+      "copy": "کپی",
+      "move": "انتقال",
+      "edit": "ویرایش",
+      "history": "تاریخچه",
+      "delete": "حذف",
+      "view": "مشاهده",
+      "templates": "قالب ها",
+      "output": "خروجی"
     }
   }
 }

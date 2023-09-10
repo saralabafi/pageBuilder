@@ -80,6 +80,18 @@
       "edit": "edit",
       "history": "history",
       "delete": "delete"
+    },
+    "DataStructure": {
+      "dataStructure": "data structure",
+      "newContent": "new content",
+      "copy": "copy",
+      "move": "move",
+      "edit": "edit",
+      "history": "history",
+      "delete": "delete",
+      "view": "view",
+      "templates": "templates",
+      "output": "output"
     }
   }
 }
