@@ -1,10 +1,6 @@
 export interface ITableProps {
   columns: ColumnType[]
-  dataSource: any
-  // {
-  //   [key: string]: string
-  //   render?: (text: any, record: any) => JSX.Element
-  // }[]
+  dataSource: { [key: string]: string }[]
 }
 
 export type ColumnType = {
