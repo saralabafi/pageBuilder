@@ -2,7 +2,7 @@ import CheckBox from 'components/CoreComponents/CheckBox/CheckBox'
 import Switch from 'components/CoreComponents/Switch/Switch'
 import { Control } from 'components/DndDesigner/DndDesigner.type'
 import { useSwitchControl } from './SwitchControl.biz'
-import { PredefinedValue, DISPLAY_TYPES } from 'types/genral.types'
+import { PredefinedValue, DISPLAY_TYPES } from 'types/general.types'
 
 export const SwitchControl = (props: Control) => {
   const { isChecked, locale } = useSwitchControl(props)
