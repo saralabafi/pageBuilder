@@ -14,7 +14,7 @@ const SingleSelection = (props: Control, Componentitem: ISingleSelection) => {
   }
 
   const layout =
-    props?.settings?.LAYOUT_TYPE.Data == 'row' ? 'flex-row' : 'flex-col'
+    props?.settings?.LAYOUT_TYPE.Data == 'LINE' ? 'flex-row' : 'flex-col'
   return (
     <div className="m-4">
       <p>
