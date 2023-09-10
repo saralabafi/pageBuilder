@@ -2,7 +2,7 @@ import CheckBox from 'components/CoreComponents/CheckBox/CheckBox'
 import Switch from 'components/CoreComponents/Switch/Switch'
 import { Control } from 'components/DndDesigner/DndDesigner.type'
 import { useSwitchControl } from './SwitchControl.biz'
-import { PredefinedValue } from 'types/genral.types'
+import { PredefinedValue, DISPLAY_TYPES } from 'types/genral.types'
 
 export const SwitchControl = (props: Control) => {
   const { isChecked, locale } = useSwitchControl(props)
@@ -10,8 +10,7 @@ export const SwitchControl = (props: Control) => {
     <>
       <div className="flex flex-col p-4 py-2 px-6 bg-slate-100 border border-slate-300 border-dashed rounded-md ">
         <div className="flex items-center mb-4">
-          {props?.settings?.DISPLAY_TYPES.Data === 'checkbox' ||
-          props?.settings?.DISPLAY_TYPES.Data === 'CHECKBOX' ? (
+          {props?.settings?.DISPLAY_TYPES.Data === DISPLAY_TYPES.CHECKBOX ? (
             <CheckBox
               isChecked={false}
               isDisabled={
