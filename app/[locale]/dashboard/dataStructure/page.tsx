@@ -33,7 +33,7 @@ function DataStructurePage() {
   const [dynamicContentList, setDynamicContentList] = useState<ReactNode[]>([])
   const [showTemplates, setShowTemplates] = useState(false)
   const [open, setOpen] = useState(false)
-  let isfull = true
+  const isfull = true
   const handleToggleOpen = () => {
     setShowTemplates(!showTemplates)
     setOpen(!open)
