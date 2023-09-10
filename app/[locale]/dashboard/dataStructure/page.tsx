@@ -1,44 +1,38 @@
 'use client'
-import { Flex } from 'components/CoreComponents/Flex/Flex'
-import Text from 'components/CoreComponents/Text/Text'
 import Button from 'components/CoreComponents/Button/Button'
-import { useTranslations } from 'next-intl'
-import DocumentIcon from 'images/page/formats.svg'
-import FilterIcon from 'images/dashboard/filter.svg'
-import DownloadIcon from 'images/dashboard/download.svg'
-import PlusIcon from 'images/page/plus.svg'
-import PlusIconCircle from 'images/dashboard/plus_circle.svg'
-import NewsIcon from 'images/dashboard/news.svg'
-import PictureIcon from 'images/dashboard/picture.svg'
-import ArrowPathIcon from 'images/dashboard/arrow_path.svg'
-import Slider from 'images/dashboard/slider.svg'
-import Tools from 'images/dashboard/Tools.svg'
-import React, { ReactNode, useState } from 'react'
+import { Flex } from 'components/CoreComponents/Flex/Flex'
 import { Menu } from 'components/CoreComponents/Menu/Menu'
 import { MenuItem } from 'components/CoreComponents/Menu/MenuItem'
-import TrashIcon from 'images/page/trash.svg'
+import Text from 'components/CoreComponents/Text/Text'
+import ArrowPathIcon from 'images/dashboard/arrow_path.svg'
 import DotsButtonIcon from 'images/dashboard/dotsButton.svg'
+import DownloadIcon from 'images/dashboard/download.svg'
 import DuplicateIcon from 'images/dashboard/duplicateOutline.svg'
 import EditIcon from 'images/dashboard/edit.svg'
-import ExternalLinkIcon from 'images/dashboard/externalLink.svg'
-import HistoryIcon from 'images/dashboard/history.svg'
-import Eyeicon from 'images/dashboard/eye.svg'
-import RectangleStackIcon from 'images/dashboard/rectangle_stack.svg'
-import OutputIcon from 'images/dashboard/output.svg'
-import TemlatesIcon from 'images/dashboard/empty_state_part.svg'
 import EllipsisVerticalIcon from 'images/dashboard/ellipsis_vertical.svg'
+import TemlatesIcon from 'images/dashboard/empty_state_part.svg'
+import Eyeicon from 'images/dashboard/eye.svg'
+import FilterIcon from 'images/dashboard/filter.svg'
+import NewsIcon from 'images/dashboard/news.svg'
+import OutputIcon from 'images/dashboard/output.svg'
+import PlusIconCircle from 'images/dashboard/plus_circle.svg'
+import RectangleStackIcon from 'images/dashboard/rectangle_stack.svg'
+import DocumentIcon from 'images/page/formats.svg'
+import PlusIcon from 'images/page/plus.svg'
+import TrashIcon from 'images/page/trash.svg'
+import { useTranslations } from 'next-intl'
+import { useDataStructure } from '../dataStructure/dataStructure.biz'
 
 function DataStructurePage() {
+  const {
+    dynamicContentList,
+    showTemplates,
+    open,
+    isfull,
+    handleToggleOpen,
+    setDynamicContentList,
+  } = useDataStructure()
   const t = useTranslations('Dashboard.DataStructure')
-  const [dynamicContentList, setDynamicContentList] = useState<ReactNode[]>([])
-  const [showTemplates, setShowTemplates] = useState(false)
-  const [open, setOpen] = useState(false)
-  const isfull = true
-  const handleToggleOpen = () => {
-    setShowTemplates(!showTemplates)
-    setOpen(!open)
-  }
-
   const handleAddDynamicContent = () => {
     const newDynamicContent = (
       <div
@@ -65,9 +59,6 @@ function DataStructurePage() {
 
     setDynamicContentList([...dynamicContentList, newDynamicContent])
   }
-  // const handleShowTemplates = () => {
-
-  // }
 
   const dynamicContent = (
     <Flex justify="justify-center">
@@ -168,7 +159,7 @@ function DataStructurePage() {
         <div className="h-4 rounded justify-center items-center gap-1 inline-flex">
           <PlusIcon />
           <div className="text-right text-blue-500 text-xs font-normal leading-none">
-            قالب جدید
+            {t('newStructure')}
           </div>
         </div>
       </div>
@@ -182,33 +173,7 @@ function DataStructurePage() {
             <div className="self-stretch h-10 flex-col justify-start items-end gap-2 flex">
               <div className="self-stretch justify-end items-start gap-2 inline-flex">
                 <div className="grow shrink basis-0 text-right text-slate-500 text-xs font-normal leading-none">
-                  قالب استفاده شده در صفحه خانه
-                </div>
-                <div className="w-3.5 h-3.5 relative" />
-              </div>
-              <div className="self-stretch justify-end items-start gap-2 inline-flex">
-                <div className="grow shrink basis-0 text-right text-slate-500 text-xs font-normal leading-none">
-                  ۱۴۰۲/۰۵/۱۹
-                </div>
-                <div className="w-3.5 h-3.5 relative" />
-              </div>
-            </div>
-          </div>
-          <div className="w-5 self-stretch py-1 justify-center items-start gap-1 flex">
-            <EllipsisVerticalIcon />
-          </div>
-        </div>
-      </div>
-      <div className="self-stretch flex-col justify-center items-center gap-1 flex">
-        <div className="self-stretch p-2 bg-white rounded-lg border border-slate-200 justify-start items-center gap-2 inline-flex">
-          <div className="grow shrink basis-0 p-1 flex-col justify-start items-end gap-4 inline-flex">
-            <div className="self-stretch text-right text-slate-700 text-xs font-medium leading-tight">
-              کارت خلاصه اخبار
-            </div>
-            <div className="self-stretch h-10 flex-col justify-start items-end gap-2 flex">
-              <div className="self-stretch justify-end items-start gap-2 inline-flex">
-                <div className="grow shrink basis-0 text-right text-slate-500 text-xs font-normal leading-none">
-                  قالب استفاده شده در صفحه خانه
+                  {t('useTemplateInHome')}
                 </div>
                 <div className="w-3.5 h-3.5 relative" />
               </div>

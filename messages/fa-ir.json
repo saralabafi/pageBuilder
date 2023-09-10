@@ -84,6 +84,8 @@
     "DataStructure": {
       "dataStructure": "ساختار داده",
       "newContent": "محتوا جدید",
+      "newStructure": "قالب جدید",
+      "useTemplateInHome": " قالب استفاده شده در صفحه خانه",
       "copy": "کپی",
       "move": "انتقال",
       "edit": "ویرایش",

@@ -84,6 +84,8 @@
     "DataStructure": {
       "dataStructure": "data structure",
       "newContent": "new content",
+      "newStructure": "new Structure",
+      "useTemplateInHome": "use template in home",
       "copy": "copy",
       "move": "move",
       "edit": "edit",
