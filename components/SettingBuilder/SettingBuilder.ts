@@ -4,10 +4,12 @@ export const SettingBuilder = (controls: any) => {
   const settingsControls: { [key: string]: SettingCategoryType[] } = {}
 
   controls.map((control: any) => {
-    return (settingsControls[control.component.SupportedDefinitionType] =
-      settingPreparing(control.component.SettingCategories))
+    return (settingsControls[
+      control.component.SupportedDefinitionType
+        ? control.component.SupportedDefinitionType
+        : control.component.Name
+    ] = settingPreparing(control.component.SettingCategories))
   })
-
   return { settingsControls }
 }
 

@@ -34,9 +34,9 @@ const useVisualBuilder = () => {
         Id: shortid.generate(),
         Settings: settingPreMaker(item.data.component),
         parentId: dropZone.parentId,
-        SupportedDefinitionType: item.data.component
+        SupportedDefinitionType: item.data.component.SupportedDefinitionType
           ? item.data.component.SupportedDefinitionType
-          : item.data.SupportedDefinitionType,
+          : item.data.component.Name,
       }
 
       dispatch(selectActiveTab('setting'))
@@ -77,6 +77,5 @@ const settingPreMaker = (component: any) => {
   component?.SettingCategories.map((SettingCategories: any) => {
     objectValue(SettingCategories)
   })
-  console.log(newDefaultValue)
   return newDefaultValue
 }
