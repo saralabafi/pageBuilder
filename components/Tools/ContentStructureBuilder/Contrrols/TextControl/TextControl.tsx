@@ -3,7 +3,6 @@ import { useLocale } from 'next-intl'
 
 const TextControl = (props: Control) => {
   const locale = useLocale()
-  console.log(props?.settings)
   return (
     <div className="relative mx-2 mb-3">
       {props?.settings?.REQUIRED?.Data?.Enabled ? (

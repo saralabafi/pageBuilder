@@ -5,7 +5,6 @@ import Setting from 'images/page/setting.svg'
 
 const NumericControl = (props: Control) => {
   const locale = useLocale()
-  console.log(props?.settings)
   return (
     <div>
       {!props?.settings?.HIDE_CONTROL?.Data ? (
