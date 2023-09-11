@@ -4,7 +4,6 @@ import { Flex } from 'components/CoreComponents/Flex/Flex'
 import { Menu } from 'components/CoreComponents/Menu/Menu'
 import { MenuItem } from 'components/CoreComponents/Menu/MenuItem'
 import Text from 'components/CoreComponents/Text/Text'
-import ArrowPathIcon from 'images/dashboard/arrow_path.svg'
 import DotsButtonIcon from 'images/dashboard/dotsButton.svg'
 import DownloadIcon from 'images/dashboard/download.svg'
 import DuplicateIcon from 'images/dashboard/duplicateOutline.svg'
@@ -20,8 +19,10 @@ import RectangleStackIcon from 'images/dashboard/rectangle_stack.svg'
 import DocumentIcon from 'images/page/formats.svg'
 import PlusIcon from 'images/page/plus.svg'
 import TrashIcon from 'images/page/trash.svg'
+import Clock from 'images/dashboard/clock.svg'
 import { useTranslations } from 'next-intl'
 import { useDataStructure } from '../dataStructure/dataStructure.biz'
+import StructureTemplateCard from 'images/dashboard/structure_template_card.svg'
 
 function DataStructurePage() {
   const {
@@ -47,8 +48,14 @@ function DataStructurePage() {
           <div className="self-stretch h-12 text-right text-slate-700 text-base font-medium leading-normal">
             اخبار
           </div>
+          <div className="w-48 h-4 justify-end items-start gap-2 inline-flex">
+            <RectangleStackIcon />
+            <div className="grow shrink basis-0 text-right text-slate-500 text-xs font-normal leading-none">
+              ۳ {t('template')}
+            </div>
+          </div>
           <div className="self-stretch justify-end items-start gap-2 inline-flex">
-            <ArrowPathIcon />
+            <Clock />
             <div className="grow shrink basis-0 text-right text-slate-500 text-xs font-normal leading-none">
               ۱۴۰۲/۰۶/۱۸
             </div>
@@ -139,14 +146,14 @@ function DataStructurePage() {
           <TemlatesIcon />
         </div>
         <div className="self-stretch text-center text-slate-600 text-sm font-medium leading-tight">
-          هنوز برای این ساختار قالبی ساخته نشده
+          {t('withoutTemplate')}
         </div>
         <div className="self-stretch h-8 flex-col justify-start items-center gap-2 flex">
           <div className="self-stretch h-8 px-4 py-2 bg-blue-500 rounded border border-blue-500 justify-center items-center gap-2 inline-flex">
+            <PlusIcon className="text-white" />
             <div className="text-right text-white text-xs font-normal leading-tight">
-              ساخت قالب جدید
+              {t('createNewStructure')}
             </div>
-            <div className="w-4 h-4 relative" />
           </div>
         </div>
       </div>
@@ -172,16 +179,16 @@ function DataStructurePage() {
             </div>
             <div className="self-stretch h-10 flex-col justify-start items-end gap-2 flex">
               <div className="self-stretch justify-end items-start gap-2 inline-flex">
+                <StructureTemplateCard />
                 <div className="grow shrink basis-0 text-right text-slate-500 text-xs font-normal leading-none">
-                  {t('useTemplateInHome')}
+                  {/* {t('useTemplateInHome')} */}
                 </div>
-                <div className="w-3.5 h-3.5 relative" />
               </div>
               <div className="self-stretch justify-end items-start gap-2 inline-flex">
                 <div className="grow shrink basis-0 text-right text-slate-500 text-xs font-normal leading-none">
                   ۱۴۰۲/۰۵/۱۹
                 </div>
-                <div className="w-3.5 h-3.5 relative" />
+                <StructureTemplateCard />
               </div>
             </div>
           </div>
@@ -271,7 +278,7 @@ function DataStructurePage() {
                       <div
                         onClick={handleToggleOpen}
                         className="text-right text-slate-500 text-xs font-normal leading-tight cursor-pointer">
-                        بستن
+                        {t('close')}
                       </div>
                     </div>
                   </div>
