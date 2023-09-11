@@ -99,7 +99,8 @@
       "templates": "قالب ها",
       "output": "خروجی",
       "close": "بستن",
-      "template": "قالب"
+      "template": "قالب",
+      "default":"پیش‌فرض"
     }
   }
 }

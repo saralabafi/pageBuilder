@@ -8,8 +8,6 @@ import DotsButtonIcon from 'images/dashboard/dotsButton.svg'
 import DownloadIcon from 'images/dashboard/download.svg'
 import DuplicateIcon from 'images/dashboard/duplicateOutline.svg'
 import EditIcon from 'images/dashboard/edit.svg'
-import EllipsisVerticalIcon from 'images/dashboard/ellipsis_vertical.svg'
-import TemlatesIcon from 'images/dashboard/empty_state_part.svg'
 import Eyeicon from 'images/dashboard/eye.svg'
 import FilterIcon from 'images/dashboard/filter.svg'
 import NewsIcon from 'images/dashboard/news.svg'
@@ -19,10 +17,11 @@ import RectangleStackIcon from 'images/dashboard/rectangle_stack.svg'
 import DocumentIcon from 'images/page/formats.svg'
 import PlusIcon from 'images/page/plus.svg'
 import TrashIcon from 'images/page/trash.svg'
-import Clock from 'images/dashboard/clock.svg'
+import ClockIcon from 'images/dashboard/clock.svg'
 import { useTranslations } from 'next-intl'
-import { useDataStructure } from '../dataStructure/dataStructure.biz'
-import StructureTemplateCard from 'images/dashboard/structure_template_card.svg'
+import { useDataStructure } from './dataStructure.biz'
+import { EmptyTemplate } from './EmptyTemplate'
+import { FullTemplates } from './FullTemplates'
 
 function DataStructurePage() {
   const {
@@ -55,7 +54,7 @@ function DataStructurePage() {
             </div>
           </div>
           <div className="self-stretch justify-end items-start gap-2 inline-flex">
-            <Clock />
+            <ClockIcon />
             <div className="grow shrink basis-0 text-right text-slate-500 text-xs font-normal leading-none">
               ۱۴۰۲/۰۶/۱۸
             </div>
@@ -67,7 +66,7 @@ function DataStructurePage() {
     setDynamicContentList([...dynamicContentList, newDynamicContent])
   }
 
-  const dynamicContent = (
+  const menu = (
     <Flex justify="justify-center">
       <Menu
         trigger={
@@ -139,69 +138,13 @@ function DataStructurePage() {
     </Flex>
   )
 
-  const emptytemplates = (
-    <div className="w-96 h-80 px-6 py-12 bg-white flex-col justify-center items-center gap-6 inline-flex">
-      <div className="p-2 flex-col justify-start items-center gap-4 flex">
-        <div className="w-64 h-28 relative">
-          <TemlatesIcon />
-        </div>
-        <div className="self-stretch text-center text-slate-600 text-sm font-medium leading-tight">
-          {t('withoutTemplate')}
-        </div>
-        <div className="self-stretch h-8 flex-col justify-start items-center gap-2 flex">
-          <div className="self-stretch h-8 px-4 py-2 bg-blue-500 rounded border border-blue-500 justify-center items-center gap-2 inline-flex">
-            <PlusIcon className="text-white" />
-            <div className="text-right text-white text-xs font-normal leading-tight">
-              {t('createNewStructure')}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+  const emptyTemplates = <EmptyTemplate />
 
-  const fulltemplates = (
-    <div className="w-96 p-6 bg-white flex-col justify-center items-center gap-2 inline-flex">
-      <div className="self-stretch h-12 px-6 py-4 bg-slate-50 rounded-lg border border-dashed border-slate-300 flex-col justify-center items-center gap-2.5 flex">
-        <div className="h-4 rounded justify-center items-center gap-1 inline-flex">
-          <PlusIcon />
-          <div className="text-right text-blue-500 text-xs font-normal leading-none">
-            {t('newStructure')}
-          </div>
-        </div>
-      </div>
-
-      <div className="self-stretch flex-col justify-center items-center gap-1 flex">
-        <div className="self-stretch p-2 bg-white rounded-lg border border-slate-200 justify-start items-center gap-2 inline-flex">
-          <div className="grow shrink basis-0 p-1 flex-col justify-start items-end gap-4 inline-flex">
-            <div className="self-stretch text-right text-slate-700 text-xs font-medium leading-tight">
-              کارت خلاصه اخبار
-            </div>
-            <div className="self-stretch h-10 flex-col justify-start items-end gap-2 flex">
-              <div className="self-stretch justify-end items-start gap-2 inline-flex">
-                <StructureTemplateCard />
-                <div className="grow shrink basis-0 text-right text-slate-500 text-xs font-normal leading-none">
-                  {/* {t('useTemplateInHome')} */}
-                </div>
-              </div>
-              <div className="self-stretch justify-end items-start gap-2 inline-flex">
-                <div className="grow shrink basis-0 text-right text-slate-500 text-xs font-normal leading-none">
-                  ۱۴۰۲/۰۵/۱۹
-                </div>
-                <StructureTemplateCard />
-              </div>
-            </div>
-          </div>
-          <div className="w-5 self-stretch py-1 justify-center items-start gap-1 flex">
-            <EllipsisVerticalIcon />
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+  const fullTemplates = <FullTemplates />
 
   return (
     <div className=" rounded gap-3 border border-slate-100 bg-white shadow-sm mx-3 my-2 ">
+      {/* top menu */}
       <Flex justify="justify-between" customCSS="border-b p-3">
         <Flex align="items-center" gap="gap-2">
           <div className="p-2 bg-blue-500 border border-blue-400 rounded-md">
@@ -232,6 +175,7 @@ function DataStructurePage() {
       </Flex>
 
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4 p-3">
+        {/* add item */}
         <div
           onClick={handleAddDynamicContent}
           className="w-full h-48 p-6 bg-slate-50 rounded-2xl border border-slate-300 flex-col justify-center items-center gap-4 inline-flex cursor-pointer">
@@ -240,7 +184,7 @@ function DataStructurePage() {
             {t('dataStructure')}
           </div>
         </div>
-
+        {/* repeat item */}
         {dynamicContentList.map((content, index) => (
           <>
             <div style={{ position: 'relative' }} key={index}>
@@ -252,7 +196,7 @@ function DataStructurePage() {
                   top: '10px',
                   left: '10px',
                 }}>
-                {dynamicContent}
+                {menu}
               </div>
             </div>
 
@@ -269,7 +213,7 @@ function DataStructurePage() {
                   {/* Popup content -body */}
                   <div className="pt-4 pb-4">
                     {showTemplates && (
-                      <div>{isfull ? fulltemplates : emptytemplates}</div>
+                      <div>{isfull ? fullTemplates : emptyTemplates}</div>
                     )}
                   </div>
                   {/* Popup content -footer */}
