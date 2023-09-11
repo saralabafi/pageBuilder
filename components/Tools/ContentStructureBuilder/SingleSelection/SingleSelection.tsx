@@ -2,7 +2,7 @@ import React from 'react'
 import { ISingleSelection } from './SingleSelection.types'
 import { Control } from 'components/DndDesigner/DndDesigner.type'
 import { useLocale } from 'next-intl'
-import { LAYOUT_TYPE } from 'types/genral.types'
+import { LAYOUT_TYPE } from 'types/general.types'
 
 const SingleSelection = (props: Control, Componentitem: ISingleSelection) => {
   const locale = useLocale()
