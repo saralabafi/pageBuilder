@@ -32,6 +32,9 @@ function ContentPage() {
     activePage,
     total,
     handlePageChange,
+    parentHierarchy,
+    setParentHierarchy,
+    breadcrumbItems,
   } = useContent()
 
   const t = useTranslations('Dashboard.Content')
@@ -182,13 +185,6 @@ function ContentPage() {
     },
   ]
 
-  const breadcrumbItems = [
-    { label: 'استقلال', url: '/' },
-    { label: 'تیم های داخلی', url: '/products' },
-    { label: 'اخبار ورزشی', url: '/products/category' },
-    { label: 'محتوا', url: '/products/category/current-page' },
-  ]
-
   const itemRender = (current: number, type: string) => {
     if (type === 'page') {
       return (
@@ -255,6 +251,8 @@ function ContentPage() {
       <Flex align="items-start">
         <Flex customCSS="w-[25%]">
           <NavigationDynamicContent
+            parentHierarchy={parentHierarchy}
+            setParentHierarchy={setParentHierarchy}
             activeFolder={activeFolder}
             setActiveFolder={setActiveFolder}
           />
@@ -263,7 +261,10 @@ function ContentPage() {
           customCSS="w-[75%] p-2 border-s"
           direction="flex-col"
           align="items-start">
-          <BreadCrumbComponent breadcrumbItems={breadcrumbItems} />
+          <BreadCrumbComponent
+            breadcrumbItems={breadcrumbItems}
+            handleClick={(id) => setActiveFolder(id)}
+          />
           {dataTable ? (
             <Table columns={columns} dataSource={dataTable} />
           ) : (

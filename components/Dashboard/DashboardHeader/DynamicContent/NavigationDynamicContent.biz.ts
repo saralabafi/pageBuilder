@@ -1,13 +1,13 @@
 'use client'
-import { useQuery } from '@tanstack/react-query'
 import { useLocale, useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
-import { services } from 'services/services'
 import {
   IFolders,
   IFoldersRes,
   INavigationDynamicContent,
 } from './NavigationDynamicContent.type'
+import { useQuery } from '@tanstack/react-query'
+import { services } from 'services/services'
 
 export const useNavigationDynamicContent = (
   props: INavigationDynamicContent
@@ -20,7 +20,7 @@ export const useNavigationDynamicContent = (
     return id === props.activeFolder
   }
 
-  const { data, status } = useQuery(
+  const { data } = useQuery(
     [{ url: 'cms/v1.0/{site}/dynamic-contents/folders' }],
     services.GetData
   )
@@ -51,9 +51,41 @@ export const useNavigationDynamicContent = (
     props.setActiveFolder(sortableItems?.[0]?.id)
   }, [sortableItems])
 
+  const findParentHierarchy: any= (
+    folders: IFolders[],
+    selectedFolderId: string,
+    parentHierarchy = []
+  ) => {
+    for (const folder of folders) {
+      if (folder.id === selectedFolderId) {
+        return [...parentHierarchy, folder]
+      }
+      if (folder.children?.length)
+        if (folder.children?.length > 0) {
+          const foundInChild = findParentHierarchy(
+            folder.children,
+            selectedFolderId,
+            [...parentHierarchy, folder]
+          )
+          if (foundInChild) {
+            return foundInChild
+          }
+        }
+    }
+
+    return null
+  }
+
+  useEffect(() => {
+    const parentHierarchy = findParentHierarchy(
+      sortableItems,
+      props.activeFolder!
+    )
+    props.setParentHierarchy(parentHierarchy)
+  }, [props.activeFolder])
+
   return {
     t,
-    status,
     locale,
     isActive,
     sortableItems,

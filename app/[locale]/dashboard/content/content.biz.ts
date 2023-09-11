@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
+import { IFolders } from 'components/Dashboard/DashboardHeader/DynamicContent/NavigationDynamicContent.type'
 import { useEffect, useState } from 'react'
 import { services } from 'services/services'
 
@@ -6,6 +7,7 @@ export const useContent = () => {
   const [activeFolder, setActiveFolder] = useState<string>()
   const [activePage, setActivePage] = useState<number>(1)
   const [total, setTotal] = useState<number>()
+  const [parentHierarchy, setParentHierarchy] = useState<IFolders[]>([])
   const pageSize = 10
 
   const { data } = useQuery(
@@ -35,6 +37,10 @@ export const useContent = () => {
     setActivePage(page)
   }
 
+  const breadcrumbItems = parentHierarchy?.map((hierarchy: IFolders) => {
+    return { title: hierarchy.title, id: hierarchy.id }
+  })
+  
   return {
     dataTable,
     activeFolder,
@@ -42,6 +48,9 @@ export const useContent = () => {
     activePage,
     pageSize,
     total,
+    breadcrumbItems,
     handlePageChange,
+    parentHierarchy,
+    setParentHierarchy,
   }
 }

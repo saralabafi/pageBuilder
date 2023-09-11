@@ -16,4 +16,6 @@ export interface IFoldersRes {
 export interface INavigationDynamicContent {
   activeFolder: string | undefined
   setActiveFolder: Dispatch<SetStateAction<string | undefined>>
+  parentHierarchy: IFolders[]
+  setParentHierarchy: Dispatch<SetStateAction<IFolders[]>>
 }
