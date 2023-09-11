@@ -1,5 +1,6 @@
 import { Control } from 'components/DndDesigner/DndDesigner.type'
 import { useLocale } from 'next-intl'
+import { FIELD_TYPE } from 'types/general.types'
 
 const TextControl = (props: Control) => {
   const locale = useLocale()
@@ -13,10 +14,10 @@ const TextControl = (props: Control) => {
           {props.settings?.LABEL.Data[locale]}
         </label>
       ) : null}
-      {props?.settings?.FIELD_TYPE.Data === 'SINGLE_LINE' ? (
+      {props?.settings?.FIELD_TYPE.Data === FIELD_TYPE.SINGLE_LINE ? (
         <input
           readOnly
-          className={`appearance-none block w-full bg-white text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white`}
+          className="appearance-none block w-full bg-white text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
           placeholder={props?.settings?.PLACEHOLDER.Data[locale] || ''}
           value={
             props?.settings?.PREDEFINED_VALUE?.Data[locale] != null
@@ -27,7 +28,7 @@ const TextControl = (props: Control) => {
       ) : (
         <textarea
           readOnly
-          className={`appearance-none block w-full bg-white text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white`}
+          className="appearance-none block w-full bg-white text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
           placeholder={props?.settings?.PLACEHOLDER.Data[locale] || ''}
           value={
             props?.settings?.PREDEFINED_VALUE?.Data[locale] != null
