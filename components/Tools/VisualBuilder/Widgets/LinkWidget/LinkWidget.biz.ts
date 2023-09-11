@@ -31,7 +31,6 @@ export const useLinkWidget = (props: Control) => {
     target: { value: React.SetStateAction<string> }
   }) => {
     setInputValue(e.target.value)
-    console.log(inputValue)
     const Data = {
       ...controlValue,
       Address: inputValue,

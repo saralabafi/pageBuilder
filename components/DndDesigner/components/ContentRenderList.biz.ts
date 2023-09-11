@@ -13,7 +13,7 @@ const ContentRenderList = ({ designList, dispatch }: IRenderList) => {
       id: shortid.generate(),
       Name: 'grid',
       children: [],
-      parentId: 0,
+      parentId: component.parentId || 0,
     }
 
     const column = {
@@ -39,14 +39,12 @@ const ContentRenderList = ({ designList, dispatch }: IRenderList) => {
       JSON.stringify(Dictionary[selectedControlId])
     )
 
-
     const settings: any = { ...Dictionary[selectedControlId]?.settings }
     settings[type] = editConfig
     updatedControl.settings = settings
     Dictionary[selectedControlId] = updatedControl
     return dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
-
 
   const deleteItemInDesign = (selectedControlId: string) => {
     for (const key of Object.keys(Dictionary)) {
