@@ -20,12 +20,23 @@ import PlusIcon from 'images/page/plus.svg'
 import TrashIcon from 'images/page/trash.svg'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
-
-import { Pagination } from 'components/CoreComponents/Pagination/Pagination'
 import { useContent } from './content.biz'
+import { Loading } from 'components/CoreComponents/Loading/Loading'
+import Pagination from 'rc-pagination'
 
 function ContentPage() {
-  const { data, showNavigation } = useContent()
+  const {
+    dataTable,
+    activeFolder,
+    setActiveFolder,
+    activePage,
+    total,
+    handlePageChange,
+    parentHierarchy,
+    setParentHierarchy,
+    breadcrumbItems,
+  } = useContent()
+
   const t = useTranslations('Dashboard.Content')
 
   const render = (text: string) => (
@@ -174,12 +185,38 @@ function ContentPage() {
     },
   ]
 
-   const breadcrumbItems = [
-     { label: 'استقلال', url: '/' },
-     { label: 'تیم های داخلی', url: '/products' },
-     { label: 'اخبار ورزشی', url: '/products/category' },
-     { label: 'محتوا', url: '/products/category/current-page' },
-   ]
+  const itemRender = (current: number, type: string) => {
+    if (type === 'page') {
+      return (
+        <a
+          className={`${
+            current === activePage
+              ? 'border-blue-600 bg-blue-50 text-blue-600'
+              : 'border-slate-200 text-slate-500'
+          } mb-0 border  text-xs px-3 py-1 w-8 h-8 rounded`}
+          href={`#${current}`}>
+          {current}
+        </a>
+      )
+    }
+    if (type === 'prev') {
+      return (
+        <a className="border cursor-pointer border-slate-200 text-slate-500 text-xs px-3 py-1 w-8 h-8 rounded">
+          {'<'}
+        </a>
+      )
+    }
+    if (type === 'next') {
+      return (
+        <a className="border cursor-pointer border-slate-200 text-slate-500 text-xs px-3 py-1 w-8 h-8 rounded">
+          {'>'}
+        </a>
+      )
+    }
+    if (type === 'jump-prev' || type === 'jump-next') {
+      return <span className="text-slate-500 ">...</span>
+    }
+  }
 
   return (
     <div className=" rounded gap-3 border border-slate-100 bg-white shadow-sm mx-3 my-2 ">
@@ -213,16 +250,41 @@ function ContentPage() {
       </Flex>
       <Flex align="items-start">
         <Flex customCSS="w-[25%]">
-          {showNavigation && <NavigationDynamicContent />}
+          <NavigationDynamicContent
+            parentHierarchy={parentHierarchy}
+            setParentHierarchy={setParentHierarchy}
+            activeFolder={activeFolder}
+            setActiveFolder={setActiveFolder}
+          />
         </Flex>
         <Flex
           customCSS="w-[75%] p-2 border-s"
           direction="flex-col"
           align="items-start">
-          <BreadCrumbComponent breadcrumbItems={breadcrumbItems} />
-          <Table columns={columns} dataSource={data} />
+          <BreadCrumbComponent
+            breadcrumbItems={breadcrumbItems}
+            handleClick={(id) => setActiveFolder(id)}
+          />
+          {dataTable ? (
+            <Table columns={columns} dataSource={dataTable} />
+          ) : (
+            <Flex
+              margin="my-10"
+              width="w-full"
+              justify="justify-center"
+              customCSS="h-min-[370px]">
+              <Loading />
+            </Flex>
+          )}
           <Flex width="w-full" justify="justify-end" margin="my-4">
-            <Pagination />
+            <Pagination
+              onChange={handlePageChange}
+              current={activePage}
+              hideOnSinglePage
+              total={total}
+              itemRender={itemRender}
+              className="flex  gap-2"
+            />
           </Flex>
         </Flex>
       </Flex>

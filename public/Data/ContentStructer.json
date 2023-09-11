@@ -284,11 +284,11 @@
             "Source": {
               "CHECKBOX": {
                 "fa-ir": "چک باکس",
-                "en-us": "checkbox"
+                "en-us": "CHECKBOX"
               },
               "SWITCH": {
                 "fa-ir": "سوییج",
-                "en-us": "switch"
+                "en-us": "SWITCH"
               }
             },
             "Title": {
