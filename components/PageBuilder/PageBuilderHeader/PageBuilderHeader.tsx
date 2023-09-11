@@ -15,20 +15,13 @@ import Arrowmenu from 'images/page/arrowmenu.svg'
 import { useTranslations } from 'next-intl'
 import classNames from 'classnames'
 import { RootState } from 'redux/Store'
-import { useDispatch, useSelector } from 'react-redux'
-import TT from '../../../public/Data/CunstructingVisualBuilder.json'
-import { setDesignList } from 'redux/Design/Design'
+import { useSelector } from 'react-redux'
 
 export const PageBuilderHeader = () => {
   const t = useTranslations('layout')
   const { designList, activeControl } = useSelector(
     (state: RootState) => state.pageDesign
   )
-
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(setDesignList(TT))
-  }, [])
 
   return (
     <Flex

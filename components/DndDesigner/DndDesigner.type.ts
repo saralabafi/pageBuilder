@@ -3,7 +3,7 @@ import { ElementType, ReactElement, ReactNode } from 'react'
 export type Control = {
   Source?: any
   path?: string[]
-  Id: string
+  Id: string | number
   Name: string
   parentId: string | number
   type?: string
