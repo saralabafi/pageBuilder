@@ -9,10 +9,11 @@ import PlusIcon from 'images/page/plus.svg'
 import TrashIcon from 'images/page/trash.svg'
 import { formRenderItems } from '../../../../../app/[locale]/page/layout.const'
 import { generateStyles } from '../../../../../utils/help/GenerateStyle'
-import { useContainerControl } from './ContainerControl.biz'
+import { useGroupControl } from './GroupControl.biz'
 
-export const ContainerControl = (props: Control) => {
-  const { handleClick, handleDrop } = useContainerControl()
+export const GroupControl = (props: Control) => {
+  const { handleClick, handleDrop, locale } = useGroupControl()
+
   return (
     <Flex
       width="w-full"
@@ -28,17 +29,25 @@ export const ContainerControl = (props: Control) => {
         backgroundColor="bg-slate-50"
         borderColor="border-slate-100"
         customCSS="border py-2 px-3 rounded">
-        <Text fontSize={12} fontWeight={500} color="text-slate-700">
-          تجربه شغلی
-        </Text>
+        {props.settings?.SHOW_LABEL?.Data ? (
+          <Text fontSize={12} fontWeight={500} color="text-slate-700">
+            {props.settings?.LABEL?.Data[locale]}
+          </Text>
+        ) : null}
         <Flex align="items-center" gap="gap-2">
-          <Button backgroundColor="white" border="border border-slate-200">
-            <TrashIcon className="text-slate-400" />
-          </Button>
-          <Button backgroundColor="bg-blue-500">
-            <PlusIcon className="text-white" />
-          </Button>
-          <ArrowDownIcon width={16} className="text-slate-400" />
+          {props.settings?.ENABLE_REPEATABLE?.Data ? (
+            <Flex align="items-center" gap="gap-2">
+              <Button backgroundColor="white" border="border border-slate-200">
+                <TrashIcon className="text-slate-400" />
+              </Button>
+              <Button backgroundColor="bg-blue-500">
+                <PlusIcon className="text-white" />
+              </Button>
+            </Flex>
+          ) : null}
+          {props.settings?.ENABLE_ACCORDION?.Data ? (
+            <ArrowDownIcon width={16} className="text-slate-400" />
+          ) : null}
         </Flex>
       </Flex>
       {props.children?.length ? (
