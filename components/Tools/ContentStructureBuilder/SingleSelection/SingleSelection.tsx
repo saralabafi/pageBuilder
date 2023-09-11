@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ISingleSelection } from './SingleSelection.types'
 import { Control } from 'components/DndDesigner/DndDesigner.type'
 import { useLocale } from 'next-intl'
 import { LAYOUT_TYPE } from 'types/general.types'
 
 const SingleSelection = (props: Control, Componentitem: ISingleSelection) => {
+  const [selectedOption, setSelectedOption] = useState('')
   const locale = useLocale()
   interface Option {
     Id: number
@@ -44,18 +45,29 @@ const SingleSelection = (props: Control, Componentitem: ISingleSelection) => {
       <div className={`flex ${layout}`}>
         {props?.settings?.OPTIONS
           ? props?.settings?.OPTIONS.Data.map((item: Option, i: any) => {
+              const optionTitle = item?.Title?.[locale] || ''
+
+              const handleOptionChange = (
+                event: React.ChangeEvent<HTMLInputElement>
+              ) => {
+                setSelectedOption(event.target.value)
+              }
+
               return (
-                <div className="flex items-center mb-2 me-4">
+                <div className="flex items-center mb-2 me-4" key={i}>
                   <input
                     id={`${i}`}
                     type="radio"
-                    name={item?.Title?.[locale]}
-                    className="w-4 h-4 text-blue-600 "
+                    name={optionTitle}
+                    value={optionTitle}
+                    checked={selectedOption === optionTitle}
+                    onChange={handleOptionChange}
+                    className="w-4 h-4 text-blue-600"
                   />
                   <label
                     htmlFor={`${i}`}
                     className="ms-2 text-[12px] text-slate-700">
-                    {item?.Title?.[locale] || ''}
+                    {optionTitle}
                   </label>
                 </div>
               )
