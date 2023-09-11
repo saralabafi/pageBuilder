@@ -1,4 +1,5 @@
 import { EmptyBox } from 'components/Tools/Common/EmptyBox/EmptyBox'
+import { FormHeader } from 'components/Tools/Common/FormHeader/FormHeader'
 import DropZone from './components/DropZone/DropZone'
 import { useDndDesigner } from './DndDesigner.biz'
 import { Control, IDndDesignerProps } from './DndDesigner.type'
@@ -16,14 +17,12 @@ const DndDesigner = ({
   return (
     <div className="w-full">
       <div className="flex flex-1 flex-col mb-[100px]">
+        {!designList.length ? <FormHeader /> : null}
         <div className="p-2 bg-slate-50 rounded-lg border border-dashed flex-col ">
           {designList?.map((control: Control, index: number) => {
             return (
               <div key={control.id}>
-                
-                <SelectedWrapper
-                  deleteItem={handleDelete}
-                  control={control}>
+                <SelectedWrapper deleteItem={handleDelete} control={control}>
                   <div
                     className="w-full"
                     onClick={(e) => handleClick(e, control)}>

@@ -40,7 +40,9 @@
     "NumberControlDefinition": "Number",
     "ContainerWidgetDefinition": "Container",
     "SingleSelectionControlDefinition": "Single Selection",
-    "MultiSelectionControlDefinition": "Multi Selection"
+    "MultiSelectionControlDefinition": "Multi Selection",
+    "description": "Description",
+    "enterTitleofForm": "Enter the title of the form"
   },
   "visual_builder": {
     "new_option": "new options",
