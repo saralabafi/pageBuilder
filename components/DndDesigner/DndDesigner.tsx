@@ -12,6 +12,7 @@ const DndDesigner = ({
   SelectedWrapper,
   renderList,
 }: IDndDesignerProps) => {
+  renderList
   const { designList } = useDndDesigner(renderList)
 
   return (
@@ -21,12 +22,14 @@ const DndDesigner = ({
         <div className="p-2 bg-slate-50 rounded-lg border border-dashed flex-col ">
           {designList?.map((control: Control, index: number) => {
             return (
-              <div key={control.id}>
+              <div key={control.Id}>
                 <SelectedWrapper deleteItem={handleDelete} control={control}>
                   <div
                     className="w-full"
                     onClick={(e) => handleClick(e, control)}>
-                    {renders[control.Name](control)}
+                    {control.SupportedDefinitionType
+                      ? renders[control.SupportedDefinitionType](control)
+                      : null}
                   </div>
                 </SelectedWrapper>
               </div>

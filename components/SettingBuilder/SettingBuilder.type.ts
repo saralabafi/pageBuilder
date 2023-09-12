@@ -17,6 +17,7 @@ export type Control = {
   Name: string
   Title: LocalizeStringType
   SettingCategories: SettingCategoryType[]
+  SupportedDefinitionType: string
 }
 
 export interface ControlData {

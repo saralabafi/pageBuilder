@@ -10,7 +10,7 @@ import { visualRenderItems } from '../../../../../app/[locale]/page/layout.const
 import { generateStyles } from '../../../../../utils/help/GenerateStyle'
 
 const ContainerWidget = (props: Control) => {
-  const { settings, children, id } = props
+  const { Settings, Children, Id } = props
   const { handleClick, activeControl, handleDrop } = useContainerWidget()
   return (
     <Flex
@@ -18,21 +18,21 @@ const ContainerWidget = (props: Control) => {
       borderSize="border"
       direction="flex-col"
       borderColor="border-slate-400"
-      sx={generateStyles(settings!)}
+      sx={generateStyles(Settings!)}
       customCSS="border-dashed w-[300px]"
-      padding={children?.length ? 'p-1' : 'p-9'}>
-      {props.settings?.LINK.Data.Address ? (
+      padding={Children?.length ? 'p-1' : 'p-9'}>
+      {props.Settings?.LINK?.Value?.Data.Address ? (
         <Link
-          href={props.settings.LINK.Data.Address || ''}
+          href={props.Settings.LINK.Value.Data.Address || ''}
           target=""
           className="w-full h-full">
-          {children?.length ? (
-            children.map((control: Control) => (
+          {Children?.length ? (
+            Children.map((control: Control) => (
               <VisualSelectedWrapper
                 deleteItem={() => {}}
                 control={control}
-                hidden={activeControl !== control.id}
-                key={control.id}>
+                hidden={activeControl !== control.Id}
+                key={control.Id}>
                 <DragComponent
                   handleClick={handleClick}
                   component={control}
@@ -40,7 +40,7 @@ const ContainerWidget = (props: Control) => {
                 />
                 <DropZone
                   data={{
-                    parentId: control.id,
+                    parentId: control.Id,
                     path: '0',
                     childrenCount: 0,
                   }}
@@ -52,7 +52,7 @@ const ContainerWidget = (props: Control) => {
           ) : (
             <DropZone
               data={{
-                parentId: id,
+                parentId: Id,
                 path: '0',
                 childrenCount: 0,
               }}
@@ -63,13 +63,13 @@ const ContainerWidget = (props: Control) => {
         </Link>
       ) : (
         <div>
-          {children?.length ? (
-            children.map((control: Control) => (
+          {Children?.length ? (
+            Children.map((control: Control) => (
               <VisualSelectedWrapper
                 deleteItem={() => {}}
                 control={control}
-                hidden={activeControl !== control.id}
-                key={control.id}>
+                hidden={activeControl !== control.Id}
+                key={control.Id}>
                 <DragComponent
                   handleClick={handleClick}
                   component={control}
@@ -77,7 +77,7 @@ const ContainerWidget = (props: Control) => {
                 />
                 <DropZone
                   data={{
-                    parentId: control.id,
+                    parentId: control.Id,
                     path: '0',
                     childrenCount: 0,
                   }}
@@ -89,7 +89,7 @@ const ContainerWidget = (props: Control) => {
           ) : (
             <DropZone
               data={{
-                parentId: id,
+                parentId: Id,
                 path: '0',
                 childrenCount: 0,
               }}

@@ -8,32 +8,31 @@ import { visualRenderItems } from '../../../../../app/[locale]/page/layout.const
 import { generateStyles } from '../../../../../utils/help/GenerateStyle'
 
 const GridWidget = (props: Control) => {
-  const { settings } = props
+  const { Settings } = props
   const { columnCalculator, handleClick, handleDrop, activeControl } =
     useGridWidget(props)
-
   return (
     <div
       className={`grid 
            grid-cols-12
-           ${props.settings?.SHOW_GUTTER?.Data && 'gap-2'}
+           ${props.Settings?.SHOW_GUTTER?.Data && 'gap-2'}
            border-2 border-gray w-full p-2`}>
-      {props?.children?.map((item: Control, index: number) => {
+      {props?.Children?.map((item: Control, index: number) => {
         const currentPath = `${props.path}-${index}`
         return (
           <Flex
-            key={item.id}
+            key={item.Id}
             align="items-center"
-            sx={generateStyles(settings!)}
+            sx={generateStyles(Settings!)}
             customCSS={`w-full ${columnCalculator()}`}>
             <div className="border border-dashed border-slate-400 p-5 w-full">
-              {item.children?.map((control: Control) => {
+              {item.Children?.map((control: Control) => {
                 return (
                   <VisualSelectedWrapper
                     deleteItem={() => {}}
                     control={control}
-                    hidden={activeControl !== control.id}
-                    key={control.id}>
+                    hidden={activeControl !== control.Id}
+                    key={control.Id}>
                     <DragComponent
                       renders={visualRenderItems}
                       handleClick={handleClick}
@@ -41,9 +40,9 @@ const GridWidget = (props: Control) => {
                     />
                     <DropZone
                       data={{
-                        parentId: item.id,
+                        parentId: item.Id,
                         path: currentPath,
-                        childrenCount: item?.children?.length,
+                        childrenCount: item?.Children?.length,
                       }}
                       onDrop={handleDrop}
                       path=""
@@ -55,9 +54,9 @@ const GridWidget = (props: Control) => {
               })}
               <DropZone
                 data={{
-                  parentId: item.id,
+                  parentId: item.Id,
                   path: currentPath,
-                  childrenCount: item?.children?.length,
+                  childrenCount: item?.Children?.length,
                 }}
                 onDrop={handleDrop}
                 path=""

@@ -17,6 +17,8 @@ export const SideBarIcons: { [key: string]: any } = {
   NumberControlDefinition: <NumericIcon />,
   ContainerControlDefinition: <ContainerIcon />,
   GroupControlDefinition: <ContainerIcon />,
+  ColumnWidgetDefinition: <ContainerIcon />,
+  ContainerWidgetDefinition: <ContainerIcon />,
   SingleSelectionControlDefinition: <SingleSelectionIcon />,
   MultiSelectionControlDefinition: <MultiSelectionIcon />,
 }

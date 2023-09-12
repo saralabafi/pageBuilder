@@ -1,7 +1,9 @@
-import { useCallback } from 'react'
+'use client'
+import { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from 'redux/Store'
 import { Control, DropItem, DropZoneData } from './DndDesigner.type'
+
 import shortid from 'shortid'
 import {
   selectActiveControl,
@@ -23,18 +25,20 @@ export const useDndDesigner = (renderList: any) => {
         designList,
         dispatch,
       })
-
       const newComponent: Control = {
         childCount: dropZone.childrenCount,
         ...item.data.component,
         path: splitDropZonePath,
-        id: shortid.generate(),
+        Id: shortid.generate(),
         parentId: dropZone.parentId,
+        SupportedDefinitionType: item.data.component
+          ? item.data.component.Name
+          : item.data.SupportedDefinitionType,
       }
 
       dispatch(selectActiveTab('setting'))
-      dispatch(selectActiveMenu(newComponent.Name))
-      dispatch(selectActiveControl(newComponent.id))
+      dispatch(selectActiveMenu(newComponent.SupportedDefinitionType))
+      dispatch(selectActiveControl(newComponent.Id))
 
       item.data.type === 'sidebarItem'
         ? addControl(newComponent)

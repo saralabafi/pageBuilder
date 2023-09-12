@@ -15,7 +15,9 @@ export const useNavigateMenu = () => {
   const dispatch = useDispatch()
 
   const handleChange = (item: any, e: any) => {
-    if (e?.droppedToParent?.Name !== 'GridWidgetDefinition') {
+    if (
+      e?.droppedToParent?.SupportedDefinitionType !== 'GridWidgetDefinition'
+    ) {
       dispatch(setDesignList(item))
     }
   }
