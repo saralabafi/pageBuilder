@@ -51,27 +51,28 @@ export const useNavigationDynamicContent = (
     props.setActiveFolder(sortableItems?.[0]?.id)
   }, [sortableItems])
 
-  const findParentHierarchy: any= (
+  const findParentHierarchy: any = (
     folders: IFolders[],
     selectedFolderId: string,
     parentHierarchy = []
   ) => {
-    for (const folder of folders) {
-      if (folder.id === selectedFolderId) {
-        return [...parentHierarchy, folder]
-      }
-      if (folder.children?.length)
-        if (folder.children?.length > 0) {
-          const foundInChild = findParentHierarchy(
-            folder.children,
-            selectedFolderId,
-            [...parentHierarchy, folder]
-          )
-          if (foundInChild) {
-            return foundInChild
-          }
+    if (folders)
+      for (const folder of folders) {
+        if (folder.id === selectedFolderId) {
+          return [...parentHierarchy, folder]
         }
-    }
+        if (folder.children?.length)
+          if (folder.children?.length > 0) {
+            const foundInChild = findParentHierarchy(
+              folder.children,
+              selectedFolderId,
+              [...parentHierarchy, folder]
+            )
+            if (foundInChild) {
+              return foundInChild
+            }
+          }
+      }
 
     return null
   }

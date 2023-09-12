@@ -20,10 +20,12 @@ export const useContentStructureSideMenu = () => {
     dispatch(selectActiveTab(''))
     dispatch(selectActiveMenu(''))
   }
+
   const SettingBoxMemoize = useCallback(
     (props: any) => <SettingBox {...props} />,
     [activeControl]
   )
+
   const handleRenderTabMenu = (props: { controls: Control[] }) => {
     const availableMenu: { [key: string]: { [key: string]: ReactNode } } = {
       sidebar: { title: t('add'), component: <ControlMenu {...props} /> },

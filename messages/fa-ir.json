@@ -40,6 +40,7 @@
     "SwitchControlDefinition": "سویچ",
     "NumberControlDefinition": "عدد",
     "ContainerWidgetDefinition": "کانتینر",
+    "GroupControlDefinition": "گروه",
     "SingleSelectionControlDefinition": "تک انتخابی",
     "MultiSelectionControlDefinition": "چند انتخابی"
   },

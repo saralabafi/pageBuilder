@@ -726,5 +726,76 @@
         }
       }
     ]
+  },
+  {
+    "Children": [],
+    "Name": "GroupControlDefinition",
+    "Title": {
+      "fa-ir": "گروه",
+      "en-us": "Group"
+    },
+    "Icon": "sample-icon",
+    "SettingCategories": [
+      {
+        "Name": {
+          "fa-ir": "عمومی",
+          "en-us": "basic"
+        },
+        "SubCategories": [],
+        "Settings": {
+          "LABEL": {
+            "Help": {
+              "fa-ir": "توضیحات",
+              "en-us": "description"
+            },
+            "PlaceHolder": {
+              "fa-ir": "عنوان گروه را وارد کنید",
+              "en-us": "specify group title"
+            },
+            "Title": {
+              "fa-ir": "عنوان گروه",
+              "en-us": "group title"
+            },
+            "DefaultValue": {
+              "Data": {
+                "fa-ir": "عنوان گروه را وارد کنید",
+                "en-us": "specify group title"
+              }
+            },
+            "BaseType": "TextSettingDefinition"
+          },
+          "ENABLE_ACCORDION": {
+            "Title": {
+              "fa-ir": "آکاردئون",
+              "en-us": "Accordion"
+            },
+            "DefaultValue": {
+              "Data": false
+            },
+            "BaseType": "SwitchSettingDefinition"
+          },
+          "ENABLE_REPEATABLE": {
+            "Title": {
+              "fa-ir": "قابل تکرار",
+              "en-us": "repeatable"
+            },
+            "DefaultValue": {
+              "Data": false
+            },
+            "BaseType": "SwitchSettingDefinition"
+          },
+          "SHOW_LABEL": {
+            "Title": {
+              "fa-ir": "نمایش عنوان",
+              "en-us": "show label"
+            },
+            "DefaultValue": {
+              "Data": true
+            },
+            "BaseType": "SwitchSettingDefinition"
+          }
+        }
+      }
+    ]
   }
 ]

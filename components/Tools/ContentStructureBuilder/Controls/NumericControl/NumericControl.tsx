@@ -1,7 +1,5 @@
-// import { INumericControl } from './NumericControl.type'
 import { Control } from 'components/DndDesigner/DndDesigner.type'
 import { useLocale } from 'next-intl'
-import Setting from 'images/page/setting.svg'
 
 const NumericControl = (props: Control) => {
   const locale = useLocale()
