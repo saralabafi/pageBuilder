@@ -28,13 +28,13 @@ const useFormBuilder = () => {
   const handleDrop = useCallback(
     (dropZone: DropZoneData, item: DropItem) => {
       const splitDropZonePath = dropZone.path.split('-')
-      const newComponent: Control = {
+      const newComponent: any = {
         childCount: dropZone.childrenCount,
         ...item.data.component,
         path: splitDropZonePath,
         id: shortid.generate(),
         parentId: dropZone.parentId,
-        settings: settingPreMaker(item.data.component),
+        Settings: settingPreMaker(item.data.component),
       }
 
       dispatch(selectActiveTab('setting'))
@@ -48,11 +48,11 @@ const useFormBuilder = () => {
     [designList, activeControl]
   )
 
-  const handleClick = (e: React.MouseEvent, data: Control) => {
-    const component = data.children?.[0]?.children?.[0] as Control
-
+  const handleClick = (e: React.MouseEvent, data: any) => {
+    const component = data.Children?.[0]?.Children?.[0] as any
+   
     e.stopPropagation()
-    dispatch(selectActiveControl(component.id))
+    dispatch(selectActiveControl(component.Id))
     dispatch(selectActiveMenu(component.Name))
   }
 

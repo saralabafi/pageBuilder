@@ -22,11 +22,13 @@ const ContentRenderList = ({ designList, dispatch }: IRenderList) => {
       children: [],
       parentId: grid.Id,
     }
+
     component.parentId = column.Id
 
     Dictionary[grid.Id] = grid
     Dictionary[column.Id] = column
     Dictionary[component.id] = component
+
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
   }
 

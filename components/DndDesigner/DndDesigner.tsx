@@ -11,6 +11,7 @@ const DndDesigner = ({
   handleDelete,
   SelectedWrapper,
   renderList,
+  renderItem,
 }: IDndDesignerProps) => {
   renderList
   const { designList } = useDndDesigner(renderList)
@@ -20,16 +21,16 @@ const DndDesigner = ({
       <div className="flex flex-1 flex-col mb-[100px]">
         {!designList.length ? <FormHeader /> : null}
         <div className="p-2 bg-slate-50 rounded-lg border border-dashed flex-col ">
-          {designList?.map((control: Control, index: number) => {
+          {designList?.map((control: Control) => {
+            
+
             return (
               <div key={control.Id}>
                 <SelectedWrapper deleteItem={handleDelete} control={control}>
                   <div
                     className="w-full"
                     onClick={(e) => handleClick(e, control)}>
-                    {control.SupportedDefinitionType
-                      ? renders[control.SupportedDefinitionType](control)
-                      : null}
+                    {renderItem(control)}
                   </div>
                 </SelectedWrapper>
               </div>

@@ -39,7 +39,7 @@ const processData = (data: any, parentId = 0) => {
     const newItem = { ...item, parentId }
 
     if (item.Children && item.Children.length > 0) {
-      let pId = item.Id.toString()
+      const pId = item.Id.toString()
       newItem.Children = processData(item.Children, pId)
     }
 

@@ -20,6 +20,9 @@ const page = () => {
           renders={visualRenderItems}
           renderList={VisualRenderList}
           handleClick={handleClick}
+          renderItem={(control) => {
+            return visualRenderItems[control?.SupportedDefinitionType](control)
+          }}
         />
       </LayoutPageBuilder>
     </DndProvider>
