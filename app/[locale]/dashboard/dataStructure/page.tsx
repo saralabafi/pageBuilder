@@ -142,10 +142,17 @@ function DataStructurePage() {
           </div>
         </div>
         {/* repeat item from api*/}
-        {console.log(isfull)}
+
         {data &&
           data.map((item: IDataStructure) => (
-            <DataStructure item={item} menu={menu} isfull={isfull} isopen={open} handleToggleOpen={handleToggleOpen} isshowTemplates={showTemplates} />
+            <DataStructure
+              item={item}
+              menu={menu}
+              isfull={isfull}
+              isopen={open}
+              handleToggleOpen={handleToggleOpen}
+              isshowTemplates={showTemplates}
+            />
           ))}
       </div>
     </div>

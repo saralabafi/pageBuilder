@@ -11,7 +11,6 @@ export const useDataStructure = () => {
   const handleToggleOpen = () => {
     setShowTemplates(!showTemplates)
     setOpen(!open)
-    console.log(showTemplates, open)
   }
   const { data, status } = useQuery(
     [{ url: 'cms/v1.0/siteName/dynamic-contents/structures' }],
