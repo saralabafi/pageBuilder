@@ -1,9 +1,9 @@
-import { TitleType } from 'components/SettingBuilder/SettingBuilder.type'
+import { LocalizeStringType } from 'components/SettingBuilder/SettingBuilder.type'
 
 export interface IColorPickerProps {
   Source: any
   id?: string
-  Title?: TitleType
+  Title?: LocalizeStringType
   DefaultValue?: string
   Default?: string
   PlaceHolder?: string

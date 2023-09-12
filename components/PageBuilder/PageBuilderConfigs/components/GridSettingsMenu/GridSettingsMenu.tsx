@@ -15,7 +15,7 @@ export const GridSettingsMenu = () => {
         options={columns.map((i) => {
           return { title: i, value: i }
         })}
-        value={String(selectedControl?.settings?.column) || '1'}
+        value={String(selectedControl?.Settings?.column) || '1'}
         onChange={handleOnChangeColumnSize}
       />
     </div>

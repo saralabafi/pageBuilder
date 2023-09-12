@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 
 export interface IVisualSelectedWrapper {
   hidden: boolean
-  children: ReactNode
+  children?: ReactNode
   control: Control
   deleteItem: (id: string) => void
 }

@@ -13,7 +13,7 @@ export const useGridSettingsMenu = () => {
     (state: RootState) => state.pageDesign
   )
   const selectedControl = designList.find(
-    (control: Control) => control.id === activeControl
+    (control: Control) => control.Id === activeControl
   )
   const { editControl } = VisualRenderList({ designList, dispatch })
 

@@ -11,7 +11,7 @@ import './mycss.css'
 import { useEffect } from 'react'
 
 const GridWidget = (props: Control) => {
-  const { settings } = props
+  const { Settings } = props
   const { columnCalculator, handleClick, handleDrop, activeControl } =
     useGridWidget(props)
 

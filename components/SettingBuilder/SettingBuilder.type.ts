@@ -1,11 +1,11 @@
-export type TitleType = {
+export type LocalizeStringType = {
   [Key: string]: string
 }
 
 export type SettingCategoryType = {
   id?: number
   icon: string
-  Name: TitleType
+  Name: LocalizeStringType
   Settings: any
   SubCategories: SettingCategoryType[] | []
 }
@@ -15,8 +15,9 @@ export type Control = {
   Icon?: string
   type?: string
   Name: string
-  Title: TitleType
+  Title: LocalizeStringType
   SettingCategories: SettingCategoryType[]
+  SupportedDefinitionType: string
 }
 
 export interface ControlData {

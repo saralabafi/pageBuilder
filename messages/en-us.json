@@ -39,8 +39,11 @@
     "SwitchControlDefinition": "Switch",
     "NumberControlDefinition": "Number",
     "ContainerWidgetDefinition": "Container",
+    "GroupControlDefinition": "Group",
     "SingleSelectionControlDefinition": "Single Selection",
-    "MultiSelectionControlDefinition": "Multi Selection"
+    "MultiSelectionControlDefinition": "Multi Selection",
+    "description": "Description",
+    "enterTitleofForm": "Enter the title of the form"
   },
   "visual_builder": {
     "new_option": "new options",
@@ -80,6 +83,23 @@
       "edit": "edit",
       "history": "history",
       "delete": "delete"
+    },
+    "DataStructure": {
+      "dataStructure": "data structure",
+      "newContent": "new content",
+      "newStructure": "new Structure",
+      "useTemplateInHome": "use template in home",
+      "copy": "copy",
+      "move": "move",
+      "edit": "edit",
+      "history": "history",
+      "delete": "delete",
+      "view": "view",
+      "templates": "templates",
+      "output": "output",
+      "close": "close",
+      "template": "template",
+      "default": "default"
     }
   }
 }
