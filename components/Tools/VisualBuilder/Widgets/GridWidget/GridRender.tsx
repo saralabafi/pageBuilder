@@ -226,7 +226,7 @@ const GridWidget = (props: Control) => {
     }
 
     resizableX()
-  }, [props.children])
+  }, [props.Children])
 
   return (
     <div style={{ position: 'relative' }} dir="ltr">
@@ -249,19 +249,19 @@ const GridWidget = (props: Control) => {
         ))}
       </i>
       <div className="containerbox flex h-32">
-        {props?.children?.map((item: Control, index: number) => {
+        {props?.Children?.map((item: Control, index: number) => {
           const currentPath = `${props.path}-${index}`
           return (
             <>
               <div className="item h-32">
                 <div className="border border-dashed border-slate-400 p-5 w-full h-full">
-                  {item.children?.map((control: Control) => {
+                  {item.Children?.map((control: Control) => {
                     return (
                       <VisualSelectedWrapper
                         deleteItem={() => {}}
                         control={control}
-                        hidden={activeControl !== control.id}
-                        key={control.id}>
+                        hidden={activeControl !== control.Id}
+                        key={control.Id}>
                         <DragComponent
                           renders={visualRenderItems}
                           handleClick={handleClick}
@@ -269,9 +269,9 @@ const GridWidget = (props: Control) => {
                         />
                         <DropZone
                           data={{
-                            parentId: item.id,
+                            parentId: item.Id,
                             path: currentPath,
-                            childrenCount: item?.children?.length,
+                            childrenCount: item?.Children?.length,
                           }}
                           onDrop={handleDrop}
                           path=""
@@ -281,16 +281,16 @@ const GridWidget = (props: Control) => {
                   })}
                   <DropZone
                     data={{
-                      parentId: item.id,
+                      parentId: item.Id,
                       path: currentPath,
-                      childrenCount: item?.children?.length,
+                      childrenCount: item?.Children?.length,
                     }}
                     onDrop={handleDrop}
                     path=""
                   />
                 </div>
               </div>
-              {index < props?.children?.length! - 1 && (
+              {index < props?.Children?.length! - 1 && (
                 <div className="resizer h-32"></div>
               )}
             </>
