@@ -8,8 +8,8 @@ import ClockIcon from 'images/dashboard/clock.svg'
 export const FullTemplates = () => {
   const t = useTranslations('Dashboard.DataStructure')
   return (
-    <div className="w-96 p-6 bg-white flex-col justify-center items-center gap-2 inline-flex">
-      <div className="self-stretch h-12 px-6 py-4 bg-slate-50 rounded-lg border border-dashed border-slate-300 flex-col justify-center items-center gap-2.5 flex cursor-pointer">
+    <div className="w-96 p-6 bg-white flex-col justify-center items-center gap-2 inline-flex z-10">
+      <div className="self-stretch h-12 px-6 py-4 bg-slate-50 rounded-lg border border-dashed border-slate-300 flex-col justify-center items-center gap-2.5 flex cursor-pointer z-10">
         <div className="h-4 rounded justify-center items-center gap-1 inline-flex">
           <PlusIcon />
           <div className="text-right text-blue-500 text-xs font-normal leading-none">
