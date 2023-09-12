@@ -2,7 +2,6 @@ import { EmptyBox } from 'components/Tools/Common/EmptyBox/EmptyBox'
 import DropZone from './components/DropZone/DropZone'
 import { useDndDesigner } from './DndDesigner.biz'
 import { Control, IDndDesignerProps } from './DndDesigner.type'
-import TT from '../../public/Data/CunstructingVisualBuilder.json'
 
 const DndDesigner = ({
   handleDrop,

@@ -1,7 +1,6 @@
 [
   {
     "Name": "HtmlWidget",
-    "Children": [],
     "Value": {
       "Data": {
         "fa-ir": "ویرایشگر html",
@@ -134,7 +133,7 @@
       }
     },
     "SupportedDefinitionType": "HtmlWidgetDefinition",
-    "Id": "1000",
+    "Id": 1000,
     "DefaultValue": null,
     "parentId": 0
   },
@@ -143,7 +142,6 @@
     "Children": [
       {
         "Name": "HtmlWidget",
-        "Children": [],
         "Value": {
           "Data": {
             "fa-ir": "فرزند کانتیر هستم - سلام",
@@ -276,7 +274,7 @@
           }
         },
         "SupportedDefinitionType": "HtmlWidgetDefinition",
-        "Id": "1002",
+        "Id": 1002,
         "DefaultValue": null,
         "parentId": "1001"
       }
@@ -373,7 +371,7 @@
       }
     },
     "SupportedDefinitionType": "ContainerWidgetDefinition",
-    "Id": "1001",
+    "Id": 1001,
     "DefaultValue": null,
     "parentId": 0
   },
@@ -517,7 +515,7 @@
               }
             },
             "SupportedDefinitionType": "HtmlWidgetDefinition",
-            "Id": "88",
+            "Id": 88,
             "DefaultValue": null,
             "parentId": "10004"
           },
@@ -655,7 +653,7 @@
               }
             },
             "SupportedDefinitionType": "HtmlWidgetDefinition",
-            "Id": "999",
+            "Id": 999,
             "DefaultValue": null,
             "parentId": "10004"
           }
@@ -671,7 +669,7 @@
           }
         },
         "SupportedDefinitionType": "Column",
-        "Id": "10004",
+        "Id": 10004,
         "DefaultValue": null,
         "parentId": "10003"
       }
@@ -757,7 +755,7 @@
       }
     },
     "SupportedDefinitionType": "GridWidgetDefinition",
-    "Id": "10003",
+    "Id": 10003,
     "DefaultValue": null,
     "parentId": 0
   }

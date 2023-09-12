@@ -29,7 +29,6 @@ const useContainerWidget = () => {
         designList,
         dispatch,
       })
-      debugger
       const newComponent: Control = {
         childCount: dropZone.childrenCount,
         ...item.data.component,
@@ -41,7 +40,6 @@ const useContainerWidget = () => {
           ? item.data.component.SupportedDefinitionType
           : item.data.SupportedDefinitionType,
       }
-
       dispatch(selectActiveTab('setting'))
       dispatch(selectActiveMenu(newComponent.SupportedDefinitionType))
       dispatch(selectActiveControl(newComponent.Id))
@@ -77,6 +75,5 @@ const settingPreMaker = (component: any) => {
   component?.SettingCategories.map((SettingCategories: any) => {
     objectValue(SettingCategories)
   })
-  console.log(newDefaultValue)
   return newDefaultValue
 }

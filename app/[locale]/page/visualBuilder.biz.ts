@@ -26,7 +26,6 @@ const useVisualBuilder = () => {
         designList,
         dispatch,
       })
-      debugger
       const newComponent: Control = {
         childCount: dropZone.childrenCount,
         ...item.data.component,
@@ -34,9 +33,10 @@ const useVisualBuilder = () => {
         Id: shortid.generate(),
         Settings: settingPreMaker(item.data.component),
         parentId: dropZone.parentId,
-        SupportedDefinitionType: item.data.component.SupportedDefinitionType
-          ? item.data.component.SupportedDefinitionType
-          : item.data.component.Name,
+        SupportedDefinitionType:
+          item.data.component && item.data.component.SupportedDefinitionType
+            ? item.data.component.SupportedDefinitionType
+            : item.data.component.Name,
       }
 
       dispatch(selectActiveTab('setting'))

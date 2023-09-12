@@ -158,7 +158,6 @@ const createColumn = (item: Control) => {
       : item.Name,
   }
 }
-
 const renderDictionary = (designList: Control[]) => {
   const DictionaryItems: Dictionary = {}
   const createDictionaryItems = (items: Control[]) => {
@@ -175,7 +174,6 @@ const renderDictionary = (designList: Control[]) => {
 
   return DictionaryItems
 }
-
 const convertObjectToArray = (obj: Dictionary) => {
   const resultMap = new Map()
   const result: Control[] = []
