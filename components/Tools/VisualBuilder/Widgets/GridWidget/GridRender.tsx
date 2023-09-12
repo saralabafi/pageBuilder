@@ -12,8 +12,7 @@ import { useEffect } from 'react'
 
 const GridWidget = (props: Control) => {
   const { Settings } = props
-  const { columnCalculator, handleClick, handleDrop, activeControl } =
-    useGridWidget(props)
+  const { columnCalculator, handleClick, handleDrop } = useGridWidget(props)
 
   let columnSpan = 0
   useEffect(() => {
@@ -251,6 +250,8 @@ const GridWidget = (props: Control) => {
       <div className="containerbox flex h-32">
         {props?.Children?.map((item: Control, index: number) => {
           const currentPath = `${props.path}-${index}`
+          console.log(item)
+
           return (
             <>
               <div className="item h-32">
@@ -260,7 +261,8 @@ const GridWidget = (props: Control) => {
                       <VisualSelectedWrapper
                         deleteItem={() => {}}
                         control={control}
-                        hidden={activeControl !== control.Id}
+                        // hidden={activeControl !== control.Id}
+                        hidden={undefined}
                         key={control.Id}>
                         <DragComponent
                           renders={visualRenderItems}
