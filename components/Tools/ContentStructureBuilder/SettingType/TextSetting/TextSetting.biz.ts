@@ -3,7 +3,7 @@ import { RootState } from 'redux/Store'
 import { useDispatch, useSelector } from 'react-redux'
 import { ITextSettingProps } from './TextSetting.types'
 import ContentRenderList from 'components/DndDesigner/components/ContentRenderList.biz'
-import { TitleType } from 'components/SettingBuilder/SettingBuilder.type'
+import { LocalizeStringType } from 'components/SettingBuilder/SettingBuilder.type'
 
 export const useTextSetting = (props: ITextSettingProps) => {
   const { activeControl, designList } = useSelector(
@@ -22,7 +22,7 @@ export const useTextSetting = (props: ITextSettingProps) => {
   const controlValue = returnDefaultValue(activeControl, type)
 
   const onChange = (value: string) => {
-    const editConfig: { [key: string]: TitleType } = {}
+    const editConfig: { [key: string]: LocalizeStringType } = {}
     editConfig['Data'] = {
       ...controlValue,
       [locale]: value,

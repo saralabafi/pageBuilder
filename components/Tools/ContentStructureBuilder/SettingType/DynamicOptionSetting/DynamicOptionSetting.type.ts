@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { TitleType } from 'components/SettingBuilder/SettingBuilder.type'
+import { LocalizeStringType } from 'components/SettingBuilder/SettingBuilder.type'
 
 export interface DynamicOptionsSttingProps {
   Source?: any
   title?: string
   onOptionsChange?: (options: string[]) => void
   id?: string
-  Title?: TitleType
+  Title?: LocalizeStringType
   DefaultValue?: string
   Default?: string
   PlaceHolder?: string

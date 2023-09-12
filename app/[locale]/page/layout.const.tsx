@@ -27,7 +27,7 @@ export const contentSidebarItems: SidebarItem[] = [
 ]
 export const visualSidebarItems: SidebarItem[] = [
   { title: 'addItem', icon: <PlusCircle />, type: 'sidebar' },
-  { title: 'navigation', icon: <Folder />, type: 'navigation' },
+  { title: 'navigation', icon: <Folder width={28} />, type: 'navigation' },
   { title: 'formats', icon: <Formats />, type: 'formats' },
   { title: 'settings', icon: <Setting />, type: 'setting' },
 ]
