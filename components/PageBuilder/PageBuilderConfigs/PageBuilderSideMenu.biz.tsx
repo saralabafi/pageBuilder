@@ -9,7 +9,6 @@ import { RootState } from 'redux/Store'
 import { services } from 'services/services'
 import { ControlMenu } from './components/ControlMenu/ControlMenu'
 import { NavigateMenu } from './components/NavigateMenu/NavigateMenu'
-import Pdata from '../../../public/Data/VisualBuilder.json'
 
 export const usePageBuilderSideMenu = () => {
   const dispatch = useDispatch()
@@ -30,16 +29,15 @@ export const usePageBuilderSideMenu = () => {
     return availableMenu[activeTab]
   }
 
-  const data = Pdata
+  const { data, status } = useQuery(
+    [
+      {
+        url: 'cms/v1.0/siteName/pages/widgets/definitions',
+      },
+    ],
+    services.GetData
+  )
 
-  // const { data, status } = useQuery(
-  //   [
-  //     {
-  //       url: 'cms/v1.0/siteName/pages/widgets/definitions',
-  //     },
-  //   ],
-  //   services.GetData
-  // )
 
   const controls: any = data?.map((control: any) => {
     return { component: control, type: 'sidebarItem' }

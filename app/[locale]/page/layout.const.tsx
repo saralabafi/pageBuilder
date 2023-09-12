@@ -1,8 +1,8 @@
 import ContainerWidget from 'components/Tools/VisualBuilder/Widgets/ContainerWidget/ContainerWidget'
 import { Renders } from 'components/DndDesigner/DndDesigner.type'
-import TextControl from 'components/Tools/ContentStructureBuilder/Contrrols/TextControl/TextControl'
+import TextControl from 'components/Tools/ContentStructureBuilder/Controls/TextControl/TextControl'
 import SwitchControl from 'components/Tools/ContentStructureBuilder/SwitchControl/SwitchControl'
-import NumericControl from 'components/Tools/ContentStructureBuilder/Contrrols/NumericControl/NumericControl'
+import NumericControl from 'components/Tools/ContentStructureBuilder/Controls/NumericControl/NumericControl'
 import SingleSelection from 'components/Tools/ContentStructureBuilder/SingleSelection/SingleSelection'
 import Folder from 'images/page/folder.svg'
 import Formats from 'images/page/formats.svg'
@@ -12,6 +12,7 @@ import ConditionIcon from 'images/ContentStructureBuilder/condition.svg'
 import { ReactElement } from 'react'
 import { HtmlWidget } from 'components/Tools/VisualBuilder/Widgets/HTML_Widget/HtmlWidget'
 import GridWidget from 'components/Tools/VisualBuilder/Widgets/GridWidget/GridRender'
+import { GroupControl } from 'components/Tools/ContentStructureBuilder/Controls/GroupControl/GroupControl'
 
 export type SidebarItem = {
   title: string
@@ -26,7 +27,7 @@ export const contentSidebarItems: SidebarItem[] = [
 ]
 export const visualSidebarItems: SidebarItem[] = [
   { title: 'addItem', icon: <PlusCircle />, type: 'sidebar' },
-  { title: 'navigation', icon: <Folder />, type: 'navigation' },
+  { title: 'navigation', icon: <Folder width={28} />, type: 'navigation' },
   { title: 'formats', icon: <Formats />, type: 'formats' },
   { title: 'settings', icon: <Setting />, type: 'setting' },
 ]
@@ -52,5 +53,6 @@ export const formRenderItems: Renders = {
   TextControlDefinition: (props) => <TextControl {...props} />,
   SwitchControlDefinition: (props) => <SwitchControl {...props} />,
   NumberControlDefinition: (props) => <NumericControl {...props} />,
+  GroupControlDefinition: (props) => <GroupControl  {...props} />,
   SingleSelectionControlDefinition: (props) => <SingleSelection {...props} />,
 }

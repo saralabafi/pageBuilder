@@ -13,7 +13,7 @@ const ContentRenderList = ({ designList, dispatch }: IRenderList) => {
       Id: shortid.generate(),
       Name: 'grid',
       children: [],
-      parentId: 0,
+      parentId: component.parentId || 0,
     }
 
     const column = {

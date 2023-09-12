@@ -16,9 +16,9 @@ function Text(props: ITextProps) {
     <p
       className={`
       ${color} 
-      ${customCSS ?? ''} 
       ${sx ?? ''} 
       ${fontSizeRender()} ${fontWeightRender()} 
+      ${customCSS ?? ''} 
       ${padding ?? ''} ${margin ?? ''}`}>
       {children}
     </p>

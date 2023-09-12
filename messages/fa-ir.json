@@ -12,6 +12,8 @@
     "sample": " دسته بندی اخبار داخلی ",
     "save": "ذخیره",
     "getstarteddrag": "برای شروع، یک آیتم را به اینجا بکشید",
+    "enterTitleofForm": "عنوان فرم را وارد کنید",
+    "description": "توضیحات",
     "publish": "انتشار",
     "preview": "پیش نمایش",
     "add": " افزودن آیتم جدید",
@@ -38,6 +40,7 @@
     "SwitchControlDefinition": "سویچ",
     "NumberControlDefinition": "عدد",
     "ContainerWidgetDefinition": "کانتینر",
+    "GroupControlDefinition": "گروه",
     "SingleSelectionControlDefinition": "تک انتخابی",
     "MultiSelectionControlDefinition": "چند انتخابی"
   },
@@ -48,5 +51,52 @@
   "GlobalHeader": {
     "search": "جستجو در داشبورد",
     "logo": "لوگو"
+  },
+  "Dashboard": {
+    "HeaderDashboard": {
+      "contentManagement": "مدیریت محتوا",
+      "dashboard": "داشبورد",
+      "webManagement": "مدیرت سایت",
+      "visualBuilder": "ویژوال بیلدر",
+      "formBuilder": "فرم ساز",
+      "flowBuilder": "فرایندساز",
+      "content": "محتوا",
+      "dataStructure": "ساختار داده ",
+      "file&Media": "فایل و مدیا",
+      "setting": "پیکربندی"
+    },
+    "Content": {
+      "newContent": "محتوا جدید",
+      "content": "محتوا",
+      "title": "عنوان",
+      "contentType": "ساختار داده",
+      "createdByFullName": "ایجادکننده",
+      "status": "وضعیت انتشار",
+      "lastModifiedAt": "آخرین تغییرات",
+      "link": "لینک",
+      "PUBLISHED": "منتشر شده",
+      "REJECTED": "رد شده",
+      "INPROGRESS": "رد شده",
+      "copy": "کپی",
+      "move": "انتقال",
+      "edit": "ویرایش",
+      "history": "تاریخچه",
+      "delete": "حذف",
+      "search": "جستجو در دسته‌بندی‌ها"
+    },
+    "DataStructure": {
+      "dataStructure": "ساختار داده",
+      "newContent": "محتوا جدید",
+      "newStructure": "قالب جدید",
+      "useTemplateInHome": " قالب استفاده شده در صفحه خانه",
+      "copy": "کپی",
+      "move": "انتقال",
+      "edit": "ویرایش",
+      "history": "تاریخچه",
+      "delete": "حذف",
+      "view": "مشاهده",
+      "templates": "قالب ها",
+      "output": "خروجی"
+    }
   }
 }

@@ -35,7 +35,7 @@ export const ControlMenu = ({ controls }: any) => {
             sx={{ opacity }}
             backgroundColor="bg-neutral-50"
             customCSS="border border-neutral-200 rounded py-2 px-3 cursor-pointer">
-            {React.cloneElement(SideBarIcons[control.component.Name], {
+            {React.cloneElement(SideBarIcons[control.component.Name] , {
               className: 'text-neutral-500',
             })}
             <Text color="text-neutral-600">
