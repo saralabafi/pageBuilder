@@ -1,4 +1,7 @@
+import { useQuery } from '@tanstack/react-query'
 import { ReactNode, useEffect, useState } from 'react'
+import { services } from 'services/services'
+import DataStructurePage from './page'
 
 export const useDataStructure = () => {
   const [dynamicContentList, setDynamicContentList] = useState<ReactNode[]>([])
@@ -9,7 +12,13 @@ export const useDataStructure = () => {
     setShowTemplates(!showTemplates)
     setOpen(!open)
   }
+  const { data, status } = useQuery(
+    [{ url: 'cms/v1.0/siteName/dynamic-contents/structures' }],
+    services.GetData
+  )
+
   return {
+    data,
     dynamicContentList,
     showTemplates,
     open,

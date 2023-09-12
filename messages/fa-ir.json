@@ -88,7 +88,9 @@
       "dataStructure": "ساختار داده",
       "newContent": "محتوا جدید",
       "newStructure": "قالب جدید",
+      "createNewStructure": "ساخت قالب جدید",
       "useTemplateInHome": " قالب استفاده شده در صفحه خانه",
+      "withoutTemplate": "هنوز برای این ساختار قالبی ساخته نشده",
       "copy": "کپی",
       "move": "انتقال",
       "edit": "ویرایش",
@@ -96,7 +98,10 @@
       "delete": "حذف",
       "view": "مشاهده",
       "templates": "قالب ها",
-      "output": "خروجی"
+      "output": "خروجی",
+      "close": "بستن",
+      "template": "قالب",
+      "default":"پیش‌فرض"
     }
   }
 }

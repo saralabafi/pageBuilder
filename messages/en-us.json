@@ -96,7 +96,10 @@
       "delete": "delete",
       "view": "view",
       "templates": "templates",
-      "output": "output"
+      "output": "output",
+      "close": "close",
+      "template": "template",
+      "default": "default"
     }
   }
 }
