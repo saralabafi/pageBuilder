@@ -20,6 +20,9 @@ const FormBuilder = () => {
           renders={formRenderItems}
           renderList={ContentRenderList}
           handleClick={handleClick}
+          renderItem={(control) => {
+            return formRenderItems[control?.Name](control)
+          }}
         />
       </LayoutFormBuilder>
     </DndProvider>

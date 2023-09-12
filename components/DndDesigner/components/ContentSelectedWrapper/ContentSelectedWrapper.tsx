@@ -13,8 +13,8 @@ export const ContentSelectedWrapper = ({
 }: IContentSelectedWrapper) => {
   const t = useTranslations('layout')
   const { activeControl } = useSelector((state: RootState) => state.pageDesign)
-  const hidden = control.children?.[0]?.children?.[0].id !== activeControl
-  const controlName = control.children?.[0]?.children?.[0].Name
+  const hidden = control.Children?.[0]?.Children?.[0].Id !== activeControl
+  const controlName = control.Children?.[0]?.Children?.[0].Name
   if (hidden) return children
   return (
     <div className="border border-blue-300 justify-center items-center inline-flex relative p-[2px] w-full">
@@ -25,7 +25,7 @@ export const ContentSelectedWrapper = ({
         <div className="w-4 h-4 relative">
           <TrashIcon
             className="text-blue-900 cursor-pointer"
-            onClick={() => deleteItem(control.id)}
+            onClick={() => deleteItem(control.Id as string)}
           />
         </div>
         <div className="w-4 h-4 relative">

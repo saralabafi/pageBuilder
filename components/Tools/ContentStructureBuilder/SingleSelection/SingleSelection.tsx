@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
-import { ISingleSelection } from './SingleSelection.types'
 import { Control } from 'components/DndDesigner/DndDesigner.type'
 import { useLocale } from 'next-intl'
+import React, { useState } from 'react'
 import { LAYOUT_TYPE } from 'types/general.types'
 
-const SingleSelection = (props: Control, Componentitem: ISingleSelection) => {
+const SingleSelection = (props: Control) => {
   const [selectedOption, setSelectedOption] = useState('')
   const locale = useLocale()
   interface Option {
@@ -16,35 +15,35 @@ const SingleSelection = (props: Control, Componentitem: ISingleSelection) => {
   }
 
   const layout =
-    props?.settings?.LAYOUT_TYPE.Data == LAYOUT_TYPE.LINE
+    props?.Settings?.LAYOUT_TYPE.Data == LAYOUT_TYPE.LINE
       ? 'flex-row'
       : 'flex-col'
   return (
     <div className="m-4">
       <p>
-        {props?.settings?.REQUIRED?.Data?.Enabled ? (
+        {props?.Settings?.REQUIRED?.Data?.Enabled ? (
           <span className="text-red-500 me-2">*</span>
         ) : null}
-        {props?.settings?.SHOW_LABEL.Data === true && (
+        {props?.Settings?.SHOW_LABEL.Data === true && (
           <span>
-            {props?.settings?.LABEL ? props.settings?.LABEL.Data[locale] : null}
+            {props?.Settings?.LABEL ? props.Settings?.LABEL.Data[locale] : null}
           </span>
         )}
       </p>
-      {props?.settings?.HELP ? (
+      {props?.Settings?.HELP ? (
         <p className="text-slate-400 text-[10px] italic">
-          {props?.settings?.HELP.Data[locale] || ''}
+          {props?.Settings?.HELP.Data[locale] || ''}
         </p>
       ) : null}
-      {props?.settings?.REQUIRED?.Data?.ErrorMessage ? (
+      {props?.Settings?.REQUIRED?.Data?.ErrorMessage ? (
         <p className="text-red-500 text-[10px] italic pb-2">
           {' '}
-          {props?.settings?.REQUIRED?.Data.ErrorMessage[locale]}
+          {props?.Settings?.REQUIRED?.Data.ErrorMessage[locale]}
         </p>
       ) : null}
       <div className={`flex ${layout}`}>
-        {props?.settings?.OPTIONS
-          ? props?.settings?.OPTIONS.Data.map((item: Option, i: any) => {
+        {props?.Settings?.OPTIONS
+          ? props?.Settings?.OPTIONS.Data.map((item: Option, i: number) => {
               const optionTitle = item?.Title?.[locale] || ''
 
               const handleOptionChange = (

@@ -51,4 +51,5 @@ export interface IDndDesignerProps {
   handleClick: (e: React.MouseEvent, control: Control) => void
   SelectedWrapper: ElementType
   renderList: any
+  renderItem: (control: any) => ReactNode
 }

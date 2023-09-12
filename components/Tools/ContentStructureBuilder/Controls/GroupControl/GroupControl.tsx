@@ -20,7 +20,7 @@ export const GroupControl = (props: Control) => {
       borderSize="border"
       direction="flex-col"
       borderColor="border-slate-100"
-      sx={generateStyles(props.settings!)}
+      sx={generateStyles(props.Settings!)}
       customCSS="rounded bg-slate-50"
       padding={'p-0'}>
       <Flex
@@ -29,13 +29,13 @@ export const GroupControl = (props: Control) => {
         backgroundColor="bg-slate-50"
         borderColor="border-slate-100"
         customCSS="border py-2 px-3 rounded">
-        {props.settings?.SHOW_LABEL?.Data ? (
+        {props.Settings?.SHOW_LABEL?.Data ? (
           <Text fontSize={12} fontWeight={500} color="text-slate-700">
-            {props.settings?.LABEL?.Data[locale]}
+            {props.Settings?.LABEL?.Data[locale]}
           </Text>
         ) : null}
         <Flex align="items-center" gap="gap-2">
-          {props.settings?.ENABLE_REPEATABLE?.Data ? (
+          {props.Settings?.ENABLE_REPEATABLE?.Data ? (
             <Flex align="items-center" gap="gap-2">
               <Button backgroundColor="white" border="border border-slate-200">
                 <TrashIcon className="text-slate-400" />
@@ -45,13 +45,13 @@ export const GroupControl = (props: Control) => {
               </Button>
             </Flex>
           ) : null}
-          {props.settings?.ENABLE_ACCORDION?.Data ? (
+          {props.Settings?.ENABLE_ACCORDION?.Data ? (
             <ArrowDownIcon width={16} className="text-slate-400" />
           ) : null}
         </Flex>
       </Flex>
-      {props.children?.length ? (
-        props.children?.map((control: Control) => {
+      {props.Children?.length ? (
+        props.Children?.map((control: Control) => {
           return (
             <>
               <DragComponent
@@ -61,7 +61,7 @@ export const GroupControl = (props: Control) => {
               />
               <DropZone
                 data={{
-                  parentId: props.id,
+                  parentId: props.Id,
                   path: '0',
                   childrenCount: 0,
                 }}
@@ -74,7 +74,7 @@ export const GroupControl = (props: Control) => {
       ) : (
         <DropZone
           data={{
-            parentId: props.id,
+            parentId: props.Id,
             path: '0',
             childrenCount: 0,
           }}
