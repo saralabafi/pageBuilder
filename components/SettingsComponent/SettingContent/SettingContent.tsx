@@ -9,6 +9,7 @@ import { DropDownSetting } from 'components/Tools/ContentStructureBuilder/Settin
 import { CheckboxSetting } from 'components/Tools/ContentStructureBuilder/SettingType/CheckboxSetting/CheckboxSetting'
 import ColorPicker from 'components/Tools/ContentStructureBuilder/SettingType/ColorpickerSetting/ColorPickerSetting'
 import LinkWidget from 'components/Tools/VisualBuilder/Widgets/LinkWidget/LinkWidget'
+import CustomCss from 'components/Tools/ContentStructureBuilder/SettingType/CustomCss/CustomCss'
 
 const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
   const obj: { [key: string]: ReactNode } = {
@@ -23,7 +24,7 @@ const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
     ColorPickerSettingDefinition: <ColorPicker Source={Setting} />,
     LinkSettingDefinition: <LinkWidget Source={Setting} />,
     SupportedDefinitionType: <LinkWidget Source={Setting} />,
-    CssEditorSettingDefinition: <LinkWidget Source={Setting} />,
+    CssEditorSettingDefinition: <CustomCss />,
   }
   return obj[Setting.BaseType]
 }
