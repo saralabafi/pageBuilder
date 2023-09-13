@@ -8,32 +8,24 @@ import { useState } from 'react'
 import { IInputTagGeneratorProps } from './InputTagGeneratorSetting.type'
 
 export const useInputTagGeneratorSetting = (props: IInputTagGeneratorProps) => {
-  // setting
   const { activeControl, designList } = useSelector(
     (state: RootState) => state.pageDesign
   )
+
   const dispatch = useDispatch()
   const { editControl, returnDefaultValue } = ContentRenderList({
     designList,
     dispatch,
   })
-  // const type = props.Source.type
-  const locale = useLocale()
-  const controlValue = returnDefaultValue(activeControl, 'string')
 
-  const onChange = (value: string) => {
-    const editConfig: { [key: string]: LocalizeStringType } = {}
-    editConfig['Data'] = {
-      ...controlValue,
-      [locale]: value,
-    }
-
-    editControl(activeControl, 'string', editConfig)
-  }
-
-  // component
+  const type: string = props.Source.type
   const [inputValue, setInputValue] = useState('')
   const [buttons, setButtons] = useState<string[]>([])
+  const controlValue = returnDefaultValue(activeControl, type)
+  
+  const onChange = () => {
+    editControl(activeControl, type, buttons)
+  }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value)
@@ -54,7 +46,6 @@ export const useInputTagGeneratorSetting = (props: IInputTagGeneratorProps) => {
 
   return {
     onChange,
-    locale,
     controlValue,
     handleRemoveButton,
     handleInputKeyPress,

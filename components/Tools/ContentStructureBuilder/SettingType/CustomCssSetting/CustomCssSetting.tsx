@@ -2,15 +2,21 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from 'redux/Store'
-import { addStyleToWidget, stylesWidget } from 'redux/StyleVisualBuilder/StyleVisualBuilder'
+import {
+  addStyleToWidget,
+  stylesWidget,
+} from 'redux/StyleVisualBuilder/StyleVisualBuilder'
 import CodeMirror from '@uiw/react-codemirror'
-import { javascript } from '@codemirror/lang-less'
-function CustomCss() {
+import { css } from '@codemirror/lang-css'
+import { useLocale } from 'next-intl'
+
+export const CustomCssSetting = (props: any) => {
+  
   const dispatch = useDispatch()
   const { activeControl } = useSelector((state: RootState) => state.pageDesign)
   const { stylesWidget } = useSelector((state: RootState) => state.widgetStyles)
-
   const [cssContent, setCssContent] = useState<string>('')
+  const locale = useLocale()
 
   useEffect(() => {
     stylesWidget?.filter((stylesWidget: stylesWidget) => {
@@ -25,19 +31,19 @@ function CustomCss() {
   }
 
   return (
-    <div>
+    <>
+      <label className="inline-block uppercase tracking-wide text-slate-700 text-[12px] mb-2">
+        {props.Source.Title[locale]}
+      </label>
       <CodeMirror
-        value="console.log('hello world!');"
-        height="200px"
-        extensions={[javascript({ jsx: true })]}
-        onChange={onChange}
-      />
-      <textarea
-        onBlur={writeCssToFile}
         value={cssContent}
-        onChange={(e) => setCssContent(e.target.value)}></textarea>
-    </div>
+        height="200px"
+        dir="ltr"
+        className="w-full"
+        extensions={[css()]}
+        onBlur={writeCssToFile}
+        onChange={(e) => setCssContent(e)}
+      />
+    </>
   )
 }
-
-export default CustomCss
