@@ -1,7 +1,7 @@
 'use client'
 import {
   Control,
-  DefControl,
+  DefinitionControl,
   DropItem,
   DropZoneData,
 } from 'components/DndDesigner/DndDesigner.type'
@@ -56,7 +56,7 @@ const useVisualBuilder = () => {
 }
 export default useVisualBuilder
 
-const settingPreMaker = (component: DefControl) => {
+const settingPreMaker = (component: DefinitionControl) => {
   const newDefaultValue: { [key: string]: any } = {}
   let Value: { [key: string]: any } = {}
 

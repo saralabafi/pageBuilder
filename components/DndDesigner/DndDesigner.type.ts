@@ -15,7 +15,7 @@ export type Control = {
   SupportedDefinitionType?: string
 }
 
-export type DefControl = {
+export type DefinitionControl = {
   Id?: string | number
   parentId: string | number
   Children?: Control
@@ -42,7 +42,7 @@ export type Renders = {
 
 export type DropItem = {
   data: {
-    component: DefControl
+    component: DefinitionControl
     content: string
     type: string
     icon: ReactElement
