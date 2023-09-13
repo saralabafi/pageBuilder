@@ -12,18 +12,10 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
 
   const addControl = (component: any) => {
     Dictionary[component.Id] = component
-    if (component.Name == 'GridWidgetDefinition') {
-      const obj = {
-        Id: shortid.generate(),
-        Name: 'column',
-        Children: [],
-        parentId: component.Id,
-        SupportedDefinitionType: component.SupportedDefinitionType
-          ? component.SupportedDefinitionType
-          : component.Name,
-      }
-
-      Dictionary[obj.Id] = obj
+    if (component.SupportedDefinitionType == 'GridWidgetDefinition') {
+      const Id = shortid.generate()
+      component.Children[0].Id = Id
+      component.Children[0].parentId = component.Id
     }
 
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
@@ -179,13 +171,14 @@ const convertObjectToArray = (obj: Dictionary) => {
   const result: Control[] = []
 
   for (const key in obj) {
-    const { parentId, Name, Settings, SupportedDefinitionType } = obj[key]
+    const { parentId, Name, Settings, SupportedDefinitionType, Children } =
+      obj[key]
     resultMap.set(key, {
       Id: key,
       parentId,
       Name,
       ...(Settings && { Settings }),
-      Children: [],
+      Children: Children || [],
       SupportedDefinitionType: SupportedDefinitionType
         ? SupportedDefinitionType
         : Name,
@@ -197,7 +190,12 @@ const convertObjectToArray = (obj: Dictionary) => {
     const parent = resultMap.get(node.parentId)
 
     if (parent) {
-      parent.Children.push(node)
+      if (parent.Children) {
+        parent.Children.push(node)
+      } else {
+        parent.Children = []
+        parent.Children.push(node)
+      }
     } else {
       result.push(node)
     }
