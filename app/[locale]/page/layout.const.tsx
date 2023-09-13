@@ -44,15 +44,17 @@ export const visualRenderItems: Renders = {
   },
 }
 
-export const formRenderItems: Renders = {
-  grid: (props) => formRenderItems['column'](props.children?.[0] as any),
-  column: (props) =>
-    formRenderItems[props.children?.[0]?.SupportedDefinitionType as string](
-      props.children?.[0] as any
+export const formRenderItems: any = {
+  grid: (props: any) => formRenderItems['column'](props.Children?.[0] as any),
+  column: (props: any) =>
+    formRenderItems[props.Children?.[0]?.Name as string](
+      props.Children?.[0] as any
     ),
-  TextControlDefinition: (props) => <TextControl {...props} />,
-  SwitchControlDefinition: (props) => <SwitchControl {...props} />,
-  NumberControlDefinition: (props) => <NumericControl {...props} />,
-  GroupControlDefinition: (props) => <GroupControl  {...props} />,
-  SingleSelectionControlDefinition: (props) => <SingleSelection {...props} />,
+  TextControlDefinition: (props: any) => <TextControl {...props} />,
+  SwitchControlDefinition: (props: any) => <SwitchControl {...props} />,
+  NumberControlDefinition: (props: any) => <NumericControl {...props} />,
+  GroupControlDefinition: (props: any) => <GroupControl {...props} />,
+  SingleSelectionControlDefinition: (props: any) => (
+    <SingleSelection {...props} />
+  ),
 }

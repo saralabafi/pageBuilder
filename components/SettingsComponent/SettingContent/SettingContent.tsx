@@ -22,6 +22,8 @@ const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
     DynamicOptionsSettingDefinition: <DynamicOptionSetting Source={Setting} />,
     ColorPickerSettingDefinition: <ColorPicker Source={Setting} />,
     LinkSettingDefinition: <LinkWidget Source={Setting} />,
+    SupportedDefinitionType: <LinkWidget Source={Setting} />,
+    CssEditorSettingDefinition: <LinkWidget Source={Setting} />,
   }
   return obj[Setting.BaseType]
 }

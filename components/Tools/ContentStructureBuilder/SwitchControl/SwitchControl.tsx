@@ -10,11 +10,11 @@ export const SwitchControl = (props: Control) => {
     <>
       <div className="flex flex-col p-4 py-2 px-6 bg-slate-100 border border-slate-300 border-dashed rounded-md ">
         <div className="flex items-center mb-4">
-          {props?.settings?.DISPLAY_TYPES.Data === DISPLAY_TYPES.CHECKBOX ? (
+          {props?.Settings?.DISPLAY_TYPES.Data === DISPLAY_TYPES.CHECKBOX ? (
             <CheckBox
               isChecked={false}
               isDisabled={
-                props?.settings?.PREDEFINED_VALUE.Data ===
+                props?.Settings?.PREDEFINED_VALUE.Data ===
                 PredefinedValue.DISABLED
                   ? true
                   : false
@@ -25,7 +25,7 @@ export const SwitchControl = (props: Control) => {
             <div className="relative inline-flex flex-shrink-0 h-6 w-12 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring focus-visible:ring-primary">
               <Switch
                 disabled={
-                  props?.settings?.PREDEFINED_VALUE.Data ===
+                  props?.Settings?.PREDEFINED_VALUE.Data ===
                   PredefinedValue.DISABLED
                     ? true
                     : false
@@ -37,22 +37,22 @@ export const SwitchControl = (props: Control) => {
               />
             </div>
           )}
-          {props?.settings?.REQUIRED?.Data.Enabled ? (
+          {props?.Settings?.REQUIRED?.Data.Enabled ? (
             <span className="text-red-500">*</span>
           ) : null}
           <label className="mr-2 text-sm" htmlFor="toggleInput">
-            {props?.settings?.LABEL.Data[locale]}
+            {props?.Settings?.LABEL.Data[locale]}
           </label>
         </div>
-        {props?.settings?.HELP && (
+        {props?.Settings?.HELP && (
           <div className="text-gray-500 text-xs mb-2">
-            {props?.settings?.HELP.Data[locale]}
+            {props?.Settings?.HELP.Data[locale]}
           </div>
         )}
-        {props?.settings?.REQUIRED?.Data.Enabled &&
-          props?.settings?.REQUIRED?.Data.ErrorMessage && (
+        {props?.Settings?.REQUIRED?.Data.Enabled &&
+          props?.Settings?.REQUIRED?.Data.ErrorMessage && (
             <div className="text-red-500 text-xs">
-              {props?.settings?.REQUIRED?.Data.ErrorMessage[locale]}
+              {props?.Settings?.REQUIRED?.Data.ErrorMessage[locale]}
             </div>
           )}
       </div>

@@ -37,10 +37,12 @@ export const usePageBuilderSideMenu = () => {
     ],
     services.GetData
   )
+  let controls: any[] = data?.filter((control: any) => control.IsAddable)
 
-
-  const controls: any = data?.map((control: any) => {
-    return { component: control, type: 'sidebarItem' }
+  controls = controls?.map((control: any) => {
+    if (control.IsAddable) {
+      return { component: control, type: 'sidebarItem' }
+    } else return
   })
 
   return {
