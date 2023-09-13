@@ -19,9 +19,6 @@ export default function Home() {
           فارسی
         </Link>
       </div>
-
-      <InputTagGeneratorSetting />
-      <InputTagGenerator />
     </div>
   )
 }
