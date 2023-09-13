@@ -57,4 +57,5 @@ export const formRenderItems: any = {
   SingleSelectionControlDefinition: (props: any) => (
     <SingleSelection {...props} />
   ),
+  DateTimeControlDefinition: (props: any) => <SingleSelection {...props} />,
 }
