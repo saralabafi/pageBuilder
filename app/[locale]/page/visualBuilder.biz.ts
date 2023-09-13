@@ -1,6 +1,7 @@
 'use client'
 import {
   Control,
+  DefinitionControl,
   DropItem,
   DropZoneData,
 } from 'components/DndDesigner/DndDesigner.type'
@@ -27,16 +28,13 @@ const useVisualBuilder = () => {
         dispatch,
       })
       const newComponent: Control = {
-        childCount: dropZone.childrenCount,
-        ...item.data.component,
-        path: splitDropZonePath,
+        Children: item.data.component.Children || [],
         Id: shortid.generate(),
         Settings: settingPreMaker(item.data.component),
         parentId: dropZone.parentId,
+        Name: item.data.component.SupportedControlType,
         SupportedDefinitionType:
-          item.data.component && item.data.component.SupportedDefinitionType
-            ? item.data.component.SupportedDefinitionType
-            : item.data.component.Name,
+          item.data.component && item.data.component.Name,
       }
 
       dispatch(selectActiveTab('setting'))
@@ -58,7 +56,7 @@ const useVisualBuilder = () => {
 }
 export default useVisualBuilder
 
-const settingPreMaker = (component: any) => {
+const settingPreMaker = (component: DefinitionControl) => {
   const newDefaultValue: { [key: string]: any } = {}
   let Value: { [key: string]: any } = {}
 
@@ -71,6 +69,8 @@ const settingPreMaker = (component: any) => {
     return listSetting.map((key: any) => {
       Value = { Value: key[1]?.DefaultValue }
       newDefaultValue[key[0]] = Value
+      newDefaultValue[key[0]].SupportedDefinition = key[1]?.BaseType
+      newDefaultValue[key[0]].Name = key[1]?.SupportedSettingType
     })
   }
 

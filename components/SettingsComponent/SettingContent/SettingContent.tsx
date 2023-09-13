@@ -10,6 +10,7 @@ import { CheckboxSetting } from 'components/Tools/ContentStructureBuilder/Settin
 import ColorPicker from 'components/Tools/ContentStructureBuilder/SettingType/ColorpickerSetting/ColorPickerSetting'
 import LinkWidget from 'components/Tools/VisualBuilder/Widgets/LinkWidget/LinkWidget'
 import CustomCss from 'components/Tools/ContentStructureBuilder/SettingType/CustomCss/CustomCss'
+import InputTagGeneratorSetting from 'components/Tools/ContentStructureBuilder/SettingType/InputTagGeneratorSetting/InputTagGeneratorSetting'
 
 const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
   const obj: { [key: string]: ReactNode } = {
@@ -22,9 +23,10 @@ const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
     DropDownSettingDefinition: <DropDownSetting Source={Setting} />,
     DynamicOptionsSettingDefinition: <DynamicOptionSetting Source={Setting} />,
     ColorPickerSettingDefinition: <ColorPicker Source={Setting} />,
-    LinkSettingDefinition: <LinkWidget Source={Setting} />,
-    SupportedDefinitionType: <LinkWidget Source={Setting} />,
+    LinkSettingDefinition: <LinkWidget Source={Setting} />,    
+    TagSettingDefinition: <InputTagGeneratorSetting Source={Setting} />,
     CssEditorSettingDefinition: <CustomCss />,
+
   }
   return obj[Setting.BaseType]
 }
