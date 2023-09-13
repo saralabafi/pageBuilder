@@ -5,12 +5,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import ContentRenderList from 'components/DndDesigner/components/ContentRenderList.biz'
 import { LocalizeStringType } from 'components/SettingBuilder/SettingBuilder.type'
 import { useState } from 'react'
-import {
-  IInputTagGeneratorProps,
-  RemovableButtonProps,
-} from './InputTagGeneratorSetting.type'
+import { IInputTagGeneratorProps } from './InputTagGeneratorSetting.type'
 
 export const useInputTagGeneratorSetting = (props: IInputTagGeneratorProps) => {
+  // setting
   const { activeControl, designList } = useSelector(
     (state: RootState) => state.pageDesign
   )
@@ -19,9 +17,9 @@ export const useInputTagGeneratorSetting = (props: IInputTagGeneratorProps) => {
     designList,
     dispatch,
   })
-  const type = props.Source.type
+  // const type = props.Source.type
   const locale = useLocale()
-  const controlValue = returnDefaultValue(activeControl, type)
+  const controlValue = returnDefaultValue(activeControl, 'string')
 
   const onChange = (value: string) => {
     const editConfig: { [key: string]: LocalizeStringType } = {}
@@ -30,9 +28,10 @@ export const useInputTagGeneratorSetting = (props: IInputTagGeneratorProps) => {
       [locale]: value,
     }
 
-    editControl(activeControl, type, editConfig)
+    editControl(activeControl, 'string', editConfig)
   }
 
+  // component
   const [inputValue, setInputValue] = useState('')
   const [buttons, setButtons] = useState<string[]>([])
 

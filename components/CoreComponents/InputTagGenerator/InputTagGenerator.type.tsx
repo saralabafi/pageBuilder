@@ -6,7 +6,7 @@ export interface RemovableButtonProps {
 }
 
 export interface IInputTagGeneratorProps {
-  Source: any
+  Source?: any
   id?: string
   Title?: LocalizeStringType
   DefaultValue?: OptionType

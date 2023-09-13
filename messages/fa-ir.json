@@ -6,8 +6,8 @@
     "table": {
       "itemperpage": "تعدا موارد قابل نمایش"
     },
-    "input_tagGenerator": {
-      "typinghere": "اینجا تایپ کنید..."
+    "inputTagGenerator": {
+      "typingHere": "اینجا تایپ کنید"
     }
   },
   "layout": {
@@ -104,7 +104,8 @@
       "output": "خروجی",
       "close": "بستن",
       "template": "قالب",
-      "default": "پیش‌فرض"
+      "default": "پیش‌فرض",
+      "typingHere": "اینجا تایپ کنید"
     }
   }
 }

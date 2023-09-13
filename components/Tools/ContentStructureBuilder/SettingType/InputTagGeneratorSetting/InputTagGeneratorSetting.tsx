@@ -29,7 +29,7 @@ const RemovableButton: React.FC<RemovableButtonProps> = ({
 }
 
 const InputTagGeneratorSetting = (props: IInputTagGeneratorProps) => {
-  const t = useTranslations('Component.input_tagGenerator')
+  const t = useTranslations('Component.inputTagGenerator')
   const {
     onChange,
     locale,
@@ -50,7 +50,7 @@ const InputTagGeneratorSetting = (props: IInputTagGeneratorProps) => {
           onChange={handleInputChange}
           onKeyPress={handleInputKeyPress}
           className="no-border rounded-md px-3 w-full outline-0 text-end"
-          // placeholder={t('typinghere')}
+          placeholder={t('typingHere')}
         />
       </div>
       <div className="">

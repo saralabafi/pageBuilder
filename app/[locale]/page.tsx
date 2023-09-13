@@ -1,4 +1,6 @@
 'use client'
+import InputTagGenerator from 'components/CoreComponents/InputTagGenerator/InputTagGenerator'
+import InputTagGeneratorSetting from 'components/Tools/ContentStructureBuilder/SettingType/InputTagGeneratorSetting/InputTagGeneratorSetting'
 import Link from 'next/link'
 export default function Home() {
   return (
@@ -17,6 +19,9 @@ export default function Home() {
           فارسی
         </Link>
       </div>
+
+      <InputTagGeneratorSetting />
+      <InputTagGenerator />
     </div>
   )
 }

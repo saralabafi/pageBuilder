@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import CancelIcon from 'images/ContentStructureBuilder/cancel.svg'
 import { useLocale, useTranslations } from 'next-intl'
+import { useInputTagGenerator } from './InputTagGenerator.biz'
+import {
+  IInputTagGeneratorProps,
+  RemovableButtonProps,
+} from './InputTagGenerator.type'
 
-interface InputTagGeneratorProps {
-  text: string
-  onRemove: () => void
-}
-
-const RemovableButton: React.FC<InputTagGeneratorProps> = ({
+const RemovableButton: React.FC<RemovableButtonProps> = ({
   text,
   onRemove,
 }) => {
@@ -28,30 +28,17 @@ const RemovableButton: React.FC<InputTagGeneratorProps> = ({
   )
 }
 
-const InputTagGenerator: React.FC = () => {
-  const t = useTranslations('Component.input_tagGenerator')
-  const [inputValue, setInputValue] = useState('')
-  const [buttons, setButtons] = useState<string[]>([])
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value)
-  }
-
-  const handleInputKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && inputValue.trim() !== '') {
-      setButtons((prevButtons) => [...prevButtons, inputValue.trim()])
-      setInputValue('')
-    }
-  }
-
-  const handleRemoveButton = (buttonText: string) => {
-    setButtons((prevButtons) =>
-      prevButtons.filter((button) => button !== buttonText)
-    )
-  }
+const InputTagGenerator = (props: IInputTagGeneratorProps) => {
+  const t = useTranslations('Component.inputTagGenerator')
+  const {
+    handleRemoveButton,
+    handleInputKeyPress,
+    handleInputChange,
+    buttons,
+    inputValue,
+  } = useInputTagGenerator(props)
 
   return (
-    // "Input w-80 h-8 py-2 bg-white rounded border border-slate-200 justify-end items-center inline-flex"
     <div className="flex h-8 focus:outline-none focus:ring-2 border focus:ring-blue-500 w-full">
       <div className="">
         <input
@@ -60,7 +47,7 @@ const InputTagGenerator: React.FC = () => {
           onChange={handleInputChange}
           onKeyPress={handleInputKeyPress}
           className="no-border rounded-md px-3 w-full outline-0 text-end"
-          // placeholder={t('typinghere')}
+          placeholder={t('typingHere')}
         />
       </div>
       <div className="">
