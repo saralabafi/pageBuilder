@@ -4,6 +4,7 @@ interface IQueryKey {
   url: string
   page?: number
   pageSize?: number
+  body?: string
 }
 const base_api = axios.create({
   baseURL: 'http://gateway.dourtal.co/api/',
@@ -17,6 +18,27 @@ const GetData = async ({ queryKey }: QueryFunctionContext) => {
   return res.data
 }
 
+const UpdateData = async (data: any) => {
+  const fff = { Widgets: data }
+  console.log(JSON.stringify(fff))
+  const response = await fetch(
+    'http://gateway.dourtal.co/api/cms/v1.0/{site}/pages/ca320982-04cf-47dc-233c-08dbb45cb49a',
+    {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(fff),
+    }
+  )
+
+  if (!response.ok) {
+    throw new Error('An error occurred while updating the data.')
+  }
+  console.log('response is: ', response.json())
+}
+
 export const services = {
   GetData,
+  UpdateData,
 }

@@ -14,7 +14,7 @@ export const useLayout = () => {
   const { data } = useQuery(
     [
       {
-        url: 'cms/v1.0/{site}/pages/5E155016-EDC0-4364-D0D9-08DBB1CFC585',
+        url: 'cms/v1.0/{site}/pages/ca320982-04cf-47dc-233c-08dbb45cb49a',
       },
     ],
     services.GetData
@@ -28,9 +28,16 @@ export const useLayout = () => {
   }, [data])
 
   const { activeTab } = useSelector((state: RootState) => state.pageDesign)
+  const handleClick = () => {
+    const newData = ppp(designList)
+    console.log('NewData is: ', newData)
+    
+    services.UpdateData(newData)
+  }
 
   return {
     activeTab,
+    handleClick,
   }
 }
 
@@ -43,6 +50,21 @@ const processData = (data: any, parentId = 0) => {
       newItem.Children = processData(item.Children, pId)
     }
 
+    return newItem
+  })
+}
+const ppp = (designList: any) => {
+  return designList.map((item: any) => {
+    const newItem = { ...item }
+    if (item.Name == 'ColumnWidget') {
+      newItem.Id = 0
+    } else {
+      newItem.Id = Math.floor(Math.random() * 1000)
+    }
+    if (item.Children && item.Children.length > 0) {
+      newItem.Children = ppp(item.Children)
+    }
+    delete newItem.parentId
     return newItem
   })
 }
