@@ -5,6 +5,9 @@
   "Component": {
     "table": {
       "itemperpage": "Items per Page"
+    },
+    "inputTagGenerator": {
+      "typingHere": "typing here  "
     }
   },
   "layout": {
