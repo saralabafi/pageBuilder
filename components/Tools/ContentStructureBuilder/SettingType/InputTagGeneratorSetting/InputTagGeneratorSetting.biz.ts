@@ -1,11 +1,8 @@
-import { useLocale } from 'next-intl'
+import { useEffect, useState } from 'react'
 import { RootState } from 'redux/Store'
 import { useDispatch, useSelector } from 'react-redux'
-
-import ContentRenderList from 'components/DndDesigner/components/ContentRenderList.biz'
-import { LocalizeStringType } from 'components/SettingBuilder/SettingBuilder.type'
-import { useState } from 'react'
 import { IInputTagGeneratorProps } from './InputTagGeneratorSetting.type'
+import ContentRenderList from 'components/DndDesigner/components/ContentRenderList.biz'
 
 export const useInputTagGeneratorSetting = (props: IInputTagGeneratorProps) => {
   const { activeControl, designList } = useSelector(
@@ -22,10 +19,8 @@ export const useInputTagGeneratorSetting = (props: IInputTagGeneratorProps) => {
   const [inputValue, setInputValue] = useState('')
   const [buttons, setButtons] = useState<string[]>([])
   const controlValue = returnDefaultValue(activeControl, type)
-  
-  const onChange = () => {
-    editControl(activeControl, type, buttons)
-  }
+
+  const onChange = () => {}
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value)
@@ -37,6 +32,15 @@ export const useInputTagGeneratorSetting = (props: IInputTagGeneratorProps) => {
       setInputValue('')
     }
   }
+
+  useEffect(() => {
+    const editConfig = {
+      ...controlValue,
+      Value: { Data: { SelectedItems: buttons } },
+    }
+
+    editControl(activeControl, type, editConfig)
+  }, [buttons])
 
   const handleRemoveButton = (buttonText: string) => {
     setButtons((prevButtons) =>
