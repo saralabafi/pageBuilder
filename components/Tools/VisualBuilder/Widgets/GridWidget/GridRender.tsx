@@ -228,61 +228,77 @@ const GridWidget = (props: Control) => {
   }, [props.Children])
 
   return (
-    <div
-      className={`grid 
-           grid-cols-12
-           ${props.Settings?.SHOW_GUTTER?.Data && 'gap-2'}
-           border-2 border-gray w-full p-2`}>
-      {props?.Children?.map((item: Control, index: number) => {
-        const currentPath = `${props.path}-${index}`
-        return (
-          <Flex
-            key={item.Id}
-            align="items-center"
-            sx={generateStyles(Settings!)}
-            customCSS={`w-full ${columnCalculator()}`}>
-            <div className="border border-dashed border-slate-400 p-5 w-full">
-              {item.Children?.map((control: Control) => {
-                return (
-                  <VisualSelectedWrapper
-                    deleteItem={() => {}}
-                    control={control}
-                    hidden={activeControl !== control.Id}
-                    key={control.Id}>
-                    <DragComponent
-                      renders={visualRenderItems}
-                      handleClick={handleClick}
-                      component={control}
-                    />
-                    <DropZone
-                      data={{
-                        parentId: item.Id,
-                        path: currentPath,
-                        childrenCount: item?.Children?.length,
-                      }}
-                      onDrop={handleDrop}
-                      path=""
-                      // isLast={undefined}
-                      // className={undefined}
-                    />
-                  </VisualSelectedWrapper>
-                )
-              })}
-              <DropZone
-                data={{
-                  parentId: item.Id,
-                  path: currentPath,
-                  childrenCount: item?.Children?.length,
-                }}
-                onDrop={handleDrop}
-                path=""
-                // isLast={undefined}
-                // className={undefined}
-              />
-            </div>
-          </Flex>
-        )
-      })}
+    <div style={{ position: 'relative' }} dir="ltr">
+      {/* Add the grid markup for visual comparison */}
+      <i
+        className="visualcomparison grid grid-cols-12"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: -1,
+        }}>
+        {Array.from({ length: 12 }).map((_, index) => (
+          <div
+            key={index}
+            className="bg-gray-400 h-32 flex justify-center border border-dashed">
+            {index + 1}
+          </div>
+        ))}
+      </i>
+      <div className="containerbox flex h-32">
+        {props?.Children?.map((item: Control, index: number) => {
+          const currentPath = `${props.path}-${index}`
+          console.log(item)
+
+          return (
+            <>
+              <div className="item h-32">
+                <div className="border border-dashed border-slate-400 p-5 w-full h-full">
+                  {item.Children?.map((control: Control) => {
+                    return (
+                      <VisualSelectedWrapper
+                        deleteItem={() => {}}
+                        control={control}
+                        // hidden={activeControl !== control.Id}
+                        hidden={undefined}
+                        key={control.Id}>
+                        <DragComponent
+                          renders={visualRenderItems}
+                          handleClick={handleClick}
+                          component={control}
+                        />
+                        <DropZone
+                          data={{
+                            parentId: item.Id,
+                            path: currentPath,
+                            childrenCount: item?.Children?.length,
+                          }}
+                          onDrop={handleDrop}
+                          path=""
+                        />
+                      </VisualSelectedWrapper>
+                    )
+                  })}
+                  <DropZone
+                    data={{
+                      parentId: item.Id,
+                      path: currentPath,
+                      childrenCount: item?.Children?.length,
+                    }}
+                    onDrop={handleDrop}
+                    path=""
+                  />
+                </div>
+              </div>
+              {index < props?.Children?.length! - 1 && (
+                <div className="resizer h-32"></div>
+              )}
+            </>
+          )
+        })}
+      </div>
     </div>
   )
 }
