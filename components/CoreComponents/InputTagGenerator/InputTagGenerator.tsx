@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
 import CancelIcon from 'images/ContentStructureBuilder/cancel.svg'
-import { useLocale, useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl'
+import React from 'react'
 import { useInputTagGenerator } from './InputTagGenerator.biz'
 import {
   IInputTagGeneratorProps,

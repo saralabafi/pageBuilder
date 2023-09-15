@@ -9,6 +9,7 @@ import { DropDownSetting } from 'components/Tools/ContentStructureBuilder/Settin
 import { CheckboxSetting } from 'components/Tools/ContentStructureBuilder/SettingType/CheckboxSetting/CheckboxSetting'
 import ColorPicker from 'components/Tools/ContentStructureBuilder/SettingType/ColorpickerSetting/ColorPickerSetting'
 import LinkWidget from 'components/Tools/VisualBuilder/Widgets/LinkWidget/LinkWidget'
+import { CustomCssSetting } from 'components/Tools/ContentStructureBuilder/SettingType/CustomCssSetting/CustomCssSetting'
 import InputTagGeneratorSetting from 'components/Tools/ContentStructureBuilder/SettingType/InputTagGeneratorSetting/InputTagGeneratorSetting'
 
 const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
@@ -23,8 +24,8 @@ const RenderSettingComponents: (Setting: any) => ReactNode = (Setting: any) => {
     DynamicOptionsSettingDefinition: <DynamicOptionSetting Source={Setting} />,
     ColorPickerSettingDefinition: <ColorPicker Source={Setting} />,
     LinkSettingDefinition: <LinkWidget Source={Setting} />,
-    SupportedDefinitionType: <InputTagGeneratorSetting Source={Setting} />,
-    CssEditorSettingDefinition: <LinkWidget Source={Setting} />,
+    TagSettingDefinition: <InputTagGeneratorSetting Source={Setting} />,
+    CssEditorSettingDefinition: <CustomCssSetting Source={Setting} />,
   }
   return obj[Setting.BaseType]
 }
