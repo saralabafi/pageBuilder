@@ -14,8 +14,10 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
     Dictionary[component.Id] = component
     if (component.SupportedDefinitionType == 'GridWidgetDefinition') {
       const Id = shortid.generate()
-      component.Children[0].Id = Id
-      component.Children[0].parentId = component.Id
+      if (component.Children && component.Children.length > 0) {
+        component.Children[0].Id = Id
+        component.Children[0].parentId = component.Id
+      }
     }
 
     dispatch(setDesignList(convertObjectToArray(Dictionary)))
