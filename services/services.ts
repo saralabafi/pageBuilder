@@ -20,7 +20,6 @@ const GetData = async ({ queryKey }: QueryFunctionContext) => {
 
 const UpdateData = async (data: any) => {
   const pageContent = { Widgets: data }
-  console.log(JSON.stringify(pageContent))
   const response = await fetch(
     'http://gateway.dourtal.co/api/cms/v1.0/{site}/pages/ca320982-04cf-47dc-233c-08dbb45cb49a',
     {
@@ -35,7 +34,6 @@ const UpdateData = async (data: any) => {
   if (!response.ok) {
     throw new Error('An error occurred while updating the data.')
   }
-  console.log('response is: ', response.json())
 }
 
 export const services = {

@@ -30,7 +30,6 @@ export const useLayout = () => {
   const { activeTab } = useSelector((state: RootState) => state.pageDesign)
   const handleClick = () => {
     const newData = modifyData(designList)
-    console.log('NewData is: ', newData)
 
     services.UpdateData(newData)
   }
