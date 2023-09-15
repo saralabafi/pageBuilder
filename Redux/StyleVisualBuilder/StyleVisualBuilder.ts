@@ -4,10 +4,8 @@ export interface IStylesWidgets {
   stylesWidget: stylesWidget[]
 }
 
-
-export type stylesWidget ={
-  id:string
-  style:string
+export type stylesWidget = {
+  [key: string]: string
 }
 
 const initialState: IStylesWidgets = {
@@ -19,7 +17,7 @@ export const manageStyleVisualBuilder = createSlice({
   initialState,
   reducers: {
     addStyleToWidget: (state, { payload }) => {
-      return { ...state, stylesWidget: [...state.stylesWidget, payload] }
+      return { ...state, stylesWidget: payload }
     },
   },
 })

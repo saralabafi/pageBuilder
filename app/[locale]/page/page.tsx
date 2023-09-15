@@ -7,17 +7,15 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 import { visualRenderItems } from './layout.const'
 import LayoutPageBuilder from './layoutPageBuilder'
 import useVisualBuilder from './visualBuilder.biz'
-import { useSelector } from 'react-redux'
-import { RootState } from 'redux/Store'
-import { stylesWidget } from 'redux/StyleVisualBuilder/StyleVisualBuilder'
+
 
 const page = () => {
-  const { handleClick, handleDrop } = useVisualBuilder()
-  const { stylesWidget } = useSelector((state: RootState) => state.widgetStyles)
+  const { handleClick, handleDrop,newArray } = useVisualBuilder()
+ 
 
   return (
     <DndProvider backend={HTML5Backend}>
-      {stylesWidget?.map((styleControl: stylesWidget) => {
+      {newArray?.map((styleControl: any) => {
         return <style id={styleControl.id}>{styleControl.style}</style>
       })}
       <LayoutPageBuilder>

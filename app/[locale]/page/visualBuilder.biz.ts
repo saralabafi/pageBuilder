@@ -47,12 +47,20 @@ const useVisualBuilder = () => {
     },
     [designList, activeControl]
   )
+
   const handleClick = (e: React.MouseEvent, data: Control) => {
     e.stopPropagation()
     dispatch(selectActiveControl(data.Id))
     dispatch(selectActiveMenu(data.SupportedDefinitionType))
   }
-  return { handleClick, handleDrop }
+
+ const { stylesWidget } = useSelector((state: RootState) => state.widgetStyles)
+ const newArray = Object.entries(stylesWidget).map(([id, style]) => ({
+   id,
+   style,
+ }))
+
+  return { handleClick, handleDrop, newArray }
 }
 export default useVisualBuilder
 

@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import { generateStyles } from '../../../../../utils/help/GenerateStyle'
 import { useHtmlWidget } from './HtmlWidget.biz'
-
+import classNames from 'classnames'
 const HtmlEditor = dynamic(() => import('components/HtmlEditor/HtmlEditor'), {
   ssr: false,
 })
@@ -23,7 +23,7 @@ export const HtmlWidget = (props: Control) => {
   return (
     <div>
       <div
-        className={CSS_ClassNames}
+        className={classNames(CSS_ClassNames, `${props.Id}`)}
         onClick={() => setVisible(true)}
         dangerouslySetInnerHTML={{ __html: htmlValue || contentString }}
         style={generateStyles(Settings!)}

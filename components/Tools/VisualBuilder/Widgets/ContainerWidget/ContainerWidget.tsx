@@ -20,7 +20,7 @@ const ContainerWidget = (props: Control) => {
       direction="flex-col"
       borderColor="border-slate-400"
       sx={generateStyles(Settings!)}
-      customCSS={`border-dashed w-[300px] ${CSS_ClassNames}`}
+      customCSS={`border-dashed w-[300px] ${CSS_ClassNames} ${props.Id}`}
       padding={Children?.length ? 'p-1' : 'p-9'}>
       {props.Settings?.LINK?.Value?.Data.Address ? (
         <Link
