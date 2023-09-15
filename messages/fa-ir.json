@@ -5,6 +5,9 @@
   "Component": {
     "table": {
       "itemperpage": "تعدا موارد قابل نمایش"
+    },
+    "inputTagGenerator": {
+      "typingHere": "اینجا تایپ کنید"
     }
   },
   "layout": {
@@ -66,10 +69,15 @@
       "setting": "پیکربندی"
     },
     "Content": {
+      "createNewContent": "ساخت محتوا جدید",
       "newContent": "محتوا جدید",
+      "cancel": "انصراف",
+      "continue": "ادامه",
+      "select": "انتخاب کنید",
       "content": "محتوا",
       "title": "عنوان",
-      "contentType": "ساختار داده",
+      "contentType": "ساختار محتوا",
+      "dataType": "ساختار داده",
       "createdByFullName": "ایجادکننده",
       "status": "وضعیت انتشار",
       "lastModifiedAt": "آخرین تغییرات",
@@ -101,7 +109,8 @@
       "output": "خروجی",
       "close": "بستن",
       "template": "قالب",
-      "default":"پیش‌فرض"
+      "default": "پیش‌فرض",
+      "typingHere": "اینجا تایپ کنید"
     }
   }
 }
