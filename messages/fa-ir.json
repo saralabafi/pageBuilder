@@ -69,15 +69,10 @@
       "setting": "پیکربندی"
     },
     "Content": {
-      "createNewContent": "ساخت محتوا جدید",
       "newContent": "محتوا جدید",
-      "cancel": "انصراف",
-      "continue": "ادامه",
-      "select": "انتخاب کنید",
       "content": "محتوا",
       "title": "عنوان",
-      "contentType": "ساختار محتوا",
-      "dataType": "ساختار داده",
+      "contentType": "ساختار داده",
       "createdByFullName": "ایجادکننده",
       "status": "وضعیت انتشار",
       "lastModifiedAt": "آخرین تغییرات",

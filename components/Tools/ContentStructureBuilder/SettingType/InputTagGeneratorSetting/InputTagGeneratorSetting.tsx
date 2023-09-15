@@ -1,6 +1,6 @@
+import React, { useState } from 'react'
 import CancelIcon from 'images/ContentStructureBuilder/cancel.svg'
 import { useLocale, useTranslations } from 'next-intl'
-import React from 'react'
 import { useInputTagGeneratorSetting } from './InputTagGeneratorSetting.biz'
 import {
   IInputTagGeneratorProps,
@@ -13,7 +13,7 @@ const RemovableButton: React.FC<RemovableButtonProps> = ({
 }) => {
   return (
     <>
-      <div className="Pill h-6  px-2 bg-slate-50 rounded border border-slate-200 justify-center items-center gap-2 inline-flex">
+      <div className="Pill h-6 mt-1 px-2 py-1 bg-slate-50 rounded border border-slate-200 justify-center items-center gap-2 inline-flex">
         <button
           className="text-red-600 hover:text-red-800 focus:outline-none"
           onClick={onRemove}
@@ -30,8 +30,10 @@ const RemovableButton: React.FC<RemovableButtonProps> = ({
 
 const InputTagGeneratorSetting = (props: IInputTagGeneratorProps) => {
   const t = useTranslations('Component.inputTagGenerator')
-  const locale= useLocale()
   const {
+    onChange,
+    locale,
+    controlValue,
     handleRemoveButton,
     handleInputKeyPress,
     handleInputChange,
@@ -40,23 +42,21 @@ const InputTagGeneratorSetting = (props: IInputTagGeneratorProps) => {
   } = useInputTagGeneratorSetting(props)
 
   return (
-    <>
-      <label className="inline-block uppercase tracking-wide text-slate-700 text-[12px] mb-2">
-        {props.Source.Title[locale]}
-      </label>
-
-      <div className="w-full py-1 bg-white">
+    <div className="flex h-8 focus:outline-none focus:ring-2 border focus:ring-blue-500 w-full">
+      <div className="">
         <input
           type="text"
           value={inputValue}
           onChange={handleInputChange}
           onKeyPress={handleInputKeyPress}
-          className="rounded-md px-3 w-full outline-0 focus-visible:outline-none text-xs"
+          className="no-border rounded-md px-3 w-full outline-0 text-end"
           placeholder={t('typingHere')}
         />
-        <div className="flex flex-wrap w-full gap-1">
+      </div>
+      <div className="">
+        <div className="flex space-x-1">
           {buttons.map((buttonText, index) => (
-            <div key={index} className="">
+            <div key={index} className="float-left">
               <RemovableButton
                 text={buttonText}
                 onRemove={() => handleRemoveButton(buttonText)}
@@ -65,7 +65,7 @@ const InputTagGeneratorSetting = (props: IInputTagGeneratorProps) => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

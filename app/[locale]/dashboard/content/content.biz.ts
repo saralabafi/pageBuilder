@@ -5,8 +5,6 @@ import { services } from 'services/services'
 
 export const useContent = () => {
   const [activeFolder, setActiveFolder] = useState<string>()
-  const [visibleNewContentModal, setVisibleNewContentModal] =
-    useState<boolean>(false)
   const [activePage, setActivePage] = useState<number>(1)
   const [total, setTotal] = useState<number>()
   const [parentHierarchy, setParentHierarchy] = useState<IFolders[]>([])
@@ -22,14 +20,6 @@ export const useContent = () => {
     ],
     services.GetData
   )
-
-  const { data: contentStructureList } = useQuery(
-    [{ url: 'cms/v1.0/siteName/dynamic-contents/structures' }],
-    services.GetData
-  )
-  contentStructureList?.map((item: any) => {
-    return { title: item.title, id: item.id }
-  })
 
   useEffect(() => {
     setTotal(data?.total)
@@ -50,7 +40,7 @@ export const useContent = () => {
   const breadcrumbItems = parentHierarchy?.map((hierarchy: IFolders) => {
     return { title: hierarchy.title, id: hierarchy.id }
   })
-
+  
   return {
     dataTable,
     activeFolder,
@@ -62,8 +52,5 @@ export const useContent = () => {
     handlePageChange,
     parentHierarchy,
     setParentHierarchy,
-    visibleNewContentModal,
-    setVisibleNewContentModal,
-    contentStructureList,
   }
 }

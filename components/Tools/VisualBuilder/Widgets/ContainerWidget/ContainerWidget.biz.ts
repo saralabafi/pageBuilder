@@ -14,7 +14,7 @@ import {
 } from 'redux/Design/Design'
 import shortid from 'shortid'
 
-const useContainerWidget = (props: Control) => {
+const useContainerWidget = () => {
   const { activeControl, designList } = useDndDesigner(VisualRenderList)
   const dispatch = useDispatch()
 
@@ -22,7 +22,6 @@ const useContainerWidget = (props: Control) => {
     e.stopPropagation()
     dispatch(selectActiveControl(item.Id))
   }
-
   const handleDrop = useCallback(
     (dropZone: DropZoneData, item: DropItem) => {
       const splitDropZonePath = dropZone.path.split('-')
@@ -52,10 +51,7 @@ const useContainerWidget = (props: Control) => {
     [designList, activeControl]
   )
 
-  const CSS_ClassNames = props.Settings?.CSS_CLASSES.Value.Data.SelectedItems?.join(' ')
-
-
-  return { handleClick, handleDrop, activeControl, CSS_ClassNames }
+  return { handleClick, handleDrop, activeControl }
 }
 
 export default useContainerWidget

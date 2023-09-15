@@ -11,8 +11,7 @@ import { generateStyles } from '../../../../../utils/help/GenerateStyle'
 
 const ContainerWidget = (props: Control) => {
   const { Settings, Children, Id } = props
-  const { handleClick, activeControl, handleDrop, CSS_ClassNames } = useContainerWidget(props)
-  
+  const { handleClick, activeControl, handleDrop } = useContainerWidget()
   return (
     <Flex
       width="w-full"
@@ -20,7 +19,7 @@ const ContainerWidget = (props: Control) => {
       direction="flex-col"
       borderColor="border-slate-400"
       sx={generateStyles(Settings!)}
-      customCSS={`border-dashed w-[300px] ${CSS_ClassNames} ${props.Id}`}
+      customCSS="border-dashed w-[300px]"
       padding={Children?.length ? 'p-1' : 'p-9'}>
       {props.Settings?.LINK?.Value?.Data.Address ? (
         <Link

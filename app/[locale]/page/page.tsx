@@ -8,16 +8,10 @@ import { visualRenderItems } from './layout.const'
 import LayoutPageBuilder from './layoutPageBuilder'
 import useVisualBuilder from './visualBuilder.biz'
 
-
 const page = () => {
-  const { handleClick, handleDrop,newArray } = useVisualBuilder()
- 
-
+  const { handleClick, handleDrop } = useVisualBuilder()
   return (
     <DndProvider backend={HTML5Backend}>
-      {newArray?.map((styleControl: any) => {
-        return <style id={styleControl.id}>{styleControl.style}</style>
-      })}
       <LayoutPageBuilder>
         <DndDesigner
           SelectedWrapper={VisualSelectedWrapper}

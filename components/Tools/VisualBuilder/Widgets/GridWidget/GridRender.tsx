@@ -9,19 +9,13 @@ import { generateStyles } from '../../../../../utils/help/GenerateStyle'
 
 const GridWidget = (props: Control) => {
   const { Settings } = props
-  const {
-    columnCalculator,
-    handleClick,
-    handleDrop,
-    activeControl,
-    CSS_ClassNames,
-  } = useGridWidget(props)
+  const { columnCalculator, handleClick, handleDrop, activeControl } =
+    useGridWidget(props)
 
   return (
     <div
       className={`grid 
            grid-cols-12
-           ${CSS_ClassNames}
            ${props.Settings?.SHOW_GUTTER?.Value.Data && 'gap-2'}
            border-2 border-gray w-full p-2`}>
       {props?.Children && props.Children?.length > 0
