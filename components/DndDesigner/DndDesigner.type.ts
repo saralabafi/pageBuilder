@@ -15,6 +15,19 @@ export type Control = {
   SupportedDefinitionType?: string
 }
 
+export type DefinitionControl = {
+  Id?: string | number
+  parentId: string | number
+  Children?: Control
+  Icon?: string
+  IsAddable?: boolean
+  Name?: string
+  Settings?: { [key: string]: any }
+  SettingCategories?: any
+  SupportedControlType?: string
+  Title?: { [key: string]: string }
+}
+
 export type DropZoneData = {
   path: string
   parentId: string | number
@@ -29,13 +42,14 @@ export type Renders = {
 
 export type DropItem = {
   data: {
-    component: Control
+    component: DefinitionControl
     content: string
     type: string
     icon: ReactElement
     Id: string
     title: string
     parentId: string
+    Children: Control[]
     SupportedDefinitionType: string
   }
 }

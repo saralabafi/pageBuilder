@@ -23,6 +23,8 @@ import Link from 'next/link'
 import { useContent } from './content.biz'
 import { Loading } from 'components/CoreComponents/Loading/Loading'
 import Pagination from 'rc-pagination'
+import Modal from 'components/CoreComponents/Modal'
+import { Select } from 'components/CoreComponents/Select/Select'
 
 function ContentPage() {
   const {
@@ -35,6 +37,9 @@ function ContentPage() {
     parentHierarchy,
     setParentHierarchy,
     breadcrumbItems,
+    visibleNewContentModal,
+    setVisibleNewContentModal,
+    contentStructureList
   } = useContent()
 
   const t = useTranslations('Dashboard.Content')
@@ -218,6 +223,26 @@ function ContentPage() {
     }
   }
 
+  const footer = (
+    <Flex
+      padding="p-3"
+      gap="gap-2"
+      align="items-center"
+      justify="justify-end"
+      customCSS=" border-t border-slate-200 ">
+      <Button
+        height="h-8"
+        backgroundColor="bg-gray-50"
+        border="border border-slate-200"
+        onClick={() => setVisibleNewContentModal(false)}>
+        <Text color="text-slate-500">{t('cancel')}</Text>
+      </Button>
+      <Button height="h-8" backgroundColor="bg-blue-500">
+        <Text color="text-white ">{t('continue')}</Text>
+      </Button>
+    </Flex>
+  )
+
   return (
     <div className=" rounded gap-3 border border-slate-100 bg-white shadow-sm mx-3 my-2 ">
       <Flex justify="justify-between" customCSS="border-b p-3">
@@ -240,7 +265,10 @@ function ContentPage() {
             backgroundColor="white">
             <FilterIcon className="text-slate-400" />
           </Button>
-          <Button backgroundColor="bg-blue-500" customCSS="rounded">
+          <Button
+            backgroundColor="bg-blue-500"
+            customCSS="rounded"
+            onClick={() => setVisibleNewContentModal(true)}>
             <PlusIcon className="text-white" fontSize={24} />
             <Text fontSize={12} fontWeight={400} color="text-white">
               {t('newContent')}
@@ -288,6 +316,28 @@ function ContentPage() {
           </Flex>
         </Flex>
       </Flex>
+      <Modal
+        width='w-2/5'
+        footer={footer}
+        title={t('newContent')}
+        visible={visibleNewContentModal}
+        onClose={() => setVisibleNewContentModal(false)}>
+        <Flex align="items-start" direction="flex-col">
+          <Flex margin="mb-2" gap="gap-1">
+            <Text color="text-red-600">*</Text>
+            <Text fontWeight={500} color="text-slate-600">
+              {t('createNewContent')}
+            </Text>
+          </Flex>
+          <Select
+            placeholder={t('select')}
+            options={contentStructureList}
+            customCSS="w-full"
+            value={''}
+            onChange={() => {}}
+          />
+        </Flex>
+      </Modal>
     </div>
   )
 }

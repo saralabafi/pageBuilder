@@ -20,7 +20,6 @@ const DynamicOptionSetting = (props: DynamicOptionsSttingProps) => {
   return (
     <div>
       <h2 className="w-80 h-4 justify-end text-righ text-slate-700 text-xs font-medium leading-none mb-3 pr-5">
-        {/* {Title} */}
         {Title[locale]}
       </h2>
       {options.map((option: any, index) => (
