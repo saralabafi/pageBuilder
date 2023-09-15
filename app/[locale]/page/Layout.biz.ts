@@ -29,9 +29,9 @@ export const useLayout = () => {
 
   const { activeTab } = useSelector((state: RootState) => state.pageDesign)
   const handleClick = () => {
-    const newData = ppp(designList)
+    const newData = modifyData(designList)
     console.log('NewData is: ', newData)
-    
+
     services.UpdateData(newData)
   }
 
@@ -53,7 +53,7 @@ const processData = (data: any, parentId = 0) => {
     return newItem
   })
 }
-const ppp = (designList: any) => {
+const modifyData = (designList: any) => {
   return designList.map((item: any) => {
     const newItem = { ...item }
     if (item.Name == 'ColumnWidget') {
@@ -62,7 +62,7 @@ const ppp = (designList: any) => {
       newItem.Id = Math.floor(Math.random() * 1000)
     }
     if (item.Children && item.Children.length > 0) {
-      newItem.Children = ppp(item.Children)
+      newItem.Children = modifyData(item.Children)
     }
     delete newItem.parentId
     return newItem

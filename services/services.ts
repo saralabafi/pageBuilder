@@ -19,8 +19,8 @@ const GetData = async ({ queryKey }: QueryFunctionContext) => {
 }
 
 const UpdateData = async (data: any) => {
-  const fff = { Widgets: data }
-  console.log(JSON.stringify(fff))
+  const pageContent = { Widgets: data }
+  console.log(JSON.stringify(pageContent))
   const response = await fetch(
     'http://gateway.dourtal.co/api/cms/v1.0/{site}/pages/ca320982-04cf-47dc-233c-08dbb45cb49a',
     {
@@ -28,7 +28,7 @@ const UpdateData = async (data: any) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(fff),
+      body: JSON.stringify(pageContent),
     }
   )
 
