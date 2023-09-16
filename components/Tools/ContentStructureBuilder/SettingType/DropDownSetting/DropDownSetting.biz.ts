@@ -19,7 +19,7 @@ export const useDropDownSetting = (props: IDropDownSettingProps) => {
   const options = Object.entries(props.Source.Source).map(([id]) => ({
     key: id,
     value: id,
-    title: id,
+    title: { 'fa-ir': id },
   }))
 
   const type: any = props.Source.type

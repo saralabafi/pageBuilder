@@ -15,8 +15,12 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
     if (component.SupportedDefinitionType == 'GridWidgetDefinition') {
       const Id = shortid.generate()
       if (component.Children && component.Children.length > 0) {
-        component.Children[0].Id = Id
-        component.Children[0].parentId = component.Id
+        const updatedChild = {
+          ...component.Children[0],
+          Id: Id,
+          parentId: component.Id,
+        }
+        component.Children = [updatedChild]
       }
     }
 
