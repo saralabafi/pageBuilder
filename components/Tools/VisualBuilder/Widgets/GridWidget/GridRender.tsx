@@ -25,7 +25,7 @@ const GridWidget = (props: Control) => {
     designList,
     dispatch,
   })
-  const type: string = 'GRID_SIZE'
+  const type = 'GRID_SIZE'
 
   const controlValue = returnDefaultValue(activeControl, type)
 
@@ -259,7 +259,7 @@ const GridWidget = (props: Control) => {
       const containerBox = document.querySelector('.containerbox')
       if (!containerBox) return
 
-      let lastColumnIndex = 0
+      const lastColumnIndex = 0
 
       // get grid col and spliter
       const resizers = Array.from(
