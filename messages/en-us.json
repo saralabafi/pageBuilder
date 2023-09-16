@@ -45,6 +45,7 @@
     "GroupControlDefinition": "Group",
     "SingleSelectionControlDefinition": "Single Selection",
     "MultiSelectionControlDefinition": "Multi Selection",
+    "DateTimeControlDefinition": "Dtae and Time",
     "description": "Description",
     "enterTitleofForm": "Enter the title of the form"
   },
