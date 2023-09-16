@@ -1,4 +1,4 @@
-export interface IDateTimeControl {
+export interface IDateControl {
   title?: string
   placeholder?: string
   helpText?: string

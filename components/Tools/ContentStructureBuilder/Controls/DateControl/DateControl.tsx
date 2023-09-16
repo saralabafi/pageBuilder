@@ -1,9 +1,10 @@
 import { Control } from 'components/DndDesigner/DndDesigner.type'
 import { useLocale } from 'next-intl'
+import DatePickerIcon from 'images/ContentStructureBuilder/datePicker.svg'
 
-const DateTimeControl = (props: Control) => {
+const DateControl = (props: Control) => {
   const locale = useLocale()
-
+  debugger
   return (
     <div>
       {!props?.Settings?.HIDE_CONTROL?.Data ? (
@@ -23,7 +24,7 @@ const DateTimeControl = (props: Control) => {
           <div className="relative">
             <input
               className="border border-slate-200 rounded p-1 mb-2 text-[12px] w-full"
-              placeholder={props?.Settings?.PLACEHOLDER.Data[locale] || ''}
+              placeholder={props?.Settings?.Help?.Data[locale] || ''}
               type="text"
               readOnly={true}
               value={
@@ -32,8 +33,8 @@ const DateTimeControl = (props: Control) => {
                   : ''
               }
             />
-            <div className="absolute inset-y-0 end-2 items-start flex items-center ps-3 pointer-events-none">
-              icon
+            <div className="absolute inset-y-0 end-2 items-start flex items-center ps-3 pointer-events-none text-slate-400">
+              <DatePickerIcon />
             </div>
           </div>
 
@@ -54,4 +55,4 @@ const DateTimeControl = (props: Control) => {
   )
 }
 
-export default DateTimeControl
+export default DateControl

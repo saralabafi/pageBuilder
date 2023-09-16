@@ -21,5 +21,5 @@ export const SideBarIcons: { [key: string]: any } = {
   ContainerWidgetDefinition: <ContainerIcon />,
   SingleSelectionControlDefinition: <SingleSelectionIcon />,
   MultiSelectionControlDefinition: <MultiSelectionIcon />,
-  DateTimeControlDefinition: <MultiSelectionIcon />,
+  DateControlDefinition: <MultiSelectionIcon />,
 }

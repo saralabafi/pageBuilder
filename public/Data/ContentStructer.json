@@ -728,10 +728,10 @@
     ]
   },
   {
-    "Name": "DateTimeControlDefinition",
+    "Name": "DateControlDefinition",
     "Title": {
       "fa-ir": "تاریخ و زمان",
-      "en-us": "Date and Time"
+      "en-us": "Date And Time"
     },
     "Icon": "sample-icon",
     "SettingCategories": [
@@ -761,28 +761,8 @@
                 "en-us": "Text"
               }
             },
-            "BaseType": "TextSettingDefinition"
-          },
-          "PLACEHOLDER": {
-            "Help": {
-              "fa-ir": "توضیحات",
-              "en-us": "description"
-            },
-            "PlaceHolder": {
-              "fa-ir": "",
-              "en-us": ""
-            },
-            "Title": {
-              "fa-ir": "متن نگهدارنده",
-              "en-us": "Placeholder Text"
-            },
-            "DefaultValue": {
-              "Data": {
-                "fa-ir": "",
-                "en-us": ""
-              }
-            },
-            "BaseType": "TextSettingDefinition"
+            "BaseType": "TextSettingDefinition",
+            "SupportedSettingType": "TextSetting"
           },
           "HELP": {
             "Help": {
@@ -803,17 +783,18 @@
                 "en-us": ""
               }
             },
-            "BaseType": "TextSettingDefinition"
+            "BaseType": "TextSettingDefinition",
+            "SupportedSettingType": "TextSetting"
           },
           "INPUT_TYPE": {
             "Source": {
-              "INTEGER": {
-                "fa-ir": "عدد صحیح",
-                "en-us": "integer"
+              "DATE": {
+                "fa-ir": "تاریخ",
+                "en-us": "Date"
               },
-              "DECIMAL": {
-                "fa-ir": "عدد اعشاری",
-                "en-us": "decimal"
+              "DATE_TIME": {
+                "fa-ir": "تاریخ و زمان",
+                "en-us": "date and time"
               }
             },
             "Title": {
@@ -821,9 +802,42 @@
               "en-us": "input type"
             },
             "DefaultValue": {
-              "Data": "empty"
+              "Data": "DATE"
             },
-            "BaseType": "RadioSettingDefinition"
+            "BaseType": "RadioSettingDefinition",
+            "SupportedSettingType": "RadioSetting"
+          },
+          "DATE_FORMAT": {
+            "Source": {
+              "TEXT": {
+                "fa-ir": "15 خرداد 1402",
+                "en-us": "date"
+              },
+              "SIMPLE": {
+                "fa-ir": "1402/05/15",
+                "en-us": "2022/10/25"
+              }
+            },
+            "Title": {
+              "fa-ir": "فرمت تاریخ",
+              "en-us": "date format"
+            },
+            "DefaultValue": {
+              "Data": "TEXT"
+            },
+            "BaseType": "RadioSettingDefinition",
+            "SupportedSettingType": "RadioSetting"
+          },
+          "DATE_RANGE": {
+            "Title": {
+              "fa-ir": "بازه زمانی",
+              "en-us": "date range"
+            },
+            "DefaultValue": {
+              "Data": false
+            },
+            "BaseType": "SwitchSettingDefinition",
+            "SupportedSettingType": "SwitchSetting"
           },
           "REQUIRED": {
             "ErrorMessage": {
@@ -839,7 +853,8 @@
               "DefaultValue": {
                 "Data": {}
               },
-              "BaseType": "TextSettingDefinition"
+              "BaseType": "TextSettingDefinition",
+              "SupportedSettingType": "TextSetting"
             },
             "Title": {
               "fa-ir": "اجباری",
@@ -851,7 +866,8 @@
                 "ErrorMessage": {}
               }
             },
-            "BaseType": "RequiredSettingDefinition"
+            "BaseType": "RequiredSettingDefinition",
+            "SupportedSettingType": "RequiredSetting"
           }
         }
       },
@@ -862,6 +878,27 @@
         },
         "SubCategories": [],
         "Settings": {
+          "PREDEFINED_VALUE": {
+            "Source": {
+              "NONE": {
+                "fa-ir": "بدون مقدار",
+                "en-us": "none"
+              },
+              "TODAY": {
+                "fa-ir": "تاریخ امروز",
+                "en-us": "today"
+              }
+            },
+            "Title": {
+              "fa-ir": "مقدار پیشفرض",
+              "en-us": "searchable"
+            },
+            "DefaultValue": {
+              "Data": "NONE"
+            },
+            "BaseType": "DropDownSettingDefinition",
+            "SupportedSettingType": "DropDownSetting"
+          },
           "SEARCHABLE": {
             "Source": {
               "DISABLED": {
@@ -871,6 +908,10 @@
               "KEYWORD": {
                 "fa-ir": "کلمه کلیدی",
                 "en-us": "keyword"
+              },
+              "TEXT": {
+                "fa-ir": "نوشته",
+                "en-us": "Text"
               }
             },
             "Title": {
@@ -878,9 +919,10 @@
               "en-us": "searchable"
             },
             "DefaultValue": {
-              "Data": "empty"
+              "Data": "DISABLED"
             },
-            "BaseType": "RadioSettingDefinition"
+            "BaseType": "RadioSettingDefinition",
+            "SupportedSettingType": "RadioSetting"
           },
           "HIDE_CONTROL": {
             "Title": {
@@ -890,7 +932,8 @@
             "DefaultValue": {
               "Data": false
             },
-            "BaseType": "SwitchSettingDefinition"
+            "BaseType": "SwitchSettingDefinition",
+            "SupportedSettingType": "SwitchSetting"
           },
           "SHOW_LABEL": {
             "Title": {
@@ -900,10 +943,13 @@
             "DefaultValue": {
               "Data": true
             },
-            "BaseType": "SwitchSettingDefinition"
+            "BaseType": "SwitchSettingDefinition",
+            "SupportedSettingType": "SwitchSetting"
           }
         }
       }
-    ]
+    ],
+    "SupportedControlType": "DateControl",
+    "IsAddable": true
   }
 ]

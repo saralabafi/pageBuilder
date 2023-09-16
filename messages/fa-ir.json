@@ -46,7 +46,7 @@
     "GroupControlDefinition": "گروه",
     "SingleSelectionControlDefinition": "تک انتخابی",
     "MultiSelectionControlDefinition": "چند انتخابی",
-    "DateTimeControlDefinition": "تاریخ و زمان"
+    "DateControlDefinition": "تاریخ و زمان"
   },
   "visual_builder": {
     "new_option": "گزینه جدید",
