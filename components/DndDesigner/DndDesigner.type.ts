@@ -16,6 +16,7 @@ export type Control = {
 }
 
 export type DefinitionControl = {
+  SupportedDefinitionType: any
   Id?: string | number
   parentId: string | number
   Children?: Control

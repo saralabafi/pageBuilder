@@ -169,7 +169,6 @@ const GridWidget = (props: Control) => {
         }
 
         const getClassFromStylesFinal = () => {
-          debugger
           const items = Array.from(
             document.querySelectorAll<HTMLDivElement>('.item')
           )
@@ -356,12 +355,12 @@ const GridWidget = (props: Control) => {
                     </div>
                   </div>
 
-                  {console.log(props?.Settings?.SHOW_GUTTER?.Data)}
-
-                  {index < props?.Children?.length! - 1 &&
-                    props?.Settings?.SHOW_GUTTER?.Data !== false && (
-                      <div className="resizer h-32"></div>
-                    )}
+                  {props?.Children?.length
+                    ? index < props?.Children?.length - 1 &&
+                      props?.Settings?.SHOW_GUTTER?.Data !== false && (
+                        <div className="resizer h-32"></div>
+                      )
+                    : null}
                 </>
               )
             })

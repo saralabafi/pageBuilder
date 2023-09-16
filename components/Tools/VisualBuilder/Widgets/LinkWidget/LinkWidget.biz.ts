@@ -10,7 +10,6 @@ export const useLinkWidget = (props: Control) => {
   const [selectedOption, setSelectedOption] = useState('')
   const [inputValue, setInputValue] = useState('')
   const options = Object.entries(Source).map(([id, option], index) => ({
-    key: id,
     value: id,
     title: id,
   }))

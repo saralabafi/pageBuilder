@@ -12,7 +12,7 @@ import Setting from 'images/page/setting.svg'
 import ConditionIcon from 'images/ContentStructureBuilder/condition.svg'
 import { ReactElement } from 'react'
 import { HtmlWidget } from 'components/Tools/VisualBuilder/Widgets/HTML_Widget/HtmlWidget'
-import GridWidget from 'components/Tools/VisualBuilder/Widgets/GridWidget/GridRender'
+import GridWidget from 'components/Tools/VisualBuilder/Widgets/GridWidget/GridWidget'
 import { GroupControl } from 'components/Tools/ContentStructureBuilder/Controls/GroupControl/GroupControl'
 
 export type SidebarItem = {

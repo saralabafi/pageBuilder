@@ -1,6 +1,7 @@
 import { Flex } from 'components/CoreComponents/Flex/Flex'
 import { Select } from 'components/CoreComponents/Select/Select'
 import { useLinkWidget } from './LinkWidget.biz'
+import { IOption } from 'components/CoreComponents/Select/Select.types'
 
 const LinkWidget = (props: any) => {
   const { settings, children, id } = props
@@ -32,7 +33,7 @@ const LinkWidget = (props: any) => {
             customCSS="text-right text-gray-700 text-xs font-normal leading-none"
             placeholder={PlaceHolder ? PlaceHolder[locale] : ''}
             value={DefaultValue ? DefaultValue[locale] : ''}
-            options={options}
+            options={options as unknown as IOption[]}
             onChange={handleSelect}
           />
         </div>
