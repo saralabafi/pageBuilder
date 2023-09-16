@@ -45,7 +45,8 @@
     "ContainerWidgetDefinition": "کانتینر",
     "GroupControlDefinition": "گروه",
     "SingleSelectionControlDefinition": "تک انتخابی",
-    "MultiSelectionControlDefinition": "چند انتخابی"
+    "MultiSelectionControlDefinition": "چند انتخابی",
+    "DateControlDefinition": "تاریخ و زمان"
   },
   "visual_builder": {
     "new_option": "گزینه جدید",

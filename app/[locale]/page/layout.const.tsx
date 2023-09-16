@@ -4,6 +4,7 @@ import TextControl from 'components/Tools/ContentStructureBuilder/Controls/TextC
 import SwitchControl from 'components/Tools/ContentStructureBuilder/SwitchControl/SwitchControl'
 import NumericControl from 'components/Tools/ContentStructureBuilder/Controls/NumericControl/NumericControl'
 import SingleSelection from 'components/Tools/ContentStructureBuilder/SingleSelection/SingleSelection'
+import DateControl from 'components/Tools/ContentStructureBuilder/Controls/DateControl/DateControl'
 import Folder from 'images/page/folder.svg'
 import Formats from 'images/page/formats.svg'
 import PlusCircle from 'images/page/plusCircle.svg'
@@ -57,4 +58,5 @@ export const formRenderItems: any = {
   SingleSelectionControlDefinition: (props: any) => (
     <SingleSelection {...props} />
   ),
+  DateControlDefinition: (props: any) => <DateControl {...props} />,
 }
