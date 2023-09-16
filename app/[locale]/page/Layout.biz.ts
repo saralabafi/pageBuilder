@@ -1,20 +1,26 @@
+'use client'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from 'redux/Store'
 import { useQuery } from '@tanstack/react-query'
 import { services } from 'services/services'
 import { setDesignList } from 'redux/Design/Design'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 export const useLayout = () => {
   const { designList, activeControl } = useSelector(
     (state: RootState) => state.pageDesign
   )
   const dispatch = useDispatch()
+  const router = useRouter()
+  const id = 'ca320982-04cf-47dc-233c-08dbb45cb49a'
+  const searchParams = useSearchParams()
+  console.log(searchParams.get('id'))
 
   const { data } = useQuery(
     [
       {
-        url: 'cms/v1.0/{site}/pages/ca320982-04cf-47dc-233c-08dbb45cb49a',
+        url: `cms/v1.0/{site}/pages/${id}`,
       },
     ],
     services.GetData
@@ -25,13 +31,14 @@ export const useLayout = () => {
     if (items) {
       dispatch(setDesignList(processData(items, 0)))
     }
+    router.push(`/page?id=${id}`, undefined)
   }, [data])
 
   const { activeTab } = useSelector((state: RootState) => state.pageDesign)
   const handleClick = () => {
     const newData = modifyData(designList)
 
-    services.UpdateData(newData)
+    services.UpdateData(newData, id)
   }
 
   return {

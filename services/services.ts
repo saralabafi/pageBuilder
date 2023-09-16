@@ -18,20 +18,17 @@ const GetData = async ({ queryKey }: QueryFunctionContext) => {
   return res.data
 }
 
-const UpdateData = async (data: any) => {
+const UpdateData = async (data: any, id: string) => {
   const pageContent = { Widgets: data }
-  const response = await fetch(
-    'http://gateway.dourtal.co/api/cms/v1.0/{site}/pages/ca320982-04cf-47dc-233c-08dbb45cb49a',
-    {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(pageContent),
-    }
-  )
+  const response = await base_api.put(`cms/v1.0/{site}/pages/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(pageContent),
+  })
 
-  if (!response.ok) {
+  if (!response) {
     throw new Error('An error occurred while updating the data.')
   }
 }
