@@ -21,7 +21,7 @@ const GridWidget = (props: Control) => {
     <div
       className={`grid 
            grid-cols-12
-           ${CSS_ClassNames}
+           ${CSS_ClassNames} ${props.Id}
            ${props.Settings?.SHOW_GUTTER?.Value.Data && 'gap-2'}
            border-2 border-gray w-full p-2`}>
       {props?.Children && props.Children?.length > 0

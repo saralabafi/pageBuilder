@@ -1,1234 +1,1377 @@
 [
-	{
-		"Name": "ContainerWidgetDefinition",
-		"Title": {
-			"fa-ir": "کانتینر",
-			"en-us": "Container"
-		},
-		"Icon": "sample-icon",
-		"SettingCategories": [
-			{
-				"Name": {
-					"fa-ir": "عمومی",
-					"en-us": "general"
-				},
-				"SubCategories": [
-					{
-						"Name": {
-							"fa-ir": "خاص",
-							"en-us": "specific"
-						},
-						"SubCategories": [],
-						"Settings": {
-							"LINK": {
-								"SimpleLink": {
-									"Default": null,
-									"Help": null,
-									"PlaceHolder": null,
-									"Title": {
-										"fa-ir": "آدرس",
-										"en-us": "address"
-									},
-									"DefaultValue": {
-										"Data": {}
-									},
-									"BaseType": "TextSettingDefinition"
-								},
-								"Source": {
-									"URL": {
-										"fa-ir": "آدرس",
-										"en-us": "link"
-									},
-									"PAGE": {
-										"fa-ir": "صفحه",
-										"en-us": "page"
-									}
-								},
-								"Title": {
-									"fa-ir": "لینک",
-									"en-us": "link"
-								},
-								"DefaultValue": {
-									"Data": {
-										"SelectedValue": "URL",
-										"Address": {},
-										"PageId": "00000000-0000-0000-0000-000000000000"
-									}
-								},
-								"BaseType": "LinkSettingDefinition"
-							},
-							"NEW_TAB": {
-								"Title": {
-									"fa-ir": "باز شدن در پنجره جدید",
-									"en-us": "open in new tab"
-								},
-								"DefaultValue": {
-									"Data": false
-								},
-								"BaseType": "CheckBoxSettingDefinition"
-							}
-						}
-					},
-					{
-						"Name": {
-							"fa-ir": "فریم",
-							"en-us": "Frame"
-						},
-						"SubCategories": [],
-						"Settings": {
-							"WIDTH": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "عرض",
-									"en-us": "Width"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"HEIGHT": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "ارتفاع",
-									"en-us": "height"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"MIN_WIDTH": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "حداقل عرض",
-									"en-us": "min width"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"MIN_HEIGHT": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "حداقل ارتفاع",
-									"en-us": "min height"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"MAX_WIDTH": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "حداکثر عرض",
-									"en-us": "max width"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"MAX_HEIGHT": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "حداکثر ارتفاع",
-									"en-us": "max height"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							}
-						}
-					}
-				],
-				"Settings": {}
-			},
-			{
-				"Name": {
-					"fa-ir": "استایل",
-					"en-us": "styles"
-				},
-				"SubCategories": [
-					{
-						"Name": {
-							"fa-ir": "مارجین",
-							"en-us": "margin"
-						},
-						"SubCategories": [],
-						"Settings": {
-							"TOP_MARGIN": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "مارجین بالا",
-									"en-us": "margin top"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"BOTTOM_MARGIN": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "مارجین پایین",
-									"en-us": "margin bottom"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"LEFT_MARGIN": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "مارجین چپ",
-									"en-us": "margin left"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"RIGHT_MARGIN": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "مارجین راست",
-									"en-us": "margin right"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							}
-						}
-					},
-					{
-						"Name": {
-							"fa-ir": "پدینگ",
-							"en-us": "padding"
-						},
-						"SubCategories": [],
-						"Settings": {
-							"TOP_PADDING": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "پدینگ بالا",
-									"en-us": "padding top"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"BOTTOM_PADDING": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "پدینگ پایین",
-									"en-us": "padding bottom"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"RIGHT_PADDING": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "پدینگ راست",
-									"en-us": "padding right"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"LEFT_PADDING": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "پدینگ چپ",
-									"en-us": "padding left"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							}
-						}
-					}
-				],
-				"Settings": {
-					"BACKGROUND_COLOR": {
-						"Title": {
-							"fa-ir": "رنگ پس زمینه",
-							"en-us": "background color"
-						},
-						"DefaultValue": {
-							"Data": ""
-						},
-						"BaseType": "ColorPickerSettingDefinition"
-					}
-				}
-			},
-			{
-				"Name": {
-					"fa-ir": "پیشرفته",
-					"en-us": "advanced"
-				},
-				"SubCategories": [],
-				"Settings": {
-					"HTML_TAG": {
-						"Source": {
-							"DIV": {
-								"fa-ir": "ِDIV",
-								"en-us": "DIV"
-							},
-							"HEADER": {
-								"fa-ir": "HEADER",
-								"en-us": "HEADER"
-							},
-							"FOOTER": {
-								"fa-ir": "FOOTER",
-								"en-us": "FOOTER"
-							},
-							"ARTICLE": {
-								"fa-ir": "ARTICLE",
-								"en-us": "ARTICLE"
-							}
-						},
-						"Title": {
-							"fa-ir": "تگ HTML",
-							"en-us": "Html Tag"
-						},
-						"DefaultValue": {
-							"Data": "empty"
-						},
-						"BaseType": "DropDownSettingDefinition"
-					},
-					"CSS_CLASSES": {
-						"Title": {
-							"fa-ir": "کلاس های css",
-							"en-us": "Css Classes"
-						},
-						"DefaultValue": {
-							"Data": {
-								"SelectedItems": []
-							}
-						},
-						"BaseType": "TagSettingDefinition"
-					},
-					"CUSTOM_CSS": {
-						"Title": {
-							"fa-ir": "css اختصاصی",
-							"en-us": "custom css"
-						},
-						"DefaultValue": {
-							"Data": ""
-						},
-						"BaseType": "CssEditorSettingDefinition"
-					}
-				}
-			}
-		]
-	},
-	{
-		"Name": "HtmlWidgetDefinition",
-		"Title": {
-			"fa-ir": "ویرایشگر html",
-			"en-us": "Html Editor"
-		},
-		"Icon": "sample-icon",
-		"SettingCategories": [
-			{
-				"Name": {
-					"fa-ir": "عمومی",
-					"en-us": "general"
-				},
-				"SubCategories": [
-					{
-						"Name": {
-							"fa-ir": "فریم",
-							"en-us": "Frame"
-						},
-						"SubCategories": [],
-						"Settings": {
-							"WIDTH": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "عرض",
-									"en-us": "Width"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"HEIGHT": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "ارتفاع",
-									"en-us": "height"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"MIN_WIDTH": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "حداقل عرض",
-									"en-us": "min width"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"MIN_HEIGHT": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "حداقل ارتفاع",
-									"en-us": "min height"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"MAX_WIDTH": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "حداکثر عرض",
-									"en-us": "max width"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"MAX_HEIGHT": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "حداکثر ارتفاع",
-									"en-us": "max height"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							}
-						}
-					}
-				],
-				"Settings": {}
-			},
-			{
-				"Name": {
-					"fa-ir": "استایل",
-					"en-us": "styles"
-				},
-				"SubCategories": [
-					{
-						"Name": {
-							"fa-ir": "مارجین",
-							"en-us": "margin"
-						},
-						"SubCategories": [],
-						"Settings": {
-							"TOP_MARGIN": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "مارجین بالا",
-									"en-us": "margin top"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"BOTTOM_MARGIN": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "مارجین پایین",
-									"en-us": "margin bottom"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"LEFT_MARGIN": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "مارجین چپ",
-									"en-us": "margin left"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"RIGHT_MARGIN": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "مارجین راست",
-									"en-us": "margin right"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							}
-						}
-					},
-					{
-						"Name": {
-							"fa-ir": "پدینگ",
-							"en-us": "padding"
-						},
-						"SubCategories": [],
-						"Settings": {
-							"TOP_PADDING": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "پدینگ بالا",
-									"en-us": "padding top"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"BOTTOM_PADDING": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "پدینگ پایین",
-									"en-us": "padding bottom"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"RIGHT_PADDING": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "پدینگ راست",
-									"en-us": "padding right"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"LEFT_PADDING": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "پدینگ چپ",
-									"en-us": "padding left"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							}
-						}
-					}
-				],
-				"Settings": {
-					"BACKGROUND_COLOR": {
-						"Title": {
-							"fa-ir": "رنگ پس زمینه",
-							"en-us": "background color"
-						},
-						"DefaultValue": {
-							"Data": ""
-						},
-						"BaseType": "ColorPickerSettingDefinition"
-					}
-				}
-			},
-			{
-				"Name": {
-					"fa-ir": "پیشرفته",
-					"en-us": "advanced"
-				},
-				"SubCategories": [],
-				"Settings": {
-					"CSS_CLASSES": {
-						"Title": {
-							"fa-ir": "کلاس های css",
-							"en-us": "Css Classes"
-						},
-						"DefaultValue": {
-							"Data": {
-								"SelectedItems": []
-							}
-						},
-						"BaseType": "TagSettingDefinition"
-					},
-					"CUSTOM_CSS": {
-						"Title": {
-							"fa-ir": "css اختصاصی",
-							"en-us": "custom css"
-						},
-						"DefaultValue": {
-							"Data": ""
-						},
-						"BaseType": "CssEditorSettingDefinition"
-					}
-				}
-			}
-		]
-	},
-	{
-		"Name": "GridWidgetDefinition",
-		"Title": {
-			"fa-ir": "گرید",
-			"en-us": "Grid"
-		},
-		"Icon": "sample-icon",
-		"SettingCategories": [
-			{
-				"Name": {
-					"fa-ir": "عمومی",
-					"en-us": "general"
-				},
-				"SubCategories": [
-					{
-						"Name": {
-							"fa-ir": "خاص",
-							"en-us": "specific"
-						},
-						"SubCategories": [],
-						"Settings": {
-							"COLUMNS_COUNT": {
-								"Source": {
-									"1": {
-										"fa-ir": "1",
-										"en-us": "1"
-									},
-									"2": {
-										"fa-ir": "2",
-										"en-us": "2"
-									},
-									"3": {
-										"fa-ir": "3",
-										"en-us": "3"
-									},
-									"4": {
-										"fa-ir": "4",
-										"en-us": "4"
-									},
-									"5": {
-										"fa-ir": "5",
-										"en-us": "5"
-									},
-									"6": {
-										"fa-ir": "6",
-										"en-us": "6"
-									},
-									"7": {
-										"fa-ir": "7",
-										"en-us": "7"
-									}
-								},
-								"Title": {
-									"fa-ir": "تعداد ستون ها",
-									"en-us": "columns count"
-								},
-								"DefaultValue": {
-									"Data": "empty"
-								},
-								"BaseType": "DropDownSettingDefinition"
-							},
-							"SHOW_GUTTER": {
-								"Title": {
-									"fa-ir": "نمایش فاصله بین ستون ها",
-									"en-us": "show gutter"
-								},
-								"DefaultValue": {
-									"Data": false
-								},
-								"BaseType": "CheckBoxSettingDefinition"
-							}
-						}
-					},
-					{
-						"Name": {
-							"fa-ir": "فریم",
-							"en-us": "Frame"
-						},
-						"SubCategories": [],
-						"Settings": {
-							"WIDTH": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "عرض",
-									"en-us": "Width"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"HEIGHT": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "ارتفاع",
-									"en-us": "height"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"MIN_WIDTH": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "حداقل عرض",
-									"en-us": "min width"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"MIN_HEIGHT": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "حداقل ارتفاع",
-									"en-us": "min height"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"MAX_WIDTH": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "حداکثر عرض",
-									"en-us": "max width"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"MAX_HEIGHT": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "حداکثر ارتفاع",
-									"en-us": "max height"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							}
-						}
-					}
-				],
-				"Settings": {}
-			},
-			{
-				"Name": {
-					"fa-ir": "استایل",
-					"en-us": "styles"
-				},
-				"SubCategories": [
-					{
-						"Name": {
-							"fa-ir": "مارجین",
-							"en-us": "margin"
-						},
-						"SubCategories": [],
-						"Settings": {
-							"TOP_MARGIN": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "مارجین بالا",
-									"en-us": "margin top"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"BOTTOM_MARGIN": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "مارجین پایین",
-									"en-us": "margin bottom"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"LEFT_MARGIN": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "مارجین چپ",
-									"en-us": "margin left"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"RIGHT_MARGIN": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "مارجین راست",
-									"en-us": "margin right"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							}
-						}
-					},
-					{
-						"Name": {
-							"fa-ir": "پدینگ",
-							"en-us": "padding"
-						},
-						"SubCategories": [],
-						"Settings": {
-							"TOP_PADDING": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "پدینگ بالا",
-									"en-us": "padding top"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"BOTTOM_PADDING": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "پدینگ پایین",
-									"en-us": "padding bottom"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"RIGHT_PADDING": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "پدینگ راست",
-									"en-us": "padding right"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							},
-							"LEFT_PADDING": {
-								"Units": {
-									"PIXEL": {
-										"fa-ir": "پیکسل",
-										"en-us": "Pixel"
-									}
-								},
-								"Title": {
-									"fa-ir": "پدینگ چپ",
-									"en-us": "padding left"
-								},
-								"DefaultValue": {
-									"Data": {
-										"Value": null,
-										"Unit": "PIXEL"
-									}
-								},
-								"BaseType": "NumberSettingDefinition"
-							}
-						}
-					}
-				],
-				"Settings": {
-					"BACKGROUND_COLOR": {
-						"Title": {
-							"fa-ir": "رنگ پس زمینه",
-							"en-us": "background color"
-						},
-						"DefaultValue": {
-							"Data": ""
-						},
-						"BaseType": "ColorPickerSettingDefinition"
-					}
-				}
-			},
-			{
-				"Name": {
-					"fa-ir": "پیشرفته",
-					"en-us": "advanced"
-				},
-				"SubCategories": [],
-				"Settings": {
-					"CSS_CLASSES": {
-						"Title": {
-							"fa-ir": "کلاس های css",
-							"en-us": "Css Classes"
-						},
-						"DefaultValue": {
-							"Data": {
-								"SelectedItems": []
-							}
-						},
-						"BaseType": "TagSettingDefinition"
-					},
-					"CUSTOM_CSS": {
-						"Title": {
-							"fa-ir": "css اختصاصی",
-							"en-us": "custom css"
-						},
-						"DefaultValue": {
-							"Data": ""
-						},
-						"BaseType": "CssEditorSettingDefinition"
-					}
-				}
-			}
-		]
-	}
+  {
+    "Children": [],
+    "Name": "ContainerWidgetDefinition",
+    "Title": {
+      "fa-ir": "کانتینر",
+      "en-us": "Container"
+    },
+    "Icon": "sample-icon",
+    "SettingCategories": [
+      {
+        "Name": {
+          "fa-ir": "عمومی",
+          "en-us": "general"
+        },
+        "SubCategories": [
+          {
+            "Name": {
+              "fa-ir": "خاص",
+              "en-us": "specific"
+            },
+            "SubCategories": [],
+            "Settings": {
+              "LINK": {
+                "SimpleLink": {
+                  "Help": null,
+                  "PlaceHolder": null,
+                  "Title": {
+                    "fa-ir": "آدرس",
+                    "en-us": "address"
+                  },
+                  "DefaultValue": {
+                    "Data": {}
+                  },
+                  "BaseType": "TextSettingDefinition",
+                  "SupportedSettingType": "TextSetting"
+                },
+                "Source": {
+                  "URL": {
+                    "fa-ir": "آدرس",
+                    "en-us": "link"
+                  },
+                  "PAGE": {
+                    "fa-ir": "صفحه",
+                    "en-us": "page"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "لینک",
+                  "en-us": "link"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "SelectedValue": "URL",
+                    "Address": {},
+                    "PageId": "00000000-0000-0000-0000-000000000000"
+                  }
+                },
+                "BaseType": "LinkSettingDefinition",
+                "SupportedSettingType": "LinkSetting"
+              },
+              "NEW_TAB": {
+                "Title": {
+                  "fa-ir": "باز شدن در پنجره جدید",
+                  "en-us": "open in new tab"
+                },
+                "DefaultValue": {
+                  "Data": false
+                },
+                "BaseType": "CheckBoxSettingDefinition",
+                "SupportedSettingType": "CheckBoxSetting"
+              }
+            }
+          },
+          {
+            "Name": {
+              "fa-ir": "فریم",
+              "en-us": "Frame"
+            },
+            "SubCategories": [],
+            "Settings": {
+              "WIDTH": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "عرض",
+                  "en-us": "Width"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "HEIGHT": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "ارتفاع",
+                  "en-us": "height"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "MIN_WIDTH": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "حداقل عرض",
+                  "en-us": "min width"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "MIN_HEIGHT": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "حداقل ارتفاع",
+                  "en-us": "min height"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "MAX_WIDTH": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "حداکثر عرض",
+                  "en-us": "max width"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "MAX_HEIGHT": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "حداکثر ارتفاع",
+                  "en-us": "max height"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              }
+            }
+          }
+        ],
+        "Settings": {}
+      },
+      {
+        "Name": {
+          "fa-ir": "استایل",
+          "en-us": "styles"
+        },
+        "SubCategories": [
+          {
+            "Name": {
+              "fa-ir": "مارجین",
+              "en-us": "margin"
+            },
+            "SubCategories": [],
+            "Settings": {
+              "TOP_MARGIN": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "مارجین بالا",
+                  "en-us": "margin top"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "BOTTOM_MARGIN": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "مارجین پایین",
+                  "en-us": "margin bottom"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "LEFT_MARGIN": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "مارجین چپ",
+                  "en-us": "margin left"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "RIGHT_MARGIN": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "مارجین راست",
+                  "en-us": "margin right"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              }
+            }
+          },
+          {
+            "Name": {
+              "fa-ir": "پدینگ",
+              "en-us": "padding"
+            },
+            "SubCategories": [],
+            "Settings": {
+              "TOP_PADDING": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "پدینگ بالا",
+                  "en-us": "padding top"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "BOTTOM_PADDING": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "پدینگ پایین",
+                  "en-us": "padding bottom"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "RIGHT_PADDING": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "پدینگ راست",
+                  "en-us": "padding right"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "LEFT_PADDING": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "پدینگ چپ",
+                  "en-us": "padding left"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              }
+            }
+          }
+        ],
+        "Settings": {
+          "BACKGROUND_COLOR": {
+            "Title": {
+              "fa-ir": "رنگ پس زمینه",
+              "en-us": "background color"
+            },
+            "DefaultValue": {
+              "Data": ""
+            },
+            "BaseType": "ColorPickerSettingDefinition",
+            "SupportedSettingType": "ColorPickerSetting"
+          }
+        }
+      },
+      {
+        "Name": {
+          "fa-ir": "پیشرفته",
+          "en-us": "advanced"
+        },
+        "SubCategories": [],
+        "Settings": {
+          "HTML_TAG": {
+            "Source": {
+              "DIV": {
+                "fa-ir": "ِDIV",
+                "en-us": "DIV"
+              },
+              "HEADER": {
+                "fa-ir": "HEADER",
+                "en-us": "HEADER"
+              },
+              "FOOTER": {
+                "fa-ir": "FOOTER",
+                "en-us": "FOOTER"
+              },
+              "ARTICLE": {
+                "fa-ir": "ARTICLE",
+                "en-us": "ARTICLE"
+              }
+            },
+            "Title": {
+              "fa-ir": "تگ HTML",
+              "en-us": "Html Tag"
+            },
+            "DefaultValue": {
+              "Data": "empty"
+            },
+            "BaseType": "DropDownSettingDefinition",
+            "SupportedSettingType": "DropDownSetting"
+          },
+          "CSS_CLASSES": {
+            "Title": {
+              "fa-ir": "کلاس های css",
+              "en-us": "Css Classes"
+            },
+            "DefaultValue": {
+              "Data": {
+                "SelectedItems": []
+              }
+            },
+            "BaseType": "TagSettingDefinition",
+            "SupportedSettingType": "TagSetting"
+          },
+          "CUSTOM_CSS": {
+            "Title": {
+              "fa-ir": "css اختصاصی",
+              "en-us": "custom css"
+            },
+            "DefaultValue": {
+              "Data": ""
+            },
+            "BaseType": "CssEditorSettingDefinition",
+            "SupportedSettingType": "CssEditorSetting"
+          }
+        }
+      }
+    ],
+    "SupportedControlType": "ContainerWidget",
+    "IsAddable": true
+  },
+  {
+    "DefaultValue": {
+      "Data": {
+        "fa-ir": "محتوای html مورد نظر خود را وارد کنید",
+        "en-us": "insert your html content"
+      }
+    },
+    "Name": "HtmlWidgetDefinition",
+    "Title": {
+      "fa-ir": "ویرایشگر html",
+      "en-us": "Html Editor"
+    },
+    "Icon": "sample-icon",
+    "SettingCategories": [
+      {
+        "Name": {
+          "fa-ir": "عمومی",
+          "en-us": "general"
+        },
+        "SubCategories": [
+          {
+            "Name": {
+              "fa-ir": "فریم",
+              "en-us": "Frame"
+            },
+            "SubCategories": [],
+            "Settings": {
+              "WIDTH": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "عرض",
+                  "en-us": "Width"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "HEIGHT": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "ارتفاع",
+                  "en-us": "height"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "MIN_WIDTH": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "حداقل عرض",
+                  "en-us": "min width"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "MIN_HEIGHT": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "حداقل ارتفاع",
+                  "en-us": "min height"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "MAX_WIDTH": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "حداکثر عرض",
+                  "en-us": "max width"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "MAX_HEIGHT": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "حداکثر ارتفاع",
+                  "en-us": "max height"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              }
+            }
+          }
+        ],
+        "Settings": {}
+      },
+      {
+        "Name": {
+          "fa-ir": "استایل",
+          "en-us": "styles"
+        },
+        "SubCategories": [
+          {
+            "Name": {
+              "fa-ir": "مارجین",
+              "en-us": "margin"
+            },
+            "SubCategories": [],
+            "Settings": {
+              "TOP_MARGIN": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "مارجین بالا",
+                  "en-us": "margin top"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "BOTTOM_MARGIN": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "مارجین پایین",
+                  "en-us": "margin bottom"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "LEFT_MARGIN": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "مارجین چپ",
+                  "en-us": "margin left"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "RIGHT_MARGIN": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "مارجین راست",
+                  "en-us": "margin right"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              }
+            }
+          },
+          {
+            "Name": {
+              "fa-ir": "پدینگ",
+              "en-us": "padding"
+            },
+            "SubCategories": [],
+            "Settings": {
+              "TOP_PADDING": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "پدینگ بالا",
+                  "en-us": "padding top"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "BOTTOM_PADDING": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "پدینگ پایین",
+                  "en-us": "padding bottom"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "RIGHT_PADDING": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "پدینگ راست",
+                  "en-us": "padding right"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "LEFT_PADDING": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "پدینگ چپ",
+                  "en-us": "padding left"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              }
+            }
+          }
+        ],
+        "Settings": {
+          "BACKGROUND_COLOR": {
+            "Title": {
+              "fa-ir": "رنگ پس زمینه",
+              "en-us": "background color"
+            },
+            "DefaultValue": {
+              "Data": ""
+            },
+            "BaseType": "ColorPickerSettingDefinition",
+            "SupportedSettingType": "ColorPickerSetting"
+          }
+        }
+      },
+      {
+        "Name": {
+          "fa-ir": "پیشرفته",
+          "en-us": "advanced"
+        },
+        "SubCategories": [],
+        "Settings": {
+          "CSS_CLASSES": {
+            "Title": {
+              "fa-ir": "کلاس های css",
+              "en-us": "Css Classes"
+            },
+            "DefaultValue": {
+              "Data": {
+                "SelectedItems": []
+              }
+            },
+            "BaseType": "TagSettingDefinition",
+            "SupportedSettingType": "TagSetting"
+          },
+          "CUSTOM_CSS": {
+            "Title": {
+              "fa-ir": "css اختصاصی",
+              "en-us": "custom css"
+            },
+            "DefaultValue": {
+              "Data": ""
+            },
+            "BaseType": "CssEditorSettingDefinition",
+            "SupportedSettingType": "CssEditorSetting"
+          }
+        }
+      }
+    ],
+    "SupportedControlType": "HtmlWidget",
+    "IsAddable": true
+  },
+  {
+    "Children": [
+      {
+        "Name": "ColumnWidget",
+        "Children": [],
+        "Value": null,
+        "Settings": {
+          "GRID_SIZE": {
+            "Name": "DropDownSetting",
+            "Value": {
+              "Data": "12"
+            },
+            "SupportedDefinition": "DropDownSettingDefinition"
+          }
+        },
+        "SupportedDefinitionType": "ColumnWidgetDefinition",
+        "Id": 0,
+        "DefaultValue": null
+      }
+    ],
+    "Name": "GridWidgetDefinition",
+    "Title": {
+      "fa-ir": "گرید",
+      "en-us": "Grid"
+    },
+    "Icon": "sample-icon",
+    "SettingCategories": [
+      {
+        "Name": {
+          "fa-ir": "عمومی",
+          "en-us": "general"
+        },
+        "SubCategories": [
+          {
+            "Name": {
+              "fa-ir": "خاص",
+              "en-us": "specific"
+            },
+            "SubCategories": [],
+            "Settings": {
+              "COLUMNS_COUNT": {
+                "Source": {
+                  "1": {
+                    "fa-ir": "1",
+                    "en-us": "1"
+                  },
+                  "2": {
+                    "fa-ir": "2",
+                    "en-us": "2"
+                  },
+                  "3": {
+                    "fa-ir": "3",
+                    "en-us": "3"
+                  },
+                  "4": {
+                    "fa-ir": "4",
+                    "en-us": "4"
+                  },
+                  "6": {
+                    "fa-ir": "6",
+                    "en-us": "6"
+                  },
+                  "12": {
+                    "fa-ir": "12",
+                    "en-us": "12"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "تعداد ستون ها",
+                  "en-us": "columns count"
+                },
+                "DefaultValue": {
+                  "Data": "1"
+                },
+                "BaseType": "DropDownSettingDefinition",
+                "SupportedSettingType": "DropDownSetting"
+              },
+              "SHOW_GUTTER": {
+                "Title": {
+                  "fa-ir": "نمایش فاصله بین ستون ها",
+                  "en-us": "show gutter"
+                },
+                "DefaultValue": {
+                  "Data": false
+                },
+                "BaseType": "CheckBoxSettingDefinition",
+                "SupportedSettingType": "CheckBoxSetting"
+              }
+            }
+          },
+          {
+            "Name": {
+              "fa-ir": "فریم",
+              "en-us": "Frame"
+            },
+            "SubCategories": [],
+            "Settings": {
+              "WIDTH": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "عرض",
+                  "en-us": "Width"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "HEIGHT": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "ارتفاع",
+                  "en-us": "height"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "MIN_WIDTH": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "حداقل عرض",
+                  "en-us": "min width"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "MIN_HEIGHT": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "حداقل ارتفاع",
+                  "en-us": "min height"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "MAX_WIDTH": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "حداکثر عرض",
+                  "en-us": "max width"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "MAX_HEIGHT": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "حداکثر ارتفاع",
+                  "en-us": "max height"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              }
+            }
+          }
+        ],
+        "Settings": {}
+      },
+      {
+        "Name": {
+          "fa-ir": "استایل",
+          "en-us": "styles"
+        },
+        "SubCategories": [
+          {
+            "Name": {
+              "fa-ir": "مارجین",
+              "en-us": "margin"
+            },
+            "SubCategories": [],
+            "Settings": {
+              "TOP_MARGIN": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "مارجین بالا",
+                  "en-us": "margin top"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "BOTTOM_MARGIN": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "مارجین پایین",
+                  "en-us": "margin bottom"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "LEFT_MARGIN": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "مارجین چپ",
+                  "en-us": "margin left"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "RIGHT_MARGIN": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "مارجین راست",
+                  "en-us": "margin right"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              }
+            }
+          },
+          {
+            "Name": {
+              "fa-ir": "پدینگ",
+              "en-us": "padding"
+            },
+            "SubCategories": [],
+            "Settings": {
+              "TOP_PADDING": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "پدینگ بالا",
+                  "en-us": "padding top"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "BOTTOM_PADDING": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "پدینگ پایین",
+                  "en-us": "padding bottom"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "RIGHT_PADDING": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "پدینگ راست",
+                  "en-us": "padding right"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              },
+              "LEFT_PADDING": {
+                "Units": {
+                  "PIXEL": {
+                    "fa-ir": "پیکسل",
+                    "en-us": "Pixel"
+                  }
+                },
+                "Title": {
+                  "fa-ir": "پدینگ چپ",
+                  "en-us": "padding left"
+                },
+                "DefaultValue": {
+                  "Data": {
+                    "Value": null,
+                    "Unit": "PIXEL"
+                  }
+                },
+                "BaseType": "NumberSettingDefinition",
+                "SupportedSettingType": "NumberSetting"
+              }
+            }
+          }
+        ],
+        "Settings": {
+          "BACKGROUND_COLOR": {
+            "Title": {
+              "fa-ir": "رنگ پس زمینه",
+              "en-us": "background color"
+            },
+            "DefaultValue": {
+              "Data": ""
+            },
+            "BaseType": "ColorPickerSettingDefinition",
+            "SupportedSettingType": "ColorPickerSetting"
+          }
+        }
+      },
+      {
+        "Name": {
+          "fa-ir": "پیشرفته",
+          "en-us": "advanced"
+        },
+        "SubCategories": [],
+        "Settings": {
+          "CSS_CLASSES": {
+            "Title": {
+              "fa-ir": "کلاس های css",
+              "en-us": "Css Classes"
+            },
+            "DefaultValue": {
+              "Data": {
+                "SelectedItems": []
+              }
+            },
+            "BaseType": "TagSettingDefinition",
+            "SupportedSettingType": "TagSetting"
+          },
+          "CUSTOM_CSS": {
+            "Title": {
+              "fa-ir": "css اختصاصی",
+              "en-us": "custom css"
+            },
+            "DefaultValue": {
+              "Data": ""
+            },
+            "BaseType": "CssEditorSettingDefinition",
+            "SupportedSettingType": "CssEditorSetting"
+          }
+        }
+      }
+    ],
+    "SupportedControlType": "GridWidget",
+    "IsAddable": true
+  },
+  {
+    "Children": [],
+    "Name": "ColumnWidgetDefinition",
+    "Title": {
+      "fa-ir": "ستون",
+      "en-us": "Column"
+    },
+    "Icon": "sample-icon",
+    "SettingCategories": [
+      {
+        "Name": {
+          "fa-ir": "عمومی",
+          "en-us": "general"
+        },
+        "SubCategories": [],
+        "Settings": {
+          "GRID_SIZE": {
+            "Source": {
+              "1": {
+                "fa-ir": "1",
+                "en-us": "1"
+              },
+              "2": {
+                "fa-ir": "2",
+                "en-us": "2"
+              },
+              "3": {
+                "fa-ir": "3",
+                "en-us": "3"
+              },
+              "4": {
+                "fa-ir": "4",
+                "en-us": "4"
+              },
+              "6": {
+                "fa-ir": "6",
+                "en-us": "6"
+              },
+              "12": {
+                "fa-ir": "12",
+                "en-us": "12"
+              }
+            },
+            "Title": {
+              "fa-ir": "تعداد ستون ها",
+              "en-us": "columns count"
+            },
+            "DefaultValue": {
+              "Data": "12"
+            },
+            "BaseType": "DropDownSettingDefinition",
+            "SupportedSettingType": "DropDownSetting"
+          }
+        }
+      }
+    ],
+    "SupportedControlType": "ColumnWidget",
+    "IsAddable": false
+  }
 ]
