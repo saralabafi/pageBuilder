@@ -273,12 +273,12 @@ const GridWidget = (props: Control) => {
       const columnElements = document.getElementsByClassName('item')
       const columnCount = columnElements.length
       columnSpan = Math.floor(12 / columnCount)
-      // items.forEach((item) => {
-      //   const divElement = item as HTMLDivElement // Assuming the items are HTMLDivElement
-      //   divElement.removeAttribute('style')
-      //   item.className = item.className.replace(/\bcol-span-\S+\s*/g, '')
-      //   ;(item as HTMLDivElement).classList.add(`col-span-${columnSpan}`)
-      // })
+      items.forEach((item) => {
+        const divElement = item as HTMLDivElement // Assuming the items are HTMLDivElement
+        divElement.removeAttribute('style')
+        item.className = item.className.replace(/\bcol-span-\S+\s*/g, '')
+        ;(item as HTMLDivElement).classList.add(`col-span-${columnSpan}`)
+      })
     }
 
     resizableXfirst()
