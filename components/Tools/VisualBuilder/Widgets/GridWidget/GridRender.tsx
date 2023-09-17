@@ -205,12 +205,6 @@ const GridWidget = (props: Control) => {
                       item1.classList.add(
                         `col-span-${Math.round(item2 / columnWidth!)}`
                       )
-                      console.log(
-                        'item1',
-                        item1.id,
-                        type,
-                        Math.round(item2 / columnWidth!)
-                      )
                       editControl(item1.id, type, {
                         Data: Math.round(item2 / columnWidth!),
                       })
@@ -304,12 +298,10 @@ const GridWidget = (props: Control) => {
           </div>
         ))}
       </i>
-      {/* ${CSS_ClassNames} ${props.Id} */}
       <div className={`containerbox flex h-32 ${CSS_ClassNames} ${props.Id}`}>
         {props?.Children && props.Children?.length > 0
           ? props?.Children?.map((item: Control, index: number) => {
               const currentPath = `${props.path}-${index}`
-              console.log('Settings', item.Settings?.GRID_SIZE?.Data)
               return (
                 <>
                   <div
@@ -355,8 +347,6 @@ const GridWidget = (props: Control) => {
                       />
                     </div>
                   </div>
-
-                  {console.log(props?.Settings?.SHOW_GUTTER?.Data)}
 
                   {index < props?.Children?.length! - 1 &&
                     props?.Settings?.SHOW_GUTTER?.Data !== false && (

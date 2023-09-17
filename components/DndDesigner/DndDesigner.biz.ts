@@ -15,7 +15,6 @@ export const useDndDesigner = (renderList: any) => {
   const { designList, activeControl } = useSelector(
     (state: RootState) => state.pageDesign
   )
-  console.log(designList)
   const dispatch = useDispatch()
 
   const handleDrop = useCallback(
