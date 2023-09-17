@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectActiveMenu, selectActiveTab } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
 import { services } from 'services/services'
-import Fdata from '../../../public/Data/ContentStructer.json'
 import { ControlMenu } from '../../PageBuilder/PageBuilderConfigs/components/ControlMenu/ControlMenu'
 
 export const useContentStructureSideMenu = () => {
@@ -38,12 +37,11 @@ export const useContentStructureSideMenu = () => {
     return availableMenu[activeTab]
   }
 
-  const data = Fdata
 
-  // const { data, status } = useQuery(
-  //   [{ url: 'forms/v1.0/siteName/controls/definitions' }],
-  //   services.GetData
-  // )
+  const { data, status } = useQuery(
+    [{ url: 'forms/v1.0/siteName/controls/definitions' }],
+    services.GetData
+  )
 
   const controls: any[] = data?.map((control: any) => {
     return { component: control, type: 'sidebarItem' }
