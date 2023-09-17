@@ -94,7 +94,7 @@
     },
     "DataStructure": {
       "dataStructure": "ساختار داده",
-      "newContent": "محتوا جدید",
+      "newDataStructure": "ساختار جدید",
       "newStructure": "قالب جدید",
       "createNewStructure": "ساخت قالب جدید",
       "useTemplateInHome": " قالب استفاده شده در صفحه خانه",
@@ -110,7 +110,10 @@
       "close": "بستن",
       "template": "قالب",
       "default": "پیش‌فرض",
-      "typingHere": "اینجا تایپ کنید"
+      "typingHere": "اینجا تایپ کنید",
+      "continue": "ادامه",
+      "cancel": "انصراف",
+      "select": "انتخاب کنید"
     }
   }
 }
