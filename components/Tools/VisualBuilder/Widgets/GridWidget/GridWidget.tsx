@@ -204,12 +204,7 @@ const GridWidget = (props: Control) => {
                       item1.classList.add(
                         `col-span-${Math.round(item2 / columnWidth!)}`
                       )
-                      console.log(
-                        'item1',
-                        item1.id,
-                        type,
-                        Math.round(item2 / columnWidth!)
-                      )
+                     
                       editControl(item1.id, type, {
                         Data: Math.round(item2 / columnWidth!),
                       })
@@ -308,7 +303,6 @@ const GridWidget = (props: Control) => {
         {props?.Children && props.Children?.length > 0
           ? props?.Children?.map((item: Control, index: number) => {
               const currentPath = `${props.path}-${index}`
-              console.log('Settings', item.Settings?.GRID_SIZE?.Data)
               return (
                 <>
                   <div

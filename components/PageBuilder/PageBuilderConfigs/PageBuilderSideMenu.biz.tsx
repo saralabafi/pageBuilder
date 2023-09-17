@@ -42,9 +42,7 @@ export const usePageBuilderSideMenu = () => {
    data?.filter((control: any) => control.IsAddable)
 
   controls = data?.map((control: any) => {
-    if (control.IsAddable) {
     return { component: control, type: 'sidebarItem' }
-    } else return
   })
 
   return {
