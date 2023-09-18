@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { IFolders } from 'components/Dashboard/DashboardHeader/DynamicContent/NavigationDynamicContent.type'
-import { useEffect, useState } from 'react'
+import { filtersInputValueType } from 'components/Dashboard/content/FilterContentSection.type'
+import { useEffect, useMemo, useState } from 'react'
 import { services } from 'services/services'
 
 export const useContent = () => {
@@ -51,6 +52,41 @@ export const useContent = () => {
     return { title: hierarchy.title, id: hierarchy.id }
   })
 
+  const [filterVisible, setFilterVisible] = useState<boolean>(false)
+  const [filtersInputValue, setFiltersInputValue] =
+    useState<filtersInputValueType>({
+      title: '',
+      content_structure: '',
+      creator: '',
+      status: '',
+      until_date: '',
+      from_date: '',
+    })
+
+  const onChangeFilterItem = (value: string, type: string, options?: {title:string,id:string}[]) => {
+    const selectedOption = options?.find(
+      (option: { title: string; id: string }) => option.id === value
+    )
+    setFiltersInputValue((_prev) => {
+      return { ..._prev, [type]: selectedOption || value }
+    })
+  }
+
+  const filtersTagsOptions = useMemo(() => {
+    return Object.entries(filtersInputValue)
+      .filter(([_, value]) => !!value)
+      .map(([title, value]) => {
+        return { title, value }
+      })
+  }, [filtersInputValue])
+
+  const removeFilterItems = (selected_type: string) => {
+    setFiltersInputValue((prevState) => ({
+      ...prevState,
+      [selected_type]: '',
+    }))
+  }
+
   return {
     dataTable,
     activeFolder,
@@ -65,5 +101,12 @@ export const useContent = () => {
     visibleNewContentModal,
     setVisibleNewContentModal,
     contentStructureList,
+    filterVisible,
+    setFilterVisible,
+    filtersInputValue,
+    setFiltersInputValue,
+    onChangeFilterItem,
+    filtersTagsOptions,
+    removeFilterItems,
   }
 }
