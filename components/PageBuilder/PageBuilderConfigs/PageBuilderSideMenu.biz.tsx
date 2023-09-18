@@ -10,7 +10,6 @@ import { services } from 'services/services'
 import { ControlMenu } from './components/ControlMenu/ControlMenu'
 import { NavigateMenu } from './components/NavigateMenu/NavigateMenu'
 
-
 export const usePageBuilderSideMenu = () => {
   const dispatch = useDispatch()
   const t = useTranslations('layout')
@@ -38,11 +37,13 @@ export const usePageBuilderSideMenu = () => {
     ],
     services.GetData
   )
-  let controls: any = []
-   data?.filter((control: any) => control.IsAddable)
+  
+  let controls: any = data?.filter((control: any) => control.IsAddable)
 
-  controls = data?.map((control: any) => {
-    return { component: control, type: 'sidebarItem' }
+  controls = controls?.map((control: any) => {
+    if (control.IsAddable) {
+      return { component: control, type: 'sidebarItem' }
+    } else return
   })
 
   return {

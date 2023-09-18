@@ -8,7 +8,7 @@ export const SettingBox = ({ controls }: any) => {
 
   return (
     <Flex direction="flex-col" align="items-start" customCSS="py-2 px-4 ">
-      {options.length > 1 ? (
+      {options?.length > 1 ? (
         <TabSetting
           category={category}
           selectedCategory={selectedCategory}

@@ -6,7 +6,7 @@ interface IQueryKey {
   pageSize?: number
 }
 const base_api = axios.create({
-  baseURL: 'http://gateway.dourtal.co/api/',
+  baseURL: 'http://developgateway.dourtal.co/api/',
 })
 
 const GetData = async ({ queryKey }: QueryFunctionContext) => {
