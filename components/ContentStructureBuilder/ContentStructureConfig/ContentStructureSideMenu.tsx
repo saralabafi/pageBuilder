@@ -29,7 +29,11 @@ export const ContentStructureSideMenu = () => {
             <Text fontSize={14} fontWeight={600} color="text-neutral-600">
               {handleRenderTabMenu({ controls })?.title as string}
             </Text>
-            <Cancel onClick={handleClose} className="cursor-pointer" />
+            <Cancel
+              width={12}
+              onClick={handleClose}
+              className="cursor-pointer"
+            />
           </Flex>
           {controls && handleRenderTabMenu({ controls })?.component}
         </>

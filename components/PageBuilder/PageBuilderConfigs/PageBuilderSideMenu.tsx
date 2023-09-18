@@ -1,7 +1,7 @@
 import { Flex } from 'components/CoreComponents/Flex/Flex'
 import { Loading } from 'components/CoreComponents/Loading/Loading'
 import Text from 'components/CoreComponents/Text/Text'
-import Cancel from 'images/assets/cancel.svg'
+import CancelIcon from 'images/assets/cancel.svg'
 import { usePageBuilderSideMenu } from './PageBuilderSideMenu.biz'
 
 export const PageBuilderSideMenu = () => {
@@ -27,11 +27,15 @@ export const PageBuilderSideMenu = () => {
             backgroundColor="bg-neutral-50"
             customCSS="border-e border-b border-neutral-200 ">
             <Text fontSize={14} fontWeight={600} color="text-neutral-600">
-              {handleRenderTabMenu({controls})?.title as string}
+              {handleRenderTabMenu({ controls })?.title as string}
             </Text>
-            <Cancel onClick={handleClose} className="cursor-pointer" />
+            <CancelIcon
+              width={12}
+              onClick={handleClose}
+              className="cursor-pointer"
+            />
           </Flex>
-          {controls && handleRenderTabMenu( {controls} )?.component}
+          {controls && handleRenderTabMenu({ controls })?.component}
         </>
       )}
     </div>

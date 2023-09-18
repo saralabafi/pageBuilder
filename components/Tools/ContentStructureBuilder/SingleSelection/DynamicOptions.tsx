@@ -33,7 +33,7 @@ const DynamicOptions: React.FC<DynamicOptionsProps> = ({
             <div
               className="cursor-pointer"
               onClick={() => handleRemoveOption(index)}>
-              <CancelCircle />
+              <CancelCircle width={12} />
             </div>
           </Flex>
         </Flex>

@@ -18,7 +18,7 @@ const RemovableButton: React.FC<RemovableButtonProps> = ({
           className="text-red-600 hover:text-red-800 focus:outline-none"
           onClick={onRemove}
           aria-label="Remove">
-          <CancelIcon />
+          <CancelIcon width={12} />
         </button>
         <div className="ButtonTitle text-right text-slate-500 text-xs font-normal leading-none">
           {text}
