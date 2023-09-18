@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { IFolders } from 'components/Dashboard/DashboardHeader/DynamicContent/NavigationDynamicContent.type'
-import { filtersInputValueType } from 'components/Dashboard/content/FilterContentSection.type'
+import { filtersInputValueType } from 'components/Dashboard/content/FilterContentSection/FilterContentSection.type'
 import { useEffect, useMemo, useState } from 'react'
 import { services } from 'services/services'
 
@@ -72,7 +72,10 @@ export const useContent = () => {
     })
   }
 
-  const filtersTagsOptions = useMemo(() => {
+  const filtersTagsOptions: {
+    title: string
+    value: string
+  }[] = useMemo(() => {
     return Object.entries(filtersInputValue)
       .filter(([_, value]) => !!value)
       .map(([title, value]) => {

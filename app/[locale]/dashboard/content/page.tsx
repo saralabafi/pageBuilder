@@ -2,29 +2,28 @@
 import { BreadCrumbComponent } from 'components/BreadCrumbComponent/BreadCrumbComponent'
 import Button from 'components/CoreComponents/Button/Button'
 import { Flex } from 'components/CoreComponents/Flex/Flex'
+import { Loading } from 'components/CoreComponents/Loading/Loading'
 import { Menu } from 'components/CoreComponents/Menu/Menu'
 import { MenuItem } from 'components/CoreComponents/Menu/MenuItem'
+import Modal from 'components/CoreComponents/Modal'
+import { Select } from 'components/CoreComponents/Select/Select'
 import Table from 'components/CoreComponents/Table/Table'
 import Text from 'components/CoreComponents/Text/Text'
 import { NavigationDynamicContent } from 'components/Dashboard/DashboardHeader/DynamicContent/NavigationDynamicContent'
 import DotsButtonIcon from 'images/dashboard/dotsButton.svg'
-import DownloadIcon from 'images/dashboard/download.svg'
 import DuplicateIcon from 'images/dashboard/duplicateOutline.svg'
 import EditIcon from 'images/dashboard/edit.svg'
 import ExternalLinkIcon from 'images/dashboard/externalLink.svg'
-import FilterIcon from 'images/dashboard/filter.svg'
 import HistoryIcon from 'images/dashboard/history.svg'
 import TickIcon from 'images/dashboard/tick.svg'
-import DocumentIcon from 'images/page/formats.svg'
-import PlusIcon from 'images/page/plus.svg'
 import TrashIcon from 'images/page/trash.svg'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { useContent } from './content.biz'
-import { Loading } from 'components/CoreComponents/Loading/Loading'
 import Pagination from 'rc-pagination'
-import Modal from 'components/CoreComponents/Modal'
-import { Select } from 'components/CoreComponents/Select/Select'
+import { useContent } from './content.biz'
+import { ContentHeader } from 'components/Dashboard/content/ContentHeader/ContentHeader'
+import { FilterContentSection } from 'components/Dashboard/content/FilterContentSection/FilterContentSection'
+import { ContentFilterHeader } from 'components/Dashboard/content/ContentFilterHeader/ContentFilterHeader'
 
 function ContentPage() {
   const {
@@ -39,7 +38,13 @@ function ContentPage() {
     breadcrumbItems,
     visibleNewContentModal,
     setVisibleNewContentModal,
-    contentStructureList
+    contentStructureList,
+    filterVisible,
+    setFilterVisible,
+    filtersInputValue,
+    onChangeFilterItem,
+    filtersTagsOptions,
+    removeFilterItems,
   } = useContent()
 
   const t = useTranslations('Dashboard.Content')
@@ -243,38 +248,19 @@ function ContentPage() {
     </Flex>
   )
 
+
   return (
     <div className=" rounded gap-3 border border-slate-100 bg-white shadow-sm mx-3 my-2 ">
-      <Flex justify="justify-between" customCSS="border-b p-3">
-        <Flex align="items-center" gap="gap-2">
-          <div className="p-2 bg-blue-500 border border-blue-400 rounded-md">
-            <DocumentIcon className="text-white " />
-          </div>
-          <Text color="text-slate-700" fontSize={16} fontWeight={500}>
-            {t('content')}
-          </Text>
-        </Flex>
-        <Flex align="items-center" gap="gap-2">
-          <Button
-            border="border border-slate-200 rounded"
-            backgroundColor="white">
-            <DownloadIcon className="text-slate-400" />
-          </Button>
-          <Button
-            border="border border-slate-200 rounded"
-            backgroundColor="white">
-            <FilterIcon className="text-slate-400" />
-          </Button>
-          <Button
-            backgroundColor="bg-blue-500"
-            customCSS="rounded"
-            onClick={() => setVisibleNewContentModal(true)}>
-            <PlusIcon className="text-white" fontSize={24} />
-            <Text fontSize={12} fontWeight={400} color="text-white">
-              {t('newContent')}
-            </Text>
-          </Button>
-        </Flex>
+      <Flex direction="flex-col" customCSS="border-b p-3">
+        <ContentHeader
+          filterVisible={filterVisible}
+          setFilterVisible={setFilterVisible}
+          setVisibleNewContentModal={setVisibleNewContentModal}
+        />
+        <ContentFilterHeader
+          filtersTagsOptions={filtersTagsOptions}
+          removeFilterItems={removeFilterItems}
+        />
       </Flex>
       <Flex align="items-start">
         <Flex customCSS="w-[25%]">
@@ -286,7 +272,7 @@ function ContentPage() {
           />
         </Flex>
         <Flex
-          customCSS="w-[75%] p-2 border-s"
+          customCSS="w-full p-2 border-s"
           direction="flex-col"
           align="items-start">
           <BreadCrumbComponent
@@ -315,9 +301,15 @@ function ContentPage() {
             />
           </Flex>
         </Flex>
+        {filterVisible && (
+          <FilterContentSection
+            filtersInputValue={filtersInputValue}
+            onChangeFilterItem={onChangeFilterItem}
+          />
+        )}
       </Flex>
       <Modal
-        width='w-2/5'
+        width="w-2/5"
         footer={footer}
         title={t('newContent')}
         visible={visibleNewContentModal}
