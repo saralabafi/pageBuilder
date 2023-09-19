@@ -36,7 +36,7 @@ export const ContentFilterHeader = ({
                 <Text color="text-slate-500" fontSize={12}>
                   {typeof filterTag.value === 'string'
                     ? filterTag.value
-                    : dayjs(filterTag.value)
+                    : dayjs(filterTag.value as unknown as Date)
                         .calendar(locale === 'fa-ir' ? 'jalali' : 'gregory')
                         .format('YYYY/MM/DD')}
                 </Text>

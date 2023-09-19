@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { IFolders } from 'components/Dashboard/DashboardHeader/DynamicContent/NavigationDynamicContent.type'
 import { filtersInputValueType } from 'components/Dashboard/content/FilterContentSection/FilterContentSection.type'
 import { useEffect, useMemo, useState } from 'react'
+import { DateObject } from 'react-multi-date-picker'
 import { services } from 'services/services'
 
 export const useContent = () => {
@@ -53,40 +54,47 @@ export const useContent = () => {
   })
 
   const [filterVisible, setFilterVisible] = useState<boolean>(false)
+  const [filtersTagsOptions, setFiltersTagsOptions] = useState<
+    { title: string; value: string | DateObject | DateObject[] | null }[]
+  >([])
+
   const [filtersInputValue, setFiltersInputValue] =
     useState<filtersInputValueType>({
       title: '',
       content_structure: '',
       creator: '',
       status: '',
-      until_date: undefined,
-      from_date: undefined,
+      until_date: null,
+      from_date: null,
     })
 
-  const onChangeFilterItem = (
-    value: string | Date | undefined,
-    type: string,
-    options?: { title: string; id: string }[]
-  ) => {
-    const selectedOption = options?.find(
-      (option: { title: string; id: string }) => option.id === value
-    )
+  const handleApplyFilter = (filterValues: filtersInputValueType) => {
+    setFiltersInputValue(filterValues)
+  }
 
-    setFiltersInputValue((_prev) => {
-      return { ..._prev, [type]: selectedOption || value }
+  const handleResetFiltersInput = () => {
+    setFiltersInputValue({
+      title: '',
+      content_structure: '',
+      creator: '',
+      status: '',
+      until_date: null,
+      from_date: null,
     })
   }
 
-  const filtersTagsOptions: {
-    title: string
-    value: string | Date | undefined
-  }[] = useMemo(() => {
-    return Object.entries(filtersInputValue)
+  const handleCreateFilterTags = () => {
+    const list: {
+      title: string
+      value: string | DateObject | DateObject[] | null
+    }[] = Object.entries(filtersInputValue)
       .filter(([_, value]) => !!value)
       .map(([title, value]) => {
         return { title, value }
       })
-  }, [filtersInputValue])
+
+    setFiltersTagsOptions(list)
+  }
 
   const removeFilterItems = (selected_type: string) => {
     setFiltersInputValue((prevState) => ({
@@ -94,6 +102,10 @@ export const useContent = () => {
       [selected_type]: '',
     }))
   }
+
+  useEffect(() => {
+    handleCreateFilterTags()
+  }, [removeFilterItems, handleResetFiltersInput])
 
   return {
     dataTable,
@@ -113,8 +125,10 @@ export const useContent = () => {
     setFilterVisible,
     filtersInputValue,
     setFiltersInputValue,
-    onChangeFilterItem,
+    handleApplyFilter,
     filtersTagsOptions,
     removeFilterItems,
+    handleCreateFilterTags,
+    handleResetFiltersInput,
   }
 }

@@ -9,10 +9,13 @@ import { IFilterContentSection } from './FilterContentSection.type'
 import { DatePickerComponent } from 'components/CoreComponents/DatePicker/DatePickerComponent'
 
 export const FilterContentSection = ({
-  filtersInputValue,
-  onChangeFilterItem,
+  setFilterVisible,
+  handleResetFiltersInput,
+  handleApplyFilter,
 }: IFilterContentSection) => {
-  const { t } = useFilterContentSection()
+  const { t, filtersInputValue, onChangeFilterItem, handleResetForm } =
+    useFilterContentSection()
+
   return (
     <Flex
       direction="flex-col"
@@ -27,7 +30,12 @@ export const FilterContentSection = ({
         <Text fontWeight={500} color="text-slate-600">
           {t('filters')}
         </Text>
-        <CancelIcon color="text-slate-500" width={15} />
+        <CancelIcon
+          width={15}
+          color="text-slate-500"
+          className="cursor-pointer"
+          onClick={() => setFilterVisible(false)}
+        />
       </Flex>
       <Flex
         gap="gap-1"
@@ -41,6 +49,7 @@ export const FilterContentSection = ({
             {t('title')}
           </Text>
           <Input
+            value={filtersInputValue['title']}
             placeholder={t('search_by_title')}
             customCss="bg-white"
             onChange={(e) => onChangeFilterItem(e.target.value, 'title')}
@@ -65,7 +74,7 @@ export const FilterContentSection = ({
             {t('creator')}
           </Text>
           <Select
-            value={''}
+            value={filtersInputValue['creator']}
             onChange={(e) => onChangeFilterItem(e, 'creator')}
             options={[]}
             placeholder={t('select')}
@@ -76,7 +85,7 @@ export const FilterContentSection = ({
             {t('status')}
           </Text>
           <Select
-            value={''}
+            value={filtersInputValue['status']}
             onChange={(e) => onChangeFilterItem(e, 'status')}
             options={[]}
             placeholder={t('select')}
@@ -88,8 +97,10 @@ export const FilterContentSection = ({
               {t('from_date')}
             </Text>
             <DatePickerComponent
+              placeholder={t('select')}
               className="left-[100px]"
-              onChange={(e) => onChangeFilterItem(e?.value, 'from_date')}
+              value={filtersInputValue['from_date']}
+              onChange={(e) => onChangeFilterItem(e, 'from_date')}
               inputClass="w-full border border-gray-300 p-1 text-[12px] font-light rounded"
             />
           </div>
@@ -98,8 +109,10 @@ export const FilterContentSection = ({
               {t('until_date')}
             </Text>
             <DatePickerComponent
-              className="left-[200px] "
-              onChange={(e) => onChangeFilterItem(e?.value, 'until_date')}
+              placeholder={t('select')}
+              className="left-[200px]"
+              value={filtersInputValue['until_date']}
+              onChange={(e) => onChangeFilterItem(e, 'until_date')}
               inputClass="w-full border border-gray-300 p-1 text-[12px] font-light rounded"
             />
           </div>
@@ -112,10 +125,18 @@ export const FilterContentSection = ({
         align="items-center"
         justify="justify-between"
         customCSS="bg-neutral-50 border border-t-slate-200 border-x-0">
-        <Button customCSS="bg-white border border-slate-200  rounded px-3 py-2">
+        <Button
+          customCSS="bg-white border border-slate-200  rounded px-3 py-2"
+          onClick={() => {
+            handleResetForm()
+            handleResetFiltersInput()
+          }}>
           <Text color="text-slate-500">{t('remove_all_filter')}</Text>
         </Button>
-        <Button backgroundColor="bg-blue-500" customCSS="rounded px-3 py-2">
+        <Button
+          backgroundColor="bg-blue-500"
+          customCSS="rounded px-3 py-2"
+          onClick={() => handleApplyFilter(filtersInputValue)}>
           <Text color="text-white">{t('apply_filter')}</Text>
         </Button>
       </Flex>

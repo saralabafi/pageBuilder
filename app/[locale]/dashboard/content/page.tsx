@@ -41,10 +41,10 @@ function ContentPage() {
     contentStructureList,
     filterVisible,
     setFilterVisible,
-    filtersInputValue,
-    onChangeFilterItem,
+    handleApplyFilter,
     filtersTagsOptions,
     removeFilterItems,
+    handleResetFiltersInput,
   } = useContent()
 
   const t = useTranslations('Dashboard.Content')
@@ -248,7 +248,6 @@ function ContentPage() {
     </Flex>
   )
 
-
   return (
     <div className=" rounded gap-3 border border-slate-100 bg-white shadow-sm mx-3 my-2 ">
       <Flex direction="flex-col" customCSS="border-b p-3">
@@ -303,8 +302,9 @@ function ContentPage() {
         </Flex>
         {filterVisible && (
           <FilterContentSection
-            filtersInputValue={filtersInputValue}
-            onChangeFilterItem={onChangeFilterItem}
+            setFilterVisible={setFilterVisible}
+            handleApplyFilter={handleApplyFilter}
+            handleResetFiltersInput={handleResetFiltersInput}
           />
         )}
       </Flex>
