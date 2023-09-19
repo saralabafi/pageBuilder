@@ -45,7 +45,8 @@
     "ContainerWidgetDefinition": "کانتینر",
     "GroupControlDefinition": "گروه",
     "SingleSelectionControlDefinition": "تک انتخابی",
-    "MultiSelectionControlDefinition": "چند انتخابی"
+    "MultiSelectionControlDefinition": "چند انتخابی",
+    "TemplateBuilder": "قالب ساختار داد"
   },
   "visual_builder": {
     "new_option": "گزینه جدید",
@@ -113,7 +114,21 @@
       "typingHere": "اینجا تایپ کنید",
       "continue": "ادامه",
       "cancel": "انصراف",
-      "select": "انتخاب کنید"
+      "select": "انتخاب کنید",
+      "setAsDefault": "انتخاب پیش فرض"
     }
+  },
+  "TemplateBuilder": {
+    "templateBuilder": "قالب ساختار داد",
+    "summaryTemplate": "خلاصه ساختار",
+    "save": "ذخیره",
+    "preview": "پیش نمایش",
+    "HTML": "HTML",
+    "JavaScript": "JavaScript",
+    "CSS": "CSS",
+    "itemstructure": " ساختار آیتم",
+    "childStructure": "ساختار آیتم",
+    "parentStructure": "ساختار والد",
+    "cssStructure": " استایل"
   }
 }
