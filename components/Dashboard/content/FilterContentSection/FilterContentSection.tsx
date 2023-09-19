@@ -6,6 +6,7 @@ import Text from 'components/CoreComponents/Text/Text'
 import CancelIcon from 'images/assets/cancel.svg'
 import { useFilterContentSection } from './FilterContentSection.biz'
 import { IFilterContentSection } from './FilterContentSection.type'
+import { DatePickerComponent } from 'components/CoreComponents/DatePicker/DatePickerComponent'
 
 export const FilterContentSection = ({
   filtersInputValue,
@@ -51,9 +52,7 @@ export const FilterContentSection = ({
           </Text>
           <Select
             value={filtersInputValue['content_structure']}
-            onChange={(e) => 
-              onChangeFilterItem(e, 'content_structure',)
-            }
+            onChange={(e) => onChangeFilterItem(e, 'content_structure')}
             options={[
               { id: '1', title: { 'fa-ir': 'aodh' } },
               { id: '2', title: { 'fa-ir': 'aodasdash' } },
@@ -88,22 +87,20 @@ export const FilterContentSection = ({
             <Text fontSize={12} color="text-slate-600" customCSS="mb-2">
               {t('from_date')}
             </Text>
-            <Select
-              value={''}
-              onChange={() => {}}
-              options={[]}
-              placeholder={t('select')}
+            <DatePickerComponent
+              className="left-[100px]"
+              onChange={(e) => onChangeFilterItem(e?.value, 'from_date')}
+              inputClass="w-full border border-gray-300 p-1 text-[12px] font-light rounded"
             />
           </div>
           <div className="w-full py-2">
             <Text fontSize={12} color="text-slate-600" customCSS="mb-2">
               {t('until_date')}
             </Text>
-            <Select
-              value={''}
-              onChange={() => {}}
-              options={[]}
-              placeholder={t('select')}
+            <DatePickerComponent
+              className="left-[200px] "
+              onChange={(e) => onChangeFilterItem(e?.value, 'until_date')}
+              inputClass="w-full border border-gray-300 p-1 text-[12px] font-light rounded"
             />
           </div>
         </Flex>

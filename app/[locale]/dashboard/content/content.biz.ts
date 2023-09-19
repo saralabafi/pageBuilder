@@ -59,14 +59,19 @@ export const useContent = () => {
       content_structure: '',
       creator: '',
       status: '',
-      until_date: '',
-      from_date: '',
+      until_date: undefined,
+      from_date: undefined,
     })
 
-  const onChangeFilterItem = (value: string, type: string, options?: {title:string,id:string}[]) => {
+  const onChangeFilterItem = (
+    value: string | Date | undefined,
+    type: string,
+    options?: { title: string; id: string }[]
+  ) => {
     const selectedOption = options?.find(
       (option: { title: string; id: string }) => option.id === value
     )
+
     setFiltersInputValue((_prev) => {
       return { ..._prev, [type]: selectedOption || value }
     })
@@ -74,7 +79,7 @@ export const useContent = () => {
 
   const filtersTagsOptions: {
     title: string
-    value: string
+    value: string | Date | undefined
   }[] = useMemo(() => {
     return Object.entries(filtersInputValue)
       .filter(([_, value]) => !!value)
