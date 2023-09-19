@@ -36,9 +36,7 @@ function ContentPage() {
     parentHierarchy,
     setParentHierarchy,
     breadcrumbItems,
-    visibleNewContentModal,
-    setVisibleNewContentModal,
-    contentStructureList,
+   
     filterVisible,
     setFilterVisible,
     handleApplyFilter,
@@ -228,25 +226,7 @@ function ContentPage() {
     }
   }
 
-  const footer = (
-    <Flex
-      padding="p-3"
-      gap="gap-2"
-      align="items-center"
-      justify="justify-end"
-      customCSS=" border-t border-slate-200 ">
-      <Button
-        height="h-8"
-        backgroundColor="bg-gray-50"
-        border="border border-slate-200"
-        onClick={() => setVisibleNewContentModal(false)}>
-        <Text color="text-slate-500">{t('cancel')}</Text>
-      </Button>
-      <Button height="h-8" backgroundColor="bg-blue-500">
-        <Text color="text-white ">{t('continue')}</Text>
-      </Button>
-    </Flex>
-  )
+  
 
   return (
     <div className=" rounded gap-3 border border-slate-100 bg-white shadow-sm mx-3 my-2 ">
@@ -254,7 +234,6 @@ function ContentPage() {
         <ContentHeader
           filterVisible={filterVisible}
           setFilterVisible={setFilterVisible}
-          setVisibleNewContentModal={setVisibleNewContentModal}
         />
         <ContentFilterHeader
           filtersTagsOptions={filtersTagsOptions}
@@ -300,7 +279,7 @@ function ContentPage() {
             />
           </Flex>
         </Flex>
-        {filterVisible && (
+        {!!filterVisible && (
           <FilterContentSection
             setFilterVisible={setFilterVisible}
             handleApplyFilter={handleApplyFilter}
@@ -308,28 +287,7 @@ function ContentPage() {
           />
         )}
       </Flex>
-      <Modal
-        width="w-2/5"
-        footer={footer}
-        title={t('newContent')}
-        visible={visibleNewContentModal}
-        onClose={() => setVisibleNewContentModal(false)}>
-        <Flex align="items-start" direction="flex-col">
-          <Flex margin="mb-2" gap="gap-1">
-            <Text color="text-red-600">*</Text>
-            <Text fontWeight={500} color="text-slate-600">
-              {t('createNewContent')}
-            </Text>
-          </Flex>
-          <Select
-            placeholder={t('select')}
-            options={contentStructureList}
-            customCSS="w-full"
-            value={''}
-            onChange={() => {}}
-          />
-        </Flex>
-      </Modal>
+
     </div>
   )
 }

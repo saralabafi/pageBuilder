@@ -1,16 +1,14 @@
 import { useQuery } from '@tanstack/react-query'
 import { IFolders } from 'components/Dashboard/DashboardHeader/DynamicContent/NavigationDynamicContent.type'
 import { filtersInputValueType } from 'components/Dashboard/content/FilterContentSection/FilterContentSection.type'
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { DateObject } from 'react-multi-date-picker'
 import { services } from 'services/services'
 
 export const useContent = () => {
-  const [activeFolder, setActiveFolder] = useState<string>()
-  const [visibleNewContentModal, setVisibleNewContentModal] =
-    useState<boolean>(false)
-  const [activePage, setActivePage] = useState<number>(1)
   const [total, setTotal] = useState<number>()
+  const [activePage, setActivePage] = useState<number>(1)
+  const [activeFolder, setActiveFolder] = useState<string>()
   const [parentHierarchy, setParentHierarchy] = useState<IFolders[]>([])
   const pageSize = 10
 
@@ -24,14 +22,6 @@ export const useContent = () => {
     ],
     services.GetData
   )
-
-  const { data: contentStructureList } = useQuery(
-    [{ url: 'cms/v1.0/siteName/dynamic-contents/structures' }],
-    services.GetData
-  )
-  contentStructureList?.map((item: any) => {
-    return { title: item.title, id: item.id }
-  })
 
   useEffect(() => {
     setTotal(data?.total)
@@ -72,17 +62,6 @@ export const useContent = () => {
     setFiltersInputValue(filterValues)
   }
 
-  const handleResetFiltersInput = () => {
-    setFiltersInputValue({
-      title: '',
-      content_structure: '',
-      creator: '',
-      status: '',
-      until_date: null,
-      from_date: null,
-    })
-  }
-
   const handleCreateFilterTags = () => {
     const list: {
       title: string
@@ -96,16 +75,27 @@ export const useContent = () => {
     setFiltersTagsOptions(list)
   }
 
-  const removeFilterItems = (selected_type: string) => {
+  const handleResetFiltersInput = useCallback(() => {
+    setFiltersInputValue({
+      title: '',
+      content_structure: '',
+      creator: '',
+      status: '',
+      until_date: null,
+      from_date: null,
+    })
+  }, [])
+
+  const removeFilterItems = useCallback((selected_type: string) => {
     setFiltersInputValue((prevState) => ({
       ...prevState,
       [selected_type]: '',
     }))
-  }
+  }, [])
 
   useEffect(() => {
     handleCreateFilterTags()
-  }, [removeFilterItems, handleResetFiltersInput])
+  }, [filtersInputValue])
 
   return {
     dataTable,
@@ -118,9 +108,7 @@ export const useContent = () => {
     handlePageChange,
     parentHierarchy,
     setParentHierarchy,
-    visibleNewContentModal,
-    setVisibleNewContentModal,
-    contentStructureList,
+
     filterVisible,
     setFilterVisible,
     filtersInputValue,

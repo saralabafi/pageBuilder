@@ -7,15 +7,24 @@ import CancelIcon from 'images/assets/cancel.svg'
 import { useFilterContentSection } from './FilterContentSection.biz'
 import { IFilterContentSection } from './FilterContentSection.type'
 import { DatePickerComponent } from 'components/CoreComponents/DatePicker/DatePickerComponent'
+import { useLocale } from 'next-intl'
 
 export const FilterContentSection = ({
   setFilterVisible,
   handleResetFiltersInput,
   handleApplyFilter,
 }: IFilterContentSection) => {
-  const { t, filtersInputValue, onChangeFilterItem, handleResetForm } =
-    useFilterContentSection()
-
+  const {
+    t,
+    filtersInputValue,
+    onChangeFilterItem,
+    handleResetForm,
+    contentStructureOptions,
+  } = useFilterContentSection()
+  const locale = useLocale()
+  console.log('====================================')
+  console.log(filtersInputValue)
+  console.log('====================================')
   return (
     <Flex
       direction="flex-col"
@@ -60,12 +69,15 @@ export const FilterContentSection = ({
             {t('content_structure')}
           </Text>
           <Select
-            value={filtersInputValue['content_structure']}
-            onChange={(e) => onChangeFilterItem(e, 'content_structure')}
-            options={[
-              { id: '1', title: { 'fa-ir': 'aodh' } },
-              { id: '2', title: { 'fa-ir': 'aodasdash' } },
-            ]}
+            value={filtersInputValue.content_structure[locale as any]}
+            onChange={(e) =>
+              onChangeFilterItem(
+                e,
+                'content_structure',
+                contentStructureOptions
+              )
+            }
+            options={contentStructureOptions}
             placeholder={t('select')}
           />
         </div>
@@ -131,13 +143,17 @@ export const FilterContentSection = ({
             handleResetForm()
             handleResetFiltersInput()
           }}>
-          <Text color="text-slate-500">{t('remove_all_filter')}</Text>
+          <Text color="text-slate-500" fontSize={12}>
+            {t('remove_all_filter')}
+          </Text>
         </Button>
         <Button
           backgroundColor="bg-blue-500"
           customCSS="rounded px-3 py-2"
           onClick={() => handleApplyFilter(filtersInputValue)}>
-          <Text color="text-white">{t('apply_filter')}</Text>
+          <Text color="text-white" fontSize={12}>
+            {t('apply_filter')}
+          </Text>
         </Button>
       </Flex>
     </Flex>
