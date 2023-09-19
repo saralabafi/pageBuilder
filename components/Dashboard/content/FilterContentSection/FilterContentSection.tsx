@@ -22,9 +22,7 @@ export const FilterContentSection = ({
     contentStructureOptions,
   } = useFilterContentSection()
   const locale = useLocale()
-  console.log('====================================')
-  console.log(filtersInputValue)
-  console.log('====================================')
+ 
   return (
     <Flex
       direction="flex-col"
