@@ -159,7 +159,10 @@ export const FilterContentSection = ({
         <Button
           backgroundColor="bg-blue-500"
           customCSS="rounded px-3 py-2"
-          onClick={() => handleApplyFilter(filtersInputValue)}>
+          onClick={() => {
+            handleApplyFilter(filtersInputValue)
+            setFilterVisible(false)
+          }}>
           <Text color="text-white" fontSize={12}>
             {t('apply_filter')}
           </Text>

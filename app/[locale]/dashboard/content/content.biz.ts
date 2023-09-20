@@ -1,9 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
 import { IFolders } from 'components/Dashboard/DashboardHeader/DynamicContent/NavigationDynamicContent.type'
 import { filtersInputValueType } from 'components/Dashboard/content/FilterContentSection/FilterContentSection.type'
+import { LocalizeStringType } from 'components/SettingBuilder/SettingBuilder.type'
 import { useCallback, useEffect, useState } from 'react'
 import { DateObject } from 'react-multi-date-picker'
 import { services } from 'services/services'
+import { useSearchParams, useParams, usePathname } from 'next/navigation'
+import { useRouter } from 'next/router'
 
 export const useContent = () => {
   const [total, setTotal] = useState<number>()
@@ -45,27 +48,53 @@ export const useContent = () => {
 
   const [filterVisible, setFilterVisible] = useState<boolean>(false)
   const [filtersTagsOptions, setFiltersTagsOptions] = useState<
-    { title: string; value: string | DateObject | DateObject[] | null }[]
+    {
+      title: string
+      value:
+        | string
+        | DateObject
+        | DateObject[]
+        | null
+        | { id: string; title: LocalizeStringType }
+    }[]
   >([])
 
   const [filtersInputValue, setFiltersInputValue] =
     useState<filtersInputValueType>({
       title: '',
-      content_structure: '',
-      creator: '',
-      status: '',
+      content_structure: null,
+      creator: null,
+      status: null,
       until_date: null,
       from_date: null,
     })
+  const params = useParams()
 
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
   const handleApplyFilter = (filterValues: filtersInputValueType) => {
     setFiltersInputValue(filterValues)
+
+    const router = useRouter()
+
+    router.push({
+      query: {
+        name: 'amir',
+      },
+    })
   }
+
+  console.log(searchParams.get('name'))
 
   const handleCreateFilterTags = () => {
     const list: {
       title: string
-      value: string | DateObject | DateObject[] | null
+      value:
+        | string
+        | DateObject
+        | DateObject[]
+        | null
+        | { title: LocalizeStringType; id: string }
     }[] = Object.entries(filtersInputValue)
       .filter(([_, value]) => !!value)
       .map(([title, value]) => {
@@ -78,9 +107,9 @@ export const useContent = () => {
   const handleResetFiltersInput = useCallback(() => {
     setFiltersInputValue({
       title: '',
-      content_structure: '',
-      creator: '',
-      status: '',
+      content_structure: null,
+      creator: null,
+      status: null,
       until_date: null,
       from_date: null,
     })
@@ -108,7 +137,6 @@ export const useContent = () => {
     handlePageChange,
     parentHierarchy,
     setParentHierarchy,
-
     filterVisible,
     setFilterVisible,
     filtersInputValue,
