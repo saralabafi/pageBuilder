@@ -1,9 +1,10 @@
 import { useTranslations } from 'next-intl'
 import { DateObject } from 'react-multi-date-picker'
 import { filtersInputValueType } from './FilterContentSection.type'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { services } from 'services/services'
 import { useQuery } from '@tanstack/react-query'
+import { ContentStructureRES, PublicationStatusesRES, UsersDataRES } from 'types/API.type'
 
 export const useFilterContentSection = () => {
   const t = useTranslations('Dashboard.Content')
@@ -11,9 +12,9 @@ export const useFilterContentSection = () => {
   const [filtersInputValue, setFiltersInputValue] =
     useState<filtersInputValueType>({
       title: '',
-      content_structure: '',
-      creator: '',
-      status: '',
+      content_structure: null,
+      creator: null,
+      status: null,
       until_date: null,
       from_date: null,
     })
@@ -35,28 +36,61 @@ export const useFilterContentSection = () => {
   const handleResetForm = () => {
     setFiltersInputValue({
       title: '',
-      content_structure: '',
-      creator: '',
-      status: '',
+      content_structure: null,
+      creator: null,
+      status: null,
       until_date: null,
       from_date: null,
     })
   }
 
-  const { data: contentStructureOptions } = useQuery(
+  const { data: contentStructure } = useQuery(
     [{ url: 'cms/v1.0/siteName/dynamic-contents/structures' }],
     services.GetData
   )
 
-  contentStructureOptions?.map((item: any) => {
-    return { title: item.title, id: item.id }
-  })
+  const { data: publicationStatuses } = useQuery(
+    [{ url: 'cms/v1.0/{site}/system/definitions/publication-statuses' }],
+    services.GetData
+  )
+
+  const { data: usersData } = useQuery(
+    [{ url: 'cms/v1.0/{site}/users' }],
+    services.GetData
+  )
+
+  const contentStructureOptions = useMemo(
+    () =>
+      contentStructure?.map((item: ContentStructureRES) => {
+        return { title: item.title, id: item.id }
+      }),
+    [contentStructure]
+  )
+
+  
+  const publicationStatusesOptions = useMemo(
+    () =>
+    publicationStatuses?.map((item: PublicationStatusesRES) => {
+      return { title: item.title, id: item.value }
+    }),
+    [publicationStatuses]
+    )
+    
+  const usersOptions = useMemo(
+    () =>
+      usersData?.map((item: UsersDataRES) => {
+        return { title: item.fullname, id: item.id }
+      }),
+    [usersData]
+  )
 
   return {
     t,
     filtersInputValue,
     onChangeFilterItem,
     handleResetForm,
+    publicationStatusesOptions,
     contentStructureOptions,
+    usersOptions,
   }
 }

@@ -1,13 +1,13 @@
+import CancelIcon from 'images/assets/cancel.svg'
+import Text from 'components/CoreComponents/Text/Text'
 import Button from 'components/CoreComponents/Button/Button'
 import { Flex } from 'components/CoreComponents/Flex/Flex'
 import { Input } from 'components/CoreComponents/Input/Input'
 import { Select } from 'components/CoreComponents/Select/Select'
-import Text from 'components/CoreComponents/Text/Text'
-import CancelIcon from 'images/assets/cancel.svg'
 import { useFilterContentSection } from './FilterContentSection.biz'
 import { IFilterContentSection } from './FilterContentSection.type'
 import { DatePickerComponent } from 'components/CoreComponents/DatePicker/DatePickerComponent'
-import { useLocale } from 'next-intl'
+import { Loading } from 'components/CoreComponents/Loading/Loading'
 
 export const FilterContentSection = ({
   setFilterVisible,
@@ -16,13 +16,14 @@ export const FilterContentSection = ({
 }: IFilterContentSection) => {
   const {
     t,
-    filtersInputValue,
-    onChangeFilterItem,
-    handleResetForm,
+    publicationStatusesOptions,
     contentStructureOptions,
+    onChangeFilterItem,
+    filtersInputValue,
+    handleResetForm,
+    usersOptions,
   } = useFilterContentSection()
-  const locale = useLocale()
- 
+
   return (
     <Flex
       direction="flex-col"
@@ -66,38 +67,48 @@ export const FilterContentSection = ({
           <Text fontSize={12} color="text-slate-600" customCSS="mb-2">
             {t('content_structure')}
           </Text>
-          <Select
-            value={filtersInputValue.content_structure[locale as any]}
-            onChange={(e) =>
-              onChangeFilterItem(
-                e,
-                'content_structure',
-                contentStructureOptions
-              )
-            }
-            options={contentStructureOptions}
-            placeholder={t('select')}
-          />
+          {contentStructureOptions?.length ? (
+            <Select
+              value={filtersInputValue.content_structure?.id as string}
+              onChange={(e) =>
+                onChangeFilterItem(
+                  e,
+                  'content_structure',
+                  contentStructureOptions
+                )
+              }
+              options={contentStructureOptions}
+              placeholder={t('select')}
+            />
+          ) : (
+            <Loading />
+          )}
         </div>
         <div className="w-full py-2">
           <Text fontSize={12} color="text-slate-600" customCSS="mb-2">
             {t('creator')}
           </Text>
-          <Select
-            value={filtersInputValue['creator']}
-            onChange={(e) => onChangeFilterItem(e, 'creator')}
-            options={[]}
-            placeholder={t('select')}
-          />
+          {usersOptions?.length ? (
+            <Select
+              value={filtersInputValue.creator?.id as string}
+              onChange={(e) => onChangeFilterItem(e, 'creator', usersOptions)}
+              options={usersOptions}
+              placeholder={t('select')}
+            />
+          ) : (
+            <Loading />
+          )}
         </div>
         <div className="w-full py-2">
           <Text fontSize={12} color="text-slate-600" customCSS="mb-2">
             {t('status')}
           </Text>
           <Select
-            value={filtersInputValue['status']}
-            onChange={(e) => onChangeFilterItem(e, 'status')}
-            options={[]}
+            value={filtersInputValue.status?.id as string}
+            onChange={(e) =>
+              onChangeFilterItem(e, 'status', publicationStatusesOptions)
+            }
+            options={publicationStatusesOptions}
             placeholder={t('select')}
           />
         </div>

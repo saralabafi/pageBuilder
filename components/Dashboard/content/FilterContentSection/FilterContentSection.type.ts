@@ -1,11 +1,12 @@
-import { Dispatch, SetStateAction } from "react"
-import { DateObject } from "react-multi-date-picker"
+import { LocalizeStringType } from 'components/SettingBuilder/SettingBuilder.type'
+import { Dispatch, SetStateAction } from 'react'
+import { DateObject } from 'react-multi-date-picker'
 
 export type filtersInputValueType = {
   title: string
-  content_structure: string
-  creator: string
-  status: string
+  content_structure: { title: LocalizeStringType; id: string } | null
+  creator: { title: LocalizeStringType; id: string } | null
+  status: { title: LocalizeStringType; id: string } | null
   until_date: DateObject | DateObject[] | null
   from_date: DateObject | DateObject[] | null
 }
