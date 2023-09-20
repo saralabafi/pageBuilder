@@ -169,7 +169,6 @@ const GridWidget = (props: Control) => {
         }
 
         const getClassFromStylesFinal = () => {
-          debugger
           const items = Array.from(
             document.querySelectorAll<HTMLDivElement>('.item')
           )

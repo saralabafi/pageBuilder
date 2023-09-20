@@ -20,6 +20,11 @@ export type SidebarItem = {
   type: string
 }
 
+export const templateSidebarItems: SidebarItem[] = [
+  { title: 'tokens', icon: <PlusCircle />, type: 'sidebar' },
+  { title: 'settings', icon: <Setting />, type: 'setting' },
+]
+
 export const contentSidebarItems: SidebarItem[] = [
   { title: 'addItem', icon: <PlusCircle />, type: 'sidebar' },
   { title: 'conditions', icon: <ConditionIcon />, type: 'formats' },

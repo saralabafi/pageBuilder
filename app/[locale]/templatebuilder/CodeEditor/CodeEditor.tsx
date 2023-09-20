@@ -24,9 +24,7 @@ export const CodeMirrorComponent: React.FC<MyCodeMirrorProps> = ({ mode }) => {
     }
   }
 
-  const onChange = React.useCallback((value: any) => {
-    console.log('value:', value)
-  }, [])
+  const onChange = React.useCallback((value: any) => {}, [])
 
   return (
     <CodeMirror
