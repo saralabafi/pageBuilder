@@ -36,7 +36,6 @@ const useVisualBuilder = () => {
         SupportedDefinitionType:
           item.data.component && item.data.component.Name,
       }
-
       dispatch(selectActiveTab('setting'))
       dispatch(selectActiveMenu(newComponent.SupportedDefinitionType))
       dispatch(selectActiveControl(newComponent.Id))
@@ -54,11 +53,11 @@ const useVisualBuilder = () => {
     dispatch(selectActiveMenu(data.SupportedDefinitionType))
   }
 
- const { stylesWidget } = useSelector((state: RootState) => state.widgetStyles)
- const newArray = Object.entries(stylesWidget).map(([id, style]) => ({
-   id,
-   style,
- }))
+  const { stylesWidget } = useSelector((state: RootState) => state.widgetStyles)
+  const newArray = Object.entries(stylesWidget).map(([id, style]) => ({
+    id,
+    style,
+  }))
 
   return { handleClick, handleDrop, newArray }
 }

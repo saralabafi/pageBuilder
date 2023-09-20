@@ -14,6 +14,8 @@ import { ReactElement } from 'react'
 import { HtmlWidget } from 'components/Tools/VisualBuilder/Widgets/HTML_Widget/HtmlWidget'
 import GridWidget from 'components/Tools/VisualBuilder/Widgets/GridWidget/GridWidget'
 import { GroupControl } from 'components/Tools/ContentStructureBuilder/Controls/GroupControl/GroupControl'
+import MenuWidget from 'components/Tools/VisualBuilder/Widgets/MenuWidget/MenuWidget'
+
 
 export type SidebarItem = {
   title: string
@@ -26,6 +28,7 @@ export const contentSidebarItems: SidebarItem[] = [
   { title: 'conditions', icon: <ConditionIcon />, type: 'formats' },
   { title: 'settings', icon: <Setting />, type: 'setting' },
 ]
+
 export const visualSidebarItems: SidebarItem[] = [
   { title: 'addItem', icon: <PlusCircle />, type: 'sidebar' },
   { title: 'navigation', icon: <Folder width={28} />, type: 'navigation' },
@@ -38,11 +41,14 @@ export const visualRenderItems: Renders = {
     return <GridWidget {...props} />
   },
   ContainerWidgetDefinition: (props) => {
-    return <ContainerWidget {...props} />
+    return <MenuWidget {...props} />
   },
   HtmlWidgetDefinition: (props) => {
     return <HtmlWidget {...props} />
   },
+  // MenuWidgetDefinition: (props) => {
+  //   return <HtmlWidget {...props} />
+  // },
 }
 
 export const formRenderItems: any = {
