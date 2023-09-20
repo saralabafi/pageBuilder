@@ -47,6 +47,7 @@
     "GroupControlDefinition": "گروه",
     "SingleSelectionControlDefinition": "تک انتخابی",
     "MultiSelectionControlDefinition": "چند انتخابی",
+    "DateControlDefinition": "تاریخ و زمان",
     "TemplateBuilder": "قالب ساختار داد"
   },
   "visual_builder": {

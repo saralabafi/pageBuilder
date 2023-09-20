@@ -27,7 +27,7 @@ const useVisualBuilder = () => {
         designList,
         dispatch,
       })
-      const newComponent: Control = {
+      const newComponent: any = {
         Children: item.data.component.Children || [],
         Id: shortid.generate(),
         Settings: settingPreMaker(item.data.component),

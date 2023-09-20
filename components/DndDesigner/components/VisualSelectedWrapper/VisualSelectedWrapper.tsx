@@ -25,7 +25,7 @@ export const VisualSelectedWrapper = ({
         <div className="w-4 h-4 relative">
           <TrashIcon
             className="text-blue-900 cursor-pointer"
-            onClick={() => deleteItem(control.Id)}
+            onClick={() => deleteItem(control.Id as string)}
           />
         </div>
         <div className="w-4 h-4 relative">

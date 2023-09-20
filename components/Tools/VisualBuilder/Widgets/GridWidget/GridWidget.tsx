@@ -204,6 +204,7 @@ const GridWidget = (props: Control) => {
                       item1.classList.add(
                         `col-span-${Math.round(item2 / columnWidth!)}`
                       )
+                     
                       editControl(item1.id, type, {
                         Data: Math.round(item2 / columnWidth!),
                       })
@@ -266,12 +267,12 @@ const GridWidget = (props: Control) => {
       const columnElements = document.getElementsByClassName('item')
       const columnCount = columnElements.length
       columnSpan = Math.floor(12 / columnCount)
-      items.forEach((item) => {
-        const divElement = item as HTMLDivElement // Assuming the items are HTMLDivElement
-        divElement.removeAttribute('style')
-        item.className = item.className.replace(/\bcol-span-\S+\s*/g, '')
-        ;(item as HTMLDivElement).classList.add(`col-span-${columnSpan}`)
-      })
+      // items.forEach((item) => {
+      //   const divElement = item as HTMLDivElement // Assuming the items are HTMLDivElement
+      //   divElement.removeAttribute('style')
+      //   item.className = item.className.replace(/\bcol-span-\S+\s*/g, '')
+      //   ;(item as HTMLDivElement).classList.add(`col-span-${columnSpan}`)
+      // })
     }
 
     resizableXfirst()
@@ -297,6 +298,7 @@ const GridWidget = (props: Control) => {
           </div>
         ))}
       </i>
+      {/* ${CSS_ClassNames} ${props.Id} */}
       <div className={`containerbox flex h-32 ${CSS_ClassNames} ${props.Id}`}>
         {props?.Children && props.Children?.length > 0
           ? props?.Children?.map((item: Control, index: number) => {
@@ -347,10 +349,12 @@ const GridWidget = (props: Control) => {
                     </div>
                   </div>
 
-                  {index < props?.Children?.length! - 1 &&
-                    props?.Settings?.SHOW_GUTTER?.Data !== false && (
-                      <div className="resizer h-32"></div>
-                    )}
+                  {props?.Children?.length
+                    ? index < props?.Children?.length - 1 &&
+                      props?.Settings?.SHOW_GUTTER?.Data !== false && (
+                        <div className="resizer h-32"></div>
+                      )
+                    : null}
                 </>
               )
             })

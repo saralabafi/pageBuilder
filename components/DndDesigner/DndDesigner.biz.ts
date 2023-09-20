@@ -24,7 +24,7 @@ export const useDndDesigner = (renderList: any) => {
         designList,
         dispatch,
       })
-      const newComponent: Control = {
+      const newComponent: any = {
         childCount: dropZone.childrenCount,
         ...item.data.component,
         path: splitDropZonePath,

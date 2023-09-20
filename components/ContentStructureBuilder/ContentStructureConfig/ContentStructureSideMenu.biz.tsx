@@ -37,6 +37,7 @@ export const useContentStructureSideMenu = () => {
     return availableMenu[activeTab]
   }
 
+
   const { data, status } = useQuery(
     [{ url: 'forms/v1.0/siteName/controls/definitions' }],
     services.GetData

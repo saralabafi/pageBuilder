@@ -5,13 +5,16 @@ import { useSettingBox } from './SettingBox.biz'
 
 export const SettingBox = ({ controls }: any) => {
   const { category, options, selectedCategory } = useSettingBox(controls)
+
   return (
     <Flex direction="flex-col" align="items-start" customCSS="py-2 px-4 ">
-      <TabSetting
-        category={category}
-        selectedCategory={selectedCategory}
-        options={options}
-      />
+      {options?.length > 1 ? (
+        <TabSetting
+          category={category}
+          selectedCategory={selectedCategory}
+          options={options}
+        />
+      ) : null}
       <SettingContent category={category} />
     </Flex>
   )
