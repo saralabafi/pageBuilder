@@ -2,13 +2,17 @@ import { useQuery } from '@tanstack/react-query'
 import { IFolders } from 'components/Dashboard/DashboardHeader/DynamicContent/NavigationDynamicContent.type'
 import { filtersInputValueType } from 'components/Dashboard/content/FilterContentSection/FilterContentSection.type'
 import { LocalizeStringType } from 'components/SettingBuilder/SettingBuilder.type'
+import {
+  usePathname,
+  useRouter
+} from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 import { DateObject } from 'react-multi-date-picker'
 import { services } from 'services/services'
-import { useSearchParams, useParams, usePathname } from 'next/navigation'
-import { useRouter } from 'next/router'
 
 export const useContent = () => {
+  const { push } = useRouter()
+  const pathname = usePathname()
   const [total, setTotal] = useState<number>()
   const [activePage, setActivePage] = useState<number>(1)
   const [activeFolder, setActiveFolder] = useState<string>()
@@ -68,23 +72,17 @@ export const useContent = () => {
       until_date: null,
       from_date: null,
     })
-  const params = useParams()
 
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
+  
   const handleApplyFilter = (filterValues: filtersInputValueType) => {
     setFiltersInputValue(filterValues)
-
-    const router = useRouter()
-
-    router.push({
-      query: {
-        name: 'amir',
-      },
+    const filterArr: any = []
+    Object.entries(filterValues).map(([title, value]: any) => {
+      if (value) filterArr?.push(`?${title}=${value}`)
     })
+    
+    push(`${pathname}${filterArr.join('')}`)
   }
-
-  console.log(searchParams.get('name'))
 
   const handleCreateFilterTags = () => {
     const list: {
