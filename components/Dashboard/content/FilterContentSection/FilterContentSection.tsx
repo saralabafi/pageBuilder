@@ -13,14 +13,13 @@ export const FilterContentSection = ({
   setFilterVisible,
   handleResetFiltersInput,
   handleApplyFilter,
+  onChangeFilterItem,
+  filtersInputValue,
 }: IFilterContentSection) => {
   const {
     t,
     publicationStatusesOptions,
     contentStructureOptions,
-    onChangeFilterItem,
-    filtersInputValue,
-    handleResetForm,
     usersOptions,
   } = useFilterContentSection()
 
@@ -57,9 +56,10 @@ export const FilterContentSection = ({
             {t('title')}
           </Text>
           <Input
-            value={filtersInputValue['title']}
-            placeholder={t('search_by_title')}
             customCss="bg-white"
+            color="text-gray-900"
+            placeholder={t('search_by_title')}
+            value={filtersInputValue['title']}
             onChange={(e) => onChangeFilterItem(e.target.value, 'title')}
           />
         </div>
@@ -148,10 +148,7 @@ export const FilterContentSection = ({
         customCSS="bg-neutral-50 border border-t-slate-200 border-x-0">
         <Button
           customCSS="bg-white border border-slate-200  rounded px-3 py-2"
-          onClick={() => {
-            handleResetForm()
-            handleResetFiltersInput()
-          }}>
+          onClick={handleResetFiltersInput}>
           <Text color="text-slate-500" fontSize={12}>
             {t('remove_all_filter')}
           </Text>

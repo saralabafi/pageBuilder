@@ -2,8 +2,9 @@ import { useQuery } from '@tanstack/react-query'
 import { IFolders } from 'components/Dashboard/DashboardHeader/DynamicContent/NavigationDynamicContent.type'
 import { FiltersTagsValue } from 'components/Dashboard/content/ContentFilterHeader/ContentFilterHeader.type'
 import { filtersInputValueType } from 'components/Dashboard/content/FilterContentSection/FilterContentSection.type'
-import { usePathname, useRouter} from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
+import { DateObject } from 'react-multi-date-picker'
 import { services } from 'services/services'
 
 export const useContent = () => {
@@ -68,10 +69,12 @@ export const useContent = () => {
     setFiltersInputValue(filterValues)
     const filterArr: any = []
     Object.entries(filterValues).map(([title, value]: any) => {
-      if (value) filterArr?.push(`?${title}=${value}`)
+      if (value) {
+        filterArr?.push(`${title}=${value?.id ? value.id : value}`)
+      }
     })
 
-    push(`${pathname}${filterArr.join('')}`)
+    push(`${pathname}?${filterArr.join('&')}`)
   }
 
   const handleCreateFilterTags = () => {
@@ -106,9 +109,19 @@ export const useContent = () => {
     }))
   }, [])
 
-  useEffect(() => {
-    handleCreateFilterTags()
-  }, [filtersInputValue])
+  const onChangeFilterItem = (
+    value: string | DateObject | DateObject[] | null,
+    type: string,
+    options?: { title: string; id: string }[]
+  ) => {
+    const selectedOption = options?.find(
+      (option: { title: string; id: string }) => option.id === value
+    )
+
+    setFiltersInputValue((_prev) => {
+      return { ..._prev, [type]: selectedOption || value }
+    })
+  }
 
   return {
     dataTable,
@@ -130,5 +143,6 @@ export const useContent = () => {
     removeFilterItems,
     handleCreateFilterTags,
     handleResetFiltersInput,
+    onChangeFilterItem,
   }
 }

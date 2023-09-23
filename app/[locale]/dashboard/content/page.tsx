@@ -39,6 +39,8 @@ function ContentPage() {
     filtersTagsOptions,
     removeFilterItems,
     handleResetFiltersInput,
+    onChangeFilterItem,
+    filtersInputValue,
   } = useContent()
 
   const t = useTranslations('Dashboard.Content')
@@ -229,13 +231,12 @@ function ContentPage() {
           filterVisible={filterVisible}
           setFilterVisible={setFilterVisible}
         />
-        {filtersTagsOptions.length ? (
-          <ContentFilterHeader
-            filtersTagsOptions={filtersTagsOptions}
-            removeFilterItems={removeFilterItems}
-            handleResetFiltersInput={handleResetFiltersInput}
-          />
-        ) : null}
+
+        <ContentFilterHeader
+          filtersTagsOptions={filtersTagsOptions}
+          removeFilterItems={removeFilterItems}
+          handleResetFiltersInput={handleResetFiltersInput}
+        />
       </Flex>
       <Flex align="items-start">
         <Flex customCSS="w-[25%]">
@@ -278,8 +279,10 @@ function ContentPage() {
         </Flex>
         {!!filterVisible && (
           <FilterContentSection
+            filtersInputValue={filtersInputValue}
             setFilterVisible={setFilterVisible}
             handleApplyFilter={handleApplyFilter}
+            onChangeFilterItem={onChangeFilterItem}
             handleResetFiltersInput={handleResetFiltersInput}
           />
         )}

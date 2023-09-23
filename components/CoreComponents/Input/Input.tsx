@@ -7,7 +7,7 @@ export const Input = (props: IInputProps) => {
     autoComplete,
     autoFocus,
     icon,
-    color = 'text-neutral-500',
+    color = 'text-slate-400',
     backgroundColor = 'bg-transparent',
     value,
     defaultValue,
@@ -42,7 +42,7 @@ export const Input = (props: IInputProps) => {
         className={`${backgroundColor}
                 ${customCss}
                 peer block min-h-[auto] w-full rounded border border-slate-200
-                px-3 py-[0.32rem] leading-[1.6] outline-none text-slate-400 text-xs font-normal
+                px-3 py-[0.32rem] leading-[1.6] outline-none ${color} text-xs font-normal
                 transition-all duration-200 ease-linear
                 
                 `}

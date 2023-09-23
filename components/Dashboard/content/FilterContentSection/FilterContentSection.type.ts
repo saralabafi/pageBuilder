@@ -14,5 +14,16 @@ export type filtersInputValueType = {
 export interface IFilterContentSection {
   handleApplyFilter: (filterValues: filtersInputValueType) => void
   handleResetFiltersInput: () => void
+  onChangeFilterItem: (
+    value: string | DateObject | DateObject[] | null,
+    type: string,
+    options?:
+      | {
+          title: string
+          id: string
+        }[]
+      | undefined
+  ) => void
+  filtersInputValue: filtersInputValueType
   setFilterVisible: Dispatch<SetStateAction<boolean>>
 }
