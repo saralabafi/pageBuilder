@@ -1,12 +1,12 @@
+import Cancel from 'images/ContentStructureBuilder/cancel.svg'
 import { useTranslations } from 'next-intl'
 import React, { useCallback, useEffect } from 'react'
+import { Loading } from '../Loading/Loading'
 import { useMultiSelectSearch } from './MultiSelectSearch.biz'
 import { Option, SelectProps } from './MultiSelectSearch.type'
-import Cancel from 'images/ContentStructureBuilder/cancel.svg'
 import Options from './tools-components/Options'
 import SearchInput from './tools-components/SearchInput'
 import SelectProvider from './tools-components/SelectProvider'
-import Spinner from './tools-components/Spinner'
 
 const MultiSelectSearch: React.FC<SelectProps> = ({
   options = [],
@@ -195,7 +195,7 @@ const MultiSelectSearch: React.FC<SelectProps> = ({
           <div className="flex flex-none items-center py-1.5">
             {loading && (
               <div className="px-1.5">
-                <Spinner primaryColor={primaryColor} />
+                <Loading></Loading>
               </div>
             )}
 
