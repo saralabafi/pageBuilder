@@ -13,11 +13,19 @@ import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { headerListData } from './TemplateBuilderHeader.const'
+import { useState } from 'react'
 
-export const TemplateBuilderHeader = () => {
+export const TemplateBuilderHeader = ({
+  onComponentClick,
+}: {
+  onComponentClick: any
+}) => {
   const t = useTranslations('TemplateBuilder')
   const pathname = usePathname()
-
+  const handleClick = (componentName: string) => {
+    console.log(componentName, '-1')
+    onComponentClick(componentName)
+  }
   return (
     <Flex
       customCSS="h-[72px] border-b border-neutral-200 bg-white"
@@ -53,14 +61,14 @@ export const TemplateBuilderHeader = () => {
       <Flex align="items-center" gap="gap-0">
         {headerListData.map((nav, index: number) => {
           return (
-            <Link
-              href={`${nav.link}`}
+            <div
+              onClick={() => handleClick(nav.title)}
               key={index}
-              className="hover:bg-sky-200 Breakpoint w-auto h-8 px-4 bg-white rounded-tr rounded-br border border-slate-200 justify-center items-center inline-flex">
+              className="hover:bg-sky-200 Breakpoint w-auto h-8 px-4 bg-white rounded-tr rounded-br border border-slate-200 justify-center items-center inline-flex cursor-pointer">
               <div className="Counter text-right text-blue-400 text-sm font-medium leading-tight">
                 {t(nav.title)}
               </div>
-            </Link>
+            </div>
           )
         })}
       </Flex>
