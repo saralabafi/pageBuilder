@@ -86,11 +86,26 @@
       "move": "move",
       "edit": "edit",
       "history": "history",
-      "delete": "delete"
+      "reset_filters": "reset filters",
+      "delete": "delete",
+      "Filter": {
+        "filters": "filters",
+        "remove_all_filter": "remove all filter",
+        "apply_filter": "apply filter",
+        "title": "title",
+        "search_by_title": "search by title",
+        "content_structure": "content structure",
+        "creator": "creator",
+        "status": "status",
+        "until_date": "until date",
+        "from_date": "from date",
+        "select": "select"
+      }
     },
     "DataStructure": {
       "dataStructure": "data structure",
       "newContent": "new content",
+      "newDataStructure": "new data structure",
       "newStructure": "new Structure",
       "useTemplateInHome": "use template in home",
       "copy": "copy",

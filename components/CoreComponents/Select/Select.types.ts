@@ -6,7 +6,7 @@ export interface ISelectProps {
   size?: string
   selectedIcon?: string
   label?: string
-  options: IOption[]
+  options?: IOption[]
   backgroundColor?: string
   borderColor?: string
   textColor?: string

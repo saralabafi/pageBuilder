@@ -12,6 +12,8 @@ export const useDataStructure = () => {
     setShowTemplates(!showTemplates)
     setOpen(!open)
   }
+  const [visibleNewContentModal, setVisibleNewContentModal] =
+    useState<boolean>(false)
   const { data, status } = useQuery(
     [{ url: 'cms/v1.0/siteName/dynamic-contents/structures' }],
     services.GetData
@@ -25,5 +27,7 @@ export const useDataStructure = () => {
     isfull,
     handleToggleOpen,
     setDynamicContentList,
+    visibleNewContentModal,
+    setVisibleNewContentModal,
   }
 }

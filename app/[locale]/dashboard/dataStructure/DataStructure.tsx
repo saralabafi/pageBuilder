@@ -20,7 +20,7 @@ const DataStructure = ({
   isfull: boolean
   isopen: boolean
   isshowTemplates: boolean
-  handleToggleOpen: () => void
+  handleToggleOpen?: () => void
 }) => {
   const t = useTranslations('Dashboard.DataStructure')
   const locale = useLocale()
