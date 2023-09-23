@@ -8,6 +8,11 @@
     },
     "inputTagGenerator": {
       "typingHere": "اینجا تایپ کنید"
+    },
+    "multiSelectSearch": {
+      "placeholder": "انتخاب ... ",
+      "searchInputPlaceholder": "جستجو ...",
+      "noOptionsMessage": "هیچ گزینه ای پیدا نشد"
     }
   },
   "layout": {

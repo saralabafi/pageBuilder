@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 
-import { COLORS, DEFAULT_THEME, THEME_DATA } from './constants'
+import { COLORS, DEFAULT_THEME, THEME_DATA } from '../constants'
 
 interface Props {
   primaryColor?: string

@@ -12,5 +12,5 @@ export interface ICheckboxProps {
   backgroundColor?: string
   borderColor?: string
   textColor?: string
-  onChange: (e: ChangeEvent<HTMLInputElement> | any) => void
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }

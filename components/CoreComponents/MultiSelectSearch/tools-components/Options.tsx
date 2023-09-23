@@ -1,12 +1,12 @@
 import React, { useCallback, useContext, useMemo } from 'react'
 
-import { DEFAULT_THEME } from './constants'
+import { DEFAULT_THEME } from '../constants'
 
 import DisabledItem from './DisabledItem'
 import GroupItem from './GroupItem'
 import Item from './Item'
 import { SelectContext } from './SelectProvider'
-import { Option, Options as ListOption } from './type'
+import { Option, Options as ListOption } from '../MultiSelectSearch.type'
 
 interface OptionsProps {
   list: ListOption

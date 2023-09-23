@@ -1,39 +1,42 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-
+import React, { useCallback, useEffect } from 'react'
 import { COLORS, DEFAULT_THEME, THEME_DATA } from './constants'
-import useOnClickOutside from './use-onclick-outside'
-
-import { ChevronIcon, CloseIcon } from './Icons'
-import Options from './Options'
-import SearchInput from './SearchInput'
-import SelectProvider from './SelectProvider'
-import Spinner from './Spinner'
-import { Option, Options as ListOption, SelectProps } from './type'
+import { useTranslations } from 'next-intl'
+import { useMultiSelectSearch } from './MultiSelectSearch.biz'
+import { Option, SelectProps } from './MultiSelectSearch.type'
+import { ChevronIcon, CloseIcon } from './tools-components/Icons'
+import Options from './tools-components/Options'
+import SearchInput from './tools-components/SearchInput'
+import SelectProvider from './tools-components/SelectProvider'
+import Spinner from './tools-components/Spinner'
 
 const MultiSelectSearch: React.FC<SelectProps> = ({
   options = [],
   value = null,
   onChange,
   onSearchInputChange,
-  placeholder = 'Select...',
-  searchInputPlaceholder = 'Search...',
   isMultiple = false,
   isClearable = false,
   isSearchable = false,
   isDisabled = false,
   loading = false,
-  menuIsOpen = false,
-  noOptionsMessage = 'No options found',
   primaryColor = DEFAULT_THEME,
   formatGroupLabel = null,
   formatOptionLabel = null,
   classNames,
 }) => {
-  const [open, setOpen] = useState<boolean>(menuIsOpen)
-  const [list, setList] = useState<ListOption>(options)
-  const [inputValue, setInputValue] = useState<string>('')
-  const ref = useRef<HTMLDivElement>(null)
-  const searchBoxRef = useRef<HTMLInputElement>(null)
+  const {
+    ref,
+    list,
+    setList,
+    inputValue,
+    setInputValue,
+    searchBoxRef,
+    open,
+    setOpen,
+    toggle,
+    useOnClickOutside,
+    onPressEnterOrSpace,
+  } = useMultiSelectSearch()
 
   useEffect(() => {
     const formatItem = (item: Option) => {
@@ -68,12 +71,6 @@ const MultiSelectSearch: React.FC<SelectProps> = ({
     }
   }, [open, isSearchable])
 
-  const toggle = useCallback(() => {
-    if (!isDisabled) {
-      setOpen(!open)
-    }
-  }, [isDisabled, open])
-
   const closeDropDown = useCallback(() => {
     if (open) setOpen(false)
   }, [open])
@@ -81,36 +78,6 @@ const MultiSelectSearch: React.FC<SelectProps> = ({
   useOnClickOutside(ref, () => {
     closeDropDown()
   })
-
-  const onPressEnterOrSpace = useCallback(
-    (e: React.KeyboardEvent<HTMLDivElement>) => {
-      e.preventDefault()
-      if ((e.code === 'Enter' || e.code === 'Space') && !isDisabled) {
-        toggle()
-      }
-    },
-    [isDisabled, toggle]
-  )
-
-  const handleValueChange = useCallback(
-    (selected: Option) => {
-      function update() {
-        if (!isMultiple && !Array.isArray(value)) {
-          closeDropDown()
-          onChange(selected)
-        }
-
-        if (isMultiple && (Array.isArray(value) || value === null)) {
-          onChange(value === null ? [selected] : [...value, selected])
-        }
-      }
-
-      if (selected !== value) {
-        update()
-      }
-    },
-    [closeDropDown, isMultiple, onChange, value]
-  )
 
   const clearValue = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
@@ -168,6 +135,27 @@ const MultiSelectSearch: React.FC<SelectProps> = ({
     [classNames, isDisabled]
   )
 
+  const handleValueChange = useCallback(
+    (selected: Option) => {
+      function update() {
+        if (!isMultiple && !Array.isArray(value)) {
+          closeDropDown()
+          onChange(selected)
+        }
+
+        if (isMultiple && (Array.isArray(value) || value === null)) {
+          onChange(value === null ? [selected] : [...value, selected])
+        }
+      }
+
+      if (selected !== value) {
+        update()
+      }
+    },
+    [closeDropDown, isMultiple, onChange, value]
+  )
+  const t = useTranslations('Component.multiSelectSearch')
+
   return (
     <SelectProvider
       otherData={{
@@ -186,11 +174,13 @@ const MultiSelectSearch: React.FC<SelectProps> = ({
           <div className="grow pl-2.5 py-2 pr-2 flex flex-wrap gap-1">
             {!isMultiple ? (
               <p className="truncate cursor-default select-none">
-                {value && !Array.isArray(value) ? value.label : placeholder}
+                {value && !Array.isArray(value)
+                  ? value.label
+                  : t('placeholder')}
               </p>
             ) : (
               <>
-                {value === null && placeholder}
+                {value === null && t('placeholder')}
 
                 {Array.isArray(value) &&
                   value.map((item, index) => (
@@ -272,7 +262,7 @@ const MultiSelectSearch: React.FC<SelectProps> = ({
               <SearchInput
                 ref={searchBoxRef}
                 value={inputValue}
-                placeholder={searchInputPlaceholder}
+                placeholder={t('searchInputPlaceholder')}
                 onChange={(e) => {
                   if (
                     onSearchInputChange &&
@@ -286,7 +276,7 @@ const MultiSelectSearch: React.FC<SelectProps> = ({
 
             <Options
               list={list}
-              noOptionsMessage={noOptionsMessage}
+              noOptionsMessage={t('noOptionsMessage')}
               text={inputValue}
               isMultiple={isMultiple}
               value={value}

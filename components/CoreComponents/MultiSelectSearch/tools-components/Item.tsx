@@ -1,10 +1,10 @@
 import React, { useCallback, useMemo } from 'react'
 
-import { COLORS, DEFAULT_THEME, THEME_DATA } from './constants'
+import { COLORS, DEFAULT_THEME, THEME_DATA } from '../constants'
 
 import DisabledItem from './DisabledItem'
 import { useSelectContext } from './SelectProvider'
-import { Option } from './type'
+import { Option } from '../MultiSelectSearch.type'
 
 interface ItemProps {
   item: Option
