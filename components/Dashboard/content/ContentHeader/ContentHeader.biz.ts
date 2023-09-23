@@ -10,10 +10,6 @@ export const useContentHeader = () => {
     services.GetData
   )
 
-  contentStructureList?.map((item: any) => {
-    return { title: item.title, id: item.id }
-  })
-
   const [visibleNewContentModal, setVisibleNewContentModal] =
     useState<boolean>(false)
 
