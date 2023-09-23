@@ -97,8 +97,18 @@
       "move": "انتقال",
       "edit": "ویرایش",
       "history": "تاریخچه",
+      "reset_filters": "بازنشانی فیلترها",
       "delete": "حذف",
-      "search": "جستجو در دسته‌بندی‌ها"
+      "search": "جستجو در دسته‌بندی‌ها",
+      "filters": "فیلترها",
+      "filter_by": "نتایج فیلتر بر اساس",
+      "remove_all_filter": "پاک کردن همه",
+      "apply_filter": "اعمال فیلترها",
+      "search_by_title": "عنوان بر اساس عنوان",
+      "content_structure": "ساختار داده",
+      "creator": "ایجادکننده",
+      "until_date": "تا تاریخ",
+      "from_date": "از تاریخ"
     },
     "DataStructure": {
       "dataStructure": "ساختار داده",

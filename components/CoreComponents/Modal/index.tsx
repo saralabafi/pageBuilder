@@ -35,7 +35,7 @@ const index = (props: IModalProps) => {
                 <Text fontSize={16} color="text-slate-600">
                   {title}
                 </Text>
-                <CancelIcon onClick={onClose} />
+                <CancelIcon width={12} onClick={onClose} />
               </Flex>
               <div className="relative p-6 flex-auto">{children}</div>
               {footer}

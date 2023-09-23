@@ -1,5 +1,5 @@
 import { Properties } from 'csstype'
-import { borderColorType } from 'types/borderColor.type copy'
+import { borderColorType } from 'types/borderColor.type'
 import { borderWidthType } from 'types/borderWidth.type'
 import { gapType } from 'types/gap.type'
 import { heightType } from 'types/height.type'
