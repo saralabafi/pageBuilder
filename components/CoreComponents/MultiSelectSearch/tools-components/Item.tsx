@@ -1,7 +1,5 @@
 import React, { useCallback, useMemo } from 'react'
 
-import { COLORS, DEFAULT_THEME, THEME_DATA } from '../constants'
-
 import DisabledItem from './DisabledItem'
 import { useSelectContext } from './SelectProvider'
 import { Option } from '../MultiSelectSearch.type'
@@ -19,28 +17,10 @@ const Item: React.FC<ItemProps> = ({ item, primaryColor }) => {
     return value !== null && !Array.isArray(value) && value.value === item.value
   }, [item.value, value])
 
-  const textHoverColor = useMemo(() => {
-    if (COLORS.includes(primaryColor)) {
-      return THEME_DATA.textHover[
-        primaryColor as keyof typeof THEME_DATA.textHover
-      ]
-    }
-    return THEME_DATA.textHover[DEFAULT_THEME]
-  }, [primaryColor])
+  const textHoverColor = ''
+  const bgColor = ''
 
-  const bgColor = useMemo(() => {
-    if (COLORS.includes(primaryColor)) {
-      return THEME_DATA.bg[primaryColor as keyof typeof THEME_DATA.bg]
-    }
-    return THEME_DATA.bg[DEFAULT_THEME]
-  }, [primaryColor])
-
-  const bgHoverColor = useMemo(() => {
-    if (COLORS.includes(primaryColor)) {
-      return THEME_DATA.bgHover[primaryColor as keyof typeof THEME_DATA.bgHover]
-    }
-    return THEME_DATA.bgHover[DEFAULT_THEME]
-  }, [primaryColor])
+  const bgHoverColor = ''
 
   const getItemClass = useCallback(() => {
     const baseClass =

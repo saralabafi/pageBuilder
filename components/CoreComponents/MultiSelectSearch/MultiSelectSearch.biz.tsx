@@ -4,8 +4,6 @@ import useOnClickOutside from './use-onclick-outside'
 
 export const useMultiSelectSearch = () => {
   const options: ListOption | (() => ListOption) = []
-  const value = null
-  const isMultiple = false
   const isDisabled = false
   const menuIsOpen = false
   const [open, setOpen] = useState<boolean>(menuIsOpen)

@@ -1,9 +1,8 @@
-import React, { useCallback, useEffect } from 'react'
-import { COLORS, DEFAULT_THEME, THEME_DATA } from './constants'
 import { useTranslations } from 'next-intl'
+import React, { useCallback, useEffect } from 'react'
 import { useMultiSelectSearch } from './MultiSelectSearch.biz'
 import { Option, SelectProps } from './MultiSelectSearch.type'
-import { ChevronIcon, CloseIcon } from './tools-components/Icons'
+import Cancel from 'images/ContentStructureBuilder/cancel.svg'
 import Options from './tools-components/Options'
 import SearchInput from './tools-components/SearchInput'
 import SelectProvider from './tools-components/SelectProvider'
@@ -19,7 +18,7 @@ const MultiSelectSearch: React.FC<SelectProps> = ({
   isSearchable = false,
   isDisabled = false,
   loading = false,
-  primaryColor = DEFAULT_THEME,
+  primaryColor = 'blue',
   formatGroupLabel = null,
   formatOptionLabel = null,
   classNames,
@@ -98,32 +97,6 @@ const MultiSelectSearch: React.FC<SelectProps> = ({
     [isMultiple, onChange, value]
   )
 
-  const getSelectClass = useCallback(() => {
-    let ringColor = THEME_DATA.ring[DEFAULT_THEME]
-    if (COLORS.includes(primaryColor)) {
-      ringColor = THEME_DATA.ring[primaryColor as keyof typeof THEME_DATA.ring]
-    }
-
-    let borderFocus = THEME_DATA.borderFocus[DEFAULT_THEME]
-    if (COLORS.includes(primaryColor)) {
-      borderFocus =
-        THEME_DATA.borderFocus[
-          primaryColor as keyof typeof THEME_DATA.borderFocus
-        ]
-    }
-    const baseClass =
-      'flex text-sm text-gray-500 border border-gray-300 rounded shadow-sm transition-all duration-300 focus:outline-none'
-    const defaultClass = `${baseClass} ${
-      isDisabled
-        ? 'bg-gray-200'
-        : `bg-white hover:border-gray-400 ${borderFocus} focus:ring ${ringColor}`
-    }`
-
-    return classNames && classNames.menuButton
-      ? classNames.menuButton({ isDisabled })
-      : defaultClass
-  }, [classNames, isDisabled, primaryColor])
-
   const getTagItemClass = useCallback(
     (item: Option) => {
       const baseClasse = 'bg-gray-200 border rounded-sm flex space-x-1'
@@ -154,6 +127,7 @@ const MultiSelectSearch: React.FC<SelectProps> = ({
     },
     [closeDropDown, isMultiple, onChange, value]
   )
+
   const t = useTranslations('Component.multiSelectSearch')
 
   return (
@@ -170,7 +144,7 @@ const MultiSelectSearch: React.FC<SelectProps> = ({
           aria-expanded={open}
           onKeyDown={onPressEnterOrSpace}
           onClick={toggle}
-          className={getSelectClass()}>
+          className="flex text-sm text-gray-500 border border-gray-300 rounded shadow-sm transition-all duration-300 focus:outline-none">
           <div className="grow pl-2.5 py-2 pr-2 flex flex-wrap gap-1">
             {!isMultiple ? (
               <p className="truncate cursor-default select-none">
@@ -203,7 +177,7 @@ const MultiSelectSearch: React.FC<SelectProps> = ({
                               ? classNames.tagItemIconContainer
                               : 'flex items-center px-1 cursor-pointer rounded-r-sm hover:bg-red-200 hover:text-red-600'
                           }>
-                          <CloseIcon
+                          <Cancel
                             className={
                               classNames?.tagItemIcon
                                 ? classNames.tagItemIcon
@@ -227,7 +201,7 @@ const MultiSelectSearch: React.FC<SelectProps> = ({
 
             {isClearable && !isDisabled && value !== null && (
               <div className="px-1.5 cursor-pointer" onClick={clearValue}>
-                <CloseIcon
+                <Cancel
                   className={
                     classNames?.closeIcon
                       ? classNames.closeIcon
@@ -242,11 +216,11 @@ const MultiSelectSearch: React.FC<SelectProps> = ({
             </div>
 
             <div className="px-1.5">
-              <ChevronIcon
+              {/* <ChevronIcon
                 className={`transition duration-300 w-6 h-6 p-0.5${
                   open ? ' transform rotate-90 text-gray-500' : ' text-gray-300'
                 }`}
-              />
+              /> */}
             </div>
           </div>
         </div>
@@ -280,7 +254,7 @@ const MultiSelectSearch: React.FC<SelectProps> = ({
               text={inputValue}
               isMultiple={isMultiple}
               value={value}
-              primaryColor={primaryColor || DEFAULT_THEME}
+              primaryColor={primaryColor}
             />
           </div>
         )}

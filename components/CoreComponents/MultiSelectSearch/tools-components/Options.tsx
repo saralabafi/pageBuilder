@@ -1,7 +1,4 @@
 import React, { useCallback, useContext, useMemo } from 'react'
-
-import { DEFAULT_THEME } from '../constants'
-
 import DisabledItem from './DisabledItem'
 import GroupItem from './GroupItem'
 import Item from './Item'
@@ -14,7 +11,7 @@ interface OptionsProps {
   text: string
   isMultiple: boolean
   value: Option | Option[] | null
-  primaryColor: string
+  primaryColor?: string
 }
 
 const Options: React.FC<OptionsProps> = ({
@@ -23,7 +20,7 @@ const Options: React.FC<OptionsProps> = ({
   text,
   isMultiple,
   value,
-  primaryColor = DEFAULT_THEME,
+  primaryColor = '',
 }) => {
   const { classNames } = useContext(SelectContext)
   const filterByText = useCallback(() => {
@@ -104,17 +101,14 @@ const Options: React.FC<OptionsProps> = ({
           {'options' in item ? (
             <>
               <div className="px-2.5">
-                <GroupItem
-                  primaryColor={primaryColor || DEFAULT_THEME}
-                  item={item}
-                />
+                <GroupItem primaryColor={primaryColor || ''} item={item} />
               </div>
 
               {index + 1 < filterResult.length && <hr className="my-1" />}
             </>
           ) : (
             <div className="px-2.5">
-              <Item primaryColor={primaryColor || DEFAULT_THEME} item={item} />
+              <Item primaryColor={primaryColor || ''} item={item} />
             </div>
           )}
         </React.Fragment>

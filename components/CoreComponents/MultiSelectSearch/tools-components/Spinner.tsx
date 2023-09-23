@@ -1,18 +1,10 @@
 import React, { useMemo } from 'react'
-
-import { COLORS, DEFAULT_THEME, THEME_DATA } from '../constants'
-
 interface Props {
   primaryColor?: string
 }
 
-const Spinner: React.FC<Props> = ({ primaryColor = DEFAULT_THEME }) => {
-  const spinnerColor = useMemo(() => {
-    if (COLORS.includes(primaryColor)) {
-      return THEME_DATA.text[primaryColor as keyof typeof THEME_DATA.text]
-    }
-    return THEME_DATA.text[DEFAULT_THEME]
-  }, [primaryColor])
+const Spinner: React.FC<Props> = ({ primaryColor = '' }) => {
+  const spinnerColor = ' '
 
   return (
     <svg
