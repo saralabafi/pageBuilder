@@ -8,6 +8,11 @@
     },
     "inputTagGenerator": {
       "typingHere": "اینجا تایپ کنید"
+    },
+    "multiSelectSearch": {
+      "placeholder": "انتخاب ... ",
+      "searchInputPlaceholder": "جستجو ...",
+      "noOptionsMessage": "هیچ گزینه ای پیدا نشد"
     }
   },
   "layout": {
@@ -22,6 +27,7 @@
     "add": " افزودن آیتم جدید",
     "setting": "تنظیمات",
     "addItem": "افرودن",
+    "tokens": "توکن ها",
     "navigation": "ناوبری",
     "settings": "تنظیمات",
     "generalBlocks": "بلوک‌های عمومی",
@@ -46,7 +52,8 @@
     "GroupControlDefinition": "گروه",
     "SingleSelectionControlDefinition": "تک انتخابی",
     "MultiSelectionControlDefinition": "چند انتخابی",
-    "DateControlDefinition": "تاریخ و زمان"
+    "DateControlDefinition": "تاریخ و زمان",
+    "TemplateBuilder": "قالب ساختار داد"
   },
   "visual_builder": {
     "new_option": "گزینه جدید",
@@ -105,7 +112,7 @@
     },
     "DataStructure": {
       "dataStructure": "ساختار داده",
-      "newContent": "محتوا جدید",
+      "newDataStructure": "ساختار جدید",
       "newStructure": "قالب جدید",
       "createNewStructure": "ساخت قالب جدید",
       "useTemplateInHome": " قالب استفاده شده در صفحه خانه",
@@ -121,7 +128,24 @@
       "close": "بستن",
       "template": "قالب",
       "default": "پیش‌فرض",
-      "typingHere": "اینجا تایپ کنید"
+      "typingHere": "اینجا تایپ کنید",
+      "continue": "ادامه",
+      "cancel": "انصراف",
+      "select": "انتخاب کنید",
+      "setAsDefault": "انتخاب پیش فرض"
     }
+  },
+  "TemplateBuilder": {
+    "templateBuilder": "قالب ساختار داد",
+    "summaryTemplate": "خلاصه ساختار",
+    "save": "ذخیره",
+    "preview": "پیش نمایش",
+    "HTML": "HTML",
+    "JavaScript": "JavaScript",
+    "CSS": "CSS",
+    "itemstructure": " ساختار آیتم",
+    "childStructure": "ساختار آیتم",
+    "parentStructure": "ساختار والد",
+    "cssStructure": " استایل"
   }
 }

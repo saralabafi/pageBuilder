@@ -14,12 +14,18 @@ import { ReactElement } from 'react'
 import { HtmlWidget } from 'components/Tools/VisualBuilder/Widgets/HTML_Widget/HtmlWidget'
 import GridWidget from 'components/Tools/VisualBuilder/Widgets/GridWidget/GridWidget'
 import { GroupControl } from 'components/Tools/ContentStructureBuilder/Controls/GroupControl/GroupControl'
+import MultipleSelection from 'components/Tools/ContentStructureBuilder/MultipleSelection/MultipleSelection'
 
 export type SidebarItem = {
   title: string
   icon: ReactElement
   type: string
 }
+
+export const templateSidebarItems: SidebarItem[] = [
+  { title: 'tokens', icon: <PlusCircle />, type: 'sidebar' },
+  { title: 'settings', icon: <Setting />, type: 'setting' },
+]
 
 export const contentSidebarItems: SidebarItem[] = [
   { title: 'addItem', icon: <PlusCircle />, type: 'sidebar' },
@@ -56,7 +62,11 @@ export const formRenderItems: any = {
   NumberControlDefinition: (props: any) => <NumericControl {...props} />,
   GroupControlDefinition: (props: any) => <GroupControl {...props} />,
   SingleSelectionControlDefinition: (props: any) => (
-    <SingleSelection {...props} />
+    // <SingleSelection {...props} />
+    <MultipleSelection {...props} />
   ),
+  // MultiSelectionControlDefinition: (props: any) => (
+  //   <MultipleSelection {...props} />
+  // ),
   DateControlDefinition: (props: any) => <DateControl {...props} />,
 }

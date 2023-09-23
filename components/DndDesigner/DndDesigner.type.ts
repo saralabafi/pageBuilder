@@ -13,6 +13,7 @@ export type Control = {
   Settings?: { [key: string]: any }
   Value?: { [key: string]: any }
   SupportedDefinitionType?: string
+  isCheckedControl?: boolean
 }
 
 export type DefinitionControl = {

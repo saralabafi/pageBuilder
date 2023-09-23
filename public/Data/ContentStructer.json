@@ -728,6 +728,173 @@
     ]
   },
   {
+    "Name": "MultiSelectionControlDefinition",
+    "Title": {
+      "fa-ir": "چند انتخابی",
+      "en-us": "Multiple Selection"
+    },
+    "Icon": "sample-icon",
+    "SettingCategories": [
+      {
+        "Name": {
+          "fa-ir": "عمومی",
+          "en-us": "basic"
+        },
+        "SubCategories": [],
+        "Settings": {
+          "LABEL": {
+            "Help": {
+              "fa-ir": "توضیحات",
+              "en-us": "description"
+            },
+            "PlaceHolder": {
+              "fa-ir": "",
+              "en-us": ""
+            },
+            "Title": {
+              "fa-ir": "برچسب",
+              "en-us": "Label"
+            },
+            "DefaultValue": {
+              "Data": {
+                "fa-ir": "نوشته",
+                "en-us": "Text"
+              }
+            },
+            "BaseType": "TextSettingDefinition"
+          },
+          "HELP": {
+            "Help": {
+              "fa-ir": "توضیحات",
+              "en-us": "description"
+            },
+            "PlaceHolder": {
+              "fa-ir": "",
+              "en-us": ""
+            },
+            "Title": {
+              "fa-ir": "متن توضیحات",
+              "en-us": "Help Text"
+            },
+            "DefaultValue": {
+              "Data": {
+                "fa-ir": "",
+                "en-us": ""
+              }
+            },
+            "BaseType": "TextSettingDefinition"
+          },
+          "LAYOUT_TYPE": {
+            "Source": {
+              "LIST": {
+                "fa-ir": "لیست",
+                "en-us": "list"
+              },
+              "LINE": {
+                "fa-ir": "خطی",
+                "en-us": "line"
+              }
+            },
+            "Title": {
+              "fa-ir": "نوع چینش",
+              "en-us": "layout type"
+            },
+            "DefaultValue": {
+              "Data": "empty"
+            },
+            "BaseType": "RadioSettingDefinition"
+          },
+          "REQUIRED": {
+            "ErrorMessage": {
+              "Help": null,
+              "PlaceHolder": {
+                "fa-ir": "پیغام خطا را وارد کنید",
+                "en-us": "specify your error message"
+              },
+              "Title": {
+                "fa-ir": "پیغام خطا",
+                "en-us": "error message"
+              },
+              "DefaultValue": {
+                "Data": {}
+              },
+              "BaseType": "TextSettingDefinition"
+            },
+            "Title": {
+              "fa-ir": "اجباری",
+              "en-us": "required"
+            },
+            "DefaultValue": {
+              "Data": {
+                "Enabled": false,
+                "ErrorMessage": {}
+              }
+            },
+            "BaseType": "RequiredSettingDefinition"
+          },
+          "OPTIONS": {
+            "Title": {
+              "fa-ir": "گزینه ها",
+              "en-us": "options"
+            },
+            "DefaultValue": {
+              "Data": [
+                {
+                  "Id": 1,
+                  "Order": 1,
+                  "Title": {
+                    "fa-ir": "گزینه 1",
+                    "en-us": "option 1"
+                  }
+                }
+              ]
+            },
+            "BaseType": "DynamicOptionsSettingDefinition"
+          }
+        }
+      },
+      {
+        "Name": {
+          "fa-ir": "پیشرفته",
+          "en-us": "advanced"
+        },
+        "SubCategories": [],
+        "Settings": {
+          "SEARCHABLE": {
+            "Source": {
+              "DISABLED": {
+                "fa-ir": "غیر فعال",
+                "en-us": "disable"
+              },
+              "KEYWORD": {
+                "fa-ir": "کلمه کلیدی",
+                "en-us": "keyword"
+              }
+            },
+            "Title": {
+              "fa-ir": "قابل جستجو",
+              "en-us": "searchable"
+            },
+            "DefaultValue": {
+              "Data": "empty"
+            },
+            "BaseType": "RadioSettingDefinition"
+          },
+          "SHOW_LABEL": {
+            "Title": {
+              "fa-ir": "نمایش عنوان",
+              "en-us": "show label"
+            },
+            "DefaultValue": {
+              "Data": true
+            },
+            "BaseType": "SwitchSettingDefinition"
+          }
+        }
+      }
+    ]
+  },
+  {
     "Name": "DateControlDefinition",
     "Title": {
       "fa-ir": "تاریخ و زمان",
