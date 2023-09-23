@@ -8,7 +8,6 @@ import { selectActiveMenu, selectActiveTab } from 'redux/Design/Design'
 import { RootState } from 'redux/Store'
 import { services } from 'services/services'
 import { ControlMenuTemplate } from '../ControlMenuTemplate/ControlMenuTemplate'
-// import { NavigateMenu } from './components/NavigateMenu/NavigateMenu'
 import data from '../../../public/Data//VisualBuilder.json'
 
 export const useTemplateBuilderSideMenu = () => {
@@ -23,9 +22,11 @@ export const useTemplateBuilderSideMenu = () => {
 
   const handleRenderTabMenu = (props: { controls: Control[] }) => {
     const availableMenu: { [key: string]: { [key: string]: ReactNode } } = {
-      sidebar: { title: t('add'), component: <ControlMenuTemplate {...props} /> },
+      sidebar: {
+        title: t('add'),
+        component: <ControlMenuTemplate {...props} />,
+      },
       setting: { title: t('settings'), component: <SettingBox {...props} /> },
- 
     }
     return availableMenu[activeTab]
   }

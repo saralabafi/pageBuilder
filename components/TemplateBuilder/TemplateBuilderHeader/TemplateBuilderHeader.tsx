@@ -53,16 +53,6 @@ export const TemplateBuilderHeader = () => {
       <Flex align="items-center" gap="gap-0">
         {headerListData.map((nav, index: number) => {
           return (
-            // <Link href={`${nav.link}`} key={index}>
-            //   <Text
-            //     customCSS={`rounded text-slate-500 px-3 py-1 hover:text-blue-600 hover:bg-blue-50 ${
-            //       pathname === nav.link && '!text-blue-600 bg-blue-50'
-            //     }`}
-            //     fontSize={'text-[13px]'}
-            //     fontWeight={500}>
-            //     {t(nav.title)}
-            //   </Text>
-            // </Link>
             <Link
               href={`${nav.link}`}
               key={index}

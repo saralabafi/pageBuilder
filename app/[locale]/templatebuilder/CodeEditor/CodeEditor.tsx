@@ -29,7 +29,7 @@ export const CodeMirrorComponent: React.FC<MyCodeMirrorProps> = ({ mode }) => {
   return (
     <CodeMirror
       className="w-full h-full"
-      value="console.log('hello world!');"
+      value=""
       extensions={getExtensions(mode) as any}
       onChange={onChange}
     />

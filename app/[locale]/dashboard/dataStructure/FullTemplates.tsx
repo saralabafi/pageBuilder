@@ -9,7 +9,7 @@ import { Menu } from 'components/CoreComponents/Menu/Menu'
 import { MenuItem } from 'components/CoreComponents/Menu/MenuItem'
 import DotsButtonIcon from 'images/dashboard/dotsButton.svg'
 import { useFullTemplate } from './FullTemplates.biz'
-import Eyeicon from 'images/dashboard/eye.svg'
+import EyeIcon from 'images/dashboard/eye.svg'
 import Text from 'components/CoreComponents/Text/Text'
 import EditIcon from 'images/dashboard/edit.svg'
 import RectangleStackIcon from 'images/dashboard/rectangle_stack.svg'
@@ -35,7 +35,7 @@ export const FullTemplates = () => {
             align="items-center"
             justify="justify-start"
             customCSS="py-2 px-4 border-b ">
-            <Eyeicon className="text-slate-400" />
+            <EyeIcon className="text-slate-400" />
             <Text fontSize={12} fontWeight={400} color="text-slate-600 ms-3">
               {t('view')}
             </Text>
@@ -124,7 +124,6 @@ export const FullTemplates = () => {
         </div>
 
         <div className="w-5 self-stretch py-1 justify-center items-start gap-1 flex cursor-pointer">
-          {/* <EllipsisVerticalIcon /> */}
           {menutemp}
         </div>
       </div>
