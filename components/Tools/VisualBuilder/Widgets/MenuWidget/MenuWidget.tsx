@@ -1,4 +1,5 @@
 import Text from 'components/CoreComponents/Text/Text'
+import { Control } from 'components/DndDesigner/DndDesigner.type'
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -8,11 +9,7 @@ interface MenuItem {
   children?: MenuItem[]
 }
 
-interface HeaderMenuProps {
-  menuItems: MenuItem[]
-}
-
-const HeaderMenu: React.FC<HeaderMenuProps> = () => {
+const MenuWidget = (props: Control) => {
   const menuItems: MenuItem[] = [
     {
       key: '1',
@@ -70,7 +67,6 @@ const HeaderMenu: React.FC<HeaderMenuProps> = () => {
     </nav>
   )
 }
-
 interface HeaderMenuItemProps {
   item: MenuItem
 }
@@ -145,4 +141,4 @@ const HeaderSubMenuItem: React.FC<HeaderMenuItemProps> = ({ item }) => {
   )
 }
 
-export default HeaderMenu
+export default MenuWidget
