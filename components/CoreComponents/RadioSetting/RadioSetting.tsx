@@ -1,9 +1,10 @@
+import React from 'react'
 import { Flex } from '../Flex/Flex'
 import Text from '../Text/Text'
 import { useRadioSetting } from './RadioSetting.biz'
 import { IRadioGroup } from './RadioSetting.type'
 
-export const RadioSetting = (props: IRadioGroup) => {
+export const RadioSetting = React.memo((props: IRadioGroup) => {
   const { locale, options, handleSelect, valueControl } = useRadioSetting(props)
 
   return (
@@ -13,22 +14,19 @@ export const RadioSetting = (props: IRadioGroup) => {
       </Text>
       {options?.map((option) => {
         return (
-          <label className="inline-flex items-center">
+          <label className="inline-flex items-center" key={option.value}>
             <input
               type="radio"
-              className="form-radio"
-              name="radio-group"
               value={option.value}
               checked={valueControl === option.value}
-              onClick={() => handleSelect(option.value)}
+              onChange={() => handleSelect(option.value)}
             />
             <Text fontSize={12} customCSS="ms-2">
               {option.title?.[locale as any]}
             </Text>
           </label>
-
         )
       })}
     </Flex>
   )
-}
+})

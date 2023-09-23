@@ -37,7 +37,8 @@ export const usePageBuilderSideMenu = () => {
     ],
     services.GetData
   )
-  let controls: any[] = data?.filter((control: any) => control.IsAddable)
+  
+  let controls: any = data?.filter((control: any) => control.IsAddable)
 
   controls = controls?.map((control: any) => {
     if (control.IsAddable) {

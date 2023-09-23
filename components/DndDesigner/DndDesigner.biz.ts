@@ -15,7 +15,6 @@ export const useDndDesigner = (renderList: any) => {
   const { designList, activeControl } = useSelector(
     (state: RootState) => state.pageDesign
   )
-
   const dispatch = useDispatch()
 
   const handleDrop = useCallback(
@@ -25,7 +24,7 @@ export const useDndDesigner = (renderList: any) => {
         designList,
         dispatch,
       })
-      const newComponent: Control = {
+      const newComponent: any = {
         childCount: dropZone.childrenCount,
         ...item.data.component,
         path: splitDropZonePath,

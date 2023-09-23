@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useLocale } from 'next-intl'
 import { IRadioGroup } from './RadioSetting.type'
 import ContentRenderList from 'components/DndDesigner/components/ContentRenderList.biz'

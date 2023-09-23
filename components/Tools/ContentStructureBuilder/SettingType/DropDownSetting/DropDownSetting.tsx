@@ -1,6 +1,7 @@
 import { Select } from 'components/CoreComponents/Select/Select'
 import { useDropDownSetting } from './DropDownSetting.biz'
 import { IDropDownSettingProps } from './DropDownSetting.type'
+import { IOption } from 'components/CoreComponents/Select/Select.types'
 
 export const DropDownSetting = (props: IDropDownSettingProps) => {
   const { Title, DefaultValue, PlaceHolder } = props.Source
@@ -18,7 +19,7 @@ export const DropDownSetting = (props: IDropDownSettingProps) => {
           customCSS="text-right text-gray-700 text-xs font-normal leading-none"
           placeholder={PlaceHolder ? PlaceHolder[locale] : ''}
           value={DefaultValue ? DefaultValue[locale] : ''}
-          options={options}
+          options={options as unknown as IOption[]}
           onChange={handleSelect}
         />
       </div>

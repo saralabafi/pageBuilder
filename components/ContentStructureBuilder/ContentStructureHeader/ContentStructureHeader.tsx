@@ -8,9 +8,14 @@ import ArrowLeftIcon from 'images/page/arrow_left.svg'
 import SaveIcon from 'images/page/save.svg'
 import SearchIcon from 'images/page/search.svg'
 import { useTranslations } from 'next-intl'
+import { RootState } from 'redux/Store'
+import { useSelector } from 'react-redux'
 
 export const ContentStructureHeader = () => {
   const t = useTranslations('layout')
+  const { designList, activeControl } = useSelector(
+    (state: RootState) => state.pageDesign
+  )
   return (
     <Flex
       customCSS="h-[72px] border-b border-neutral-200 bg-white"
@@ -66,7 +71,7 @@ export const ContentStructureHeader = () => {
         <Button
           customCSS="border-1 border-solid border-neutral-200 text-blue-500"
           backgroundColor="transparent"
-          onClick={() => undefined}>
+          onClick={() => console.log('sending data is: ', designList)}>
           <SaveIcon />
           <Text color="text-blue-500">{t('save')}</Text>
         </Button>
