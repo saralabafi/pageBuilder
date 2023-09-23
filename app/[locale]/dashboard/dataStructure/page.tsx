@@ -34,7 +34,6 @@ function DataStructurePage() {
     handleToggleOpen,
     visibleNewContentModal,
     setVisibleNewContentModal,
-    contentStructureList,
   } = useDataStructure()
 
   const locale = useLocale()
@@ -215,7 +214,7 @@ function DataStructurePage() {
           </Flex>
           <Select
             placeholder={t('select')}
-            options={contentStructureList}
+            options={undefined}
             customCSS="w-full"
             value={''}
             onChange={() => {}}

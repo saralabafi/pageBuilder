@@ -18,13 +18,7 @@ export const useDataStructure = () => {
     [{ url: 'cms/v1.0/siteName/dynamic-contents/structures' }],
     services.GetData
   )
-  const { data: contentStructureList } = useQuery(
-    [{ url: 'cms/v1.0/siteName/dynamic-contents/structures' }],
-    services.GetData
-  )
-  contentStructureList?.map((item: any) => {
-    return { title: item.title, id: item.id }
-  })
+
   return {
     data,
     dynamicContentList,
@@ -35,6 +29,5 @@ export const useDataStructure = () => {
     setDynamicContentList,
     visibleNewContentModal,
     setVisibleNewContentModal,
-    contentStructureList,
   }
 }
