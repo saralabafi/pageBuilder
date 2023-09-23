@@ -16,7 +16,7 @@ const TemplateEditorJs = () => {
               </div>
             </div>
           </div>
-          <div className="self-stretch grow shrink basis-0 flex-col justify-start items-end gap-2 flex">
+          <div className="self-stretch grow shrink basis-0 flex-col justify-start items-end gap-2 flex overflow-x-auto">
             <div
               dir="ltr"
               className="self-stretch grow shrink basis-0 bg-white rounded shadow border border-slate-200 flex-col justify-start items-start flex">
