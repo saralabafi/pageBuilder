@@ -67,12 +67,20 @@ export const useContent = () => {
 
   const handleApplyFilter = (filterValues: filtersInputValueType) => {
     setFiltersInputValue(filterValues)
-    const filterArr: any = []
-    Object.entries(filterValues).map(([title, value]: any) => {
-      if (value) {
-        filterArr?.push(`${title}=${value?.id ? value.id : value}`)
+    const filterArr: string[] = []
+
+    Object.entries(filterValues).map(
+      ([title, value]: [string, FiltersTagsValue]) => {
+        if (value) {
+          let preValue
+          if (typeof value === 'object' && 'id' in value) preValue = value.id
+          else {
+            preValue = value
+          }
+          filterArr?.push(`${title}=${preValue}`)
+        }
       }
-    })
+    )
 
     push(`${pathname}?${filterArr.join('&')}`)
   }
