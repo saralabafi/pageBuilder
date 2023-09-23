@@ -4,8 +4,14 @@ import { DateObject } from 'react-multi-date-picker'
 export interface IContentFilterHeader {
   filtersTagsOptions: {
     title: string
-    value:
-      | string
+    value: FiltersTagsValue
+  }[]
+  removeFilterItems: (selected_type: string) => void
+  handleResetFiltersInput:()=>void
+}
+
+
+export type FiltersTagsValue=| string
       | LocalizeStringType
       | DateObject
       | DateObject[]
@@ -14,6 +20,3 @@ export interface IContentFilterHeader {
           id: string
           title: LocalizeStringType
         }
-  }[]
-  removeFilterItems: (selected_type: string) => void
-}

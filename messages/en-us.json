@@ -86,6 +86,7 @@
       "move": "move",
       "edit": "edit",
       "history": "history",
+      "reset_filters": "reset filters",
       "delete": "delete",
       "Filter": {
         "filters": "filters",

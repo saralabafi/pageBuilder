@@ -6,12 +6,14 @@ import CancelIcon from 'images/assets/cancel.svg'
 import { useLocale, useTranslations } from 'next-intl'
 import { IContentFilterHeader } from './ContentFilterHeader.type'
 import React, { useCallback } from 'react'
+import RefreshIcon from 'images/dashboard/refresh.svg'
 
 dayjs.extend(jalaliPlugin)
 
 export const ContentFilterHeader = ({
   filtersTagsOptions,
   removeFilterItems,
+  handleResetFiltersInput,
 }: IContentFilterHeader) => {
   const t = useTranslations('Dashboard.Content')
   const locale = useLocale()
@@ -39,8 +41,12 @@ export const ContentFilterHeader = ({
   )
 
   return (
-    <Flex width="w-full" justify="justify-between">
-      <Flex align="items-center" customCSS="my-2" gap="gap-2">
+    <Flex
+      align="items-center"
+      width="w-full"
+      justify="justify-between"
+      customCSS="mt-3 mb-2">
+      <Flex align="items-center" gap="gap-2" wrap="flex-wrap">
         {filtersTagsOptions?.length ? (
           <Text color="text-slate-500" fontSize={12}>
             {t('filter_by')}
@@ -68,6 +74,17 @@ export const ContentFilterHeader = ({
             </div>
           )
         })}
+      </Flex>
+      <Flex
+        align="items-center"
+        justify='justify-end'
+        gap="gap-1"
+        customCSS="w-[18%] cursor-pointer"
+        onClick={handleResetFiltersInput}>
+        <RefreshIcon width={16} className="text-blue-500" />
+        <Text fontSize={12} fontWeight={400} color="text-blue-500">
+          {t('reset_filters')}
+        </Text>
       </Flex>
     </Flex>
   )

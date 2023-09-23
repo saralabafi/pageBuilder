@@ -1,13 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
 import { IFolders } from 'components/Dashboard/DashboardHeader/DynamicContent/NavigationDynamicContent.type'
+import { FiltersTagsValue } from 'components/Dashboard/content/ContentFilterHeader/ContentFilterHeader.type'
 import { filtersInputValueType } from 'components/Dashboard/content/FilterContentSection/FilterContentSection.type'
-import { LocalizeStringType } from 'components/SettingBuilder/SettingBuilder.type'
-import {
-  usePathname,
-  useRouter
-} from 'next/navigation'
+import { usePathname, useRouter} from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
-import { DateObject } from 'react-multi-date-picker'
 import { services } from 'services/services'
 
 export const useContent = () => {
@@ -54,12 +50,7 @@ export const useContent = () => {
   const [filtersTagsOptions, setFiltersTagsOptions] = useState<
     {
       title: string
-      value:
-        | string
-        | DateObject
-        | DateObject[]
-        | null
-        | { id: string; title: LocalizeStringType }
+      value: FiltersTagsValue
     }[]
   >([])
 
@@ -73,26 +64,20 @@ export const useContent = () => {
       from_date: null,
     })
 
-  
   const handleApplyFilter = (filterValues: filtersInputValueType) => {
     setFiltersInputValue(filterValues)
     const filterArr: any = []
     Object.entries(filterValues).map(([title, value]: any) => {
       if (value) filterArr?.push(`?${title}=${value}`)
     })
-    
+
     push(`${pathname}${filterArr.join('')}`)
   }
 
   const handleCreateFilterTags = () => {
     const list: {
       title: string
-      value:
-        | string
-        | DateObject
-        | DateObject[]
-        | null
-        | { title: LocalizeStringType; id: string }
+      value: FiltersTagsValue
     }[] = Object.entries(filtersInputValue)
       .filter(([_, value]) => !!value)
       .map(([title, value]) => {
@@ -103,6 +88,7 @@ export const useContent = () => {
   }
 
   const handleResetFiltersInput = useCallback(() => {
+    push(pathname)
     setFiltersInputValue({
       title: '',
       content_structure: null,

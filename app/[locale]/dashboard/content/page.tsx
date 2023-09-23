@@ -33,7 +33,6 @@ function ContentPage() {
     parentHierarchy,
     setParentHierarchy,
     breadcrumbItems,
-   
     filterVisible,
     setFilterVisible,
     handleApplyFilter,
@@ -223,8 +222,6 @@ function ContentPage() {
     }
   }
 
-  
-
   return (
     <div className=" rounded gap-3 border border-slate-100 bg-white shadow-sm mx-3 my-2 ">
       <Flex direction="flex-col" customCSS="border-b p-3">
@@ -232,10 +229,13 @@ function ContentPage() {
           filterVisible={filterVisible}
           setFilterVisible={setFilterVisible}
         />
-        <ContentFilterHeader
-          filtersTagsOptions={filtersTagsOptions}
-          removeFilterItems={removeFilterItems}
-        />
+        {filtersTagsOptions.length ? (
+          <ContentFilterHeader
+            filtersTagsOptions={filtersTagsOptions}
+            removeFilterItems={removeFilterItems}
+            handleResetFiltersInput={handleResetFiltersInput}
+          />
+        ) : null}
       </Flex>
       <Flex align="items-start">
         <Flex customCSS="w-[25%]">
@@ -284,7 +284,6 @@ function ContentPage() {
           />
         )}
       </Flex>
-
     </div>
   )
 }
