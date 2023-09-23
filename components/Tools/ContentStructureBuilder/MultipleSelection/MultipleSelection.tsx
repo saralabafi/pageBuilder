@@ -110,22 +110,6 @@ const MultipleSelection = (props: Control) => {
                       </label>
                     </div>
                   </div>
-                  {/* <div className="flex items-center mb-2 me-4" key={i}>
-                    <input
-                      id={`${i}`}
-                      type="checkbox"
-                      name={optionTitle}
-                      value={optionTitle}
-                      checked={selectedOptions.includes(optionTitle)}
-                      onChange={handleOptionChange}
-                      className="w-4 h-4 text-blue-600"
-                    />
-                    <label
-                      htmlFor={`${i}`}
-                      className="ms-2 text-[12px] text-slate-700">
-                      {optionTitle}
-                    </label>
-                  </div> */}
                 </>
               )
             })

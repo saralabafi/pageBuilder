@@ -276,7 +276,6 @@ const GridWidget = (props: Control) => {
 
     resizableXfirst()
   }, [props.Children?.length])
-  useEffect(() => {}, [props.Children?.length])
   return (
     <div style={{ position: 'relative' }} dir="ltr">
       {/* Add the grid markup for visual comparison */}
