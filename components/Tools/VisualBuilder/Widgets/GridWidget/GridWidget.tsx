@@ -1,15 +1,15 @@
 import { Control } from 'components/DndDesigner/DndDesigner.type'
-import DropZone from 'components/DndDesigner/components/DropZone/DropZone'
 import { VisualSelectedWrapper } from 'components/DndDesigner/components/VisualSelectedWrapper/VisualSelectedWrapper'
 import { useEffect } from 'react'
 import { visualRenderItems } from '../../../../../app/[locale]/page/layout.const'
 import { DragComponent } from './DragComponent'
 import { useGridWidget } from './GridWidget.biz'
-import './mycss.css'
 import { useDispatch, useSelector } from 'react-redux'
-import VisualRenderList from 'components/DndDesigner/components/VisualRenderList.biz'
 import { RootState } from 'redux/Store'
 import { generateStyles } from '../../../../../utils/help/GenerateStyle'
+import VisualRenderList from 'components/DndDesigner/components/VisualRenderList.biz'
+import DropZone from 'components/DndDesigner/components/DropZone/DropZone'
+import './myCss.css'
 
 const GridWidget = (props: Control) => {
   const { Settings } = props
@@ -32,7 +32,7 @@ const GridWidget = (props: Control) => {
   let columnSpan = 0
   useEffect(() => {
     const resizableX = () => {
-      const containerBox = document.querySelector('.containerbox')
+      const containerBox = document.querySelector('.containerBox')
       if (!containerBox) return
 
       let lastColumnIndex = 0
@@ -45,7 +45,7 @@ const GridWidget = (props: Control) => {
         document.querySelectorAll<HTMLDivElement>('.item')
       )
 
-      // generate class atfirst & after changing number cols in setting
+      // generate class atFirst & after changing number cols in setting
       const columnElements = document.getElementsByClassName('item')
       const columnCount = columnElements.length
       columnSpan = Math.floor(12 / columnCount)
@@ -63,7 +63,7 @@ const GridWidget = (props: Control) => {
         const nextItem = resizer.nextElementSibling as HTMLDivElement
         const startX = e.clientX
 
-        // visualcomparison
+        // visualComparison
         const visualComparisonGrid = document.querySelector('.visualcomparison')
         const columnWidth = visualComparisonGrid?.firstElementChild?.clientWidth
         lastColumnIndex = Math.floor(e.pageX / columnWidth!)
@@ -204,7 +204,7 @@ const GridWidget = (props: Control) => {
                       item1.classList.add(
                         `col-span-${Math.round(item2 / columnWidth!)}`
                       )
-                     
+
                       editControl(item1.id, type, {
                         Data: Math.round(item2 / columnWidth!),
                       })
@@ -247,37 +247,35 @@ const GridWidget = (props: Control) => {
     resizableX()
   }, [props.Children])
 
+  // for change number col in grid at setting
   useEffect(() => {
     const resizableXfirst = () => {
-      // Add your desired functionality here
-      const containerBox = document.querySelector('.containerbox')
+      const containerBox = document.querySelector('.containerBox')
       if (!containerBox) return
-
-      const lastColumnIndex = 0
-
-      // get grid col and spliter
-      const resizers = Array.from(
-        document.querySelectorAll<HTMLDivElement>('.resizer')
-      )
       const items = Array.from(
         document.querySelectorAll<HTMLDivElement>('.item')
       )
 
-      // generate class atfirst & after changing number cols in setting
+      // generate class atFirst & after changing number cols in setting
       const columnElements = document.getElementsByClassName('item')
+      const columnArray = Array.from(columnElements)
+      columnArray.find((element) => {
+        if (element.className === 'controlIngrid') {
+          element.innerHTML = ''
+        }
+      })
       const columnCount = columnElements.length
       columnSpan = Math.floor(12 / columnCount)
-      // items.forEach((item) => {
-      //   const divElement = item as HTMLDivElement // Assuming the items are HTMLDivElement
-      //   divElement.removeAttribute('style')
-      //   item.className = item.className.replace(/\bcol-span-\S+\s*/g, '')
-      //   ;(item as HTMLDivElement).classList.add(`col-span-${columnSpan}`)
-      // })
+      items.forEach((item) => {
+        const divElement = item as HTMLDivElement // Assuming the items are HTMLDivElement
+        divElement.removeAttribute('style')
+        item.className = item.className.replace(/\bcol-span-\S+\s*/g, '')
+        ;(item as HTMLDivElement).classList.add(`col-span-${columnSpan}`)
+      })
     }
 
     resizableXfirst()
   }, [props.Children?.length])
-
   return (
     <div style={{ position: 'relative' }} dir="ltr">
       {/* Add the grid markup for visual comparison */}
@@ -293,72 +291,74 @@ const GridWidget = (props: Control) => {
         {Array.from({ length: 12 }).map((_, index) => (
           <div
             key={index}
-            className="bg-gray-400 h-32 flex justify-center border border-dashed">
+            className="bg-gray-400 h-auto flex justify-center border border-dashed">
             {index + 1}
           </div>
         ))}
       </i>
-      {/* ${CSS_ClassNames} ${props.Id} */}
-      <div className={`containerbox flex h-32 ${CSS_ClassNames} ${props.Id}`}>
-        {props?.Children && props.Children?.length > 0
-          ? props?.Children?.map((item: Control, index: number) => {
-              const currentPath = `${props.path}-${index}`
-              return (
-                <>
-                  <div
-                    key={item.Id}
-                    id={`${item.Id}`}
-                    style={generateStyles(Settings!)}
-                    className={`item h-32 col-span-${item?.Settings?.GRID_SIZE?.Data}`}>
-                    {/* ${columnCalculator()> */}
-                    <div className="border border-dashed border-slate-400 p-5 w-full h-full">
-                      {item.Children?.map((control: Control) => {
-                        return (
-                          <VisualSelectedWrapper
-                            deleteItem={() => {}}
-                            control={control}
-                            // hidden={activeControl !== control.Id}
-                            hidden={undefined}
-                            key={control.Id}>
-                            <DragComponent
-                              renders={visualRenderItems}
-                              handleClick={handleClick}
-                              component={control}
-                            />
-                            <DropZone
-                              data={{
-                                parentId: item.Id,
-                                path: currentPath,
-                                childrenCount: item?.Children?.length,
-                              }}
-                              onDrop={handleDrop}
-                              path=""
-                            />
-                          </VisualSelectedWrapper>
-                        )
-                      })}
-                      <DropZone
-                        data={{
-                          parentId: item.Id,
-                          path: currentPath,
-                          childrenCount: item?.Children?.length,
-                        }}
-                        onDrop={handleDrop}
-                        path=""
-                      />
+      <div className="grid grid-cols-1">
+        <div
+          className={`containerBox flex h-auto ${CSS_ClassNames} ${props.Id}`}>
+          {props?.Children && props.Children?.length > 0
+            ? props?.Children?.map((item: Control, index: number) => {
+                const currentPath = `${props.path}-${index}`
+                return (
+                  <>
+                    <div
+                      key={item.Id}
+                      id={`${item.Id}`}
+                      style={generateStyles(Settings!)}
+                      className={`item col-span-${item?.Settings?.GRID_SIZE?.Data}`}>
+                      <div className="border border-dashed border-slate-400 p-5 w-full h-full ">
+                        <div className="controlIngrid">
+                          {item.Children?.map((control: Control) => {
+                            return (
+                              <VisualSelectedWrapper
+                                deleteItem={() => {}}
+                                control={control}
+                                // hidden={activeControl !== control.Id}
+                                hidden={undefined}
+                                key={control.Id}>
+                                <DragComponent
+                                  renders={visualRenderItems}
+                                  handleClick={handleClick}
+                                  component={control}
+                                />
+                                <DropZone
+                                  data={{
+                                    parentId: item.Id,
+                                    path: currentPath,
+                                    childrenCount: item?.Children?.length,
+                                  }}
+                                  onDrop={handleDrop}
+                                  path=""
+                                />
+                              </VisualSelectedWrapper>
+                            )
+                          })}
+                        </div>
+                        <DropZone
+                          data={{
+                            parentId: item.Id,
+                            path: currentPath,
+                            childrenCount: item?.Children?.length,
+                          }}
+                          onDrop={handleDrop}
+                          path=""
+                        />
+                      </div>
                     </div>
-                  </div>
-
-                  {props?.Children?.length
-                    ? index < props?.Children?.length - 1 &&
-                      props?.Settings?.SHOW_GUTTER?.Data !== false && (
-                        <div className="resizer h-32"></div>
-                      )
-                    : null}
-                </>
-              )
-            })
-          : null}
+                    {props?.Children?.length
+                      ? index < props?.Children?.length - 1 &&
+                        props?.Settings?.SHOW_GUTTER?.Data !== false && (
+                          <div className="resizer h-48"></div>
+                        )
+                      : null}
+                  </>
+                )
+              })
+            : null}
+        </div>
       </div>
     </div>
   )
