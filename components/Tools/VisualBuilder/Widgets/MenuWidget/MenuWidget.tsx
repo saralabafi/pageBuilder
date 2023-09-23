@@ -1,6 +1,6 @@
 import Text from 'components/CoreComponents/Text/Text'
-import { Control } from 'components/DndDesigner/DndDesigner.type'
-import React, { useState } from 'react'
+import Link from 'next/link'
+import { useState } from 'react'
 
 interface MenuItem {
   key: string
@@ -8,70 +8,12 @@ interface MenuItem {
   children?: MenuItem[]
 }
 
-const MenuItem = ({ item }: any) => {
-  const [isHovered, setIsHovered] = useState(false)
-
-  const handleMouseEnter = () => {
-    setIsHovered(true)
-  }
-
-  const handleMouseLeave = () => {
-    setIsHovered(false)
-  }
-
-  if (item.children) {
-    return (
-      <div
-        key={item.key}
-        title={item.title}
-        className="relative group"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}>
-        <div
-          className={`hidden ${
-            isHovered ? 'block' : ''
-          } absolute z-10 bg-white w-auto py-2 px-4 mt-5 rounded shadow-lg`}>
-          {renderMenuItems(item.children)}
-        </div>
-        <Text
-          color="text-slate-600"
-          fontSize={12}
-          fontWeight={500}
-          customCSS="group cursor-pointer hover:text-gray-900">
-          {item.title}
-        </Text>
-        {item?.children?.map((child: any) => (
-          <div
-            className={`absolute ${
-              isHovered ? 'block' : ''
-            } left-full top-0 mt-0 ml-2`}>
-            <div className="bg-white w-auto py-2 px-4 rounded shadow-lg">
-              {renderMenuItems(child.children)}
-            </div>
-          </div>
-        ))}
-      </div>
-    )
-  } else {
-    return (
-      <Text
-        key={item.key}
-        color="text-slate-600"
-        fontSize={12}
-        fontWeight={500}
-        customCSS="group cursor-pointer hover:text-gray-900">
-        {item.title}
-      </Text>
-    )
-  }
+interface HeaderMenuProps {
+  menuItems: MenuItem[]
 }
 
-const renderMenuItems = (items: MenuItem[]) => {
-  return items?.map((item) => <MenuItem item={item} key={item.key} />)
-}
-
-const MenuWidget = (props: Control) => {
-  const menuItems = [
+const HeaderMenu: React.FC<HeaderMenuProps> = () => {
+  const menuItems: MenuItem[] = [
     {
       key: '1',
       title: 'Home',
@@ -103,11 +45,11 @@ const MenuWidget = (props: Control) => {
           title: 'Category 6',
           children: [
             {
-              key: '4-1',
+              key: '4-1-1',
               title: 'Category 8',
             },
             {
-              key: '4-2',
+              key: '4-1-2',
               title: 'Category 9',
             },
           ],
@@ -121,10 +63,86 @@ const MenuWidget = (props: Control) => {
   ]
 
   return (
-    <div className="w-full flex justify-center items-center gap-2">
-      {renderMenuItems(menuItems)}
+    <nav className="flex justify-center items-center space-x-4">
+      {menuItems.map((item) => (
+        <HeaderMenuItem key={item.key} item={item} />
+      ))}
+    </nav>
+  )
+}
+
+interface HeaderMenuItemProps {
+  item: MenuItem
+}
+
+const HeaderMenuItem: React.FC<HeaderMenuItemProps> = ({ item }) => {
+  const [isHovered, setIsHovered] = useState(false)
+  const hasChildren = item.children && item.children.length > 0
+
+  const handleMouseEnter = () => {
+    setIsHovered(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovered(false)
+  }
+
+  return (
+    <div
+      className="relative py-2 "
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}>
+      <Link href="#">
+        <Text fontSize={12} fontWeight={500} color="text-slate-500">
+          {item.title}
+        </Text>
+      </Link>
+      {hasChildren && isHovered && (
+        <div className="absolute top-full left-0 bg-white shadow-lg rounded-md">
+          <ul className="">
+            {item?.children?.map((child) => (
+              <HeaderSubMenuItem key={child.key} item={child} />
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   )
 }
 
-export default MenuWidget
+const HeaderSubMenuItem: React.FC<HeaderMenuItemProps> = ({ item }) => {
+  const [isHovered, setIsHovered] = useState(false)
+  const hasChildren = item.children && item.children.length > 0
+
+  const handleMouseEnter = () => {
+    setIsHovered(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovered(false)
+  }
+
+  return (
+    <div
+      className="relative py-2 px-4 w-24"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}>
+      <Link href="#" className="w-auto">
+        <Text fontSize={12} fontWeight={500} color="text-slate-500">
+          {item.title}
+        </Text>
+      </Link>
+      {hasChildren && isHovered && (
+        <div className="absolute top-[10px] right-[88px] bg-white shadow-lg rounded-md">
+          <ul className="">
+            {item?.children?.map((child) => (
+              <HeaderSubMenuItem key={child.key} item={child} />
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default HeaderMenu
