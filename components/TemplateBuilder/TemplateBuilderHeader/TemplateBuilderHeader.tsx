@@ -5,25 +5,20 @@ import Text from 'components/CoreComponents/Text/Text'
 import BackIcon from 'images/ContentStructureBuilder/arrowRight.svg'
 import RedoIcon from 'images/ContentStructureBuilder/uturnLeft.svg'
 import UndoIcon from 'images/ContentStructureBuilder/uturnRight.svg'
-import ArrowLeftIcon from 'images/page/arrow_left.svg'
-import SearchIcon from 'images/page/search.svg'
 import ChartIcon from 'images/templateBuilder/chart.svg'
 import SaveIcon from 'images/templateBuilder/save.svg'
 import { useTranslations } from 'next-intl'
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { headerListData } from './TemplateBuilderHeader.const'
-import { useState } from 'react'
 
 export const TemplateBuilderHeader = ({
   onComponentClick,
 }: {
-  onComponentClick: any
+  onComponentClick: (componentName: string) => void
 }) => {
   const t = useTranslations('TemplateBuilder')
   const pathname = usePathname()
   const handleClick = (componentName: string) => {
-    console.log(componentName, '-1')
     onComponentClick(componentName)
   }
   return (

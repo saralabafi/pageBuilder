@@ -13,7 +13,7 @@ function TemplatebuilderLayout({ children }: { children: any }) {
   const { activeTab } = useLayout()
   const [activeComponent, setActiveComponent] = useState('HTML') // Initialize activeComponent state with 'HTML'
 
-  const handleComponentClick = (componentName: any) => {
+  const handleComponentClick = (componentName: string) => {
     setActiveComponent(componentName)
   }
 
@@ -40,7 +40,7 @@ function TemplatebuilderLayout({ children }: { children: any }) {
       <aside className="flex h-screen">
         <TemplateBuilderSidebar />
         {activeTab ? <TemplateBuilderSideMenu /> : null}
-        {/* {children} */}
+        {children}
         {component}
       </aside>
     </>
