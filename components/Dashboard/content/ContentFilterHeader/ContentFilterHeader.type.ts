@@ -7,16 +7,16 @@ export interface IContentFilterHeader {
     value: FiltersTagsValue
   }[]
   removeFilterItems: (selected_type: string) => void
-  handleResetFiltersInput:()=>void
+  handleResetFiltersInput: () => void
 }
 
-
-export type FiltersTagsValue=| string
-      | LocalizeStringType
-      | DateObject
-      | DateObject[]
-      | null
-      | {
-          id: string
-          title: LocalizeStringType
-        }
+export type FiltersTagsValue =
+  | string
+  | LocalizeStringType
+  | DateObject
+  | DateObject[]
+  | null
+  | {
+      id: string
+      title: LocalizeStringType
+    }
