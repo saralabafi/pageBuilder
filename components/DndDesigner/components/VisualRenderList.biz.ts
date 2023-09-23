@@ -130,7 +130,7 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
   }
 
   const returnDefaultValue = (id: string, type: string) => {
-    return Dictionary?.[id]?.Settings?.[type]?.Value.Data
+    return Dictionary?.[id]?.Settings?.[type]?.Value?.Data
   }
 
   return {

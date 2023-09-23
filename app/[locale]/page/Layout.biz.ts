@@ -1,5 +1,5 @@
 'use client'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from 'redux/Store'
 import { useQuery } from '@tanstack/react-query'
@@ -8,15 +8,15 @@ import { setDesignList } from 'redux/Design/Design'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 export const useLayout = () => {
+  const [clicked, setClicked] = useState<boolean>(false)
+  const [pageContent, setPageContent] = useState<object>()
   const { designList, activeControl } = useSelector(
     (state: RootState) => state.pageDesign
   )
   const dispatch = useDispatch()
   const router = useRouter()
-  const id = 'ca320982-04cf-47dc-233c-08dbb45cb49a'
   const searchParams = useSearchParams()
-  console.log(searchParams.get('id'))
-
+  const id = searchParams.get('id')
   const { data } = useQuery(
     [
       {
@@ -26,19 +26,28 @@ export const useLayout = () => {
     services.GetData
   )
 
+  const { data: newId, refetch } = useQuery(
+    [{ url: `cms/v1.0/{site}/pages/${id}`, body: pageContent }],
+    services.UpdateData
+  )
+
+  useEffect(() => {
+    refetch()
+  }, [clicked])
+
   useEffect(() => {
     const items = data?.Layout
     if (items) {
       dispatch(setDesignList(processData(items, 0)))
     }
-    router.push(`/page?id=${id}`, undefined)
+    router.push(`/page?id=1734cc0d-aaac-4fce-abae-08dbbc020cd8`, undefined)
   }, [data])
 
   const { activeTab } = useSelector((state: RootState) => state.pageDesign)
   const handleClick = () => {
-    const newData = modifyData(designList)
-
-    services.UpdateData(newData, id)
+    const body = modifyData(designList)
+    setPageContent({ Widgets: body })
+    setClicked(!clicked)
   }
 
   return {

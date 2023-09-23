@@ -5,6 +5,7 @@ interface IQueryKey {
   page?: number
   pageSize?: number
   body?: string
+  data?: string
 }
 const base_api = axios.create({
   baseURL: 'http://developgateway.dourtal.co/api/',
@@ -18,19 +19,16 @@ const GetData = async ({ queryKey }: QueryFunctionContext) => {
   return res.data
 }
 
-const UpdateData = async (data: any, id: string) => {
-  const pageContent = { Widgets: data }
-  const response = await base_api.put(`cms/v1.0/{site}/pages/${id}`, {
-    method: 'PUT',
+const UpdateData = async ({ queryKey }: QueryFunctionContext) => {
+  const { url, body } = queryKey?.[0] as IQueryKey
+
+  const res = await base_api.put(url, body, {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(pageContent),
   })
 
-  if (!response) {
-    throw new Error('An error occurred while updating the data.')
-  }
+  return res.data
 }
 
 export const services = {
