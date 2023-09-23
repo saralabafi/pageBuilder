@@ -7,7 +7,7 @@ const TemplateEditorHtml = () => {
   return (
     <>
       <div className="w-full h-full py-4 bg-white flex-col justify-start items-center gap-2 inline-flex">
-        <div className="self-stretch grow shrink basis-0 px-6 py-2 flex-col justify-start items-center gap-2 flex">
+        <div className="self-stretch grow shrink basis-0 px-6 py-2 flex-col justify-start items-center  gap-2 flex">
           <div className="self-stretch p-2 bg-slate-50 rounded border border-slate-200 justify-end items-start gap-2 inline-flex">
             <CodeIcon />
             <div className="grow shrink basis-0 px-1 flex-col justify-center items-end gap-1 inline-flex">
@@ -16,7 +16,7 @@ const TemplateEditorHtml = () => {
               </div>
             </div>
           </div>
-          <div className="self-stretch grow shrink basis-0 flex-col justify-start items-end gap-2 flex">
+          <div className="self-stretch grow shrink basis-0 flex-col justify-start items-end gap-2 flex overflow-x-auto">
             <div
               dir="ltr"
               className="self-stretch grow shrink basis-0 bg-white rounded shadow border border-slate-200 flex-col justify-start items-start flex">
@@ -33,7 +33,7 @@ const TemplateEditorHtml = () => {
               </div>
             </div>
           </div>
-          <div className="self-stretch grow shrink basis-0 flex-col justify-start items-end gap-2 flex">
+          <div className="self-stretch grow shrink basis-0 flex-col justify-start items-end gap-2 flex overflow-x-auto">
             <div
               dir="ltr"
               className="self-stretch grow shrink basis-0 bg-white rounded border border-slate-200 flex-col justify-start items-start flex">
