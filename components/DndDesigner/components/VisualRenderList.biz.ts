@@ -54,13 +54,13 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
       const item = Dictionary[key]
       item.parentId == selectedControlId && find.unshift(item.Id)
     }
-    if (Number(updatedControl?.Settings?.COLUMNS_COUNT?.Data)) {
+    if (Number(updatedControl?.Settings?.COLUMNS_COUNT?.Value?.Data)) {
       const diff =
-        Number(updatedControl.Settings?.COLUMNS_COUNT.Data) -
+        Number(updatedControl.Settings?.COLUMNS_COUNT.Value.Data) -
         Number(editConfig.Data)
 
       if (
-        Number(updatedControl.Settings?.COLUMNS_COUNT.Data) <
+        Number(updatedControl.Settings?.COLUMNS_COUNT.Value.Data) <
         Number(editConfig.Data)
       ) {
         for (let i = 1; i <= -diff; i++) {
@@ -130,7 +130,7 @@ const VisualRenderList = ({ designList, dispatch }: IRenderList) => {
   }
 
   const returnDefaultValue = (id: string, type: string) => {
-    return Dictionary?.[id]?.Settings?.[type]?.Data
+    return Dictionary?.[id]?.Settings?.[type]?.Value?.Data
   }
 
   return {
